@@ -1,0 +1,1 @@
+{{#if style.lineless}}No outlines: {{style.outlineThickness}}.{{else}}Use {{style.outlineColor}} outlines, {{style.outlineThickness}}, {{#if tail}}{{tail}}{{else}}with rounded caps and joins.{{/if}}{{/if}}

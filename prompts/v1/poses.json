@@ -1,0 +1,11 @@
+{
+  "idle": "standing still in a relaxed rest pose, facing the viewer",
+  "step-a": "mid-walk, left foot forward, small bounce",
+  "step-b": "mid-walk, right foot forward, small bounce",
+  "sit": "sitting down on an invisible chair, hands or paws on an invisible table",
+  "happy": "happy, eyes closed, little smile, small hop",
+  "sleep": "asleep, eyes closed, slumped comfortably",
+  "eat": "eating, holding food up to the mouth",
+  "wave": "waving one hand or paw at the viewer",
+  "talk": "talking, mouth open, one hand raised"
+}

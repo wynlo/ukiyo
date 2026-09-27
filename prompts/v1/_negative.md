@@ -1,0 +1,2 @@
+NEGATIVE PROMPT:
+{{style.negative}}
