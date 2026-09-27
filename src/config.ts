@@ -54,7 +54,7 @@ export const configSchema = z.object({
     .prefault({}),
   cutout: z
     .object({
-      mode: z.enum(['flood', 'chroma']).default('flood'),
+      mode: z.enum(['flood', 'chroma', 'ink']).default('flood'),
       chroma: z.string().default('#00FF00'),
       threshold: z.number().min(1).default(102),
       feather: z.number().min(0).max(8).default(1.5),

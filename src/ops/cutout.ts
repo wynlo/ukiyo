@@ -12,11 +12,18 @@ import { colorDistance, type Raster, type Rgb } from './raster.js';
  * `chroma` removes every pixel near the chroma colour regardless of position.
  *
  * Both are followed by feather and despill.
+ *
+ * `ink` is for line art on paper, where fills inside a shape are the same white as the paper and
+ * the model paints that paper a hazy off-white. Darkness becomes alpha: anything within
+ * `INK_PAPER_MARGIN` of the background's luminance is fully transparent, the ink colour fully
+ * opaque, and every pixel takes the ink colour, so antialiasing stays smooth on any surface.
  */
 
 export type CutoutOptions = {
-  mode: 'flood' | 'chroma';
+  mode: 'flood' | 'chroma' | 'ink';
   background: Rgb;
+  /** Line colour for `ink` mode. */
+  ink?: Rgb;
   threshold: number;
   feather: number;
   despill: boolean;
@@ -161,7 +168,29 @@ function despillEdges(raster: Raster, removed: Uint8Array, alpha: Float32Array, 
   out.copy(data);
 }
 
+const INK_PAPER_MARGIN = 30;
+
+const luminance = ({ r, g, b }: Rgb) => 0.299 * r + 0.587 * g + 0.114 * b;
+
+function inkOnly(raster: Raster, background: Rgb, ink: Rgb): { raster: Raster; removedPixels: number } {
+  const paper = luminance(background) - INK_PAPER_MARGIN;
+  const span = Math.max(1, paper - luminance(ink));
+  let removedPixels = 0;
+  for (let i = 0; i < raster.width * raster.height; i += 1) {
+    const o = i * 4;
+    const level = luminance({ r: raster.data[o]!, g: raster.data[o + 1]!, b: raster.data[o + 2]! });
+    const alpha = Math.min(1, Math.max(0, (paper - level) / span));
+    if (alpha === 0) removedPixels += 1;
+    raster.data[o] = ink.r;
+    raster.data[o + 1] = ink.g;
+    raster.data[o + 2] = ink.b;
+    raster.data[o + 3] = Math.round((raster.data[o + 3] ?? 255) * alpha);
+  }
+  return { raster, removedPixels };
+}
+
 export function cutout(raster: Raster, options: CutoutOptions): { raster: Raster; removedPixels: number } {
+  if (options.mode === 'ink') return inkOnly(raster, options.background, options.ink ?? { r: 0x33, g: 0x33, b: 0x33 });
   const removed = options.mode === 'chroma' ? chromaMask(raster, options.background, options.threshold) : floodFromEdges(raster, options.background, options.threshold);
   const alpha = featherAlpha(removed, raster.width, raster.height, options.feather);
   if (options.despill) {

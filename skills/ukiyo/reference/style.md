@@ -83,3 +83,11 @@ For subjects that need a colour close to the background, set `background` on
 that target, or switch the project to chroma mode:
 `"cutout": { "mode": "chroma", "chroma": "#00FF00" }` and
 `canvas.backgroundColor: "#00FF00"`.
+
+For line art on paper (charcoal outlines, white fills), set
+`"cutout": { "mode": "ink" }`. Flood fill cannot tell the paper from the
+white inside a shape, and the model paints the paper a hazy off-white. In
+`ink` mode darkness becomes alpha: anything within 30 levels of the
+background's luminance is transparent, and every pixel takes
+`linework.outlineColor`. `backdrop` targets are cut too, at full size, so
+`final` writes the drawing on transparency.

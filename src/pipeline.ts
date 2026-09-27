@@ -330,7 +330,9 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
     }
     const mode = chroma ? 'chroma' : config.cutout.mode;
     const background = chroma ? parseHex(chroma) : config.cutout.mode === 'chroma' ? parseHex(config.cutout.chroma) : parseHex(config.styleGuide.canvas.backgroundColor);
-    const result = cutout(raster, { mode, background, threshold, feather: config.cutout.feather, despill: config.cutout.despill });
+    const outline = config.styleGuide.linework.outlineColor;
+    const ink = /^#[0-9a-f]{6}$/i.test(outline) ? parseHex(outline) : undefined;
+    const result = cutout(raster, { mode, background, ink, threshold, feather: config.cutout.feather, despill: config.cutout.despill });
     fs.mkdirSync(path.dirname(out), { recursive: true });
     await writePng(result.raster, out);
   };
@@ -365,7 +367,10 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
       const meta = readMeta(config, target);
       meta.warnings = [];
       try {
-        if (target.compose === 'backdrop') {
+        if (target.compose === 'backdrop' && config.cutout.mode === 'ink') {
+          // Line art on paper: the paper goes, the drawing stays at full size.
+          await cutOne(raw, stagePath(config, target.target, 'cut', target.target));
+        } else if (target.compose === 'backdrop') {
           const out = stagePath(config, target.target, 'cut', target.target);
           fs.mkdirSync(path.dirname(out), { recursive: true });
           await sharp(raw).png().toFile(out);
