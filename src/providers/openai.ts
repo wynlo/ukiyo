@@ -29,6 +29,9 @@ export function createOpenAiProvider(model: string): ImageProvider {
   return {
     name: 'openai',
     async generate(prompt, options: GenerateOptions) {
+      // The generations endpoint takes no images; with references, the edits endpoint takes them all.
+      const refs = [...new Set([...(options.ref ? [options.ref] : []), ...(options.refs ?? [])])];
+      if (refs.length > 0) return this.edit(prompt, refs[0]!, { ...options, ref: undefined, refs: refs.slice(1) });
       const response = await fetch('https://api.openai.com/v1/images/generations', {
         method: 'POST',
         headers: { Authorization: `Bearer ${key()}`, 'Content-Type': 'application/json' },
@@ -43,7 +46,9 @@ export function createOpenAiProvider(model: string): ImageProvider {
       form.append('n', '1');
       form.append('size', options.size ?? '1024x1024');
       form.append('image[]', new Blob([fs.readFileSync(image)], { type: 'image/png' }), path.basename(image));
-      if (options.ref) form.append('image[]', new Blob([fs.readFileSync(options.ref)], { type: 'image/png' }), path.basename(options.ref));
+      for (const ref of [...new Set([...(options.ref ? [options.ref] : []), ...(options.refs ?? [])])]) {
+        form.append('image[]', new Blob([fs.readFileSync(ref)], { type: 'image/png' }), path.basename(ref));
+      }
       const response = await fetch('https://api.openai.com/v1/images/edits', {
         method: 'POST',
         headers: { Authorization: `Bearer ${key()}` },

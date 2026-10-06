@@ -21,7 +21,7 @@ export type CodexOptions = {
   timeoutMs: number;
   cwd: string;
   /** Renders the `codex-relay` prompt template. */
-  relayPrompt: (view: { prompt: string; size?: string; ref: boolean; edit: boolean }) => string;
+  relayPrompt: (view: { prompt: string; size?: string; ref: boolean; refs: number; edit: boolean }) => string;
 };
 
 type CodexEvent = {
@@ -71,6 +71,11 @@ function listPngs(dir: string): { file: string; mtime: number }[] {
   return out;
 }
 
+/** `ref` and `refs` as one list, without repeats. */
+function referenceList(genOptions: GenerateOptions): string[] {
+  return [...new Set([...(genOptions.ref ? [genOptions.ref] : []), ...(genOptions.refs ?? [])])];
+}
+
 export function createCodexProvider(options: CodexOptions): ImageProvider {
   const run = async (prompt: string, images: string[], genOptions: GenerateOptions): Promise<ProviderResult> => {
     const started = Date.now() - 1000;
@@ -95,7 +100,7 @@ export function createCodexProvider(options: CodexOptions): ImageProvider {
     // The prompt goes on stdin: `-i <FILE>...` is variadic and would swallow
     // a positional prompt as another file name.
     args.push('-');
-    genOptions.log?.(`codex ${args.slice(0, 6).join(' ')} … (${prompt.length} chars${images.length ? `, ${images.length} image` : ''})`);
+    genOptions.log?.(`codex ${args.slice(0, 6).join(' ')} … (${prompt.length} chars${images.length ? `, ${images.length} image${images.length === 1 ? '' : 's'}` : ''})`);
     let stdout = '';
     let stderr = '';
     try {
@@ -152,10 +157,36 @@ export function createCodexProvider(options: CodexOptions): ImageProvider {
     return { file: newest.file, transcript: `${stdout}\n${stderr}`.trim() };
   };
 
+  /** A text answer about an image: the agent's last message. */
+  const describe = async (prompt: string, image: string, genOptions: GenerateOptions): Promise<string> => {
+    const args = ['exec', '--skip-git-repo-check', '--sandbox', 'read-only', '--json', '-c', `model_reasoning_effort="${options.effort}"`, '--color', 'never'];
+    if (options.agentModel) args.push('-m', options.agentModel);
+    args.push('-i', image, '-');
+    genOptions.log?.(`codex ${args.slice(0, 6).join(' ')} … (${prompt.length} chars, describe)`);
+    const result = await execa('codex', args, { cwd: options.cwd, timeout: options.timeoutMs, reject: false, input: prompt, env: { ...process.env, NO_COLOR: '1' } });
+    const events = parseEvents(result.stdout ?? '');
+    const failures = events.filter((event) => event.type === 'error' || event.type === 'turn.failed').map((event) => event.error?.message ?? event.message ?? 'unknown error');
+    const transcript = `${failures.join('\n')}\n${result.stderr ?? ''}`;
+    if (RATE_LIMIT_PATTERNS.some((p) => p.test(transcript))) throw new RateLimitError('Codex reported a rate or usage limit.');
+    if (result.timedOut) throw new Error(`codex exec timed out after ${Math.round(options.timeoutMs / 1000)}s`);
+    if (failures.length > 0) throw new Error(failures.join('; '));
+    const messages = events.filter((event) => event.item?.type === 'agent_message').map((event) => event.item?.text ?? '');
+    const last = messages[messages.length - 1];
+    if (!last) throw new Error('codex gave no answer');
+    return last;
+  };
+
   return {
     name: 'codex',
-    generate: (prompt, genOptions) => run(options.relayPrompt({ prompt, size: genOptions.size, ref: Boolean(genOptions.ref), edit: false }), genOptions.ref ? [genOptions.ref] : [], genOptions),
-    edit: (prompt, image, genOptions) => run(options.relayPrompt({ prompt, size: genOptions.size, ref: false, edit: true }), [image], genOptions),
+    describe,
+    generate: (prompt, genOptions) => {
+      const refs = referenceList(genOptions);
+      return run(options.relayPrompt({ prompt, size: genOptions.size, ref: refs.length > 0, refs: refs.length, edit: false }), refs, genOptions);
+    },
+    edit: (prompt, image, genOptions) => {
+      const refs = referenceList(genOptions);
+      return run(options.relayPrompt({ prompt, size: genOptions.size, ref: false, refs: refs.length, edit: true }), [image, ...refs], genOptions);
+    },
     check: async () => {
       const details: string[] = [];
       let ok = true;

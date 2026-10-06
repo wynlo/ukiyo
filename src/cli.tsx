@@ -8,7 +8,9 @@ import { createRequire } from 'node:module';
 import { CONFIG_FILE, defaultConfig, findConfigPath, loadConfig, writeConfig, type ResolvedConfig } from './config.js';
 import { runDoctor } from './doctor.js';
 import { exampleManifest, loadManifest, writeManifest, type Manifest } from './manifest.js';
-import { createPipeline, type Emit, type Pipeline } from './pipeline.js';
+import { createPipeline, type Emit, type Pipeline, type PipelineOptions } from './pipeline.js';
+import { createReferenceResolver, describePlan, type ReferenceRequest } from './references.js';
+import { stagePath } from './meta.js';
 import { composePrompt } from './prompt/compose.js';
 import { renderStyle, starterStyle } from './style.js';
 import { BUILTIN_PROMPTS_DIR, builtinVersions } from './prompt/templates.js';
@@ -53,11 +55,31 @@ function runInk(title: string, task: (emit: Emit) => Promise<void>): Promise<voi
   });
 }
 
-function pipelineTask(fn: (p: Pipeline, c: Ctx) => Promise<unknown>): (emit: Emit) => Promise<void> {
+function pipelineTask(fn: (p: Pipeline, c: Ctx) => Promise<unknown>, options: PipelineOptions = {}): (emit: Emit) => Promise<void> {
   const c = ctx();
   return async (emit) => {
-    await fn(createPipeline(c.config, c.manifest, emit), c);
+    await fn(createPipeline(c.config, c.manifest, emit, undefined, options), c);
   };
+}
+
+type RefFlags = { ref?: string[]; refs?: boolean; refsOnly?: string[]; maxRefs?: string; pendingRefs?: boolean };
+
+const collect = (value: string, previous: string[] = []) => [...previous, ...value.split(',').map((v) => v.trim()).filter(Boolean)];
+
+/** The per-request reference flags. Every command that generates takes them. */
+function withRefFlags(command: Command): Command {
+  return command
+    .option('--ref <ref>', 'add a reference image: <target>/<asset> or a file path (repeatable, or comma-separated)', collect)
+    .option('--no-refs', 'send no reference images (an edit still sends its input image)')
+    .option('--refs-only <ref>', 'send only these reference images (repeatable, or comma-separated)', collect)
+    .option('--max-refs <n>', 'the most reference images per call, not counting the input image')
+    .option('--pending-refs', 'automatic references may use assets that are not approved yet');
+}
+
+function refRequest(flags: RefFlags): ReferenceRequest {
+  const max = flags.maxRefs === undefined ? undefined : Number(flags.maxRefs);
+  if (max !== undefined && !(Number.isInteger(max) && max >= 0)) fail(`--max-refs expects a whole number, got "${flags.maxRefs}"`);
+  return { add: flags.ref, only: flags.refsOnly, none: flags.refs === false, max, pending: flags.pendingRefs };
 }
 
 async function copyToClipboard(text: string): Promise<void> {
@@ -153,36 +175,87 @@ promptsCmd
     }
   });
 
-program
-  .command('prompt <target>')
-  .description('compose and print the prompt for a target')
-  .option('--copy', 'copy to the clipboard')
-  .action(async (name: string, opts: { copy?: boolean }) => {
-    try {
-      const { config, manifest } = ctx();
-      const target = manifest.find((t) => t.target === name);
-      if (!target) fail(`Unknown target "${name}"`);
-      const text = composePrompt(config, target);
-      console.log(text);
-      if (opts.copy) {
-        await copyToClipboard(text);
-        console.error('\n(copied to clipboard)');
-      }
-    } catch (error) {
-      fail(error);
+withRefFlags(
+  program
+    .command('prompt <target>')
+    .description('compose and print the prompt for a target, and the reference images a generation would send')
+    .option('--copy', 'copy the prompt to the clipboard')
+    .option('--json', 'print the prompt and the reference list as JSON'),
+).action(async (name: string, opts: RefFlags & { copy?: boolean; json?: boolean }) => {
+  try {
+    const { config, manifest } = ctx();
+    const target = manifest.find((t) => t.target === name);
+    if (!target) fail(`Unknown target "${name}"`);
+    const resolver = createReferenceResolver(config, manifest);
+    // The input image of an edit-based target, as `gen` would send it.
+    const input =
+      target.compose === 'parts' && target.reference
+        ? { file: stagePath(config, target.reference.split('/')[0]!, 'cut', target.reference.split('/')[1]!), id: target.reference }
+        : target.compose === 'layer' || target.compose === 'split'
+          ? { file: stagePath(config, target.base.split('/')[0]!, 'cut', target.base.split('/')[1]!), id: target.base }
+          : undefined;
+    const plan = resolver.resolve(target, { request: refRequest(opts), input, exclude: input?.id ? [input.id] : undefined });
+    const block = resolver.promptBlock(target, plan);
+    const text = block ? `${composePrompt(config, target)}\n\n${block}` : composePrompt(config, target);
+    if (opts.json) {
+      console.log(JSON.stringify({ target: target.target, prompt: text, input: plan.input, references: plan.refs, dropped: plan.dropped }, null, 2));
+      return;
     }
-  });
+    console.log(text);
+    const lines = describePlan(plan);
+    console.log(`\n---\nIMAGES TO ATTACH, IN THIS ORDER${target.compose === 'layer' || target.compose === 'split' ? ' (for image 1, `ukiyo gen` sends the base on the background, in the marker colour for a layer or an add)' : ''}:`);
+    console.log(lines.length ? lines.join('\n') : '(none)');
+    if (opts.copy) {
+      await copyToClipboard(text);
+      console.error('\n(prompt copied to the clipboard; attach the images above)');
+    }
+  } catch (error) {
+    fail(error);
+  }
+});
 
 // ---- pipeline steps -------------------------------------------------------------------
 
 const names = (list: string[]) => (list.length ? list : undefined);
 
 program
-  .command('gen [targets...]')
-  .description('generate raw images for targets that have none')
-  .option('--all', 'every target (default when none given)')
-  .option('--force', 'regenerate even when raw.png exists')
-  .action((targets: string[], opts: { force?: boolean }) => runInk('gen', pipelineTask((p) => p.gen(names(targets), opts.force))).catch(fail));
+  .command('plan [targets...]')
+  .description('score sprites and write multipart part plans (split targets) for the complex ones')
+  .option('--relabel', 'ask the model again instead of using cached labels')
+  .option('--dry', 'report the plans without writing the manifest')
+  .option('--score', 'only score the assets; no labels, no plans')
+  .option('--ignore-locks', 'with --dry: plan locked targets too, to compare with the hand plans')
+  .option('--label-all', 'label every sprite, whatever its score or triggers (a full material pass)')
+  .option('--json', 'print the rows as JSON')
+  .action(async (targets: string[], opts: { relabel?: boolean; dry?: boolean; json?: boolean; score?: boolean; ignoreLocks?: boolean; labelAll?: boolean }) => {
+    try {
+      const { config, manifest } = ctx();
+      const pipeline = createPipeline(config, manifest, (event) => {
+        if (event.type === 'error' || event.type === 'warn') console.error(`${event.type} ${'target' in event ? event.target : ''}: ${'message' in event ? event.message : ''}`);
+        else if (event.type === 'start' && !opts.json) console.log(`… ${event.target}: ${event.message ?? ''}`);
+      });
+      const rows = await pipeline.plan(names(targets), { relabel: opts.relabel, dry: opts.dry, scoreOnly: opts.score, ignoreLocks: opts.ignoreLocks && opts.dry, labelAll: opts.labelAll });
+      if (opts.json) {
+        console.log(JSON.stringify(rows, null, 2));
+        return;
+      }
+      for (const row of rows) {
+        console.log(`${row.score.toFixed(2)} ${row.score >= row.threshold ? '≥' : '<'} ${row.threshold.toFixed(2)}${row.trigger ? ` [${row.trigger}]` : ''}  ${row.target}/${row.asset}  ${row.action}${row.pieces?.length ? `: ${row.pieces.join(', ')}` : ''}`);
+        for (const d of row.dropped ?? []) console.log(`      dropped ${d}`);
+        if (row.effects) console.log(`      effects: ${row.effects}`);
+      }
+    } catch (error) {
+      fail(error);
+    }
+  });
+
+withRefFlags(
+  program
+    .command('gen [targets...]')
+    .description('generate raw images for targets that have none')
+    .option('--all', 'every target (default when none given)')
+    .option('--force', 'regenerate even when raw.png exists'),
+).action((targets: string[], opts: RefFlags & { force?: boolean }) => runInk('gen', pipelineTask((p) => p.gen(names(targets), opts.force), { refs: refRequest(opts) })).catch(fail));
 
 program
   .command('import <file>')
@@ -191,16 +264,16 @@ program
   .option('-a, --asset <name>', 'layer id, for layer targets')
   .action((file: string, opts: { target: string; asset?: string }) => runInk('import', pipelineTask((p) => p.importFile(opts.target, file, opts.asset))).catch(fail));
 
-program
-  .command('animate [targets...]')
-  .description('per-frame edit calls for strip targets whose frames need redrawing')
-  .option('--force', 'redo frames that exist')
-  .action((targets: string[], opts: { force?: boolean }) => runInk('animate', pipelineTask((p) => p.animate(names(targets), opts.force))).catch(fail));
+withRefFlags(
+  program
+    .command('animate [targets...]')
+    .description('per-frame edit calls for strip targets whose frames need redrawing')
+    .option('--force', 'redo frames that exist'),
+).action((targets: string[], opts: RefFlags & { force?: boolean }) => runInk('animate', pipelineTask((p) => p.animate(names(targets), opts.force), { refs: refRequest(opts) })).catch(fail));
 
-program
-  .command('edit <target> <asset> <instruction>')
-  .description('iterate one cut asset with an instruction')
-  .action((target: string, asset: string, instruction: string) => runInk('edit', pipelineTask((p) => p.edit(target, asset, instruction))).catch(fail));
+withRefFlags(program.command('edit <target> <asset> <instruction>').description('iterate one cut asset with an instruction')).action(
+  (target: string, asset: string, instruction: string, opts: RefFlags) => runInk('edit', pipelineTask((p) => p.edit(target, asset, instruction), { refs: refRequest(opts) })).catch(fail),
+);
 
 program
   .command('cut [targets...]')
@@ -233,13 +306,13 @@ program
 program
   .command('pack [groups...]')
   .description('pack approved final assets into atlases')
-  .option('--allow-pending', 'include assets that are not approved yet')
-  .action((groups: string[], opts: { allowPending?: boolean }) => runInk('pack', pipelineTask((p) => p.pack(names(groups), opts.allowPending))).catch(fail));
+  .option('--allow-pending', 'include assets that are not approved yet (not auto part plans nobody has reviewed)')
+  .option('--allow-pending-plans', 'with --allow-pending: include auto part plans that are not approved yet')
+  .action((groups: string[], opts: { allowPending?: boolean; allowPendingPlans?: boolean }) => runInk('pack', pipelineTask((p) => p.pack(names(groups), opts.allowPending, opts.allowPendingPlans))).catch(fail));
 
-program
-  .command('all [targets...]')
-  .description('gen, cut, final, sheet; stop at the review gate; pack when everything is approved')
-  .action((targets: string[]) => runInk('all', pipelineTask((p) => p.all(names(targets)))).catch(fail));
+withRefFlags(program.command('all [targets...]').description('gen, cut, final, sheet; stop at the review gate; pack when everything is approved')).action(
+  (targets: string[], opts: RefFlags) => runInk('all', pipelineTask((p) => p.all(names(targets)), { refs: refRequest(opts) })).catch(fail),
+);
 
 program
   .command('redo <target> [asset]')

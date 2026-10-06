@@ -26,6 +26,14 @@ Read `reference/style.md` before you edit `art/style.md`. Read
 4. Do not hand-draw replacement art. If a sprite is wrong, change its subject,
    add a note in `additionalDetails`, and regenerate.
 5. Keep `art/generated/` in git. `review`, `redo` and `pack` read from it.
+6. Every new object gets a wind and light review through `ukiyo plan`. Do not
+   leave it implicit, and do not approve it for the user.
+7. Lights come from the art. Never place a light point by hand in game code.
+   A light source gets one light per lit region (a window, a flame, a paper
+   panel, a lantern body), found by `ukiyo final` from the `emits` materials
+   and `rig.lights`, and packed into the frame as `lights`. A wrong point is
+   fixed in the rules or with a locked `lights` entry in the manifest. See
+   "Lights" in `reference/manifest.md`.
 
 ## Procedure
 
@@ -67,6 +75,10 @@ the schema. Rules:
 - `layer`: overlays (outfits, hats, faces) for one shared base. One target per
   slot family. The base target comes first and is finalised first. Set `tint`
   when the game colours it at runtime.
+- `split`: moving pieces of an approved asset (a lantern on a hook, paper
+  strips, a canopy), cut by mask so they keep its pixels. Set a `joint` per
+  piece. Use `plate` for a piece with art behind it, `add` for a new piece.
+  `ukiyo final` rebuilds it every run; check `registered/` and the warnings.
 - Subjects: front view, no text, no colours close to the style background.
 - Set `game` (or the configured `groupBy` field) on every target. One atlas per
   group.
@@ -77,12 +89,65 @@ the schema. Rules:
 ukiyo gen --all
 ```
 
-The first target in the manifest becomes the style reference for every later
-call. Put a representative sheet first. On a rate-limit pause the CLI waits and
-retries by itself. Do not run it again in parallel.
+Every call sends reference images with the prompt. See "References" below.
+On a rate-limit pause the CLI waits and retries by itself. Do not run it again
+in parallel.
 
 Manual path (no Codex): `ukiyo prompt <target> --copy`, paste into ChatGPT,
-save the PNG, then `ukiyo import <file> --target <target>`.
+attach the images listed under `IMAGES TO ATTACH` in that order, save the PNG,
+then `ukiyo import <file> --target <target>`.
+
+### References
+
+Each generation call (`gen`, `all`, `edit`, `animate`, and the edits of
+`layer` and `split` targets) sends reference images with the prompt. The
+prompt names the role of each image: a style reference, an asset whose
+proportions and framing to match (same kind), or an asset of the same family
+(same atlas group or tag). For an asset reference the prompt also gives its
+frame aspect, how much of the frame the art fills, and its size in the game.
+`meta.json` records the list with file hashes, and the review page shows it
+under each asset.
+
+The list, in order:
+
+1. the input image of an edit;
+2. `references.anchors` in `ukiyo.json` (the style anchor);
+3. `--ref` on the command line;
+4. `references` on the target in the manifest;
+5. the first target's `ref.png` or `raw.png`, when `references.firstTarget` is
+   true (the only reference when `ukiyo.json` has no `references` section);
+6. automatic picks: approved finals of the same kind, then the same group,
+   then the same aspect, then the most recent approval.
+
+Rejected assets are never sent. A target never gets its own old images.
+
+Check the list before you generate:
+
+```bash
+ukiyo prompt <target>            # prompt, then IMAGES TO ATTACH with ids, roles and hashes
+ukiyo prompt <target> --json     # the same for a script
+```
+
+Add a reference when:
+
+- a new asset must match one existing asset closely (a second lantern next to
+  an approved one): `--ref shrine-feat-tall/stone-toro`;
+- a new kind has no approved assets yet: point it at the nearest approved
+  asset with `references` on the target;
+- the user gives an image: `--ref path/to/image.png`.
+
+Drop references when:
+
+- the prompt asks for a different look on purpose (a UI icon set in a world
+  style project): `referencesMode: "replace"` on the target, with its own list;
+- the model copies the subject of a reference into the new image:
+  `--max-refs 1`, or `--refs-only <anchor>`;
+- the call is an exact edit that must keep the input as it is and the result
+  drifts: `--no-refs`.
+
+Use `--pending-refs` only when the user wants to match art that is not
+approved yet. Do not add `references` to hide a bad style file: fix
+`art/style.md` instead.
 
 ### 4. Process
 
@@ -96,6 +161,33 @@ ukiyo sheet
 expected count. Open that target's `sheet.html` and check the boxes before
 moving on. `ukiyo cut <target> --force` re-cuts after changing `cutout` settings
 in `ukiyo.json`.
+
+### 4b. Multipart rules
+
+New complex art goes through `ukiyo plan`, not through hand-cut pieces.
+
+1. The project's `ukiyo.json` needs a `rig` section: materials with their
+   motion and pivot rule, per-kind `threshold` and `maxParts`, and score
+   weights. See "Multipart rules" in `reference/manifest.md`. Do not add
+   materials or values to ukiyo itself.
+2. `ukiyo plan --score` to see the scores; `ukiyo plan <target>` to plan.
+3. Read the output: dropped labels and "nothing moves" are normal. Then
+   `ukiyo gen <split>` (only for plans with `fill` pieces), `cut`, `final`.
+4. Show the Plans tab of `ukiyo review` to the user and stop. A plan they
+   reject does not pack.
+5. To tune one plan by hand, edit its pieces and set `locked: true` on them,
+   or `plan.locked` on the target. `ukiyo plan` keeps them.
+6. Lights: label a paper lantern `lantern` and a lit window, panel or flame
+   `light` or `flame` (materials with `emits`). `ukiyo final` prints the
+   light count per target; check it against the lit regions you can count
+   in the art, then show the points on the Plans tab with the plan.
+7. Wind and light review: every new or regenerated sprite gets one. After
+   `ukiyo final`, run `ukiyo plan --score` (or `ukiyo plan`). It writes
+   `effects` into `meta.json`: the wind materials that move the sprite (or
+   `none`) and whether its light comes from the art. Check the proposal:
+   keyword triggers can match inside other words. Show the Wind & light tab
+   of `ukiyo review` to the user with the plans and stop. See "Wind and
+   light review" in `reference/manifest.md`.
 
 ### 5. Review gate (required)
 

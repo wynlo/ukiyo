@@ -1,6 +1,8 @@
 export type GenerateOptions = {
-  /** A style reference image attached to the request. */
+  /** A style reference image attached to the request. Kept for callers that send one; prefer `refs`. */
   ref?: string;
+  /** Reference images attached after the input image, in order. Their roles are named in the prompt. */
+  refs?: string[];
   /** Requested output size, "WxH". */
   size?: string;
   /** Log sink for provider chatter. */
@@ -27,6 +29,12 @@ export type ImageProvider = {
   generate(prompt: string, options: GenerateOptions): Promise<ProviderResult>;
   /** Image + text to image. `image` is the source to iterate on. */
   edit(prompt: string, image: string, options: GenerateOptions): Promise<ProviderResult>;
+  /**
+   * Image + text to text: look at an image and answer (`ukiyo plan` asks
+   * which parts of a sprite would move). Optional; a provider without it
+   * cannot label parts.
+   */
+  describe?(prompt: string, image: string, options: GenerateOptions): Promise<string>;
   /** Preflight for `ukiyo doctor`. */
   check(): Promise<{ ok: boolean; details: string[] }>;
 };

@@ -1,5 +1,6 @@
 import type { ResolvedConfig } from '../config.js';
 import type { Target } from '../manifest.js';
+import { declaredAspect } from '../ops/aspect.js';
 import { loadTemplates, type TemplateSet } from './templates.js';
 
 /**
@@ -37,6 +38,8 @@ function baseView(config: ResolvedConfig, target: Target) {
     size: defaultSize(target),
     background: target.background ?? config.styleGuide.canvas.backgroundColor,
     tint: Boolean(target.tint),
+    // Backdrops state their aspect in their own template; a layer copies its base.
+    aspect: target.compose === 'backdrop' || target.compose === 'layer' || target.compose === 'split' ? '' : (declaredAspect(config, target)?.label ?? ''),
   };
 }
 
@@ -48,6 +51,7 @@ export function defaultSize(target: Target): string {
     case 'sheet':
     case 'parts':
     case 'layer':
+    case 'split':
       return '1024x1024';
     case 'single':
       return '1024x1024';
@@ -106,6 +110,12 @@ export function composePrompt(config: ResolvedConfig, target: Target): string {
     case 'layer':
       return target.layers.map((layer) => `## ${layer.id}\n${composeLayerPrompt(config, target, layer)}`).join('\n\n');
 
+    case 'split':
+      return [
+        ...(target.plate ? [`## plate\n${composeSplitPrompt(config, target, 'plate', target.plate)}`] : []),
+        ...target.add.map((entry) => `## ${entry.id}\n${composeSplitPrompt(config, target, 'add', entry.label)}`),
+      ].join('\n\n') || '(no generation: the pieces are cut from the base)';
+
     case 'parts':
       return templates.render('parts', {
         ...view,
@@ -126,6 +136,20 @@ export function composeLayerPrompt(config: ResolvedConfig, target: Extract<Targe
     ...baseView(config, target),
     background: target.background ?? (config.cutout.mode === 'chroma' ? config.cutout.chroma : config.styleGuide.canvas.backgroundColor),
     label: layer.label.trim(),
+    baseTint: target.baseTint,
+  });
+}
+
+/**
+ * One edit for a `split` target. `plate` removes things from the base (the
+ * base is shown in its own colours); `add` draws a new thing onto it (the
+ * base is shown in a flat marker colour, like a `layer`).
+ */
+export function composeSplitPrompt(config: ResolvedConfig, target: Extract<Target, { compose: 'split' }>, kind: 'plate' | 'add', label: string): string {
+  return templatesFor(config).render(kind === 'plate' ? 'split-plate' : 'split-add', {
+    ...baseView(config, target),
+    background: target.background ?? (config.cutout.mode === 'chroma' ? config.cutout.chroma : config.styleGuide.canvas.backgroundColor),
+    label: label.trim(),
     baseTint: target.baseTint,
   });
 }

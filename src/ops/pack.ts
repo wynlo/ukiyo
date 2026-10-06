@@ -2,6 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { MaxRectsPacker } from 'maxrects-packer';
 import sharp from 'sharp';
+import type { PartMeta } from '../meta.js';
+import { atlasLights, type LightPoint } from './lights.js';
 
 export type PackInput = {
   /** Frame name in the atlas, e.g. "guest-fox/idle" or "counter". */
@@ -12,6 +14,12 @@ export type PackInput = {
   anchor: { x: number; y: number };
   /** Runtime tint channel, written to the frame for the engine. */
   tint?: string;
+  /** The art's box inside the image, before aspect padding. Default: the whole image. */
+  content?: { x: number; y: number; width: number; height: number };
+  /** A `split` output: its place on the base frame and its joint. Written to the frame as is. */
+  part?: PartMeta;
+  /** Light points in px of this image (`ops/lights.ts`). Written to the frame as shares of its content box. */
+  lights?: LightPoint[];
 };
 
 export type PackOptions = {
@@ -32,7 +40,25 @@ type PhaserFrame = {
   sourceSize: { w: number; h: number };
   pivot: { x: number; y: number };
   anchor: { x: number; y: number };
+  /**
+   * The art's box inside the frame, in frame px. Smaller than the frame when
+   * `final` padded the asset to its declared aspect ratio. For code that fits
+   * the art itself to a box (a DOM icon, a nine-slice, a rig's part sizes).
+   */
+  content: { x: number; y: number; w: number; h: number };
   tint?: string;
+  /**
+   * A `split` output. `base` is the frame it belongs to; `x`, `y` place this
+   * frame's top-left on it; `joint` is the point it turns about, in this
+   * frame's px; `z` is the draw order (plate 0).
+   */
+  part?: PartMeta;
+  /**
+   * Where the picture gives off light: one point per lit region. `x` and `y`
+   * are shares of the content box from its top-left, `radius` a share of its
+   * width. `piece` names the split piece that carries the light.
+   */
+  lights?: ReturnType<typeof atlasLights>;
 };
 
 export type PackResult = { png: string; json: string; width: number; height: number; frames: string[]; skipped: string[] };
@@ -43,14 +69,14 @@ export type PackResult = { png: string; json: string; width: number; height: num
  * frame; `anchor` is the same value for other engines.
  */
 export async function packAtlas(group: string, inputs: PackInput[], outDir: string, options: PackOptions): Promise<PackResult> {
-  const packer = new MaxRectsPacker<{ name: string; file: string; anchor: { x: number; y: number }; tint?: string; width: number; height: number; x: number; y: number }>(
+  const packer = new MaxRectsPacker<{ name: string; file: string; anchor: { x: number; y: number }; tint?: string; content?: PackInput['content']; part?: PartMeta; lights?: LightPoint[]; width: number; height: number; x: number; y: number }>(
     options.maxSize,
     options.maxSize,
     options.padding,
     { smart: true, pot: options.pot === true, square: false, allowRotation: false },
   );
   for (const input of inputs) {
-    packer.add({ width: input.width, height: input.height, name: input.name, file: input.file, anchor: input.anchor, tint: input.tint, x: 0, y: 0 });
+    packer.add({ width: input.width, height: input.height, name: input.name, file: input.file, anchor: input.anchor, tint: input.tint, content: input.content, part: input.part, lights: input.lights, x: 0, y: 0 });
   }
   const bin = packer.bins[0];
   if (!bin) {
@@ -77,7 +103,10 @@ export async function packAtlas(group: string, inputs: PackInput[], outDir: stri
       sourceSize: { w: rect.width, h: rect.height },
       pivot: rect.anchor,
       anchor: rect.anchor,
+      content: rect.content ? { x: rect.content.x, y: rect.content.y, w: rect.content.width, h: rect.content.height } : { x: 0, y: 0, w: rect.width, h: rect.height },
       ...(rect.tint ? { tint: rect.tint } : {}),
+      ...(rect.part ? { part: rect.part } : {}),
+      ...(rect.lights?.length ? { lights: atlasLights(rect.lights, rect.content ?? { x: 0, y: 0, width: rect.width, height: rect.height }) } : {}),
     };
   }
   const document = {

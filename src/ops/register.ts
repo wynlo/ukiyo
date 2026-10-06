@@ -243,7 +243,7 @@ export function register(base: Raster, edit: Raster, tolerance = 48): Transform 
   return best;
 }
 
-function sample(raster: Raster, x: number, y: number): [number, number, number, number] {
+export function sample(raster: Raster, x: number, y: number): [number, number, number, number] {
   const x0 = Math.floor(x);
   const y0 = Math.floor(y);
   const fx = x - x0;
@@ -345,7 +345,30 @@ export function extractLayer(base: Raster, edit: Raster, transform: Transform, t
   return { raster, margin, coverage: baseCount ? covered / baseCount : 0 };
 }
 
-/** Clear connected opaque regions smaller than `minArea` pixels. */
+/**
+ * A small region that is a solid blob (an eye dot, a blush oval) rather than a
+ * sliver. Misregistration leaves thin strips along outlines; real small
+ * features fill most of their bounding box and are a few pixels thick.
+ */
+function isCompact(region: readonly number[], width: number): boolean {
+  let minX = Infinity;
+  let minY = Infinity;
+  let maxX = -Infinity;
+  let maxY = -Infinity;
+  for (const p of region) {
+    const x = p % width;
+    const y = (p - x) / width;
+    if (x < minX) minX = x;
+    if (x > maxX) maxX = x;
+    if (y < minY) minY = y;
+    if (y > maxY) maxY = y;
+  }
+  const w = maxX - minX + 1;
+  const h = maxY - minY + 1;
+  return Math.min(w, h) >= 4 && region.length >= 0.45 * w * h && Math.max(w, h) / Math.min(w, h) <= 3;
+}
+
+/** Clear connected opaque regions smaller than `minArea` pixels, unless they are compact blobs. */
 export function removeSpecks(raster: Raster, minArea: number): void {
   const { width, height, data } = raster;
   const seen = new Uint8Array(width * height);
@@ -367,7 +390,7 @@ export function removeSpecks(raster: Raster, minArea: number): void {
         stack.push(q);
       }
     }
-    if (region.length < minArea) for (const p of region) data[p * 4 + 3] = 0;
+    if (region.length < minArea && !isCompact(region, width)) for (const p of region) data[p * 4 + 3] = 0;
   }
   // Faint pixels left without an opaque neighbour region are noise too.
   for (let p = 0; p < width * height; p += 1) {
