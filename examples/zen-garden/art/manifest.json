@@ -1,0 +1,16 @@
+[
+  { "target": "garden-style", "compose": "sheet", "kind": "item", "game": "garden", "background": "#FF00FF",
+    "category": "Style reference for a calm watercolour garden game",
+    "assets": ["a round mossy boulder", "a small wooden bench", "a clay pot of round green shrubs", "a pale stone bowl of water", "a round orange persimmon", "a small bamboo fence section"],
+    "names": ["boulder", "bench", "shrub-pot", "water-bowl", "persimmon", "fence"] },
+  { "target": "garden-tall", "compose": "sheet", "kind": "furniture", "game": "garden", "background": "#FF00FF",
+    "category": "Tall Japanese garden pieces",
+    "assets": ["a bonsai-shaped pine tree with three cloud-shaped pads", "a grey stone lantern with a warm lit window", "a weeping cherry tree in soft bloom", "a bamboo water spout pouring into a stone basin"],
+    "names": ["pine", "stone-lantern", "cherry", "tsukubai"] },
+  { "target": "garden-pond", "compose": "single", "kind": "scenery", "game": "garden", "background": "#FF00FF",
+    "subject": "a small round pond with calm teal water, a rim of rounded grey stones, two orange koi and a few round lily leaves" },
+  { "target": "garden-critters", "compose": "sheet", "kind": "critter", "game": "garden", "background": "#FF00FF",
+    "category": "Round cute garden animals",
+    "assets": ["a round green frog sitting", "a white and orange koi fish", "a round snail with a sand-coloured shell", "a small white crane standing on one leg", "a round brown sparrow", "a sleepy round turtle"],
+    "names": ["frog", "koi", "snail", "crane", "sparrow", "turtle"] }
+]

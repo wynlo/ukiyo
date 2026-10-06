@@ -1,0 +1,155 @@
+{
+  "project": {
+    "name": "Lucky Cat Shrine",
+    "description": "Idle game: a small Japanese shrine where round kawaii cats come to pray, ring the bell and nap."
+  },
+  "style": {
+    "file": "art/style.md",
+    "additionalDetails": ""
+  },
+  "manifest": "art/manifest.json",
+  "out": "art/generated",
+  "provider": {
+    "name": "codex",
+    "concurrency": 1,
+    "gapMs": 6000,
+    "model": "gpt-image-2",
+    "effort": "low",
+    "timeoutMs": 420000
+  },
+  "cutout": {
+    "mode": "flood",
+    "chroma": "#00FF00",
+    "threshold": 102,
+    "feather": 1.5,
+    "despill": true,
+    "detectThreshold": 34,
+    "minArea": 400,
+    "mergeGap": 14
+  },
+  "atlas": {
+    "dir": "atlas",
+    "groupBy": "game",
+    "scale": 2,
+    "unit": 64,
+    "format": "phaser-hash",
+    "padding": 8,
+    "maxSize": 4096,
+    "quantize": false,
+    "pot": true,
+    "groupScale": {
+      "critters": 4,
+      "critters-hall": 4,
+      "critters-matsuri": 4,
+      "critters-onsen": 4,
+      "critters-staff": 4,
+      "shrine-altar": 4,
+      "shrine-altar-statues": 4
+    }
+  },
+  "kinds": {
+    "backdrop": {
+      "width": 8,
+      "anchor": "top-left",
+      "aspect": "1:1"
+    },
+    "furniture": {
+      "height": 2,
+      "anchor": "bottom-center",
+      "aspect": "2:1"
+    },
+    "furniture-wide": {
+      "height": 1.75,
+      "anchor": "bottom-center",
+      "aspect": "2:1"
+    },
+    "scenery": {
+      "height": 2.25,
+      "anchor": "bottom-center",
+      "aspect": "3:2"
+    },
+    "gate": {
+      "height": 4,
+      "anchor": "bottom-center",
+      "aspect": "2:3"
+    },
+    "visitor": {
+      "height": 1.5,
+      "anchor": "bottom-center",
+      "aspect": "1:1"
+    },
+    "item": {
+      "height": 0.75,
+      "anchor": "center",
+      "aspect": "1:1"
+    },
+    "icon": {
+      "height": 0.5,
+      "anchor": "center",
+      "aspect": "1:1"
+    },
+    "fx": {
+      "height": 0.75,
+      "anchor": "bottom-center",
+      "aspect": "1:1"
+    },
+    "critter": {
+      "height": 0.7,
+      "anchor": "bottom-center",
+      "aspect": "1:1"
+    },
+    "bar": {
+      "height": 0.3,
+      "anchor": "center",
+      "aspect": "3:1"
+    },
+    "key-art": {
+      "width": 15,
+      "anchor": "top-left",
+      "aspect": "2:1"
+    }
+  },
+  "tints": {
+    "fur": [
+      "#FFFFFF",
+      "#FFF1D6",
+      "#F8A24A",
+      "#E2E0DC",
+      "#C28457",
+      "#86868A",
+      "#FFD2A6",
+      "#F7C46A",
+      "#6B6566",
+      "#CDB9CF",
+      "#C8744A"
+    ],
+    "fabric": [
+      "#8BBA43",
+      "#FFDA50",
+      "#F08A5A",
+      "#6F8EC1",
+      "#DB4032",
+      "#9BDEED",
+      "#FFF7E0",
+      "#BF7640"
+    ],
+    "pattern": [
+      "#FFFFFF",
+      "#8A5A3A",
+      "#60605F",
+      "#FE962B"
+    ]
+  },
+  "references": {
+    "anchors": [
+      "art/references/style-anchor.png"
+    ],
+    "firstTarget": true,
+    "auto": {
+      "max": 2,
+      "match": [
+        "kind"
+      ]
+    }
+  }
+}

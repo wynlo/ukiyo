@@ -1,0 +1,18 @@
+[
+  { "target": "neon-style", "compose": "sheet", "kind": "item", "game": "alley",
+    "category": "Style reference for a cosy cyberpunk night market",
+    "assets": ["a chunky indigo crate with a cyan light strip", "a round paper lantern glowing amber", "a cup of bubble tea with a coral lid", "a plum street bollard with a cyan cap light", "a cream takeaway noodle box", "a steel-blue round trash bin"],
+    "names": ["crate", "lantern", "bubble-tea", "bollard", "noodle-box", "bin"] },
+  { "target": "street-tall", "compose": "sheet", "kind": "furniture", "game": "alley",
+    "category": "Tall night-market street pieces",
+    "assets": ["a chunky indigo vending machine with a glowing cyan window of drinks", "a plum noodle stall with a glowing coral awning and a cream curtain", "a street lamp post with a round amber light", "a tall indigo sign tower with stacked cyan, coral and amber glyph panels"],
+    "names": ["vending", "noodle-stall", "lamp", "sign-tower"] },
+  { "target": "street-small", "compose": "sheet", "kind": "item", "game": "alley",
+    "category": "Night-market goods",
+    "assets": ["a steaming bowl of ramen with a cyan glowing egg", "a can of drink with a coral stripe", "a small round helper drone with a cyan eye", "a glowing amber data chip", "a plum takoyaki tray", "a round cyan battery"],
+    "names": ["ramen", "can", "drone", "chip", "takoyaki", "battery"] },
+  { "target": "cats", "compose": "sheet", "kind": "critter", "game": "alley",
+    "category": "Round kawaii cat people of the night market",
+    "assets": ["a cream cat in an indigo hoodie with a cyan visor", "a cream cat chef with a coral headband", "a cream cat courier with an amber backpack", "a cream cat with headphones and a plum jacket", "a sleepy cream cat in a cream raincoat", "a cream cat shopkeeper with a steel-blue apron"],
+    "names": ["runner", "chef", "courier", "dj", "sleepy", "shopkeeper"] }
+]

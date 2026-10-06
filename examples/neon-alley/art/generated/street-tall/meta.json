@@ -1,0 +1,152 @@
+{
+  "target": "street-tall",
+  "compose": "sheet",
+  "kind": "furniture",
+  "game": "alley",
+  "warnings": [],
+  "assets": {
+    "vending": {
+      "name": "vending",
+      "status": "pending",
+      "references": [
+        {
+          "n": 1,
+          "path": "art/generated/neon-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "f795a5fc3a838618"
+        }
+      ],
+      "sourceBox": {
+        "x": 111,
+        "y": 80,
+        "width": 431,
+        "height": 525,
+        "area": 205064
+      },
+      "width": 513,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "content": {
+        "x": 151,
+        "y": 0,
+        "width": 211,
+        "height": 256
+      }
+    },
+    "noodle-stall": {
+      "name": "noodle-stall",
+      "status": "pending",
+      "references": [
+        {
+          "n": 1,
+          "path": "art/generated/neon-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "f795a5fc3a838618"
+        }
+      ],
+      "sourceBox": {
+        "x": 657,
+        "y": 81,
+        "width": 520,
+        "height": 524,
+        "area": 218746
+      },
+      "width": 512,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "content": {
+        "x": 129,
+        "y": 0,
+        "width": 254,
+        "height": 256
+      }
+    },
+    "lamp": {
+      "name": "lamp",
+      "status": "pending",
+      "references": [
+        {
+          "n": 1,
+          "path": "art/generated/neon-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "f795a5fc3a838618"
+        }
+      ],
+      "sourceBox": {
+        "x": 193,
+        "y": 629,
+        "width": 316,
+        "height": 547,
+        "area": 85291
+      },
+      "width": 513,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "content": {
+        "x": 182,
+        "y": 0,
+        "width": 149,
+        "height": 256
+      }
+    },
+    "sign-tower": {
+      "name": "sign-tower",
+      "status": "pending",
+      "references": [
+        {
+          "n": 1,
+          "path": "art/generated/neon-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "f795a5fc3a838618"
+        }
+      ],
+      "sourceBox": {
+        "x": 785,
+        "y": 630,
+        "width": 263,
+        "height": 543,
+        "area": 109725
+      },
+      "width": 513,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "content": {
+        "x": 194,
+        "y": 0,
+        "width": 125,
+        "height": 256
+      }
+    }
+  },
+  "prompt": "TASK:\nCreate one production-ready sticker sheet containing exactly 4 game sprites.\n\nPROJECT CONTEXT:\nNeon Alley: Night-market street vendor sim in a rainy cyberpunk city, run by cats.\n\nSTYLE:\nSTYLE LOCK: A cosy cyberpunk night market run by cats.\n\nPRIMARY GOAL: Cute, soft sprites for a phone game with a flat top-down street map where every object stands up and faces the camera. The city is a friendly place at night: chunky machines, glowing panels, round cats.\n\nCORE AESTHETIC: Lineless, softly shaded colour blocks, like a cosy kawaii game moved to a neon city. Chunky, pillowy, rounded machines in deep indigo (#3B3F7A) and plum (#6A4A8C), lit by flat glowing panels in cyan, coral and amber. Cats are cream-white with small patches, a wide head, small rounded ears, tiny dark dot eyes, no tail.\n\nEDGES: NO OUTLINES. No dark contour line around any shape. Shapes are separated by colour alone. Where a shape meets a similar colour, it has a darker band of its own hue along its lower edge. Panel detail is a darker same-hue shape, never a line. The only dark colour is tiny eyes.\n\nCOLOR: Bodies in indigo (#3B3F7A) with a darker band (#2A2C5C), plum (#6A4A8C) and steel blue (#7C8DB5). Light panels in neon cyan (#4FE3F0), hot coral (#FF5E7A) and amber (#FFB84D). Cats and cloth in cream (#FFF4E6). Never green: the background is pure #00FF00.\n\nSHADING: Soft cel shading. A darker same-hue band on the lower side of every form, and a soft cyan or coral light along the edge nearest a glowing panel. Glow stays inside the object. No bloom, no rain, no fog.\n\nVIEW AND PROPORTION: Front-facing oblique. Each object shows its full front face and a thin sliver of its top. Objects stand on a flat bottom edge. Chunky, short proportions.\n\nDETAIL LEVEL: Readable at very small sizes. Signs show simple glyph shapes, never readable text. No tiny panels or cables.\n\nCOMPOSITION: One asset category per image. Every asset isolated on flat #00FF00 with generous crop-safe spacing, no scene, no ground.\n\nPALETTE:\nChroma #00FF00 (background), Indigo #3B3F7A (fill), Indigo Band #2A2C5C (shade), Plum #6A4A8C (fill), Neon Cyan #4FE3F0 (fill), Hot Coral #FF5E7A (fill), Amber #FFB84D (fill), Cream #FFF4E6 (fill), Cream Band #E3D3C4 (shade), Steel Blue #7C8DB5 (fill)\n\nSHAPE LANGUAGE:\nchunky, pillowy, big rounded corners, soft boxy machines, round kawaii cats with no tail, front-facing with a sliver of top, flat bottom edge\n\nRENDERING RULES:\n- no outlines: colour blocks separated by colour alone\n- a darker same-hue band on the lower side of every form\n- a soft coloured light on the edge nearest a light panel\n- glowing panels are flat bright colour; any glow stays inside the silhouette\n- signs show simple glyph shapes, never readable letters\n- cats are cream-white with small patches, tiny dot eyes, no tail\n- chunky pillowy shapes with big rounded corners\n- front-facing oblique view: front face plus a sliver of the top\n- never use green anywhere on a subject; the background is pure\n- crisp high-resolution raster\n- isolated presentation with large spacing\n\nCATEGORY:\nTall night-market street pieces\n\nEXACT ASSETS:\n1. a chunky indigo vending machine with a glowing cyan window of drinks\n2. a plum noodle stall with a glowing coral awning and a cream curtain\n3. a street lamp post with a round amber light\n4. a tall indigo sign tower with stacked cyan, coral and amber glyph panels\n\nCANVAS AND LAYOUT:\nOutput size 1024x1024. Solid flat background #00FF00 with no texture, no vignette, no border. Nothing in the picture may use a colour close to the background colour.\nThe game shows each asset in a 2:1 (width:height) frame. Compose each asset to suit that frame, and keep its natural proportions: do not stretch or squash it.\nArrange the assets in a neat grid in reading order (left to right, then top to bottom), one asset per cell.\nKeep every asset isolated.\nDo not let assets touch or overlap.\nUse front-facing views only.\nLeave generous crop-safe spacing around every asset, at least one asset-width apart.\nNo labels, text, numbers, scene, ground line, or decorative filler.\n\nSPRITE RULES:\nUse strong, rounded silhouettes that remain readable at 48x48px.\nUse no more than 4 base colours per asset, plus their shading tones.\nSoft night shading: each form has a darker same-hue band on its lower side and a soft coloured light along the edge nearest a light panel. Light panels are flat bright colour with a soft glow that stays inside the object's silhouette. Never harsh, never metallic, never chrome.\nAvoid tiny details, intricate textures, and visual clutter.\nNo outlines: shapes are colour blocks separated by colour alone, with soft rounded edges and a darker same-hue band on the lower side; the only dark marks are tiny eyes.\nKeep the palette, edge treatment, proportions, and detail level consistent across the whole sheet.\nDraw every asset at a similar visual scale.\n\nNEGATIVE PROMPT:\noutlines, dark outlines, black outlines, ink lines, line art, contour lines, sticker outline, hard vector edges, green on the subject, glow outside the silhouette, bloom, lens flare, rain, fog, smoke, chrome, metallic sheen, glossy reflections, harsh shading, gritty texture, grunge, realism, 3D render, isometric view, three-quarter turn, readable text, letters, numbers, kanji, tails, big anime eyes, long limbs, scene background, ground plane, clutter, tiny details, watermark\n\nFINAL CHECK:\nExactly 4 assets.\nEvery requested asset is present once, in the listed order.\nEvery asset is separate, readable, and crop-safe.",
+  "promptVersion": "v1",
+  "references": [
+    {
+      "n": 1,
+      "path": "art/generated/neon-style/raw.png",
+      "role": "style",
+      "source": "first-target",
+      "sha256": "f795a5fc3a838618"
+    }
+  ],
+  "generatedAt": "2026-10-06T10:54:39.350Z",
+  "provider": "codex",
+  "detected": 4,
+  "expected": 4
+}

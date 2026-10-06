@@ -97,6 +97,44 @@ setup.
 | `doctor` | Check sharp, config, style, manifest, provider and skill. |
 | `skill install [--project]` | Link the Claude Code skill. |
 
+## Examples
+
+[`examples/`](examples) has five projects. Each one has a different style file
+and was made with `ukiyo all` and the `codex` provider. Lucky Cat Shrine and
+Ramen Inc are targets from a shipped game. The other three were made from
+their style file and manifest alone. Every style is lineless: shapes are
+separated by colour, with no outlines.
+
+| Example | Style | Setup |
+|---|---|---|
+| [`lucky-cat-shrine`](examples/lucky-cat-shrine) | Kawaii oblique, soft cel shading | Style anchor image in `art/references/`. Cut on `#FF00FF`. |
+| [`ramen-inc`](examples/ramen-inc) | Same style, different game | Same style file and anchor as Lucky Cat Shrine. |
+| [`zen-garden`](examples/zen-garden) | Soft watercolour | `firstTarget` reference: the first sheet sets the look for the rest. |
+| [`starfall`](examples/starfall) | Vinyl toy, top-down ships | `firstTarget` reference. Cut on `#FF00FF`. |
+| [`neon-alley`](examples/neon-alley) | Cosy cyberpunk night market | `firstTarget` reference. Cut on `#00FF00`, since the palette has pink. |
+
+![Lucky Cat Shrine](docs/examples/lucky-cat-shrine.png)
+
+![Ramen Inc](docs/examples/ramen-inc.png)
+
+![Zen Garden](docs/examples/zen-garden.png)
+
+![Starfall](docs/examples/starfall.png)
+
+![Neon Alley](docs/examples/neon-alley.png)
+
+To run an example again:
+
+```bash
+cd examples/starfall
+ukiyo redo ships   # or delete art/generated
+ukiyo all
+```
+
+Only `final/` and `meta.json` are committed for each target. After a run,
+`npm run showcase` (from the repo root) renders `docs/examples/*.png` again.
+Targets whose name ends in `-style` are style references and are not shown.
+
 ## Style file
 
 The art direction for a project is in its `art/style.md`. ukiyo does not
@@ -352,6 +390,8 @@ src/review/          review page server
 src/ui/              Ink components
 skills/ukiyo/        Claude Code skill
 fixtures/            smoke test (npm run fixtures)
+examples/            example projects, one art style each
+scripts/showcase.ts  renders docs/examples/*.png (npm run showcase)
 ```
 
 ## Development

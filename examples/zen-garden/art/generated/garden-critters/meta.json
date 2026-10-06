@@ -1,0 +1,216 @@
+{
+  "target": "garden-critters",
+  "compose": "sheet",
+  "kind": "critter",
+  "game": "garden",
+  "warnings": [],
+  "assets": {
+    "frog": {
+      "name": "frog",
+      "status": "pending",
+      "references": [
+        {
+          "n": 1,
+          "path": "art/generated/garden-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "7e06a69085855726"
+        }
+      ],
+      "sourceBox": {
+        "x": 110,
+        "y": 73,
+        "width": 423,
+        "height": 321,
+        "area": 102732
+      },
+      "width": 118,
+      "height": 118,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "content": {
+        "x": 0,
+        "y": 28,
+        "width": 118,
+        "height": 90
+      }
+    },
+    "koi": {
+      "name": "koi",
+      "status": "pending",
+      "references": [
+        {
+          "n": 1,
+          "path": "art/generated/garden-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "7e06a69085855726"
+        }
+      ],
+      "sourceBox": {
+        "x": 675,
+        "y": 74,
+        "width": 503,
+        "height": 316,
+        "area": 95017
+      },
+      "width": 142,
+      "height": 142,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "content": {
+        "x": 0,
+        "y": 52,
+        "width": 142,
+        "height": 90
+      }
+    },
+    "snail": {
+      "name": "snail",
+      "status": "pending",
+      "references": [
+        {
+          "n": 1,
+          "path": "art/generated/garden-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "7e06a69085855726"
+        }
+      ],
+      "sourceBox": {
+        "x": 125,
+        "y": 474,
+        "width": 408,
+        "height": 326,
+        "area": 105122
+      },
+      "width": 111,
+      "height": 111,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "content": {
+        "x": 0,
+        "y": 21,
+        "width": 111,
+        "height": 90
+      }
+    },
+    "crane": {
+      "name": "crane",
+      "status": "pending",
+      "references": [
+        {
+          "n": 1,
+          "path": "art/generated/garden-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "7e06a69085855726"
+        }
+      ],
+      "sourceBox": {
+        "x": 760,
+        "y": 412,
+        "width": 331,
+        "height": 415,
+        "area": 53750
+      },
+      "width": 90,
+      "height": 90,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "content": {
+        "x": 9,
+        "y": 0,
+        "width": 72,
+        "height": 90
+      }
+    },
+    "sparrow": {
+      "name": "sparrow",
+      "status": "pending",
+      "references": [
+        {
+          "n": 1,
+          "path": "art/generated/garden-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "7e06a69085855726"
+        }
+      ],
+      "sourceBox": {
+        "x": 129,
+        "y": 846,
+        "width": 383,
+        "height": 357,
+        "area": 96883
+      },
+      "width": 96,
+      "height": 96,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "content": {
+        "x": 0,
+        "y": 6,
+        "width": 96,
+        "height": 90
+      }
+    },
+    "turtle": {
+      "name": "turtle",
+      "status": "pending",
+      "references": [
+        {
+          "n": 1,
+          "path": "art/generated/garden-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "7e06a69085855726"
+        }
+      ],
+      "sourceBox": {
+        "x": 651,
+        "y": 870,
+        "width": 513,
+        "height": 314,
+        "area": 116624
+      },
+      "width": 146,
+      "height": 146,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "content": {
+        "x": 0,
+        "y": 56,
+        "width": 146,
+        "height": 90
+      }
+    }
+  },
+  "prompt": "TASK:\nCreate one production-ready sticker sheet containing exactly 6 game sprites.\n\nPROJECT CONTEXT:\nZen Garden: Calm garden builder: place stones, ponds and trees and watch frogs, koi and cranes visit.\n\nSTYLE:\nSTYLE LOCK: A calm, cosy garden builder painted in soft watercolour.\n\nPRIMARY GOAL: Gentle, cute sprites for a phone game with a flat top-down garden map where every object stands up and faces the camera. Everything must look like one illustrator painted it with soft watercolour washes and no pen lines.\n\nCORE AESTHETIC: Lineless watercolour. Chunky, rounded, pebble-like shapes. Each form is one light wash with a darker wash of the same hue pooled on its shadow side and a soft wet edge between them. Animals are round and simple with tiny dark dot eyes.\n\nEDGES: NO OUTLINES. No dark contour line around any shape and no ink brush strokes. Shapes are separated by colour alone. Where a shape meets a similar colour, it has a darker pooled edge of its own hue along its lower or outer side. Inner detail is a darker wash shape, never a line. The only dark colour is tiny eyes.\n\nCOLOR: Calm natural palette. Moss (#8DB06A) with deep moss (#5E8A4E), sage (#B9CDA0), stone (#A9B4BC) with stone shadow (#7F8C98), warm sand (#EAD9B5), bark (#9C7354), koi orange (#F08A4B), pond teal (#7FC4C0), crane white (#FBFAF6). No magenta, pink or purple, no neon, no grey mud on large areas.\n\nSHADING: Watercolour layering, not flat. A darker wash pools along the lower or shadow side of every form. Tops fade toward white paper. A pale cool wash sits under objects that stand on the ground. Small props shade more strongly than large ones.\n\nVIEW AND PROPORTION: Front-facing oblique, as in a flat top-down game map. Each object shows its full front face and a thin sliver of its top surface. Objects stand on a flat bottom edge. No isometric view, no three-quarter turn.\n\nDETAIL LEVEL: Readable at very small sizes. Rely on the chunky silhouette and two or three washes plus one darker pooled edge. No tiny patterns, no text.\n\nCOMPOSITION: One asset category per image. Every asset isolated with generous crop-safe spacing, no scene, no ground, no props that were not asked for.\n\nPALETTE:\nPaper #FFFFFF (background), Moss #8DB06A (fill), Deep Moss #5E8A4E (shade), Sage #B9CDA0 (fill), Stone #A9B4BC (fill), Stone Shadow #7F8C98 (shade), Sand #EAD9B5 (fill), Bark #9C7354 (fill), Koi Orange #F08A4B (fill), Pond Teal #7FC4C0 (fill), Crane White #FBFAF6 (fill), Ink Dot #2F3330 (shade)\n\nSHAPE LANGUAGE:\nchunky, soft and rounded, pebble-like, round bushes made of a few soft blobs, cloud-shaped pine pads, front-facing with a sliver of top, flat bottom edge\n\nRENDERING RULES:\n- no outlines: shapes are separated by wash colour alone\n- a darker pooled wash on the lower or shadow side of every form\n- soft wet edges between washes, never hard vector edges\n- tops of forms fade toward white paper\n- pale cool wash for cast shadows under objects\n- calm natural colours, gently saturated, never neon, never grey and muddy\n- dark colour only for tiny eyes\n- chunky rounded shapes, readable at small sizes\n- front-facing oblique view: front face plus a sliver of the top\n- crisp high-resolution raster\n- isolated presentation with large spacing\n\nCATEGORY:\nRound cute garden animals\n\nEXACT ASSETS:\n1. a round green frog sitting\n2. a white and orange koi fish\n3. a round snail with a sand-coloured shell\n4. a small white crane standing on one leg\n5. a round brown sparrow\n6. a sleepy round turtle\n\nCANVAS AND LAYOUT:\nOutput size 1024x1024. Solid flat background #FF00FF with no texture, no vignette, no border. Nothing in the picture may use a colour close to the background colour.\nThe game shows each asset in a 1:1 (width:height) frame. Compose each asset to suit that frame, and keep its natural proportions: do not stretch or squash it.\nArrange the assets in a neat grid in reading order (left to right, then top to bottom), one asset per cell.\nKeep every asset isolated.\nDo not let assets touch or overlap.\nUse front-facing views only.\nLeave generous crop-safe spacing around every asset, at least one asset-width apart.\nNo labels, text, numbers, scene, ground line, or decorative filler.\n\nSPRITE RULES:\nUse strong, rounded silhouettes that remain readable at 48x48px.\nUse no more than 3 base colours per asset, plus their shading tones.\nWatercolour shading: each form is one light wash with a darker wash of the same hue pooled along its lower or shadow side, with a soft wet edge between them. Top edges and rounded tops fade almost to white paper. Soft cast shadows under overhangs and objects as a pale cool wash. Gentle on large surfaces, stronger on small props.\nAvoid tiny details, intricate textures, and visual clutter.\nNo outlines: shapes are separated by wash colour alone, with soft wet edges and a darker pooled edge on the shadow side; the only dark marks are tiny eyes.\nKeep the palette, edge treatment, proportions, and detail level consistent across the whole sheet.\nDraw every asset at a similar visual scale.\n\nNEGATIVE PROMPT:\noutlines, dark outlines, black outlines, ink lines, line art, contour lines, sticker outline, pen lines, sumi-e brush strokes, hard vector edges, isometric view, three-quarter turn, vanishing-point perspective, harsh shading, hard black shadows, glossy rendering, specular highlights, neon colours, magenta, pink, purple, paper texture border, splatter, drips, realism, photo, 3D render, clutter, tiny details, scene background, ground plane, text, labels, signature, red seal stamp, watermark\n\nFINAL CHECK:\nExactly 6 assets.\nEvery requested asset is present once, in the listed order.\nEvery asset is separate, readable, and crop-safe.",
+  "promptVersion": "v1",
+  "references": [
+    {
+      "n": 1,
+      "path": "art/generated/garden-style/raw.png",
+      "role": "style",
+      "source": "first-target",
+      "sha256": "7e06a69085855726"
+    }
+  ],
+  "generatedAt": "2026-10-06T10:44:04.760Z",
+  "provider": "codex",
+  "detected": 6,
+  "expected": 6
+}

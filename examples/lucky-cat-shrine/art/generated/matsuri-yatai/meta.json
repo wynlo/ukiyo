@@ -1,0 +1,534 @@
+{
+  "target": "matsuri-yatai",
+  "compose": "sheet",
+  "kind": "furniture",
+  "game": "shrine-matsuri-features",
+  "warnings": [],
+  "assets": {
+    "takoyaki-yatai": {
+      "name": "takoyaki-yatai",
+      "status": "approved",
+      "references": [
+        {
+          "n": 1,
+          "path": "docs/references/style-anchor.png",
+          "role": "style",
+          "source": "anchor",
+          "sha256": "78df61fecaa81145"
+        },
+        {
+          "n": 2,
+          "id": "shrine-feat-tall-a/dango-yatai",
+          "path": "art/generated/shrine-feat-tall-a/final/dango-yatai.png",
+          "role": "proportions",
+          "source": "explicit",
+          "status": "approved",
+          "sha256": "9844b3a6ea92201c"
+        },
+        {
+          "n": 3,
+          "id": "shrine-feat-tall-a/nodate-parasol",
+          "path": "art/generated/shrine-feat-tall-a/final/nodate-parasol.png",
+          "role": "proportions",
+          "source": "explicit",
+          "status": "approved",
+          "sha256": "acf28a061e46bbbd"
+        },
+        {
+          "n": 4,
+          "id": "ramen-stations/fountain",
+          "path": "art/generated/ramen-stations/final/fountain.png",
+          "role": "proportions",
+          "source": "auto",
+          "status": "approved",
+          "sha256": "ff66fc15d973567f"
+        }
+      ],
+      "sourceBox": {
+        "x": 57,
+        "y": 84,
+        "width": 433,
+        "height": 384,
+        "area": 132789
+      },
+      "width": 564,
+      "height": 282,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "complexity": {
+        "score": 0.38,
+        "regions": 29,
+        "protrusion": 0.125,
+        "edges": 0.332,
+        "components": 1
+      },
+      "effects": {
+        "wind": [
+          "lantern"
+        ],
+        "light": "art",
+        "lights": 1,
+        "lit": 6,
+        "why": "split pieces of lantern; light source by the rules, 1 point",
+        "hash": "81ae324a9305",
+        "source": "plan",
+        "status": "approved",
+        "reviewedAt": "2026-09-29T06:11:33.385Z"
+      },
+      "content": {
+        "x": 123,
+        "y": 0,
+        "width": 318,
+        "height": 282
+      },
+      "reviewedAt": "2026-09-29T06:11:33.382Z"
+    },
+    "taiyaki-yatai": {
+      "name": "taiyaki-yatai",
+      "status": "approved",
+      "references": [
+        {
+          "n": 1,
+          "path": "docs/references/style-anchor.png",
+          "role": "style",
+          "source": "anchor",
+          "sha256": "78df61fecaa81145"
+        },
+        {
+          "n": 2,
+          "id": "shrine-feat-tall-a/dango-yatai",
+          "path": "art/generated/shrine-feat-tall-a/final/dango-yatai.png",
+          "role": "proportions",
+          "source": "explicit",
+          "status": "approved",
+          "sha256": "9844b3a6ea92201c"
+        },
+        {
+          "n": 3,
+          "id": "shrine-feat-tall-a/nodate-parasol",
+          "path": "art/generated/shrine-feat-tall-a/final/nodate-parasol.png",
+          "role": "proportions",
+          "source": "explicit",
+          "status": "approved",
+          "sha256": "acf28a061e46bbbd"
+        },
+        {
+          "n": 4,
+          "id": "ramen-stations/fountain",
+          "path": "art/generated/ramen-stations/final/fountain.png",
+          "role": "proportions",
+          "source": "auto",
+          "status": "approved",
+          "sha256": "ff66fc15d973567f"
+        }
+      ],
+      "sourceBox": {
+        "x": 555,
+        "y": 84,
+        "width": 431,
+        "height": 384,
+        "area": 132681
+      },
+      "width": 564,
+      "height": 282,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "complexity": {
+        "score": 0.482,
+        "regions": 37,
+        "protrusion": 0.131,
+        "edges": 0.357,
+        "components": 1
+      },
+      "effects": {
+        "wind": [
+          "awning",
+          "lantern"
+        ],
+        "light": "art",
+        "lights": 1,
+        "lit": 9,
+        "why": "split pieces of awning, lantern; light source by the rules, 1 point",
+        "hash": "e633d487d7ce",
+        "source": "plan",
+        "status": "approved",
+        "reviewedAt": "2026-09-29T06:11:33.388Z"
+      },
+      "content": {
+        "x": 124,
+        "y": 0,
+        "width": 316,
+        "height": 282
+      },
+      "reviewedAt": "2026-09-29T06:11:33.387Z"
+    },
+    "yakisoba-yatai": {
+      "name": "yakisoba-yatai",
+      "status": "approved",
+      "references": [
+        {
+          "n": 1,
+          "path": "docs/references/style-anchor.png",
+          "role": "style",
+          "source": "anchor",
+          "sha256": "78df61fecaa81145"
+        },
+        {
+          "n": 2,
+          "id": "shrine-feat-tall-a/dango-yatai",
+          "path": "art/generated/shrine-feat-tall-a/final/dango-yatai.png",
+          "role": "proportions",
+          "source": "explicit",
+          "status": "approved",
+          "sha256": "9844b3a6ea92201c"
+        },
+        {
+          "n": 3,
+          "id": "shrine-feat-tall-a/nodate-parasol",
+          "path": "art/generated/shrine-feat-tall-a/final/nodate-parasol.png",
+          "role": "proportions",
+          "source": "explicit",
+          "status": "approved",
+          "sha256": "acf28a061e46bbbd"
+        },
+        {
+          "n": 4,
+          "id": "ramen-stations/fountain",
+          "path": "art/generated/ramen-stations/final/fountain.png",
+          "role": "proportions",
+          "source": "auto",
+          "status": "approved",
+          "sha256": "ff66fc15d973567f"
+        }
+      ],
+      "sourceBox": {
+        "x": 1055,
+        "y": 83,
+        "width": 433,
+        "height": 385,
+        "area": 131789
+      },
+      "width": 564,
+      "height": 282,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "complexity": {
+        "score": 0.264,
+        "regions": 16,
+        "protrusion": 0.133,
+        "edges": 0.337,
+        "components": 1
+      },
+      "effects": {
+        "wind": [
+          "awning",
+          "lantern"
+        ],
+        "light": "art",
+        "lights": 2,
+        "lit": 3,
+        "why": "split pieces of awning, lantern; light source by the rules, 2 points",
+        "hash": "ee144f4bc31b",
+        "source": "plan",
+        "status": "approved",
+        "reviewedAt": "2026-09-29T06:11:33.391Z"
+      },
+      "content": {
+        "x": 123,
+        "y": 0,
+        "width": 318,
+        "height": 282
+      },
+      "reviewedAt": "2026-09-29T06:11:33.389Z"
+    },
+    "ringo-ame-yatai": {
+      "name": "ringo-ame-yatai",
+      "status": "approved",
+      "references": [
+        {
+          "n": 1,
+          "path": "docs/references/style-anchor.png",
+          "role": "style",
+          "source": "anchor",
+          "sha256": "78df61fecaa81145"
+        },
+        {
+          "n": 2,
+          "id": "shrine-feat-tall-a/dango-yatai",
+          "path": "art/generated/shrine-feat-tall-a/final/dango-yatai.png",
+          "role": "proportions",
+          "source": "explicit",
+          "status": "approved",
+          "sha256": "9844b3a6ea92201c"
+        },
+        {
+          "n": 3,
+          "id": "shrine-feat-tall-a/nodate-parasol",
+          "path": "art/generated/shrine-feat-tall-a/final/nodate-parasol.png",
+          "role": "proportions",
+          "source": "explicit",
+          "status": "approved",
+          "sha256": "acf28a061e46bbbd"
+        },
+        {
+          "n": 4,
+          "id": "ramen-stations/fountain",
+          "path": "art/generated/ramen-stations/final/fountain.png",
+          "role": "proportions",
+          "source": "auto",
+          "status": "approved",
+          "sha256": "ff66fc15d973567f"
+        }
+      ],
+      "sourceBox": {
+        "x": 55,
+        "y": 536,
+        "width": 425,
+        "height": 421,
+        "area": 148741
+      },
+      "width": 565,
+      "height": 282,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "complexity": {
+        "score": 0.461,
+        "regions": 39,
+        "protrusion": 0.1,
+        "edges": 0.363,
+        "components": 1
+      },
+      "effects": {
+        "wind": [
+          "awning",
+          "lantern"
+        ],
+        "light": "art",
+        "lights": 1,
+        "lit": 4,
+        "why": "split pieces of awning, lantern; light source by the rules, 1 point",
+        "hash": "721335dc9d52",
+        "source": "plan",
+        "status": "approved",
+        "reviewedAt": "2026-09-29T06:11:33.396Z"
+      },
+      "content": {
+        "x": 140,
+        "y": 0,
+        "width": 285,
+        "height": 282
+      },
+      "reviewedAt": "2026-09-29T06:11:33.394Z"
+    },
+    "kakigori-yatai": {
+      "name": "kakigori-yatai",
+      "status": "approved",
+      "references": [
+        {
+          "n": 1,
+          "path": "docs/references/style-anchor.png",
+          "role": "style",
+          "source": "anchor",
+          "sha256": "78df61fecaa81145"
+        },
+        {
+          "n": 2,
+          "id": "shrine-feat-tall-a/dango-yatai",
+          "path": "art/generated/shrine-feat-tall-a/final/dango-yatai.png",
+          "role": "proportions",
+          "source": "explicit",
+          "status": "approved",
+          "sha256": "9844b3a6ea92201c"
+        },
+        {
+          "n": 3,
+          "id": "shrine-feat-tall-a/nodate-parasol",
+          "path": "art/generated/shrine-feat-tall-a/final/nodate-parasol.png",
+          "role": "proportions",
+          "source": "explicit",
+          "status": "approved",
+          "sha256": "acf28a061e46bbbd"
+        },
+        {
+          "n": 4,
+          "id": "ramen-stations/fountain",
+          "path": "art/generated/ramen-stations/final/fountain.png",
+          "role": "proportions",
+          "source": "auto",
+          "status": "approved",
+          "sha256": "ff66fc15d973567f"
+        }
+      ],
+      "sourceBox": {
+        "x": 533,
+        "y": 537,
+        "width": 487,
+        "height": 420,
+        "area": 164411
+      },
+      "width": 565,
+      "height": 282,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "complexity": {
+        "score": 0.326,
+        "regions": 24,
+        "protrusion": 0.116,
+        "edges": 0.349,
+        "components": 1
+      },
+      "effects": {
+        "wind": [
+          "awning",
+          "paper"
+        ],
+        "light": "none",
+        "lights": 0,
+        "lit": 1,
+        "why": "split pieces of awning, paper; 1 region look lit, not a light source by the rules: check",
+        "hash": "755579e848b0",
+        "source": "plan",
+        "status": "approved",
+        "reviewedAt": "2026-09-29T06:11:33.398Z"
+      },
+      "content": {
+        "x": 119,
+        "y": 0,
+        "width": 327,
+        "height": 282
+      },
+      "reviewedAt": "2026-09-29T06:11:33.397Z"
+    },
+    "omen-yatai": {
+      "name": "omen-yatai",
+      "status": "approved",
+      "references": [
+        {
+          "n": 1,
+          "path": "docs/references/style-anchor.png",
+          "role": "style",
+          "source": "anchor",
+          "sha256": "78df61fecaa81145"
+        },
+        {
+          "n": 2,
+          "id": "shrine-feat-tall-a/dango-yatai",
+          "path": "art/generated/shrine-feat-tall-a/final/dango-yatai.png",
+          "role": "proportions",
+          "source": "explicit",
+          "status": "approved",
+          "sha256": "9844b3a6ea92201c"
+        },
+        {
+          "n": 3,
+          "id": "shrine-feat-tall-a/nodate-parasol",
+          "path": "art/generated/shrine-feat-tall-a/final/nodate-parasol.png",
+          "role": "proportions",
+          "source": "explicit",
+          "status": "approved",
+          "sha256": "acf28a061e46bbbd"
+        },
+        {
+          "n": 4,
+          "id": "ramen-stations/fountain",
+          "path": "art/generated/ramen-stations/final/fountain.png",
+          "role": "proportions",
+          "source": "auto",
+          "status": "approved",
+          "sha256": "ff66fc15d973567f"
+        }
+      ],
+      "sourceBox": {
+        "x": 1056,
+        "y": 537,
+        "width": 424,
+        "height": 420,
+        "area": 155622
+      },
+      "width": 565,
+      "height": 282,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "complexity": {
+        "score": 0.265,
+        "regions": 27,
+        "protrusion": 0.041,
+        "edges": 0.378,
+        "components": 1
+      },
+      "effects": {
+        "wind": "none",
+        "light": "none",
+        "lights": 0,
+        "lit": 1,
+        "why": "The masks hang flat on a wooden board and the awning hem is short and stiff; the stall has no lantern (docs/specs/matsuri-grounds.md).",
+        "hash": "c37a0d77480d",
+        "source": "hand",
+        "status": "approved",
+        "reviewedAt": "2026-09-29T06:11:33.402Z"
+      },
+      "still": true,
+      "content": {
+        "x": 140,
+        "y": 0,
+        "width": 285,
+        "height": 282
+      },
+      "reviewedAt": "2026-09-29T06:11:33.400Z"
+    }
+  },
+  "prompt": "TASK:\nCreate one production-ready sticker sheet containing exactly 6 game sprites.\n\nPROJECT CONTEXT:\nKissaten Engine: A cozy idle-game engine. The sample game is Lucky Cat Shrine: a small Japanese shrine precinct where the player places lanterns, ema racks, fortune trees and tea stands, and round kawaii cat visitors (every visitor is a cat) come to pray, ring the bell, draw fortunes and nap. Plus a component library of generic cozy sprites.\n\nSTYLE:\nSTYLE LOCK: Cozy cat mobile game in the style of Meow Tower (Hyperbeard).\n\nPRIMARY GOAL: Warm, cheerful, cute sprites for a phone game with a flat top-down map where every object stands up and faces the camera. Everything must look like one illustrator painted it with flat colour blocks and a soft brush, with no pen lines.\n\nCORE AESTHETIC: Lineless, softly shaded colour blocks. Chunky, pillowy, slightly bulging shapes with big rounded corners, like soft toys or cushions. Warm, sunny, cheerful colour: soft but saturated, never neon, never muted or grey. Cats are white with a few small grey or orange patches, a wide head, small rounded ears set wide, tiny dark dot eyes set wide apart, a tiny mouth, no outline, no tail.\n\nEDGES: NO OUTLINES. No dark contour line around any shape. Shapes are separated by colour alone. Where a shape meets a similar colour, it has a slightly darker band of its own hue along its lower or outer edge (a wall with a darker apricot base band, a roof with a darker red lip, a window with a darker wood frame). Edges are soft and very slightly brushy, not hard vector edges. Inner detail is a darker same-hue shape, never a dark line. The only dark colour is tiny facial features.\n\nCOLOR: Warm cheerful palette measured from Meow Tower. Main fills: apricot (#F7BB5C) with a darker band (#E69B4B) and wood frames (#BF7640), butter yellow (#FFDA50, #FDE284), pale butter (#FFF7AC), tomato red (#DB4032) with a darker band (#BC352D), fresh lawn (#A7B845), leaf green (#729F3E), deep leaf (#388344), white (#FFFFFE). Accents: orange (#FE962B), soft blue (#6F8EC1). Sky only: blue to teal (#0591C2 to #81DFCF). No pink, no magenta, no purple, no grey or muddy colour on large areas, no neon.\n\nSHADING: Soft cel shading, not flat. Every form has a darker same-hue band on its lower or shadow side (a bulging floor slab is lighter at the top and darker at the bottom lip) and a gentle lighter tone along its top edge or rounded top. Soft cast shadows sit under roof overhangs, under window sills and under objects on the ground. Subtle gradients are allowed: a soft falloff inside a shaded band, a gentle top-to-bottom gradient on small rounded props, and a small soft highlight dot on round props. On large surfaces the shading is gentle: the lightness inside one colour stays within about 0.03 to 0.07 (HSL L). Small props shade more strongly, within about 0.15 to 0.25. A faint paper grain may sit over the painted art. Never harsh, glossy, metallic or airbrushed.\n\nVIEW AND PROPORTION: Front-facing oblique, as in a flat top-down game map. The camera looks at the front of every object from slightly above, so each object shows its full front face and a thin sliver of its top surface. The front face is drawn straight on, square to the camera, with horizontal bottom and top edges. Objects stand on their flat bottom edge. No isometric view, no 2:1 diamond, no three-quarter turn, no side faces, no vanishing points.\n\nDETAIL LEVEL: Readable at very small sizes. Rely on the chunky silhouette and two or three flat colours plus one darker band. No tiny patterns, no realistic materials, no text.\n\nCOMPOSITION: One asset category per image. Every asset isolated with generous crop-safe spacing, no scene, no ground, no shadow, no props that were not asked for.\n\nPALETTE:\nPaper White #FFFFFF (background), Apricot #F7BB5C (fill), Apricot Band #E69B4B (shade), Wood Frame #BF7640 (shade), Butter #FFDA50 (fill), Light Butter #FDE284 (fill), Pale Butter #FFF7AC (fill), Tomato #DB4032 (fill), Tomato Band #BC352D (shade), Orange #FE962B (fill), Lawn #A7B845 (fill), Leaf #729F3E (fill), Deep Leaf #388344 (shade), White #FFFFFE (fill), White Edge #E6E1DA (shade), Soft Blue #6F8EC1 (fill), Feature Dark #333333 (shade)\n\nSHAPE LANGUAGE:\nchunky, pillowy, slightly bulging, big rounded corners, arched windows and doors, round bushes made of a few bulges, white cats with small patches and no tail, front-facing with a sliver of top, flat bottom edge\n\nRENDERING RULES:\n- no outlines: flat colour blocks separated by colour alone\n- soft cel shading: a darker same-hue band on the lower or shadow side of every form\n- a gentle lighter tone on top edges and rounded tops\n- soft cast shadows under overhangs, sills and objects\n- subtle gradients allowed inside shaded bands and on small round props\n- soft, very slightly brushy edges\n- warm cheerful palette: apricot, butter, tomato, leaf green, white\n- soft but saturated colour, never neon, never muted\n- dark colour only for tiny eyes and mouths\n- chunky pillowy shapes with big rounded corners\n- front-facing oblique view: front face plus a sliver of the top\n- objects stand on a flat bottom edge\n- only small soft highlights, never glossy specular dots\n- a faint paper grain at most; none on tint-ready white art\n- no text or labels\n- crisp high-resolution raster\n- readable at small mobile sizes\n- isolated presentation with large spacing\n\nCATEGORY:\nJapanese summer festival food stalls (yatai), tall\n\nEXACT ASSETS:\n1. a festival takoyaki stall: an apricot wooden booth with a tomato-red cloth awning on top, a short cream noren cloth hanging from its front edge, a round iron-free butter-gold griddle plate with rows of round golden takoyaki balls on the counter, and one small round red chochin lantern hanging at the right corner\n2. a festival taiyaki stall: an apricot wooden booth with an orange and cream striped cloth awning, a tray of golden fish-shaped taiyaki cakes on the counter, and one small cream chochin lantern hanging at the left corner\n3. a festival yakisoba stall: an apricot wooden booth with a leaf-green cloth awning, a wide flat butter-gold griddle heaped with soft brown noodles and green cabbage bits, and one small red chochin lantern hanging at the right corner\n4. a festival candy apple stall: an apricot wooden booth with a tomato and cream striped cloth awning, rows of shiny tomato-red candy apples on sticks standing in a slanted wooden rack, and one small cream chochin lantern at the left corner\n5. a festival shaved ice stall: an apricot wooden booth with a cream cloth awning and a short cream noren cloth hanging from its front edge showing one big tomato-red wave-and-flag shape, a hand-cranked wooden ice shaver on the counter and three cups of shaved ice with butter, orange and tomato syrup\n6. a festival mask stall: an apricot wooden booth with a butter-yellow cloth awning, and a tall wooden board on its back wall hung with five round festival masks in two rows: white fox masks with red markings, round cheerful masks with puffed cheeks, and one orange tanuki mask\n\nCANVAS AND LAYOUT:\nOutput size 1536x1024. Solid flat background #FF00FF with no texture, no vignette, no border. Nothing in the picture may use a colour close to the background colour.\nThe game shows each asset in a 2:1 (width:height) frame. Compose each asset to suit that frame, and keep its natural proportions: do not stretch or squash it.\nArrange the assets in a neat grid in reading order (left to right, then top to bottom), one asset per cell.\nKeep every asset isolated.\nDo not let assets touch or overlap.\nUse front-facing views only.\nLeave generous crop-safe spacing around every asset, at least one asset-width apart.\nNo labels, text, numbers, scene, ground line, or decorative filler.\n\nSPRITE RULES:\nUse strong, rounded silhouettes that remain readable at 48x48px.\nUse no more than 3 base colours per asset, plus their shading tones.\nSoft cel shading: each form has a darker same-hue band on its lower or shadow side, a gentle lighter tone on its top edge, and soft cast shadows under overhangs and under objects. Subtle gradients inside the shaded band and on small round props are fine, with a small soft highlight on round props. Gentle on large surfaces, stronger on small props. Never harsh, glossy or metallic.\nAvoid tiny details, intricate textures, and visual clutter.\nNo outlines: shapes are flat colour blocks separated by colour alone, with soft slightly brushy edges and a darker same-hue band on the lower edge; the only dark marks are tiny eyes and mouths.\nKeep the palette, edge treatment, proportions, and detail level consistent across the whole sheet.\nDraw every asset at a similar visual scale.\n\nNEGATIVE PROMPT:\noutlines, dark outlines, black outlines, brown outlines, contour lines, ink lines, line art, sticker outline around world objects, dark inner lines, isometric view, 2:1 dimetric view, diamond-shaped tops, three-quarter turn, visible side faces, vanishing-point perspective, tails, eye shine, eye highlights, big anime eyes, eyelashes, harsh shading, hard black shadows, airbrush shading, glossy rendering, glossy specular highlights, metallic sheen, strong rim lighting, hard cast shadows, heavy noise, wood grain, fur strands, muted colours, grey or muddy colours, desaturated colours, neon colours, fluorescent colours, pink, magenta, purple, pastel candy colours, thin spindly shapes, sharp pointy shapes, hard vector edges, painterly brushwork, watercolor, pixel art, realism, 3D render, clutter, tiny details, long limbs, necks, fingers, lily pads, scene background, text, labels, watermark, JPEG artifacts\n\nFINAL CHECK:\nExactly 6 assets.\nEvery requested asset is present once, in the listed order.\nEvery asset is separate, readable, and crop-safe.\n\nADDITIONAL DETAILS:\nFollow the locked art bible docs/specs/art-bible.md and match the style anchor docs/references/style-anchor.png (the oblique-style sheet) and docs/references/ref-c-target-style.png. Front-facing oblique view for a top-down map: show the front face and a thin sliver of the top. No isometric angle, no three-quarter turn. Lineless Meow Tower style: no dark outlines at all. Shapes are separated by colour. Soft cel shading on every form: a darker band of the same hue on the shadow side and the lower side, gentle lighter tones on the tops, and soft cast shadows under roofs, awnings, eaves and overhangs. Warm, soft, cheerful palette: apricot #F7BB5C wood with #E69B4B bands and #BF7640 frames, butter #FFDA50, light butter #FDE284, pale butter #FFF7AC, tomato #DB4032, orange #FE962B, leaf #729F3E, deep leaf #388344, cream white, warm pale butter stone. No blue, no purple, no pink, no grey metal on props. A subtle paper grain over everything. Chunky, pillowy, rounded shapes with soft corners. At most three main fills per prop. Each object stands on a flat bottom edge that meets the ground; draw no ground patch and no shadow under it. Leave wide empty space between assets. Light comes from the upper left. BACKGROUND: the whole background is one solid flat magenta #FF00FF from edge to edge, never white, never dark. No black background, no glow, no halo, no light bloom, no text, no letters, no kanji. These are festival (matsuri) stalls and pieces for the summer festival grounds beside a small Japanese cat shrine, seen at dusk under paper lanterns: draw them exactly like the approved shrine features, same style, same palette, same scale language. Brief: docs/specs/matsuri-grounds.md. Any paper lantern is a round or barrel chochin with a pale butter or cream glowing body and small tomato caps, hung from its top. Cloth (noren, awnings, banners) hangs with a clear free lower edge. Each stall is wider than tall, like a small wooden booth with a counter at the front, all six the same size and the same front-facing angle. The awning cloth and the noren are soft cloth with a free lower edge.",
+  "promptVersion": "v1",
+  "references": [
+    {
+      "n": 1,
+      "path": "docs/references/style-anchor.png",
+      "role": "style",
+      "source": "anchor",
+      "sha256": "78df61fecaa81145"
+    },
+    {
+      "n": 2,
+      "id": "shrine-feat-tall-a/dango-yatai",
+      "path": "art/generated/shrine-feat-tall-a/final/dango-yatai.png",
+      "role": "proportions",
+      "source": "explicit",
+      "status": "approved",
+      "sha256": "9844b3a6ea92201c"
+    },
+    {
+      "n": 3,
+      "id": "shrine-feat-tall-a/nodate-parasol",
+      "path": "art/generated/shrine-feat-tall-a/final/nodate-parasol.png",
+      "role": "proportions",
+      "source": "explicit",
+      "status": "approved",
+      "sha256": "acf28a061e46bbbd"
+    },
+    {
+      "n": 4,
+      "id": "ramen-stations/fountain",
+      "path": "art/generated/ramen-stations/final/fountain.png",
+      "role": "proportions",
+      "source": "auto",
+      "status": "approved",
+      "sha256": "ff66fc15d973567f"
+    }
+  ],
+  "generatedAt": "2026-09-29T03:53:37.310Z",
+  "provider": "codex",
+  "detected": 6,
+  "expected": 6
+}

@@ -1,0 +1,170 @@
+[
+  {
+    "view": "front",
+    "background": "#FF00FF",
+    "target": "ramen-bld-1",
+    "compose": "sheet",
+    "kind": "scenery",
+    "game": "ramen",
+    "height": 2,
+    "size": "1536x1024",
+    "category": "Tiny ramen company buildings, first tier",
+    "assets": [
+      "a tiny ramen lab: a small cream hut with a round window, a scallion-green door, a butter-yellow tiled roof and one small chimney with a soft cream steam puff",
+      "a tiny ramen workshop shed: a small pale butter shed with a tomato-red tiled roof, a soy-brown door and a short noren curtain over it",
+      "a tiny packaging hut: small apricot walls, a cream awning and two small soy-brown cardboard boxes stacked beside the door",
+      "a tiny marketing kiosk: a cream booth with a tomato-red roof and a small standing signboard beside it showing a plain red ramen-cup silhouette",
+      "a tiny corner shop: cream walls, a tomato-red striped awning and a wide window with a row of small ramen cups on the sill",
+      "a tiny wooden storage shed in soy brown with a butter-yellow double door and a low cream roof"
+    ],
+    "names": [
+      "lab",
+      "factory",
+      "packaging",
+      "marketing",
+      "sales",
+      "warehouse"
+    ],
+    "notes": "Front-facing oblique view for a top-down map: show the front face and a thin sliver of the top. No isometric angle, no three-quarter turn. Lineless Meow Tower style (docs/specs/art-bible.md, LOCKED; match docs/references/style-anchor.png): no dark outlines at all. Shapes are separated by colour. Soft cel shading on every form: a darker band of the same hue on the shadow side and the lower side, gentle lighter tones on the tops, and soft cast shadows under roofs, caps, eaves and overhangs. Chunky, pillowy, rounded shapes with soft corners. A subtle paper grain over everything. Light comes from the upper left. Leave wide empty space between assets. RAMEN PALETTE inside the locked style: warm cream #FFF1D6, noodle butter-yellow #FFDA50, ramen apricot-orange #F7BB5C with #E69B4B band, soy brown #BF7640 for wood and soy, tomato red #DB4032 with #BC352D band, scallion leaf green #729F3E. The darkest accent is a deep soy brown #6B3F22, never black or grey. Soft but saturated, never neon, never muted. No text, no letters, no logos: a product mark is a plain red ramen-cup silhouette. Each building is a small single-storey hut, wider than tall, with a flat bottom edge. BACKGROUND: the whole background is one solid flat magenta #FF00FF. No black background, no glow, no halo, no light bloom around the assets."
+  },
+  {
+    "view": "front",
+    "background": "#FF00FF",
+    "target": "ramen-factory-props",
+    "compose": "sheet",
+    "kind": "furniture",
+    "game": "ramen-props",
+    "height": 1.25,
+    "size": "1536x1024",
+    "category": "Ramen factory machines and props",
+    "assets": [
+      "a short horizontal conveyor belt segment: a soft blue #6F8EC1 belt on a cream frame with two butter-yellow rollers",
+      "a chunky noodle press machine: a soft blue #6F8EC1 box with a cream front panel, a butter-yellow hopper on top and wavy yellow noodles coming out of the front",
+      "a big round broth kettle in soy brown with a cream lid and a soft cream steam puff",
+      "a cup filling machine: a soft blue #6F8EC1 cabinet with a cream trim, a tomato-red top and a row of three small ramen cups under a nozzle",
+      "a tall stack of empty cream ramen cups with tomato-red bands",
+      "a wooden pallet in soy brown holding four soy-brown cardboard boxes",
+      "a small butter-yellow forklift with soy-brown forks and a soft blue #6F8EC1 seat and roll cage, facing the camera"
+    ],
+    "names": [
+      "conveyor",
+      "noodle-press",
+      "kettle",
+      "filler",
+      "cup-stack",
+      "pallet",
+      "forklift"
+    ],
+    "notes": "Front-facing oblique view for a top-down map: show the front face and a thin sliver of the top. No isometric angle, no three-quarter turn. Lineless Meow Tower style (docs/specs/art-bible.md, LOCKED; match docs/references/style-anchor.png): no dark outlines at all. Shapes are separated by colour. Soft cel shading on every form: a darker band of the same hue on the shadow side and the lower side, gentle lighter tones on the tops, and soft cast shadows under roofs, caps, eaves and overhangs. Chunky, pillowy, rounded shapes with soft corners. A subtle paper grain over everything. Light comes from the upper left. Leave wide empty space between assets. RAMEN PALETTE inside the locked style: warm cream #FFF1D6, noodle butter-yellow #FFDA50, ramen apricot-orange #F7BB5C with #E69B4B band, soy brown #BF7640 for wood and soy, tomato red #DB4032 with #BC352D band, scallion leaf green #729F3E. The darkest accent is a deep soy brown #6B3F22, never black or grey. Soft but saturated, never neon, never muted. COOL ACCENTS inside the locked style: soft blue #6F8EC1 with a darker #5A78AE band, pale icon blue #9BDEED, sky teal #3DD4D0, leaf green #729F3E with a deep #388344 band. No grey, no muted tones, no purple, no pink. Cool colours stay soft but saturated. No text, no letters, no logos: a product mark is a plain red ramen-cup silhouette. Each machine stands on a flat bottom edge and reads as one bold silhouette. BACKGROUND: the whole background is one solid flat magenta #FF00FF. No black background, no glow, no halo, no light bloom around the assets."
+  },
+  {
+    "view": "front",
+    "background": "#FF00FF",
+    "target": "ramen-vehicles",
+    "compose": "sheet",
+    "kind": "furniture",
+    "game": "ramen-props",
+    "height": 1.5,
+    "size": "1536x1024",
+    "category": "Ramen delivery vehicles, front-facing",
+    "assets": [
+      "a tiny delivery scooter in tomato red with a cream box on the back showing a plain red ramen-cup silhouette",
+      "a small soft blue #6F8EC1 delivery van with a white band and a plain red ramen-cup silhouette on its side",
+      "a box delivery truck: a cream cab with a tall butter-yellow box body showing a plain red ramen-cup silhouette",
+      "a long logistics truck: a tomato-red cab pulling a long cream trailer with a soft blue #6F8EC1 lower band and a plain red ramen-cup silhouette",
+      "a heavy cargo truck: a soy-brown cab pulling a flatbed with two stacked sky-teal #3DD4D0 shipping containers"
+    ],
+    "names": [
+      "scooter",
+      "van",
+      "truck",
+      "lorry",
+      "cargo"
+    ],
+    "notes": "Front-facing oblique view for a top-down map: show the front face and a thin sliver of the top. No isometric angle, no three-quarter turn. Lineless Meow Tower style (docs/specs/art-bible.md, LOCKED; match docs/references/style-anchor.png): no dark outlines at all. Shapes are separated by colour. Soft cel shading on every form: a darker band of the same hue on the shadow side and the lower side, gentle lighter tones on the tops, and soft cast shadows under roofs, caps, eaves and overhangs. Chunky, pillowy, rounded shapes with soft corners. A subtle paper grain over everything. Light comes from the upper left. Leave wide empty space between assets. RAMEN PALETTE inside the locked style: warm cream #FFF1D6, noodle butter-yellow #FFDA50, ramen apricot-orange #F7BB5C with #E69B4B band, soy brown #BF7640 for wood and soy, tomato red #DB4032 with #BC352D band, scallion leaf green #729F3E. The darkest accent is a deep soy brown #6B3F22, never black or grey. Soft but saturated, never neon, never muted. COOL ACCENTS inside the locked style: soft blue #6F8EC1 with a darker #5A78AE band, pale icon blue #9BDEED, sky teal #3DD4D0, leaf green #729F3E with a deep #388344 band. No grey, no muted tones, no purple, no pink. Cool colours stay soft but saturated. No text, no letters, no logos: a product mark is a plain red ramen-cup silhouette. Each vehicle is seen from the front-facing oblique view like every other object, side-on with its length across the image, wheels on a flat bottom edge, chunky and toy-like. BACKGROUND: the whole background is one solid flat magenta #FF00FF. No black background, no glow, no halo, no light bloom around the assets."
+  },
+  {
+    "view": "front",
+    "background": "#FF00FF",
+    "target": "ramen-workers",
+    "compose": "sheet",
+    "kind": "visitor",
+    "game": "ramen-props",
+    "height": 1.5,
+    "size": "1536x1024",
+    "category": "Ramen company cat workers",
+    "assets": [
+      "a small round white cat factory worker in a soft blue #6F8EC1 cap and a short soy-brown apron, facing the camera, tiny dot eyes",
+      "a small round white cat scientist in a cream lab coat and tiny round soft blue glasses, facing the camera, tiny dot eyes",
+      "a small round white cat packaging worker in a leaf-green #729F3E apron holding a small soy-brown box, facing the camera, tiny dot eyes",
+      "a small round white cat marketer in a tomato-red cap holding a small cream megaphone, facing the camera, tiny dot eyes",
+      "a small round white cat salesperson with a small soy-brown necktie and a butter-yellow clipboard, facing the camera, tiny dot eyes",
+      "a small round white cat delivery driver in a soft blue #6F8EC1 cap and a soft blue vest, facing the camera, tiny dot eyes"
+    ],
+    "names": [
+      "worker",
+      "scientist",
+      "packer",
+      "marketer",
+      "seller",
+      "driver"
+    ],
+    "notes": "Front-facing oblique view for a top-down map: show the front face and a thin sliver of the top. No isometric angle, no three-quarter turn. Lineless Meow Tower style (docs/specs/art-bible.md, LOCKED; match docs/references/style-anchor.png): no dark outlines at all. Shapes are separated by colour. Soft cel shading on every form: a darker band of the same hue on the shadow side and the lower side, gentle lighter tones on the tops, and soft cast shadows under roofs, caps, eaves and overhangs. Chunky, pillowy, rounded shapes with soft corners. A subtle paper grain over everything. Light comes from the upper left. Leave wide empty space between assets. RAMEN PALETTE inside the locked style: warm cream #FFF1D6, noodle butter-yellow #FFDA50, ramen apricot-orange #F7BB5C with #E69B4B band, soy brown #BF7640 for wood and soy, tomato red #DB4032 with #BC352D band, scallion leaf green #729F3E. The darkest accent is a deep soy brown #6B3F22, never black or grey. Soft but saturated, never neon, never muted. COOL ACCENTS inside the locked style: soft blue #6F8EC1 with a darker #5A78AE band, pale icon blue #9BDEED, sky teal #3DD4D0, leaf green #729F3E with a deep #388344 band. No grey, no muted tones, no purple, no pink. Cool colours stay soft but saturated. No text, no letters, no logos: a product mark is a plain red ramen-cup silhouette. Meow Tower cats: one soft round blob where a big round head merges into a slightly wider round body, small rounded ears set wide, tiny dark dot eyes set wide apart, a tiny mouth, no tail, no outline, small grey or orange patches allowed. Each wears one small uniform item; the outfit covers at most a third of the body. BACKGROUND: the whole background is one solid flat magenta #FF00FF. No black background, no glow, no halo, no light bloom around the assets."
+  },
+  {
+    "view": "front",
+    "background": "#FF00FF",
+    "target": "ramen-toppings-a",
+    "compose": "sheet",
+    "kind": "icon",
+    "game": "ramen-items",
+    "height": 0.5,
+    "size": "1536x1024",
+    "category": "Ramen toppings, icons",
+    "assets": [
+      "a soft boiled egg half with a butter-yellow yolk",
+      "a small pile of butter-yellow corn kernels",
+      "a rectangular sheet of dark scallion-green nori seaweed",
+      "a round slice of chashu pork in soy brown with a cream fat rim",
+      "a small scatter of scallion-green sliced spring onion rings"
+    ],
+    "names": [
+      "egg",
+      "corn",
+      "seaweed",
+      "pork",
+      "scallion"
+    ],
+    "notes": "Front-facing oblique view for a top-down map: show the front face and a thin sliver of the top. No isometric angle, no three-quarter turn. Lineless Meow Tower style (docs/specs/art-bible.md, LOCKED; match docs/references/style-anchor.png): no dark outlines at all. Shapes are separated by colour. Soft cel shading on every form: a darker band of the same hue on the shadow side and the lower side, gentle lighter tones on the tops, and soft cast shadows under roofs, caps, eaves and overhangs. Chunky, pillowy, rounded shapes with soft corners. A subtle paper grain over everything. Light comes from the upper left. Leave wide empty space between assets. RAMEN PALETTE inside the locked style: warm cream #FFF1D6, noodle butter-yellow #FFDA50, ramen apricot-orange #F7BB5C with #E69B4B band, soy brown #BF7640 for wood and soy, tomato red #DB4032 with #BC352D band, scallion leaf green #729F3E. The darkest accent is a deep soy brown #6B3F22, never black or grey. Soft but saturated, never neon, never muted. No text, no letters, no logos: a product mark is a plain red ramen-cup silhouette. Icons for an interface list: each reads as one bold silhouette at 24 px. BACKGROUND: the whole background is one solid flat magenta #FF00FF. No black background, no glow, no halo, no light bloom around the assets."
+  },
+  {
+    "view": "front",
+    "background": "#FF00FF",
+    "target": "ramen-broths",
+    "compose": "sheet",
+    "kind": "icon",
+    "game": "ramen-items",
+    "height": 0.5,
+    "size": "1536x1024",
+    "category": "Ramen broth types, icons as small bowls seen from slightly above",
+    "assets": [
+      "a small cream bowl of pale golden chicken broth",
+      "a small cream bowl of dark soy-brown shoyu broth",
+      "a small cream bowl of apricot-orange miso broth",
+      "a small cream bowl of milky white tonkotsu broth",
+      "a small cream bowl of soft blue-teal seafood broth with a small shrimp",
+      "a small cream bowl of golden-orange curry broth",
+      "a small cream bowl of tomato-red spicy broth with one small chilli"
+    ],
+    "names": [
+      "chicken",
+      "shoyu",
+      "miso",
+      "tonkotsu",
+      "seafood",
+      "curry",
+      "spicy"
+    ],
+    "notes": "Front-facing oblique view for a top-down map: show the front face and a thin sliver of the top. No isometric angle, no three-quarter turn. Lineless Meow Tower style (docs/specs/art-bible.md, LOCKED; match docs/references/style-anchor.png): no dark outlines at all. Shapes are separated by colour. Soft cel shading on every form: a darker band of the same hue on the shadow side and the lower side, gentle lighter tones on the tops, and soft cast shadows under roofs, caps, eaves and overhangs. Chunky, pillowy, rounded shapes with soft corners. A subtle paper grain over everything. Light comes from the upper left. Leave wide empty space between assets. RAMEN PALETTE inside the locked style: warm cream #FFF1D6, noodle butter-yellow #FFDA50, ramen apricot-orange #F7BB5C with #E69B4B band, soy brown #BF7640 for wood and soy, tomato red #DB4032 with #BC352D band, scallion leaf green #729F3E. The darkest accent is a deep soy brown #6B3F22, never black or grey. Soft but saturated, never neon, never muted. No text, no letters, no logos: a product mark is a plain red ramen-cup silhouette. Icons for an interface list: each bowl is the same shape and differs only by the colour of its broth, and reads at 24 px. BACKGROUND: the whole background is one solid flat magenta #FF00FF. No black background, no glow, no halo, no light bloom around the assets."
+  }
+]

@@ -1,0 +1,216 @@
+{
+  "target": "ships",
+  "compose": "sheet",
+  "kind": "visitor",
+  "game": "space",
+  "warnings": [],
+  "assets": {
+    "player": {
+      "name": "player",
+      "status": "pending",
+      "references": [
+        {
+          "n": 1,
+          "path": "art/generated/toy-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "40ac048ae81d3a76"
+        }
+      ],
+      "sourceBox": {
+        "x": 44,
+        "y": 185,
+        "width": 355,
+        "height": 394,
+        "area": 79248
+      },
+      "width": 192,
+      "height": 192,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "content": {
+        "x": 9,
+        "y": 0,
+        "width": 174,
+        "height": 192
+      }
+    },
+    "saucer": {
+      "name": "saucer",
+      "status": "pending",
+      "references": [
+        {
+          "n": 1,
+          "path": "art/generated/toy-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "40ac048ae81d3a76"
+        }
+      ],
+      "sourceBox": {
+        "x": 442,
+        "y": 216,
+        "width": 345,
+        "height": 326,
+        "area": 69770
+      },
+      "width": 203,
+      "height": 203,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "content": {
+        "x": 0,
+        "y": 11,
+        "width": 203,
+        "height": 192
+      }
+    },
+    "bomber": {
+      "name": "bomber",
+      "status": "pending",
+      "references": [
+        {
+          "n": 1,
+          "path": "art/generated/toy-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "40ac048ae81d3a76"
+        }
+      ],
+      "sourceBox": {
+        "x": 833,
+        "y": 198,
+        "width": 396,
+        "height": 346,
+        "area": 95892
+      },
+      "width": 221,
+      "height": 221,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "content": {
+        "x": 0,
+        "y": 29,
+        "width": 221,
+        "height": 192
+      }
+    },
+    "drone": {
+      "name": "drone",
+      "status": "pending",
+      "references": [
+        {
+          "n": 1,
+          "path": "art/generated/toy-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "40ac048ae81d3a76"
+        }
+      ],
+      "sourceBox": {
+        "x": 33,
+        "y": 722,
+        "width": 385,
+        "height": 338,
+        "area": 63548
+      },
+      "width": 220,
+      "height": 220,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "content": {
+        "x": 0,
+        "y": 28,
+        "width": 220,
+        "height": 192
+      }
+    },
+    "interceptor": {
+      "name": "interceptor",
+      "status": "pending",
+      "references": [
+        {
+          "n": 1,
+          "path": "art/generated/toy-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "40ac048ae81d3a76"
+        }
+      ],
+      "sourceBox": {
+        "x": 461,
+        "y": 703,
+        "width": 341,
+        "height": 367,
+        "area": 72736
+      },
+      "width": 193,
+      "height": 192,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "content": {
+        "x": 7,
+        "y": 0,
+        "width": 179,
+        "height": 192
+      }
+    },
+    "escort": {
+      "name": "escort",
+      "status": "pending",
+      "references": [
+        {
+          "n": 1,
+          "path": "art/generated/toy-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "40ac048ae81d3a76"
+        }
+      ],
+      "sourceBox": {
+        "x": 858,
+        "y": 693,
+        "width": 353,
+        "height": 377,
+        "area": 75516
+      },
+      "width": 192,
+      "height": 192,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "content": {
+        "x": 6,
+        "y": 0,
+        "width": 180,
+        "height": 192
+      }
+    }
+  },
+  "prompt": "TASK:\nCreate one production-ready sticker sheet containing exactly 6 game sprites.\n\nPROJECT CONTEXT:\nStarfall: Arcade space shooter with chunky toy spaceships.\n\nSTYLE:\nSTYLE LOCK: Cheerful arcade space shooter with chunky toy spaceships.\n\nPRIMARY GOAL: Bright, cute sprites for a phone shoot-'em-up. Every ship looks like a smooth vinyl toy, readable at a glance against a dark sky.\n\nCORE AESTHETIC: Lineless, softly shaded colour blocks. Chunky pill shapes, rounded fins, bulbous engines and big round cockpit domes. Smooth matte plastic, never metal.\n\nEDGES: NO OUTLINES. No dark contour line around any shape. Shapes are separated by colour alone. Where a shape meets a similar colour, it has a darker band of its own hue along its lower edge. Panel detail is a darker same-hue shape, never a line.\n\nCOLOR: Cream (#FFF3DC) bodies with sky blue (#5FB4F0), tangerine (#FF8A3D), sunflower (#FFD23F), mint (#5ED6A8) and tomato (#F0533F) parts. Cockpit glass is navy (#2C3E66) with one soft highlight. No magenta, pink or purple. No neon.\n\nSHADING: Soft cel shading. A darker same-hue band on the lower side of every form, a gentle lighter tone on top, a small soft highlight on domes. Never glossy, chrome or metallic.\n\nVIEW AND PROPORTION: Ships are seen from directly above and point straight up the canvas, perfectly symmetric left to right. Pickups and hazards face the camera. Chunky, short proportions.\n\nDETAIL LEVEL: Readable at very small sizes. Rely on the silhouette and two or three colours plus one darker band. No tiny panels, no text or numbers.\n\nCOMPOSITION: One asset category per image. Every asset isolated with generous crop-safe spacing, no stars, no space background, no exhaust flames.\n\nPALETTE:\nPaper #FFFFFF (background), Cream #FFF3DC (fill), Cream Band #E9D2AE (shade), Sky #5FB4F0 (fill), Sky Band #3C8FD0 (shade), Tangerine #FF8A3D (fill), Tangerine Band #E06A24 (shade), Sunflower #FFD23F (fill), Mint #5ED6A8 (fill), Tomato #F0533F (fill), Navy Glass #2C3E66 (fill)\n\nSHAPE LANGUAGE:\nchunky, toy-like, pill shapes and rounded fins, big round cockpit domes, bulbous engines, short stubby wings, symmetric\n\nRENDERING RULES:\n- no outlines: colour blocks separated by colour alone\n- a darker same-hue band on the lower or shadow side of every form\n- a gentle lighter tone on top surfaces\n- one small soft highlight on domes and cockpits\n- smooth matte plastic, like a vinyl toy\n- bright cheerful colour, never neon, never muted\n- ships are seen from directly above and point straight up the canvas\n- pickups face the camera\n- crisp high-resolution raster\n- isolated presentation with large spacing\n\nCATEGORY:\nSpaceships seen from directly above, pointing straight up\n\nEXACT ASSETS:\n1. a cream and sky-blue player fighter with a navy cockpit dome\n2. a round tomato-red enemy saucer\n3. a chunky tangerine heavy bomber with two round engines\n4. a small mint scout drone\n5. a sunflower-yellow interceptor with stubby wings\n6. a navy and cream escort ship\n\nCANVAS AND LAYOUT:\nOutput size 1024x1024. Solid flat background #FF00FF with no texture, no vignette, no border. Nothing in the picture may use a colour close to the background colour.\nThe game shows each asset in a 1:1 (width:height) frame. Compose each asset to suit that frame, and keep its natural proportions: do not stretch or squash it.\nArrange the assets in a neat grid in reading order (left to right, then top to bottom), one asset per cell.\nKeep every asset isolated.\nDo not let assets touch or overlap.\nUse front-facing views only.\nLeave generous crop-safe spacing around every asset, at least one asset-width apart.\nNo labels, text, numbers, scene, ground line, or decorative filler.\n\nSPRITE RULES:\nUse strong, rounded silhouettes that remain readable at 48x48px.\nUse no more than 3 base colours per asset, plus their shading tones.\nSoft toy shading: each form has a darker same-hue band on its lower or shadow side and a gentle lighter tone on its top. One small soft highlight on round parts like domes and cockpits. Soft ambient shadow where parts meet. Never harsh, glossy or metallic.\nAvoid tiny details, intricate textures, and visual clutter.\nNo outlines: shapes are colour blocks separated by colour alone, with soft rounded edges and a darker same-hue band on the lower side.\nKeep the palette, edge treatment, proportions, and detail level consistent across the whole sheet.\nDraw every asset at a similar visual scale.\n\nNEGATIVE PROMPT:\noutlines, dark outlines, black outlines, ink lines, line art, contour lines, sticker outline, hard vector edges, sharp spikes, thin spindly parts, realism, 3D render, photoreal metal, chrome, glossy reflections, metallic sheen, lens flare, glow blur, neon colours, magenta, pink, purple, stars, space background, scene background, motion lines, exhaust flames, text, labels, numbers, watermark, clutter, tiny details\n\nFINAL CHECK:\nExactly 6 assets.\nEvery requested asset is present once, in the listed order.\nEvery asset is separate, readable, and crop-safe.",
+  "promptVersion": "v1",
+  "references": [
+    {
+      "n": 1,
+      "path": "art/generated/toy-style/raw.png",
+      "role": "style",
+      "source": "first-target",
+      "sha256": "40ac048ae81d3a76"
+    }
+  ],
+  "generatedAt": "2026-10-06T10:46:55.120Z",
+  "provider": "codex",
+  "detected": 6,
+  "expected": 6
+}

@@ -1,0 +1,16 @@
+[
+  { "target": "toy-style", "compose": "sheet", "kind": "item", "game": "space", "background": "#FF00FF",
+    "category": "Style reference: chunky vinyl toy space objects",
+    "assets": ["a round cream rocket with a sky-blue nose", "a sunflower-yellow ringed planet", "a tangerine fuel canister", "a round mint satellite", "a cream space helmet with navy glass", "a round tomato-red button"],
+    "names": ["rocket", "planet", "canister", "satellite", "helmet", "button"] },
+  { "target": "ships", "compose": "sheet", "kind": "visitor", "game": "space", "background": "#FF00FF",
+    "category": "Spaceships seen from directly above, pointing straight up",
+    "assets": ["a cream and sky-blue player fighter with a navy cockpit dome", "a round tomato-red enemy saucer", "a chunky tangerine heavy bomber with two round engines", "a small mint scout drone", "a sunflower-yellow interceptor with stubby wings", "a navy and cream escort ship"],
+    "names": ["player", "saucer", "bomber", "drone", "interceptor", "escort"] },
+  { "target": "pickups", "compose": "sheet", "kind": "item", "game": "space", "background": "#FF00FF",
+    "category": "Power-ups and hazards",
+    "assets": ["a chunky sunflower star", "a sky-blue shield bubble", "a tomato-red heart", "a tangerine lightning bolt", "a mint crystal", "a round cream and grey asteroid with craters"],
+    "names": ["star", "shield", "heart", "bolt", "crystal", "asteroid"] },
+  { "target": "mothership", "compose": "single", "kind": "gate", "game": "space", "background": "#FF00FF", "aspect": "1:1", "height": 3,
+    "subject": "a huge round boss mothership seen from directly above, pointing down the canvas: a tomato-red saucer hull, a cream dome in the middle with a navy window, four tangerine engine pods and two sunflower cannons, perfectly symmetric" }
+]

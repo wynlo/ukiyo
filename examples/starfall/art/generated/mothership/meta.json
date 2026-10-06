@@ -1,0 +1,47 @@
+{
+  "target": "mothership",
+  "compose": "single",
+  "kind": "gate",
+  "game": "space",
+  "warnings": [],
+  "assets": {
+    "mothership": {
+      "name": "mothership",
+      "status": "pending",
+      "references": [
+        {
+          "n": 1,
+          "path": "art/generated/toy-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "40ac048ae81d3a76"
+        }
+      ],
+      "width": 384,
+      "height": 384,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "content": {
+        "x": 1,
+        "y": 0,
+        "width": 382,
+        "height": 384
+      }
+    }
+  },
+  "prompt": "TASK:\nCreate one production-ready game sprite: a huge round boss mothership seen from directly above, pointing down the canvas: a tomato-red saucer hull, a cream dome in the middle with a navy window, four tangerine engine pods and two sunflower cannons, perfectly symmetric.\n\nPROJECT CONTEXT:\nStarfall: Arcade space shooter with chunky toy spaceships.\n\nSTYLE:\nSTYLE LOCK: Cheerful arcade space shooter with chunky toy spaceships.\n\nPRIMARY GOAL: Bright, cute sprites for a phone shoot-'em-up. Every ship looks like a smooth vinyl toy, readable at a glance against a dark sky.\n\nCORE AESTHETIC: Lineless, softly shaded colour blocks. Chunky pill shapes, rounded fins, bulbous engines and big round cockpit domes. Smooth matte plastic, never metal.\n\nEDGES: NO OUTLINES. No dark contour line around any shape. Shapes are separated by colour alone. Where a shape meets a similar colour, it has a darker band of its own hue along its lower edge. Panel detail is a darker same-hue shape, never a line.\n\nCOLOR: Cream (#FFF3DC) bodies with sky blue (#5FB4F0), tangerine (#FF8A3D), sunflower (#FFD23F), mint (#5ED6A8) and tomato (#F0533F) parts. Cockpit glass is navy (#2C3E66) with one soft highlight. No magenta, pink or purple. No neon.\n\nSHADING: Soft cel shading. A darker same-hue band on the lower side of every form, a gentle lighter tone on top, a small soft highlight on domes. Never glossy, chrome or metallic.\n\nVIEW AND PROPORTION: Ships are seen from directly above and point straight up the canvas, perfectly symmetric left to right. Pickups and hazards face the camera. Chunky, short proportions.\n\nDETAIL LEVEL: Readable at very small sizes. Rely on the silhouette and two or three colours plus one darker band. No tiny panels, no text or numbers.\n\nCOMPOSITION: One asset category per image. Every asset isolated with generous crop-safe spacing, no stars, no space background, no exhaust flames.\n\nPALETTE:\nPaper #FFFFFF (background), Cream #FFF3DC (fill), Cream Band #E9D2AE (shade), Sky #5FB4F0 (fill), Sky Band #3C8FD0 (shade), Tangerine #FF8A3D (fill), Tangerine Band #E06A24 (shade), Sunflower #FFD23F (fill), Mint #5ED6A8 (fill), Tomato #F0533F (fill), Navy Glass #2C3E66 (fill)\n\nSHAPE LANGUAGE:\nchunky, toy-like, pill shapes and rounded fins, big round cockpit domes, bulbous engines, short stubby wings, symmetric\n\nRENDERING RULES:\n- no outlines: colour blocks separated by colour alone\n- a darker same-hue band on the lower or shadow side of every form\n- a gentle lighter tone on top surfaces\n- one small soft highlight on domes and cockpits\n- smooth matte plastic, like a vinyl toy\n- bright cheerful colour, never neon, never muted\n- ships are seen from directly above and point straight up the canvas\n- pickups face the camera\n- crisp high-resolution raster\n- isolated presentation with large spacing\n\nCANVAS AND LAYOUT:\nOutput size 1024x1024. Solid flat background #FF00FF with no texture, no vignette, no border. Nothing in the picture may use a colour close to the background colour.\nThe game shows each asset in a 1:1 (width:height) frame. Compose each asset to suit that frame, and keep its natural proportions: do not stretch or squash it.\nOne asset only, centred, filling about 80% of the canvas, fully inside the frame.\nFront-facing view. No ground line, no scene, no labels, no text.\n\nSPRITE RULES:\nStrong rounded silhouette, readable when shrunk.\nNo outlines: shapes are colour blocks separated by colour alone, with soft rounded edges and a darker same-hue band on the lower side.\nSoft toy shading: each form has a darker same-hue band on its lower or shadow side and a gentle lighter tone on its top. One small soft highlight on round parts like domes and cockpits. Soft ambient shadow where parts meet. Never harsh, glossy or metallic.\n\nNEGATIVE PROMPT:\noutlines, dark outlines, black outlines, ink lines, line art, contour lines, sticker outline, hard vector edges, sharp spikes, thin spindly parts, realism, 3D render, photoreal metal, chrome, glossy reflections, metallic sheen, lens flare, glow blur, neon colours, magenta, pink, purple, stars, space background, scene background, motion lines, exhaust flames, text, labels, numbers, watermark, clutter, tiny details\n\nFINAL CHECK:\nExactly one asset, complete, isolated, and crop-safe.",
+  "promptVersion": "v1",
+  "references": [
+    {
+      "n": 1,
+      "path": "art/generated/toy-style/raw.png",
+      "role": "style",
+      "source": "first-target",
+      "sha256": "40ac048ae81d3a76"
+    }
+  ],
+  "generatedAt": "2026-10-06T10:51:23.997Z",
+  "provider": "codex"
+}

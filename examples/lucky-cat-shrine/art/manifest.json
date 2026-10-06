@@ -1,0 +1,156 @@
+[
+  {
+    "view": "front",
+    "background": "#FF00FF",
+    "target": "shrine-haiden",
+    "compose": "single",
+    "kind": "scenery",
+    "game": "shrine",
+    "height": 4.6,
+    "subject": "a small Japanese shrine main hall (haiden): a wide building with pale butter walls and apricot wood beams on a low warm pale butter stone platform with three steps at the front centre, a big thick sweeping tomato-red roof slab with short darker stripes and gently upturned ends, soft tomato-red pillars, and a thick butter-straw shimenawa rope with white paper shide across the front",
+    "notes": "Front-facing oblique view for a top-down map: show the front face and a thin sliver of the top. No isometric angle, no three-quarter turn. Lineless Meow Tower style: no dark outlines at all. Shapes are separated by colour. Soft cel shading on every form: a darker band of the same hue on the shadow side and the lower side, gentle lighter tones on the tops, and soft cast shadows under roofs, caps, eaves and overhangs. Warm, soft, cheerful palette. A subtle paper grain over everything. Chunky, pillowy, rounded shapes with soft corners. Wider than tall. The steps are at the bottom centre. No offering box in front of the steps. One connected shape. Light comes from the upper left. The deep eaves cast a soft shadow band on the walls and pillars under the roof; the roof has lighter top tiles and a darker lower edge."
+  },
+  {
+    "view": "front",
+    "background": "#FF00FF",
+    "target": "shrine-torii",
+    "compose": "single",
+    "kind": "scenery",
+    "game": "shrine",
+    "height": 3.4,
+    "subject": "a Japanese torii gate in soft dusty tomato red: two chunky round pillars on warm pale butter stone feet, a wide top beam with gently upturned ends in apricot wood brown #BF7640, and a straight tie beam below it",
+    "notes": "Front-facing oblique view for a top-down map: show the front face and a thin sliver of the top. No isometric angle, no three-quarter turn. Lineless Meow Tower style: no dark outlines at all. Shapes are separated by colour. Soft cel shading on every form: a darker band of the same hue on the shadow side and the lower side, gentle lighter tones on the tops, and soft cast shadows under roofs, caps, eaves and overhangs. Warm, soft, cheerful palette. A subtle paper grain over everything. Chunky, pillowy, rounded shapes with soft corners. The red is a soft, slightly dusty tomato red, not bright vermilion. Chunky rounded proportions. The gate is wider than tall. One connected shape. Light comes from the upper left. Each pillar is shaded on its right side; the top beam casts a soft shadow on the tie beam and the pillar tops."
+  },
+  {
+    "view": "front",
+    "background": "#FF00FF",
+    "target": "shrine-feat-tall",
+    "compose": "sheet",
+    "kind": "furniture",
+    "game": "shrine-features",
+    "height": 2,
+    "size": "1536x1024",
+    "category": "Japanese shrine features, tall",
+    "assets": [
+      "a stone tōrō lantern in warm pale butter stone: square base, a thin post, a small lamp box with a warm butter-yellow window, and a wide rounded roof cap",
+      "a paper chōchin lantern in soft tomato red and cream hanging from a apricot wooden post with a small cross arm",
+      "a wooden ema rack: a apricot wooden frame with a little roof, hung with small pale wooden plaques",
+      "a small round leafy tree in leaf green with many small white paper fortune slips tied on its branches",
+      "a shrine bell rope: a short apricot wooden frame with a round golden suzu bell and a thick braided cream and tomato-red rope hanging down",
+      "a young cherry tree in pale butter-cream blossom with small apricot flower centres (not pink) growing from a square apricot wooden planter box"
+    ],
+    "names": [
+      "stone-toro",
+      "hanging-lantern",
+      "ema-rack",
+      "omikuji-tree",
+      "bell-rope",
+      "sakura-planter"
+    ],
+    "notes": "Front-facing oblique view for a top-down map: show the front face and a thin sliver of the top. No isometric angle, no three-quarter turn. Lineless Meow Tower style: no dark outlines at all. Shapes are separated by colour. Soft cel shading on every form: a darker band of the same hue on the shadow side and the lower side, gentle lighter tones on the tops, and soft cast shadows under roofs, caps, eaves and overhangs. Warm, soft, cheerful palette. A subtle paper grain over everything. Chunky, pillowy, rounded shapes with soft corners. Leave wide empty space between assets. Light comes from the upper left. Lanterns are shaded below their caps and roofs."
+  },
+  {
+    "view": "front",
+    "background": "#FF00FF",
+    "target": "shrine-feat-garden",
+    "compose": "sheet",
+    "kind": "furniture",
+    "game": "shrine-features",
+    "height": 1.2,
+    "size": "1536x1024",
+    "category": "Japanese garden plants and basins",
+    "assets": [
+      "a small bonsai pine with two chunky rounded deep-green layers on a curved trunk, in a shallow tomato-red pot on a small apricot wooden stand",
+      "a round leafy camellia bush in leaf green with five round tomato-red flowers with butter-yellow centres",
+      "a clump of four short green bamboo stems with leaf tufts in a square apricot wooden planter",
+      "one single round apricot clay pot holding a bunch of chrysanthemums with big round butter-yellow and orange flowers",
+      "a low round tsukubai stone water basin in warm pale butter stone with teal water and a green bamboo spout pouring into it",
+      "a small apricot wooden votive rack with a row of five short cream candles with warm butter-yellow flames"
+    ],
+    "names": [
+      "bonsai-pine",
+      "camellia-bush",
+      "bamboo-pot",
+      "kiku-pots",
+      "tsukubai",
+      "candle-stand"
+    ],
+    "notes": "The background must be magenta #FF00FF from edge to edge, never white, never dark. Follow the locked art bible docs/specs/art-bible.md and match the style anchor docs/references/style-anchor.png (the oblique-style sheet) and docs/references/ref-c-target-style.png. Front-facing oblique view for a top-down map: show the front face and a thin sliver of the top. No isometric angle, no three-quarter turn. Lineless Meow Tower style: no dark outlines at all. Shapes are separated by colour. Soft cel shading on every form: a darker band of the same hue on the shadow side and the lower side, gentle lighter tones on the tops, and soft cast shadows under roofs, caps, eaves and overhangs. Warm, soft, cheerful palette: apricot #F7BB5C wood with #E69B4B bands and #BF7640 frames, butter #FFDA50, light butter #FDE284, pale butter #FFF7AC, tomato #DB4032, orange #FE962B, leaf #729F3E, deep leaf #388344, warm pale butter stone. No blue, no purple, no pink, no grey metal on props. A subtle paper grain over everything. Chunky, pillowy, rounded shapes with soft corners. At most three fills per prop. Each object stands on a flat bottom edge that meets the ground; draw no ground patch and no shadow under it. Leave wide empty space between assets. Light comes from the upper left. BACKGROUND: the whole background is one solid flat magenta #FF00FF. No black background, no glow, no halo, no text."
+  },
+  {
+    "view": "front",
+    "background": "#FF00FF",
+    "target": "matsuri-yatai",
+    "compose": "sheet",
+    "kind": "furniture",
+    "game": "shrine-matsuri-features",
+    "height": 2.2,
+    "size": "1536x1024",
+    "category": "Japanese summer festival food stalls (yatai), tall",
+    "assets": [
+      "a festival takoyaki stall: an apricot wooden booth with a tomato-red cloth awning on top, a short cream noren cloth hanging from its front edge, a round iron-free butter-gold griddle plate with rows of round golden takoyaki balls on the counter, and one small round red chochin lantern hanging at the right corner",
+      "a festival taiyaki stall: an apricot wooden booth with an orange and cream striped cloth awning, a tray of golden fish-shaped taiyaki cakes on the counter, and one small cream chochin lantern hanging at the left corner",
+      "a festival yakisoba stall: an apricot wooden booth with a leaf-green cloth awning, a wide flat butter-gold griddle heaped with soft brown noodles and green cabbage bits, and one small red chochin lantern hanging at the right corner",
+      "a festival candy apple stall: an apricot wooden booth with a tomato and cream striped cloth awning, rows of shiny tomato-red candy apples on sticks standing in a slanted wooden rack, and one small cream chochin lantern at the left corner",
+      "a festival shaved ice stall: an apricot wooden booth with a cream cloth awning and a short cream noren cloth hanging from its front edge showing one big tomato-red wave-and-flag shape, a hand-cranked wooden ice shaver on the counter and three cups of shaved ice with butter, orange and tomato syrup",
+      "a festival mask stall: an apricot wooden booth with a butter-yellow cloth awning, and a tall wooden board on its back wall hung with five round festival masks in two rows: white fox masks with red markings, round cheerful masks with puffed cheeks, and one orange tanuki mask"
+    ],
+    "names": [
+      "takoyaki-yatai",
+      "taiyaki-yatai",
+      "yakisoba-yatai",
+      "ringo-ame-yatai",
+      "kakigori-yatai",
+      "omen-yatai"
+    ],
+    "notes": "Follow the locked art bible docs/specs/art-bible.md and match the style anchor docs/references/style-anchor.png (the oblique-style sheet) and docs/references/ref-c-target-style.png. Front-facing oblique view for a top-down map: show the front face and a thin sliver of the top. No isometric angle, no three-quarter turn. Lineless Meow Tower style: no dark outlines at all. Shapes are separated by colour. Soft cel shading on every form: a darker band of the same hue on the shadow side and the lower side, gentle lighter tones on the tops, and soft cast shadows under roofs, awnings, eaves and overhangs. Warm, soft, cheerful palette: apricot #F7BB5C wood with #E69B4B bands and #BF7640 frames, butter #FFDA50, light butter #FDE284, pale butter #FFF7AC, tomato #DB4032, orange #FE962B, leaf #729F3E, deep leaf #388344, cream white, warm pale butter stone. No blue, no purple, no pink, no grey metal on props. A subtle paper grain over everything. Chunky, pillowy, rounded shapes with soft corners. At most three main fills per prop. Each object stands on a flat bottom edge that meets the ground; draw no ground patch and no shadow under it. Leave wide empty space between assets. Light comes from the upper left. BACKGROUND: the whole background is one solid flat magenta #FF00FF from edge to edge, never white, never dark. No black background, no glow, no halo, no light bloom, no text, no letters, no kanji. These are festival (matsuri) stalls and pieces for the summer festival grounds beside a small Japanese cat shrine, seen at dusk under paper lanterns: draw them exactly like the approved shrine features, same style, same palette, same scale language. Brief: docs/specs/matsuri-grounds.md. Any paper lantern is a round or barrel chochin with a pale butter or cream glowing body and small tomato caps, hung from its top. Cloth (noren, awnings, banners) hangs with a clear free lower edge. Each stall is wider than tall, like a small wooden booth with a counter at the front, all six the same size and the same front-facing angle. The awning cloth and the noren are soft cloth with a free lower edge."
+  },
+  {
+    "target": "crt-poses",
+    "compose": "strip",
+    "kind": "critter",
+    "game": "critters",
+    "tint": "fur",
+    "subject": "a small round white kawaii cat in the style of Meow Tower with small soft triangle ear bumps on its head outline, tiny solid dark dot eyes low on its face, a tiny ω mouth, no tail, facing the camera",
+    "frames": [
+      "body-sit",
+      "body-loaf",
+      "body-sleep"
+    ],
+    "poses": [
+      "sitting upright facing the camera: a round head merged into a round body, tiny front paws tucked together at the bottom front, eyes open",
+      "loafing like a bread loaf facing the camera: a low wide oval body with the paws tucked under so no legs show, the head sunk into the body, eyes open",
+      "curled up asleep facing the camera: a low round ball lying flat on the floor, the head resting on the body, eyes closed as tiny downward arcs, no z marks"
+    ],
+    "notes": "Whole-critter pose sprites, tint-ready: the whole cat is white with soft neutral grey cel shading (a lighter top, a darker lower band), no outline and tiny solid dark dot eyes. No markings, no clothes, no tail, no shadow, no z letters. Every pose is the same cat at the same scale, standing on the same floor line, mirror-symmetric where the pose allows. All fills are clean and noise-free: no grain, no dithering, no speckles. Shading is soft neutral grey steps inside the white: a lighter top, a darker lower band. The white has no grain, so a runtime tint gives clean colour with its shading intact.",
+    "height": 0.6,
+    "background": "#00FF00"
+  },
+  {
+    "view": "front",
+    "background": "#FF00FF",
+    "target": "shrine-items",
+    "compose": "sheet",
+    "kind": "item",
+    "game": "shrine-scenery",
+    "size": "1536x1024",
+    "category": "Shrine offerings and keepsakes",
+    "assets": [
+      "a stick of three round dango rice dumplings in butter, white and leaf green",
+      "a round cup of green tea in a cream cup with no handle",
+      "a round senbei rice cracker in warm toasted brown",
+      "a plump inari sushi: rice wrapped in a golden fried tofu pouch",
+      "an omamori charm: a small soft tomato-red cloth pouch with a cream cord",
+      "a folded paper crane in cream paper"
+    ],
+    "names": [
+      "dango",
+      "green-tea",
+      "senbei",
+      "inari",
+      "omamori",
+      "paper-crane"
+    ],
+    "notes": "Front-facing oblique view for a top-down map: show the front face and a thin sliver of the top. No isometric angle, no three-quarter turn. Lineless Meow Tower style: no dark outlines at all. Shapes are separated by colour. Soft cel shading on every form: a darker band of the same hue on the shadow side and the lower side, gentle lighter tones on the tops, and soft cast shadows under roofs, caps, eaves and overhangs. Warm, soft, cheerful palette. A subtle paper grain over everything. Chunky, pillowy, rounded shapes with soft corners. Leave wide empty space between assets. Light comes from the upper left. BACKGROUND: the whole background is one solid flat magenta #FF00FF. No black background, no glow, no halo, no light bloom around the assets."
+  }
+]

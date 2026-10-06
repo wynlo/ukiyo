@@ -2,3 +2,6 @@ node_modules/
 dist/
 fixtures/out/
 .DS_Store
+examples/*/art/generated/*/*
+!examples/*/art/generated/*/final/
+!examples/*/art/generated/*/meta.json
