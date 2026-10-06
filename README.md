@@ -295,6 +295,15 @@ the base; `ukiyo final` warns when they do not. See `split` in the
 [manifest reference](skills/ukiyo/reference/manifest.md) and "Multipart
 props" in [`phaser.md`](skills/ukiyo/reference/phaser.md).
 
+The props below are `split` targets in the
+[`lucky-cat-shrine`](examples/lucky-cat-shrine) example. Each one is drawn
+from its outputs at their `part` offsets, with every piece turned about its
+joint by its `rig.rest` motion. The GIF scales the motion up 4x so it shows.
+
+![Multipart props moving about their joints](docs/examples/multipart.gif)
+
+![Multipart props and their pieces](docs/examples/multipart.png)
+
 ## Multipart rules
 
 `ukiyo plan` decides which sprites become multipart props and plans their
@@ -392,6 +401,7 @@ skills/ukiyo/        Claude Code skill
 fixtures/            smoke test (npm run fixtures)
 examples/            example projects, one art style each
 scripts/showcase.ts  renders docs/examples/*.png (npm run showcase)
+scripts/multipart.ts renders docs/examples/multipart.png and .gif
 ```
 
 ## Development

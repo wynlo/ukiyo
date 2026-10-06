@@ -49,6 +49,8 @@ for (const name of fs.readdirSync(root).sort()) {
   for (const t of manifest) {
     // Style reference sheets only anchor the look. They are not game art.
     if (t.target.endsWith('-style')) continue;
+    // Split targets are drawn by scripts/multipart.ts.
+    if (t.compose === 'split') continue;
     const gen = path.join(dir, config.out, t.target);
     const finalDir = path.join(gen, 'final');
     if (!fs.existsSync(finalDir)) continue;

@@ -152,5 +152,2670 @@
       "paper-crane"
     ],
     "notes": "Front-facing oblique view for a top-down map: show the front face and a thin sliver of the top. No isometric angle, no three-quarter turn. Lineless Meow Tower style: no dark outlines at all. Shapes are separated by colour. Soft cel shading on every form: a darker band of the same hue on the shadow side and the lower side, gentle lighter tones on the tops, and soft cast shadows under roofs, caps, eaves and overhangs. Warm, soft, cheerful palette. A subtle paper grain over everything. Chunky, pillowy, rounded shapes with soft corners. Leave wide empty space between assets. Light comes from the upper left. BACKGROUND: the whole background is one solid flat magenta #FF00FF. No black background, no glow, no halo, no light bloom around the assets."
+  },
+  {
+    "view": "front",
+    "background": "#FF00FF",
+    "target": "shrine-feat-tall-a",
+    "compose": "sheet",
+    "kind": "furniture",
+    "game": "shrine-features",
+    "height": 2,
+    "size": "1536x1024",
+    "category": "Japanese shrine features, tall, set A",
+    "assets": [
+      "a small tomato-red torii gate with two chunky round pillars on warm pale butter stone feet and a wide top beam in apricot wood",
+      "a tall apricot wooden pole with three chunky carp streamers flying from it, in tomato red, orange and butter yellow, with round cream eyes",
+      "a leafy green bamboo branch standing in a small apricot wooden stand, hung with paper wish strips in butter, tomato, apricot and cream",
+      "two apricot wooden posts joined by a rope hung with four round paper chochin lanterns in tomato red and cream",
+      "a low wooden bench covered with a soft tomato-red cloth under a big round paper parasol in tomato red with apricot ribs",
+      "a small festival food stall: an apricot wooden cart with a tomato and cream striped cloth awning, a counter with dango skewers and a small butter-yellow lantern"
+    ],
+    "names": [
+      "mini-torii",
+      "koinobori",
+      "tanabata-bamboo",
+      "chochin-arch",
+      "nodate-parasol",
+      "dango-yatai"
+    ],
+    "notes": "The background must be magenta #FF00FF from edge to edge, never white, never dark. Follow the locked art bible docs/specs/art-bible.md and match the style anchor docs/references/style-anchor.png (the oblique-style sheet) and docs/references/ref-c-target-style.png. Front-facing oblique view for a top-down map: show the front face and a thin sliver of the top. No isometric angle, no three-quarter turn. Lineless Meow Tower style: no dark outlines at all. Shapes are separated by colour. Soft cel shading on every form: a darker band of the same hue on the shadow side and the lower side, gentle lighter tones on the tops, and soft cast shadows under roofs, caps, eaves and overhangs. Warm, soft, cheerful palette: apricot #F7BB5C wood with #E69B4B bands and #BF7640 frames, butter #FFDA50, light butter #FDE284, pale butter #FFF7AC, tomato #DB4032, orange #FE962B, leaf #729F3E, deep leaf #388344, warm pale butter stone. No blue, no purple, no pink, no grey metal on props. A subtle paper grain over everything. Chunky, pillowy, rounded shapes with soft corners. At most three fills per prop. Each object stands on a flat bottom edge that meets the ground; draw no ground patch and no shadow under it. Leave wide empty space between assets. Light comes from the upper left. BACKGROUND: the whole background is one solid flat magenta #FF00FF. No black background, no glow, no halo, no text. The torii, the lantern arch, the parasol bench and the food stall are wider than tall."
+  },
+  {
+    "view": "front",
+    "background": "#FF00FF",
+    "target": "shrine-feat-tall-b",
+    "compose": "sheet",
+    "kind": "furniture",
+    "game": "shrine-features",
+    "height": 1.7,
+    "size": "1536x1024",
+    "category": "Japanese shrine features, tall, set B",
+    "assets": [
+      "a young Japanese maple tree with a pillowy round crown of apricot-orange and tomato-red leaves and a short apricot-brown trunk",
+      "an apricot wooden stand with a small cross arm hung with three round pale butter glass wind chimes, each with a tomato-red paper strip",
+      "a round-roofed apricot wooden birdhouse with a tomato-red roof and a round door hole, on a chunky wooden post",
+      "a small charm stall: an apricot wooden booth with a tomato-red roof and a front shelf of little butter, tomato and leaf-green omamori charms",
+      "a small portable festival shrine: a tiny gabled house in tomato red with a butter-gold roof ornament, sitting on two apricot carrying poles",
+      "a New Year kadomatsu: three cut green bamboo stalks with pine sprigs and a small plum branch, in a round woven straw pot tied with a cream rope"
+    ],
+    "names": [
+      "momiji-sapling",
+      "furin-stand",
+      "birdhouse",
+      "omamori-stall",
+      "mikoshi",
+      "kadomatsu"
+    ],
+    "notes": "The background must be magenta #FF00FF from edge to edge, never white, never dark. Follow the locked art bible docs/specs/art-bible.md and match the style anchor docs/references/style-anchor.png (the oblique-style sheet) and docs/references/ref-c-target-style.png. Front-facing oblique view for a top-down map: show the front face and a thin sliver of the top. No isometric angle, no three-quarter turn. Lineless Meow Tower style: no dark outlines at all. Shapes are separated by colour. Soft cel shading on every form: a darker band of the same hue on the shadow side and the lower side, gentle lighter tones on the tops, and soft cast shadows under roofs, caps, eaves and overhangs. Warm, soft, cheerful palette: apricot #F7BB5C wood with #E69B4B bands and #BF7640 frames, butter #FFDA50, light butter #FDE284, pale butter #FFF7AC, tomato #DB4032, orange #FE962B, leaf #729F3E, deep leaf #388344, warm pale butter stone. No blue, no purple, no pink, no grey metal on props. A subtle paper grain over everything. Chunky, pillowy, rounded shapes with soft corners. At most three fills per prop. Each object stands on a flat bottom edge that meets the ground; draw no ground patch and no shadow under it. Leave wide empty space between assets. Light comes from the upper left. BACKGROUND: the whole background is one solid flat magenta #FF00FF. No black background, no glow, no halo, no text. The mikoshi is wider than tall."
+  },
+  {
+    "view": "front",
+    "background": "#FF00FF",
+    "target": "shrine-haiden-4",
+    "compose": "single",
+    "kind": "scenery",
+    "game": "shrine-haiden-grand",
+    "height": 6,
+    "subject": "the grandest version of the same Japanese shrine main hall (haiden) as the first reference: the same central hall and side wings with pale butter walls, apricot wood beams, the wooden door lattice, soft tomato-red pillars with butter-gold caps and the pale butter stone platform with three steps at the front centre; a two-tiered roof (a smaller upper roof above the main roof), both in warm copper-orange tiles with tomato-red ridges and butter-gold trim along every eave edge; butter-gold chigi and katsuogi on the top ridge; a big round butter-gold crest in the gable above the entrance with a cream lucky cat (maneki-neko) silhouette raising one paw, glowing softly; the big straw shimenawa with white zigzag paper shide and the gold suzu bell on its red and white rope at the front; eight small paper chochin lanterns, tomato red and cream, hanging on short cords from the eaves; and a tall narrow tomato-red and butter cloth nobori banner on a wooden pole at the outer corner of each wing",
+    "notes": "Follow the locked art bible docs/specs/art-bible.md and match the style anchor docs/references/style-anchor.png (the oblique-style sheet) and docs/references/ref-c-target-style.png. Front-facing oblique view for a top-down map: show the front face and a thin sliver of the top. No isometric angle, no three-quarter turn. Lineless Meow Tower style: no dark outlines at all. Shapes are separated by colour. Soft cel shading on every form: a darker band of the same hue on the shadow side and the lower side, gentle lighter tones on the tops, and soft cast shadows under roofs, caps, eaves and overhangs. Warm, soft, cheerful palette: apricot #F7BB5C wood with #E69B4B bands and #BF7640 frames, butter #FFDA50, light butter #FDE284, pale butter #FFF7AC, tomato #DB4032 with #BC352D bands, orange #FE962B, cream white, warm pale butter stone. Gold is butter-gold #FFDA50 with #E69B4B bands: soft and flat, never metallic, never glossy. No blue, no purple, no pink, no grey metal. A subtle paper grain over everything. Chunky, pillowy, rounded shapes with soft corners. One connected shape. Wider than tall. Light comes from the upper left. The deep eaves cast a soft shadow band on the walls and pillars under the roof; the roof has lighter top tiles and a darker lower edge. The building stands on a flat bottom edge that meets the ground; draw no ground patch and no shadow under it. The steps are at the bottom centre. No offering box in front of the steps. BACKGROUND: the whole background is one solid flat magenta #FF00FF from edge to edge. No glow, no halo, no light bloom, no text, no letters, no kanji. Shrine upgrades brief: docs/specs/shrine-upgrades.md. This is an upgraded version of the shrine main hall in the reference image: keep the same building family, the same proportions of the walls, pillars, door lattice and stone platform, and the same colours, so it reads as the same hall rebuilt grander. Tier 4 of 4: 'the grand hall'. The most splendid: taller and richer than tier 3, with gold accents, but still the same building family and the same soft lineless style. The crest has no text. Every lantern, the bell, each paper shide and each banner hangs freely with a clear gap round it, so it can move on its own.",
+    "cutout": {
+      "threshold": 150
+    }
+  },
+  {
+    "target": "prop-shrine-haiden-4",
+    "compose": "split",
+    "kind": "scenery",
+    "game": "shrine-haiden-grand",
+    "aspect": "1:1",
+    "base": "shrine-haiden-4/shrine-haiden-4",
+    "subject": "the grandest Japanese shrine main hall with a two-tier copper-orange roof, gold trim, a round gold maneki crest, paper lanterns, white paper shide, a gold bell and two red cloth banners",
+    "notes": "Art brief: follow docs/specs/art-bible.md (LOCKED Meow Tower style) and match docs/references/style-anchor.png. Lineless, soft cel shading, warm cheerful palette, chunky pillowy shapes. Keep the approved sprite exactly as it is. Outdoors in the courtyard (docs/specs/shrine-upgrades.md): lanterns swing and glow, paper shide and cloth banners flutter and the bell sways in the one wind field; wood, stone and the roof never move.",
+    "background": "#FF00FF",
+    "plate": "the six red paper lanterns, the four white paper shide, the gold bell with its striped rope and tassel, and the two red cloth banners with their cream tops. Paint the walls, windows, pillars, door lattice, eaves and stone platform behind them, and leave the wooden banner poles and their crossbars. Where a lantern hung in front of a wall, paint the soft darker apricot shadow band that the eaves cast on the wall there, as on the rest of the wall under the eaves",
+    "pieces": [
+      {
+        "id": "shide-1",
+        "box": [
+          526,
+          572,
+          565,
+          653
+        ],
+        "colors": [
+          "#ffffff",
+          "#fdfaed",
+          "#f6f1e6",
+          "#efe9dc",
+          "#e8e2d6"
+        ],
+        "tolerance": 45,
+        "seeds": [
+          [
+            545,
+            612
+          ]
+        ],
+        "mode": "fill",
+        "joint": [
+          545,
+          577
+        ],
+        "z": 1,
+        "material": "paper",
+        "locked": true
+      },
+      {
+        "id": "shide-2",
+        "box": [
+          578,
+          584,
+          617,
+          665
+        ],
+        "colors": [
+          "#ffffff",
+          "#fdfaed",
+          "#f6f1e6",
+          "#efe9dc",
+          "#e8e2d6"
+        ],
+        "tolerance": 45,
+        "seeds": [
+          [
+            597,
+            624
+          ]
+        ],
+        "mode": "fill",
+        "joint": [
+          597,
+          589
+        ],
+        "z": 2,
+        "material": "paper",
+        "locked": true
+      },
+      {
+        "id": "shide-3",
+        "box": [
+          719,
+          584,
+          758,
+          665
+        ],
+        "colors": [
+          "#ffffff",
+          "#fdfaed",
+          "#f6f1e6",
+          "#efe9dc",
+          "#e8e2d6"
+        ],
+        "tolerance": 45,
+        "seeds": [
+          [
+            738,
+            624
+          ]
+        ],
+        "mode": "fill",
+        "joint": [
+          738,
+          589
+        ],
+        "z": 3,
+        "material": "paper",
+        "locked": true
+      },
+      {
+        "id": "shide-4",
+        "box": [
+          773,
+          572,
+          812,
+          653
+        ],
+        "colors": [
+          "#ffffff",
+          "#fdfaed",
+          "#f6f1e6",
+          "#efe9dc",
+          "#e8e2d6"
+        ],
+        "tolerance": 45,
+        "seeds": [
+          [
+            792,
+            612
+          ]
+        ],
+        "mode": "fill",
+        "joint": [
+          792,
+          577
+        ],
+        "z": 4,
+        "material": "paper",
+        "locked": true
+      },
+      {
+        "id": "bell",
+        "poly": [
+          [
+            656,
+            588
+          ],
+          [
+            680,
+            588
+          ],
+          [
+            691,
+            596
+          ],
+          [
+            697,
+            612
+          ],
+          [
+            694,
+            630
+          ],
+          [
+            684,
+            642
+          ],
+          [
+            679,
+            645
+          ],
+          [
+            679,
+            705
+          ],
+          [
+            690,
+            707
+          ],
+          [
+            692,
+            722
+          ],
+          [
+            696,
+            736
+          ],
+          [
+            696,
+            761
+          ],
+          [
+            642,
+            761
+          ],
+          [
+            642,
+            736
+          ],
+          [
+            646,
+            722
+          ],
+          [
+            648,
+            707
+          ],
+          [
+            657,
+            705
+          ],
+          [
+            657,
+            645
+          ],
+          [
+            652,
+            642
+          ],
+          [
+            642,
+            630
+          ],
+          [
+            639,
+            612
+          ],
+          [
+            645,
+            596
+          ]
+        ],
+        "box": [
+          637,
+          586,
+          699,
+          763
+        ],
+        "seeds": [
+          [
+            668,
+            612
+          ],
+          [
+            668,
+            680
+          ]
+        ],
+        "mode": "fill",
+        "joint": [
+          668,
+          590
+        ],
+        "z": 5,
+        "material": "hanging",
+        "locked": true
+      },
+      {
+        "id": "left-banner",
+        "poly": [
+          [
+            8,
+            610
+          ],
+          [
+            64,
+            610
+          ],
+          [
+            64,
+            770
+          ],
+          [
+            8,
+            770
+          ]
+        ],
+        "box": [
+          6,
+          608,
+          66,
+          772
+        ],
+        "seeds": [
+          [
+            36,
+            680
+          ],
+          [
+            62,
+            700
+          ],
+          [
+            62,
+            660
+          ],
+          [
+            62,
+            750
+          ]
+        ],
+        "mode": "detach",
+        "joint": [
+          36,
+          611
+        ],
+        "z": 6,
+        "material": "streamer",
+        "locked": true,
+        "except": [
+          "#c35b20",
+          "#be561b",
+          "#b84c16"
+        ],
+        "tolerance": 30,
+        "seam": 0
+      },
+      {
+        "id": "right-banner",
+        "poly": [
+          [
+            1272,
+            610
+          ],
+          [
+            1330,
+            610
+          ],
+          [
+            1330,
+            770
+          ],
+          [
+            1272,
+            770
+          ]
+        ],
+        "box": [
+          1270,
+          608,
+          1332,
+          772
+        ],
+        "seeds": [
+          [
+            1301,
+            690
+          ],
+          [
+            1276,
+            746
+          ]
+        ],
+        "mode": "detach",
+        "joint": [
+          1301,
+          611
+        ],
+        "z": 7,
+        "material": "streamer",
+        "locked": true,
+        "except": [
+          "#c35b20",
+          "#be561b",
+          "#b84c16"
+        ],
+        "tolerance": 30,
+        "seam": 0
+      },
+      {
+        "id": "crest",
+        "poly": [
+          [
+            667,
+            326
+          ],
+          [
+            692,
+            331
+          ],
+          [
+            712,
+            346
+          ],
+          [
+            726,
+            368
+          ],
+          [
+            730,
+            392
+          ],
+          [
+            725,
+            416
+          ],
+          [
+            712,
+            436
+          ],
+          [
+            692,
+            451
+          ],
+          [
+            667,
+            456
+          ],
+          [
+            642,
+            451
+          ],
+          [
+            622,
+            436
+          ],
+          [
+            609,
+            416
+          ],
+          [
+            604,
+            392
+          ],
+          [
+            609,
+            368
+          ],
+          [
+            622,
+            346
+          ],
+          [
+            642,
+            331
+          ]
+        ],
+        "box": [
+          602,
+          324,
+          732,
+          458
+        ],
+        "seeds": [
+          [
+            667,
+            390
+          ]
+        ],
+        "mode": "cover",
+        "joint": [
+          667,
+          390
+        ],
+        "z": 8,
+        "material": "light",
+        "locked": true
+      },
+      {
+        "id": "wing-left-lantern",
+        "poly": [
+          [
+            100,
+            581
+          ],
+          [
+            116,
+            581
+          ],
+          [
+            116,
+            595
+          ],
+          [
+            128,
+            595
+          ],
+          [
+            134,
+            606
+          ],
+          [
+            136,
+            618
+          ],
+          [
+            136,
+            658
+          ],
+          [
+            130,
+            669
+          ],
+          [
+            121,
+            672
+          ],
+          [
+            117,
+            688
+          ],
+          [
+            99,
+            688
+          ],
+          [
+            95,
+            672
+          ],
+          [
+            86,
+            669
+          ],
+          [
+            80,
+            658
+          ],
+          [
+            80,
+            618
+          ],
+          [
+            82,
+            606
+          ],
+          [
+            88,
+            595
+          ],
+          [
+            100,
+            595
+          ]
+        ],
+        "box": [
+          78,
+          580,
+          138,
+          690
+        ],
+        "seeds": [
+          [
+            108,
+            640
+          ]
+        ],
+        "mode": "fill",
+        "joint": [
+          108,
+          582
+        ],
+        "z": 9,
+        "material": "lantern",
+        "locked": true,
+        "except": [
+          "#eb882c",
+          "#eb8526",
+          "#fce486",
+          "#f7c65e",
+          "#e47721",
+          "#e47c26",
+          "#f3bc56",
+          "#fee88a",
+          "#fcdc79",
+          "#e48529"
+        ],
+        "tolerance": 12
+      },
+      {
+        "id": "left-lantern",
+        "poly": [
+          [
+            254,
+            496
+          ],
+          [
+            270,
+            496
+          ],
+          [
+            270,
+            522
+          ],
+          [
+            285,
+            522
+          ],
+          [
+            293,
+            534
+          ],
+          [
+            295,
+            548
+          ],
+          [
+            295,
+            594
+          ],
+          [
+            289,
+            606
+          ],
+          [
+            278,
+            611
+          ],
+          [
+            273,
+            628
+          ],
+          [
+            251,
+            628
+          ],
+          [
+            246,
+            611
+          ],
+          [
+            235,
+            606
+          ],
+          [
+            229,
+            594
+          ],
+          [
+            229,
+            548
+          ],
+          [
+            231,
+            534
+          ],
+          [
+            239,
+            522
+          ],
+          [
+            254,
+            522
+          ]
+        ],
+        "box": [
+          227,
+          495,
+          297,
+          630
+        ],
+        "seeds": [
+          [
+            262,
+            574
+          ]
+        ],
+        "mode": "fill",
+        "joint": [
+          262,
+          497
+        ],
+        "z": 10,
+        "material": "lantern",
+        "locked": true,
+        "except": [
+          "#eb882c",
+          "#eb8526",
+          "#fce486",
+          "#f7c65e",
+          "#e47721",
+          "#e47c26",
+          "#f3bc56",
+          "#fee88a",
+          "#fcdc79",
+          "#e48529"
+        ],
+        "tolerance": 12
+      },
+      {
+        "id": "inner-left-lantern",
+        "poly": [
+          [
+            390,
+            511
+          ],
+          [
+            406,
+            511
+          ],
+          [
+            406,
+            527
+          ],
+          [
+            422,
+            527
+          ],
+          [
+            430,
+            540
+          ],
+          [
+            432,
+            553
+          ],
+          [
+            432,
+            600
+          ],
+          [
+            426,
+            613
+          ],
+          [
+            414,
+            617
+          ],
+          [
+            409,
+            635
+          ],
+          [
+            387,
+            635
+          ],
+          [
+            382,
+            617
+          ],
+          [
+            370,
+            613
+          ],
+          [
+            364,
+            600
+          ],
+          [
+            364,
+            553
+          ],
+          [
+            366,
+            540
+          ],
+          [
+            374,
+            527
+          ],
+          [
+            390,
+            527
+          ]
+        ],
+        "box": [
+          362,
+          510,
+          434,
+          637
+        ],
+        "seeds": [
+          [
+            398,
+            580
+          ]
+        ],
+        "mode": "fill",
+        "joint": [
+          398,
+          512
+        ],
+        "z": 11,
+        "material": "lantern",
+        "locked": true,
+        "except": [
+          "#eb882c",
+          "#eb8526",
+          "#fce486",
+          "#f7c65e",
+          "#e47721",
+          "#e47c26",
+          "#f3bc56",
+          "#fee88a",
+          "#fcdc79",
+          "#e48529"
+        ],
+        "tolerance": 12
+      },
+      {
+        "id": "inner-right-lantern",
+        "poly": [
+          [
+            932,
+            511
+          ],
+          [
+            948,
+            511
+          ],
+          [
+            948,
+            527
+          ],
+          [
+            964,
+            527
+          ],
+          [
+            972,
+            540
+          ],
+          [
+            974,
+            553
+          ],
+          [
+            974,
+            600
+          ],
+          [
+            968,
+            613
+          ],
+          [
+            956,
+            617
+          ],
+          [
+            951,
+            635
+          ],
+          [
+            929,
+            635
+          ],
+          [
+            924,
+            617
+          ],
+          [
+            912,
+            613
+          ],
+          [
+            906,
+            600
+          ],
+          [
+            906,
+            553
+          ],
+          [
+            908,
+            540
+          ],
+          [
+            916,
+            527
+          ],
+          [
+            932,
+            527
+          ]
+        ],
+        "box": [
+          904,
+          510,
+          976,
+          637
+        ],
+        "seeds": [
+          [
+            940,
+            580
+          ]
+        ],
+        "mode": "fill",
+        "joint": [
+          940,
+          512
+        ],
+        "z": 12,
+        "material": "lantern",
+        "locked": true,
+        "except": [
+          "#eb882c",
+          "#eb8526",
+          "#fce486",
+          "#f7c65e",
+          "#e47721",
+          "#e47c26",
+          "#f3bc56",
+          "#fee88a",
+          "#fcdc79",
+          "#e48529"
+        ],
+        "tolerance": 12
+      },
+      {
+        "id": "right-lantern",
+        "poly": [
+          [
+            1066,
+            496
+          ],
+          [
+            1082,
+            496
+          ],
+          [
+            1082,
+            522
+          ],
+          [
+            1097,
+            522
+          ],
+          [
+            1105,
+            534
+          ],
+          [
+            1107,
+            548
+          ],
+          [
+            1107,
+            594
+          ],
+          [
+            1101,
+            606
+          ],
+          [
+            1090,
+            611
+          ],
+          [
+            1085,
+            628
+          ],
+          [
+            1063,
+            628
+          ],
+          [
+            1058,
+            611
+          ],
+          [
+            1047,
+            606
+          ],
+          [
+            1041,
+            594
+          ],
+          [
+            1041,
+            548
+          ],
+          [
+            1043,
+            534
+          ],
+          [
+            1051,
+            522
+          ],
+          [
+            1066,
+            522
+          ]
+        ],
+        "box": [
+          1039,
+          495,
+          1109,
+          630
+        ],
+        "seeds": [
+          [
+            1074,
+            574
+          ]
+        ],
+        "mode": "fill",
+        "joint": [
+          1074,
+          497
+        ],
+        "z": 13,
+        "material": "lantern",
+        "locked": true,
+        "except": [
+          "#eb882c",
+          "#eb8526",
+          "#fce486",
+          "#f7c65e",
+          "#e47721",
+          "#e47c26",
+          "#f3bc56",
+          "#fee88a",
+          "#fcdc79",
+          "#e48529"
+        ],
+        "tolerance": 12
+      },
+      {
+        "id": "wing-right-lantern",
+        "poly": [
+          [
+            1221,
+            581
+          ],
+          [
+            1237,
+            581
+          ],
+          [
+            1237,
+            595
+          ],
+          [
+            1249,
+            595
+          ],
+          [
+            1255,
+            606
+          ],
+          [
+            1257,
+            618
+          ],
+          [
+            1257,
+            658
+          ],
+          [
+            1251,
+            669
+          ],
+          [
+            1242,
+            672
+          ],
+          [
+            1238,
+            688
+          ],
+          [
+            1220,
+            688
+          ],
+          [
+            1216,
+            672
+          ],
+          [
+            1207,
+            669
+          ],
+          [
+            1201,
+            658
+          ],
+          [
+            1201,
+            618
+          ],
+          [
+            1203,
+            606
+          ],
+          [
+            1209,
+            595
+          ],
+          [
+            1221,
+            595
+          ]
+        ],
+        "box": [
+          1199,
+          580,
+          1259,
+          690
+        ],
+        "seeds": [
+          [
+            1229,
+            640
+          ]
+        ],
+        "mode": "fill",
+        "joint": [
+          1229,
+          582
+        ],
+        "z": 14,
+        "material": "lantern",
+        "locked": true,
+        "except": [
+          "#eb882c",
+          "#eb8526",
+          "#fce486",
+          "#f7c65e",
+          "#e47721",
+          "#e47c26",
+          "#f3bc56",
+          "#fee88a",
+          "#fcdc79",
+          "#e48529"
+        ],
+        "tolerance": 12
+      }
+    ],
+    "lights": {
+      "plate": {
+        "locked": true,
+        "points": []
+      }
+    },
+    "plan": {
+      "source": "hand",
+      "locked": true
+    }
+  },
+  {
+    "target": "prop-furin-stand",
+    "compose": "split",
+    "kind": "furniture",
+    "game": "shrine-props",
+    "aspect": "1:1",
+    "base": "shrine-feat-tall-b/furin-stand",
+    "subject": "three glass wind chimes with red paper strips on a wooden stand",
+    "notes": "Art brief: follow docs/specs/art-bible.md (LOCKED Meow Tower style) and match docs/references/style-anchor.png. Lineless, soft cel shading, warm cheerful palette, chunky pillowy shapes. Keep the approved sprite exactly as it is.",
+    "pieces": [
+      {
+        "id": "chime-l",
+        "box": [
+          135,
+          47,
+          189,
+          123
+        ],
+        "seeds": [
+          [
+            162,
+            90
+          ]
+        ],
+        "joint": [
+          162,
+          47
+        ],
+        "material": "chime"
+      },
+      {
+        "id": "strip-l",
+        "box": [
+          138,
+          121,
+          188,
+          182
+        ],
+        "seeds": [
+          [
+            162,
+            150
+          ]
+        ],
+        "joint": [
+          162,
+          123
+        ],
+        "parent": "chime-l",
+        "material": "paper"
+      },
+      {
+        "id": "chime-m",
+        "box": [
+          190,
+          47,
+          244,
+          123
+        ],
+        "seeds": [
+          [
+            217,
+            90
+          ]
+        ],
+        "joint": [
+          217,
+          47
+        ],
+        "material": "chime"
+      },
+      {
+        "id": "strip-m",
+        "box": [
+          193,
+          121,
+          243,
+          182
+        ],
+        "seeds": [
+          [
+            217,
+            150
+          ]
+        ],
+        "joint": [
+          217,
+          123
+        ],
+        "parent": "chime-m",
+        "material": "paper"
+      },
+      {
+        "id": "chime-r",
+        "box": [
+          246,
+          47,
+          300,
+          123
+        ],
+        "seeds": [
+          [
+            273,
+            90
+          ]
+        ],
+        "joint": [
+          273,
+          47
+        ],
+        "material": "chime"
+      },
+      {
+        "id": "strip-r",
+        "box": [
+          249,
+          121,
+          299,
+          182
+        ],
+        "seeds": [
+          [
+            273,
+            150
+          ]
+        ],
+        "joint": [
+          273,
+          123
+        ],
+        "parent": "chime-r",
+        "material": "paper"
+      }
+    ],
+    "plan": {
+      "source": "hand",
+      "locked": true
+    }
+  },
+  {
+    "target": "prop-omikuji-tree",
+    "compose": "split",
+    "kind": "furniture",
+    "game": "shrine-props",
+    "aspect": "1:1",
+    "base": "shrine-feat-tall/omikuji-tree",
+    "subject": "a round tree with paper fortunes tied to it",
+    "notes": "Art brief: follow docs/specs/art-bible.md (LOCKED Meow Tower style) and match docs/references/style-anchor.png. Lineless, soft cel shading, warm cheerful palette, chunky pillowy shapes. Keep the approved sprite exactly as it is.",
+    "pieces": [
+      {
+        "id": "paper-1",
+        "box": [
+          238,
+          42,
+          268,
+          93
+        ],
+        "colors": [
+          "#fef9e6",
+          "#fbebc9",
+          "#fbfaee",
+          "#efdcb8",
+          "#e8d4b0"
+        ],
+        "tolerance": 30,
+        "seeds": [
+          [
+            255,
+            70
+          ]
+        ],
+        "mode": "detach",
+        "joint": [
+          255,
+          44
+        ],
+        "z": 2,
+        "parent": "canopy",
+        "material": "paper",
+        "locked": true
+      },
+      {
+        "id": "paper-2",
+        "box": [
+          177,
+          80,
+          209,
+          133
+        ],
+        "colors": [
+          "#fef9e6",
+          "#fbebc9",
+          "#fbfaee",
+          "#efdcb8",
+          "#e8d4b0"
+        ],
+        "tolerance": 30,
+        "seeds": [
+          [
+            193,
+            110
+          ]
+        ],
+        "mode": "detach",
+        "joint": [
+          196,
+          82
+        ],
+        "z": 2.01,
+        "parent": "canopy",
+        "material": "paper",
+        "locked": true
+      },
+      {
+        "id": "paper-3",
+        "box": [
+          299,
+          78,
+          329,
+          130
+        ],
+        "colors": [
+          "#fef9e6",
+          "#fbebc9",
+          "#fbfaee",
+          "#efdcb8",
+          "#e8d4b0"
+        ],
+        "tolerance": 30,
+        "seeds": [
+          [
+            313,
+            105
+          ]
+        ],
+        "mode": "detach",
+        "joint": [
+          313,
+          80
+        ],
+        "z": 2.02,
+        "parent": "canopy",
+        "material": "paper",
+        "locked": true
+      },
+      {
+        "id": "paper-4",
+        "box": [
+          339,
+          112,
+          373,
+          162
+        ],
+        "colors": [
+          "#fef9e6",
+          "#fbebc9",
+          "#fbfaee",
+          "#efdcb8",
+          "#e8d4b0"
+        ],
+        "tolerance": 30,
+        "seeds": [
+          [
+            357,
+            135
+          ]
+        ],
+        "mode": "detach",
+        "joint": [
+          347,
+          114
+        ],
+        "z": 2.03,
+        "parent": "canopy",
+        "material": "paper",
+        "locked": true
+      },
+      {
+        "id": "paper-5",
+        "box": [
+          162,
+          145,
+          194,
+          195
+        ],
+        "colors": [
+          "#fef9e6",
+          "#fbebc9",
+          "#fbfaee",
+          "#efdcb8",
+          "#e8d4b0"
+        ],
+        "tolerance": 30,
+        "seeds": [
+          [
+            178,
+            170
+          ]
+        ],
+        "mode": "detach",
+        "joint": [
+          184,
+          148
+        ],
+        "z": 2.04,
+        "parent": "canopy",
+        "material": "paper",
+        "locked": true
+      },
+      {
+        "id": "paper-6",
+        "box": [
+          259,
+          125,
+          289,
+          180
+        ],
+        "colors": [
+          "#fef9e6",
+          "#fbebc9",
+          "#fbfaee",
+          "#efdcb8",
+          "#e8d4b0"
+        ],
+        "tolerance": 30,
+        "seeds": [
+          [
+            274,
+            155
+          ]
+        ],
+        "mode": "detach",
+        "joint": [
+          273,
+          129
+        ],
+        "z": 2.05,
+        "parent": "canopy",
+        "material": "paper",
+        "locked": true
+      },
+      {
+        "id": "paper-7",
+        "box": [
+          222,
+          178,
+          253,
+          226
+        ],
+        "colors": [
+          "#fef9e6",
+          "#fbebc9",
+          "#fbfaee",
+          "#efdcb8",
+          "#e8d4b0"
+        ],
+        "tolerance": 30,
+        "seeds": [
+          [
+            238,
+            200
+          ]
+        ],
+        "mode": "detach",
+        "joint": [
+          238,
+          180
+        ],
+        "z": 2.06,
+        "parent": "canopy",
+        "material": "paper",
+        "locked": true
+      },
+      {
+        "id": "canopy",
+        "box": [
+          0,
+          0,
+          512,
+          232
+        ],
+        "except": [
+          "#ab6c3b",
+          "#9a5e32",
+          "#8a5230",
+          "#b87840",
+          "#7a4a2a"
+        ],
+        "tolerance": 30,
+        "joint": [
+          256,
+          200
+        ],
+        "material": "canopy",
+        "motion": {
+          "rest": {
+            "kind": "flutter",
+            "amount": [
+              0.9,
+              0.9
+            ],
+            "periodMs": [
+              3400,
+              3400
+            ]
+          },
+          "gust": {
+            "kind": "shake",
+            "amount": [
+              1,
+              1
+            ],
+            "durationMs": [
+              650,
+              650
+            ]
+          }
+        },
+        "z": 1
+      }
+    ],
+    "plan": {
+      "source": "hand",
+      "locked": true
+    }
+  },
+  {
+    "target": "prop-ema-rack",
+    "compose": "split",
+    "kind": "furniture",
+    "game": "shrine-props",
+    "aspect": "1:1",
+    "base": "shrine-feat-tall/ema-rack",
+    "subject": "wooden wish plaques hanging on a rack under a red roof",
+    "notes": "Art brief: follow docs/specs/art-bible.md (LOCKED Meow Tower style) and match docs/references/style-anchor.png. Lineless, soft cel shading, warm cheerful palette, chunky pillowy shapes. Keep the approved sprite exactly as it is.",
+    "pieces": [
+      {
+        "id": "plaque-1",
+        "box": [
+          164,
+          94,
+          220,
+          152
+        ],
+        "colors": [
+          "#feda92",
+          "#fdd78f",
+          "#f8cc80",
+          "#f0c070",
+          "#fce6b0",
+          "#f25530",
+          "#e95328",
+          "#d84826",
+          "#f7a07a"
+        ],
+        "tolerance": 28,
+        "seeds": [
+          [
+            192,
+            129
+          ]
+        ],
+        "joint": [
+          192,
+          100
+        ],
+        "material": "hanging",
+        "motion": {
+          "rest": {
+            "kind": "swing",
+            "amount": [
+              0.8,
+              0.8
+            ],
+            "periodMs": [
+              3000,
+              3000
+            ]
+          },
+          "use": {
+            "kind": "shake",
+            "amount": [
+              2,
+              2
+            ],
+            "durationMs": [
+              700,
+              700
+            ]
+          },
+          "gust": {
+            "kind": "shake",
+            "amount": [
+              2.2,
+              2.2
+            ],
+            "durationMs": [
+              700,
+              700
+            ]
+          }
+        }
+      },
+      {
+        "id": "plaque-2",
+        "box": [
+          227,
+          94,
+          283,
+          152
+        ],
+        "colors": [
+          "#feda92",
+          "#fdd78f",
+          "#f8cc80",
+          "#f0c070",
+          "#fce6b0",
+          "#f25530",
+          "#e95328",
+          "#d84826",
+          "#f7a07a"
+        ],
+        "tolerance": 28,
+        "seeds": [
+          [
+            255,
+            129
+          ]
+        ],
+        "joint": [
+          255,
+          100
+        ],
+        "material": "hanging",
+        "motion": {
+          "rest": {
+            "kind": "swing",
+            "amount": [
+              0.8,
+              0.8
+            ],
+            "periodMs": [
+              3000,
+              3000
+            ]
+          },
+          "use": {
+            "kind": "shake",
+            "amount": [
+              2,
+              2
+            ],
+            "durationMs": [
+              700,
+              700
+            ]
+          },
+          "gust": {
+            "kind": "shake",
+            "amount": [
+              2.2,
+              2.2
+            ],
+            "durationMs": [
+              700,
+              700
+            ]
+          }
+        }
+      },
+      {
+        "id": "plaque-3",
+        "box": [
+          288,
+          94,
+          344,
+          152
+        ],
+        "colors": [
+          "#feda92",
+          "#fdd78f",
+          "#f8cc80",
+          "#f0c070",
+          "#fce6b0",
+          "#f25530",
+          "#e95328",
+          "#d84826",
+          "#f7a07a"
+        ],
+        "tolerance": 28,
+        "seeds": [
+          [
+            316,
+            129
+          ]
+        ],
+        "joint": [
+          316,
+          100
+        ],
+        "material": "hanging",
+        "motion": {
+          "rest": {
+            "kind": "swing",
+            "amount": [
+              0.8,
+              0.8
+            ],
+            "periodMs": [
+              3000,
+              3000
+            ]
+          },
+          "use": {
+            "kind": "shake",
+            "amount": [
+              2,
+              2
+            ],
+            "durationMs": [
+              700,
+              700
+            ]
+          },
+          "gust": {
+            "kind": "shake",
+            "amount": [
+              2.2,
+              2.2
+            ],
+            "durationMs": [
+              700,
+              700
+            ]
+          }
+        }
+      },
+      {
+        "id": "plaque-4",
+        "box": [
+          164,
+          157,
+          220,
+          216
+        ],
+        "colors": [
+          "#feda92",
+          "#fdd78f",
+          "#f8cc80",
+          "#f0c070",
+          "#fce6b0",
+          "#f25530",
+          "#e95328",
+          "#d84826",
+          "#f7a07a"
+        ],
+        "tolerance": 28,
+        "seeds": [
+          [
+            192,
+            192
+          ]
+        ],
+        "joint": [
+          192,
+          163
+        ],
+        "material": "hanging",
+        "motion": {
+          "rest": {
+            "kind": "swing",
+            "amount": [
+              0.8,
+              0.8
+            ],
+            "periodMs": [
+              3000,
+              3000
+            ]
+          },
+          "use": {
+            "kind": "shake",
+            "amount": [
+              2,
+              2
+            ],
+            "durationMs": [
+              700,
+              700
+            ]
+          },
+          "gust": {
+            "kind": "shake",
+            "amount": [
+              2.2,
+              2.2
+            ],
+            "durationMs": [
+              700,
+              700
+            ]
+          }
+        }
+      },
+      {
+        "id": "plaque-5",
+        "box": [
+          227,
+          157,
+          283,
+          216
+        ],
+        "colors": [
+          "#feda92",
+          "#fdd78f",
+          "#f8cc80",
+          "#f0c070",
+          "#fce6b0",
+          "#f25530",
+          "#e95328",
+          "#d84826",
+          "#f7a07a"
+        ],
+        "tolerance": 28,
+        "seeds": [
+          [
+            255,
+            192
+          ]
+        ],
+        "joint": [
+          255,
+          163
+        ],
+        "material": "hanging",
+        "motion": {
+          "rest": {
+            "kind": "swing",
+            "amount": [
+              0.8,
+              0.8
+            ],
+            "periodMs": [
+              3000,
+              3000
+            ]
+          },
+          "use": {
+            "kind": "shake",
+            "amount": [
+              2,
+              2
+            ],
+            "durationMs": [
+              700,
+              700
+            ]
+          },
+          "gust": {
+            "kind": "shake",
+            "amount": [
+              2.2,
+              2.2
+            ],
+            "durationMs": [
+              700,
+              700
+            ]
+          }
+        }
+      },
+      {
+        "id": "plaque-6",
+        "box": [
+          288,
+          157,
+          344,
+          216
+        ],
+        "colors": [
+          "#feda92",
+          "#fdd78f",
+          "#f8cc80",
+          "#f0c070",
+          "#fce6b0",
+          "#f25530",
+          "#e95328",
+          "#d84826",
+          "#f7a07a"
+        ],
+        "tolerance": 28,
+        "seeds": [
+          [
+            316,
+            192
+          ]
+        ],
+        "joint": [
+          316,
+          163
+        ],
+        "material": "hanging",
+        "motion": {
+          "rest": {
+            "kind": "swing",
+            "amount": [
+              0.8,
+              0.8
+            ],
+            "periodMs": [
+              3000,
+              3000
+            ]
+          },
+          "use": {
+            "kind": "shake",
+            "amount": [
+              2,
+              2
+            ],
+            "durationMs": [
+              700,
+              700
+            ]
+          },
+          "gust": {
+            "kind": "shake",
+            "amount": [
+              2.2,
+              2.2
+            ],
+            "durationMs": [
+              700,
+              700
+            ]
+          }
+        }
+      }
+    ],
+    "plan": {
+      "source": "hand",
+      "locked": true
+    }
+  },
+  {
+    "target": "prop-chochin-arch",
+    "compose": "split",
+    "kind": "furniture",
+    "game": "shrine-props",
+    "aspect": "1:1",
+    "base": "shrine-feat-tall-a/chochin-arch",
+    "subject": "four paper lanterns on a rope between two posts",
+    "notes": "Art brief: follow docs/specs/art-bible.md (LOCKED Meow Tower style) and match docs/references/style-anchor.png. Lineless, soft cel shading, warm cheerful palette, chunky pillowy shapes. Keep the approved sprite exactly as it is.",
+    "background": "#FF00FF",
+    "pieces": [
+      {
+        "id": "lantern-1",
+        "box": [
+          115,
+          50,
+          188,
+          146
+        ],
+        "poly": [
+          [
+            118,
+            50.5
+          ],
+          [
+            119,
+            50.5
+          ],
+          [
+            123,
+            52.4
+          ],
+          [
+            127,
+            54.9
+          ],
+          [
+            131,
+            56.6
+          ],
+          [
+            135,
+            58.1
+          ],
+          [
+            139,
+            59.3
+          ],
+          [
+            143,
+            60.3
+          ],
+          [
+            147,
+            60.9
+          ],
+          [
+            151,
+            61.4
+          ],
+          [
+            155,
+            62.3
+          ],
+          [
+            159,
+            63.3
+          ],
+          [
+            163,
+            66.1
+          ],
+          [
+            167,
+            69.6
+          ],
+          [
+            171,
+            71.6
+          ],
+          [
+            175,
+            73.1
+          ],
+          [
+            179,
+            74.3
+          ],
+          [
+            183,
+            75.3
+          ],
+          [
+            187,
+            75.9
+          ],
+          [
+            188,
+            76
+          ],
+          [
+            188,
+            146
+          ],
+          [
+            118,
+            146
+          ],
+          [
+            118,
+            130
+          ],
+          [
+            115,
+            130
+          ],
+          [
+            115,
+            82
+          ],
+          [
+            118,
+            82
+          ]
+        ],
+        "seeds": [
+          [
+            146,
+            100
+          ]
+        ],
+        "except": [
+          "#fce5b7",
+          "#fdecc1",
+          "#f4b865",
+          "#f3c273",
+          "#fbc67f",
+          "#fcd08b"
+        ],
+        "tolerance": 30,
+        "mode": "detach",
+        "joint": [
+          146,
+          58
+        ],
+        "z": 1,
+        "material": "lantern",
+        "locked": true
+      },
+      {
+        "id": "lantern-2",
+        "box": [
+          176,
+          66,
+          258,
+          161
+        ],
+        "poly": [
+          [
+            176,
+            72
+          ],
+          [
+            180,
+            73
+          ],
+          [
+            184,
+            74
+          ],
+          [
+            188,
+            74.5
+          ],
+          [
+            192,
+            75
+          ],
+          [
+            196,
+            75.5
+          ],
+          [
+            200,
+            76
+          ],
+          [
+            204,
+            76
+          ],
+          [
+            208,
+            76
+          ],
+          [
+            212,
+            76
+          ],
+          [
+            216,
+            76
+          ],
+          [
+            220,
+            76.5
+          ],
+          [
+            224,
+            77
+          ],
+          [
+            228,
+            77.5
+          ],
+          [
+            232,
+            78
+          ],
+          [
+            236,
+            81
+          ],
+          [
+            240,
+            81
+          ],
+          [
+            244,
+            81
+          ],
+          [
+            248,
+            81
+          ],
+          [
+            252,
+            81
+          ],
+          [
+            256,
+            81
+          ],
+          [
+            258,
+            81
+          ],
+          [
+            258,
+            161
+          ],
+          [
+            176,
+            161
+          ]
+        ],
+        "seeds": [
+          [
+            217,
+            116
+          ]
+        ],
+        "except": [
+          "#f5522f",
+          "#f1412a",
+          "#fa4c34",
+          "#e64024"
+        ],
+        "tolerance": 30,
+        "mode": "detach",
+        "joint": [
+          217,
+          73
+        ],
+        "z": 2,
+        "material": "lantern",
+        "locked": true
+      },
+      {
+        "id": "lantern-3",
+        "box": [
+          250,
+          66,
+          332,
+          161
+        ],
+        "poly": [
+          [
+            250,
+            81
+          ],
+          [
+            254,
+            81
+          ],
+          [
+            258,
+            81
+          ],
+          [
+            262,
+            81
+          ],
+          [
+            266,
+            81
+          ],
+          [
+            270,
+            81
+          ],
+          [
+            274,
+            81
+          ],
+          [
+            278,
+            80
+          ],
+          [
+            282,
+            78
+          ],
+          [
+            286,
+            76.9
+          ],
+          [
+            290,
+            76.6
+          ],
+          [
+            294,
+            76.4
+          ],
+          [
+            298,
+            76.1
+          ],
+          [
+            302,
+            76.3
+          ],
+          [
+            306,
+            76.8
+          ],
+          [
+            310,
+            76.8
+          ],
+          [
+            314,
+            76.3
+          ],
+          [
+            318,
+            75.5
+          ],
+          [
+            322,
+            74.5
+          ],
+          [
+            326,
+            73.5
+          ],
+          [
+            330,
+            72.5
+          ],
+          [
+            332,
+            72
+          ],
+          [
+            332,
+            161
+          ],
+          [
+            250,
+            161
+          ]
+        ],
+        "seeds": [
+          [
+            291,
+            116
+          ]
+        ],
+        "except": [
+          "#fce5b7",
+          "#fdecc1",
+          "#f4b865",
+          "#f3c273",
+          "#fbc67f",
+          "#fcd08b"
+        ],
+        "tolerance": 30,
+        "mode": "detach",
+        "joint": [
+          291,
+          74
+        ],
+        "z": 3,
+        "material": "lantern",
+        "locked": true
+      },
+      {
+        "id": "lantern-4",
+        "box": [
+          322,
+          50,
+          397,
+          146
+        ],
+        "poly": [
+          [
+            322,
+            76
+          ],
+          [
+            326,
+            75
+          ],
+          [
+            330,
+            74
+          ],
+          [
+            334,
+            73
+          ],
+          [
+            338,
+            72
+          ],
+          [
+            342,
+            71
+          ],
+          [
+            346,
+            69.3
+          ],
+          [
+            350,
+            66.8
+          ],
+          [
+            354,
+            64.8
+          ],
+          [
+            358,
+            63.5
+          ],
+          [
+            362,
+            62.2
+          ],
+          [
+            366,
+            61.3
+          ],
+          [
+            370,
+            60.8
+          ],
+          [
+            374,
+            59.5
+          ],
+          [
+            378,
+            57.5
+          ],
+          [
+            382,
+            55.3
+          ],
+          [
+            386,
+            52.8
+          ],
+          [
+            390,
+            51.5
+          ],
+          [
+            394,
+            51.5
+          ],
+          [
+            394,
+            51.5
+          ],
+          [
+            394,
+            80
+          ],
+          [
+            397,
+            80
+          ],
+          [
+            397,
+            130
+          ],
+          [
+            394,
+            130
+          ],
+          [
+            394,
+            146
+          ],
+          [
+            322,
+            146
+          ]
+        ],
+        "seeds": [
+          [
+            364,
+            100
+          ]
+        ],
+        "except": [
+          "#f5522f",
+          "#f1412a",
+          "#fa4c34",
+          "#e64024"
+        ],
+        "tolerance": 30,
+        "mode": "detach",
+        "joint": [
+          364,
+          59
+        ],
+        "z": 4,
+        "material": "lantern",
+        "locked": true
+      }
+    ],
+    "plan": {
+      "source": "hand",
+      "locked": true
+    }
+  },
+  {
+    "target": "prop-koinobori",
+    "compose": "split",
+    "kind": "furniture",
+    "game": "shrine-props",
+    "aspect": "1:1",
+    "base": "shrine-feat-tall-a/koinobori",
+    "subject": "three carp streamers on a pole",
+    "notes": "Art brief: follow docs/specs/art-bible.md (LOCKED Meow Tower style) and match docs/references/style-anchor.png. Lineless, soft cel shading, warm cheerful palette, chunky pillowy shapes. Keep the approved sprite exactly as it is.",
+    "pieces": [
+      {
+        "id": "carp-1",
+        "box": [
+          203,
+          28,
+          365,
+          93
+        ],
+        "seeds": [
+          [
+            280,
+            60
+          ]
+        ],
+        "joint": [
+          206,
+          62
+        ],
+        "material": "streamer"
+      },
+      {
+        "id": "carp-2",
+        "box": [
+          203,
+          94,
+          355,
+          156
+        ],
+        "seeds": [
+          [
+            270,
+            125
+          ]
+        ],
+        "joint": [
+          206,
+          122
+        ],
+        "material": "streamer"
+      },
+      {
+        "id": "carp-3",
+        "box": [
+          203,
+          157,
+          345,
+          218
+        ],
+        "seeds": [
+          [
+            260,
+            185
+          ]
+        ],
+        "joint": [
+          206,
+          185
+        ],
+        "material": "streamer"
+      }
+    ],
+    "plan": {
+      "source": "hand",
+      "locked": true
+    }
   }
 ]
