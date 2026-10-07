@@ -28,6 +28,23 @@
         "y": 0,
         "width": 408,
         "height": 288
+      },
+      "complexity": {
+        "score": 0.21,
+        "regions": 21,
+        "protrusion": 0.001,
+        "edges": 0.554,
+        "components": 1
+      },
+      "effects": {
+        "wind": "none",
+        "light": "none",
+        "lights": 0,
+        "lit": 16,
+        "why": "no wind material; 16 regions look lit, not a light source by the rules: check",
+        "hash": "6f3653a83608",
+        "source": "plan",
+        "status": "pending"
       }
     }
   },

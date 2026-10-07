@@ -1,8 +1,8 @@
 /**
  * Renders the multipart prop images for the README from the split targets in
- * examples/: docs/examples/multipart.png (each prop assembled, then its
- * pieces) and docs/examples/multipart.gif (the pieces moving about their
- * joints). Run with `npm run showcase`.
+ * examples/: docs/examples/multipart.gif (every prop with a moving piece, the
+ * pieces turning about their joints) and docs/examples/multipart.png (some
+ * props assembled, then their pieces). Run with `npm run showcase`.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -24,8 +24,17 @@ const pieceHeight = 110;
 const frameMs = 80;
 const loopMs = 2400;
 const boost = 4;
-const gifHeight = 260;
-const gifProps = 5;
+const cellW = 220;
+const cellH = 200;
+const columns = 7;
+
+/** Motions drawn as a turn about the joint. Glow, shimmer and flicker are not drawn. */
+const turns = new Set(['swing', 'flutter', 'sway']);
+
+/** Props for the pieces image, in order. */
+const featured = ['prop-furin-stand', 'prop-noodle-stall', 'prop-ema-rack', 'prop-hono-chochin', 'prop-koinobori', 'prop-chochin-arch'];
+/** Props left out: the soft edges of these pieces were cut with the hall behind them. */
+const skip = new Set(['prop-shrine-haiden-4']);
 
 interface Part {
   x: number;
@@ -57,8 +66,9 @@ for (const name of fs.readdirSync(root).sort()) {
   const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
   const manifest = JSON.parse(fs.readFileSync(path.join(dir, config.manifest), 'utf8'));
   for (const t of manifest) {
-    if (t.compose !== 'split') continue;
+    if (t.compose !== 'split' || skip.has(t.target)) continue;
     const gen = path.join(dir, config.out, t.target);
+    if (!fs.existsSync(path.join(gen, 'meta.json'))) continue;
     const meta = JSON.parse(fs.readFileSync(path.join(gen, 'meta.json'), 'utf8'));
     const pieces: Piece[] = [];
     for (const [asset, a] of Object.entries<any>(meta.assets)) {
@@ -68,6 +78,7 @@ for (const name of fs.readdirSync(root).sort()) {
     }
     // A split with no plate draws its base under the pieces; skip those here.
     if (!pieces.some((p) => p.part.role === 'plate')) continue;
+    if (!pieces.some((p) => turns.has(p.part.rig?.rest?.kind ?? ''))) continue;
     pieces.sort((a, b) => a.part.z - b.part.z);
     const x0 = Math.min(...pieces.map((p) => p.part.x));
     const y0 = Math.min(...pieces.map((p) => p.part.y));
@@ -80,8 +91,8 @@ if (!props.length) {
   console.log('no split targets in examples/');
   process.exit(0);
 }
-// Biggest prop first.
-props.sort((a, b) => b.pieces.length - a.pieces.length);
+// Most pieces first.
+props.sort((a, b) => b.pieces.length - a.pieces.length || a.target.localeCompare(b.target));
 
 /** Seeded value in [0, 1) from a string, so each piece keeps its own phase. */
 const seed = (s: string) => {
@@ -93,7 +104,7 @@ const seed = (s: string) => {
 /** Angle in degrees of a piece at time t, from its rest motion. */
 const angle = (p: Piece, t: number) => {
   const rest = p.part.rig?.rest;
-  if (!rest || (rest.kind !== 'swing' && rest.kind !== 'flutter')) return 0;
+  if (!rest || !turns.has(rest.kind)) return 0;
   const r = seed(p.name);
   const amount = (rest.amount[0] + (rest.amount[1] - rest.amount[0]) * r) * boost;
   const period = rest.periodMs[0] + (rest.periodMs[1] - rest.periodMs[0]) * r;
@@ -184,7 +195,8 @@ fs.mkdirSync(outDir, { recursive: true });
 {
   const layers: sharp.OverlayOptions[] = [];
   let y = 110;
-  for (const prop of props) {
+  const shown = featured.map((t) => props.find((p) => p.target === t)).filter((p): p is Prop => Boolean(p));
+  for (const prop of shown) {
     const whole = await trimmed(await assemble(prop, null), propHeight);
     const wholeW = Math.min(whole.info.width, 640);
     const wholeBuf = wholeW < whole.info.width ? await sharp(whole.data).resize({ width: wholeW }).png().toBuffer({ resolveWithObject: true }) : whole;
@@ -225,26 +237,31 @@ fs.mkdirSync(outDir, { recursive: true });
   console.log(`wrote ${path.relative(process.cwd(), file)}`);
 }
 
-// GIF: the first props in a row, every piece moving about its joint.
+// GIF: every prop in a grid, each piece turning about its joint.
 {
-  // Wide props read too small at the GIF height; leave them to the static image.
-  const chosen = props.filter((p) => p.box.w / p.box.h < 1.6).slice(0, gifProps);
+  const rows = Math.ceil(props.length / columns);
+  const gifW = columns * cellW + pad * 2;
+  const gifH = rows * cellH + pad * 2;
+  // Each prop is scaled once, from its rest frame, so it does not change size as it moves.
+  const scales = await Promise.all(
+    props.map(async (prop) => {
+      const m = await sharp(await assemble(prop, null)).metadata();
+      return Math.min((cellW - gap) / m.width!, (cellH - gap) / m.height!);
+    }),
+  );
   const frames: Buffer[] = [];
-  let gifW = 0;
-  const gifH = gifHeight + pad * 2;
   for (let t = 0; t < loopMs; t += frameMs) {
     const layers: sharp.OverlayOptions[] = [];
-    let x = pad;
-    for (const prop of chosen) {
-      // Same crop every frame: scale from the native canvas, not a trim.
+    for (const [i, prop] of props.entries()) {
       const full = await assemble(prop, t);
       const m = await sharp(full).metadata();
-      const s = gifHeight / m.height!;
-      const img = await sharp(full).resize({ height: gifHeight }).png().toBuffer();
-      layers.push({ input: img, left: x, top: pad });
-      x += Math.round(m.width! * s) + gap;
+      const w = Math.max(1, Math.round(m.width! * scales[i]!));
+      const h = Math.max(1, Math.round(m.height! * scales[i]!));
+      const img = await sharp(full).resize(w, h).png().toBuffer();
+      const col = i % columns;
+      const row = Math.floor(i / columns);
+      layers.push({ input: img, left: pad + col * cellW + Math.round((cellW - w) / 2), top: pad + row * cellH + (cellH - gap / 2 - h) });
     }
-    gifW = x - gap + pad;
     frames.push(
       await sharp({ create: { width: gifW, height: gifH, channels: 4, background: bg } })
         .composite(layers)
@@ -257,5 +274,5 @@ fs.mkdirSync(outDir, { recursive: true });
   await sharp(frames, { join: { animated: true } })
     .gif({ delay: frameMs, loop: 0, effort: 10 })
     .toFile(file);
-  console.log(`wrote ${path.relative(process.cwd(), file)}`);
+  console.log(`wrote ${path.relative(process.cwd(), file)} (${props.length} props)`);
 }

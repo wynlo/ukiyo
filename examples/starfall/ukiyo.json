@@ -111,5 +111,524 @@
         "kind"
       ]
     }
+  },
+  "rig": {
+    "prefix": "prop-",
+    "group": "starfall-props",
+    "aspect": "1:1",
+    "stagger": 100,
+    "score": {
+      "regions": [
+        15,
+        45,
+        0.3
+      ],
+      "protrusion": [
+        0.02,
+        0.3,
+        0.4
+      ],
+      "edges": [
+        0.15,
+        0.45,
+        0.15
+      ],
+      "components": [
+        1,
+        4,
+        0.15
+      ]
+    },
+    "kinds": {
+      "furniture": {
+        "threshold": 0.3,
+        "maxParts": 8
+      },
+      "scenery": {
+        "threshold": 0.25,
+        "maxParts": 6
+      },
+      "gate": {
+        "threshold": 0.25,
+        "maxParts": 8
+      },
+      "item": {
+        "threshold": 0.35,
+        "maxParts": 3
+      },
+      "furniture-wide": {
+        "threshold": 0.3,
+        "maxParts": 8
+      }
+    },
+    "materials": {
+      "hanging": {
+        "describe": "a thing that hangs from a hook, a cord or a beam and can swing: a bell, a bucket, a plaque on a loop, a glass wind chime (a paper lantern is `lantern`)",
+        "pivot": "contact-top",
+        "lag": 120,
+        "rest": {
+          "kind": "swing",
+          "amount": [
+            0.8,
+            1.3
+          ],
+          "periodMs": [
+            3000,
+            4200
+          ]
+        },
+        "use": {
+          "kind": "swing",
+          "amount": [
+            2.5,
+            4.5
+          ],
+          "periodMs": [
+            600,
+            900
+          ],
+          "durationMs": [
+            1600,
+            2400
+          ]
+        },
+        "gust": {
+          "kind": "swing",
+          "amount": [
+            2,
+            3
+          ],
+          "periodMs": [
+            500,
+            700
+          ],
+          "durationMs": [
+            1200,
+            1500
+          ]
+        }
+      },
+      "lantern": {
+        "describe": "a paper lantern (chochin) that hangs from a hook, a cord or a beam: it swings, and it glows at dusk and night",
+        "pivot": "contact-top",
+        "lag": 120,
+        "rest": {
+          "kind": "swing",
+          "amount": [
+            0.8,
+            1.3
+          ],
+          "periodMs": [
+            3000,
+            4200
+          ]
+        },
+        "use": {
+          "kind": "swing",
+          "amount": [
+            2.5,
+            4.5
+          ],
+          "periodMs": [
+            600,
+            900
+          ],
+          "durationMs": [
+            1600,
+            2400
+          ]
+        },
+        "gust": {
+          "kind": "swing",
+          "amount": [
+            2,
+            3
+          ],
+          "periodMs": [
+            500,
+            700
+          ],
+          "durationMs": [
+            1200,
+            1500
+          ]
+        },
+        "emits": "body"
+      },
+      "paper": {
+        "describe": "paper or cloth that hangs down and flutters: zigzag shide, paper wishes on strings, a charm strip, a noren curtain",
+        "pivot": "contact-top",
+        "lag": 90,
+        "rest": {
+          "kind": "flutter",
+          "amount": [
+            1.3,
+            1.5
+          ],
+          "periodMs": [
+            1900,
+            2400
+          ]
+        },
+        "gust": {
+          "kind": "shake",
+          "amount": [
+            1.5,
+            2.2
+          ],
+          "durationMs": [
+            600,
+            800
+          ]
+        }
+      },
+      "streamer": {
+        "describe": "a streamer or flag fixed at one side that flies in the wind: a carp streamer, a banner, a flag",
+        "pivot": "contact",
+        "lag": 110,
+        "rest": {
+          "kind": "flutter",
+          "amount": [
+            1.4,
+            1.6
+          ],
+          "periodMs": [
+            1900,
+            2200
+          ]
+        },
+        "use": {
+          "kind": "shake",
+          "amount": [
+            1.2,
+            1.4
+          ],
+          "durationMs": [
+            600,
+            800
+          ]
+        },
+        "gust": {
+          "kind": "shake",
+          "amount": [
+            1.1,
+            1.3
+          ],
+          "durationMs": [
+            600,
+            800
+          ]
+        }
+      },
+      "canopy": {
+        "describe": "the leafy or flowering crown of a tree or shrub, above a trunk or stem",
+        "pivot": "contact-bottom",
+        "rest": {
+          "kind": "sway",
+          "amount": [
+            0.45,
+            1.1
+          ],
+          "periodMs": [
+            4200,
+            5000
+          ]
+        },
+        "use": {
+          "kind": "shake",
+          "amount": [
+            1.2,
+            1.4
+          ],
+          "durationMs": [
+            900,
+            1000
+          ]
+        }
+      },
+      "stem": {
+        "describe": "a thin stalk that stands up and sways on its own: a reed or cattail head, pampas grass, a brush in a pot, a sprig, a finial",
+        "pivot": "contact-bottom",
+        "rest": {
+          "kind": "sway",
+          "amount": [
+            1,
+            1.5
+          ],
+          "periodMs": [
+            2600,
+            3600
+          ]
+        },
+        "use": {
+          "kind": "shake",
+          "amount": [
+            1.3,
+            1.5
+          ],
+          "durationMs": [
+            700,
+            900
+          ]
+        }
+      },
+      "flame": {
+        "describe": "a candle or torch flame",
+        "pivot": "bottom",
+        "mode": "cover",
+        "rest": {
+          "kind": "flicker",
+          "amount": [
+            0.1,
+            0.14
+          ],
+          "periodMs": [
+            2400,
+            2800
+          ]
+        },
+        "emits": "lit"
+      },
+      "light": {
+        "describe": "a lit window or glowing paper panel of a lantern or lamp, or glowing fireflies",
+        "pivot": "center",
+        "mode": "cover",
+        "phases": [
+          "dusk",
+          "night"
+        ],
+        "rest": {
+          "kind": "glow",
+          "amount": [
+            0.18,
+            0.35
+          ],
+          "periodMs": [
+            2600,
+            2600
+          ]
+        },
+        "emits": "lit"
+      },
+      "water": {
+        "describe": "the surface of still water in a basin, bowl or bucket, or a thin stream of falling water",
+        "pivot": "center",
+        "mode": "cover",
+        "rest": {
+          "kind": "shimmer",
+          "amount": [
+            0.06,
+            0.08
+          ],
+          "periodMs": [
+            3200,
+            3600
+          ]
+        }
+      },
+      "blade": {
+        "describe": "blades that turn round a hub: a pinwheel, a windmill, a water wheel",
+        "pivot": "center",
+        "rest": {
+          "kind": "spin",
+          "amount": [
+            60,
+            80
+          ]
+        }
+      },
+      "loose": {
+        "describe": "a small loose thing that rattles or hops when the prop is used: a charm on a shelf, a lid, the slats of a coin box",
+        "pivot": "bottom",
+        "mode": "cover",
+        "lag": 0,
+        "use": {
+          "kind": "hop",
+          "amount": [
+            1.2,
+            1.6
+          ],
+          "durationMs": [
+            260,
+            340
+          ]
+        }
+      },
+      "lever": {
+        "describe": "a part that swings on a hinge or joint when used: a raised paw, a drumstick, a tipping bamboo tube, a hat",
+        "pivot": "contact",
+        "use": {
+          "kind": "swing",
+          "amount": [
+            5,
+            8
+          ],
+          "periodMs": [
+            450,
+            600
+          ],
+          "durationMs": [
+            1100,
+            1500
+          ]
+        }
+      },
+      "wheel": {
+        "describe": "a round wheel of a cart",
+        "pivot": "center",
+        "mode": "cover",
+        "use": {
+          "kind": "swing",
+          "amount": [
+            7,
+            9
+          ],
+          "periodMs": [
+            1000,
+            1200
+          ],
+          "durationMs": [
+            1600,
+            2000
+          ]
+        }
+      },
+      "awning": {
+        "describe": "the scalloped hem of a cloth awning",
+        "pivot": "top",
+        "mode": "cover",
+        "rest": {
+          "kind": "stretch",
+          "amount": [
+            0.02,
+            0.03
+          ],
+          "periodMs": [
+            2800,
+            3200
+          ]
+        }
+      },
+      "chime": {
+        "describe": "a glass wind chime (fūrin) hanging from a beam, with a paper strip under it",
+        "pivot": "contact-top",
+        "lag": 100,
+        "rest": {
+          "kind": "flutter",
+          "amount": [
+            1.2,
+            1.4
+          ],
+          "periodMs": [
+            2100,
+            2500
+          ]
+        },
+        "use": {
+          "kind": "swing",
+          "amount": [
+            3,
+            3
+          ],
+          "periodMs": [
+            600,
+            600
+          ],
+          "durationMs": [
+            1600,
+            1600
+          ]
+        },
+        "gust": {
+          "kind": "swing",
+          "amount": [
+            2.5,
+            2.5
+          ],
+          "periodMs": [
+            550,
+            550
+          ],
+          "durationMs": [
+            1400,
+            1400
+          ]
+        }
+      },
+      "bell": {
+        "describe": "a small metal bell that hangs indoors from a bar on a short cord: it is still until it is rung",
+        "pivot": "contact-top",
+        "lag": 90,
+        "use": {
+          "kind": "swing",
+          "amount": [
+            3,
+            5
+          ],
+          "periodMs": [
+            500,
+            700
+          ],
+          "durationMs": [
+            1400,
+            1800
+          ]
+        }
+      },
+      "fan": {
+        "describe": "an open folding dancing fan held up on a thin stand indoors: it tilts when a dancer uses it",
+        "pivot": "contact-bottom",
+        "use": {
+          "kind": "swing",
+          "amount": [
+            4,
+            6
+          ],
+          "periodMs": [
+            600,
+            800
+          ],
+          "durationMs": [
+            1500,
+            2000
+          ]
+        }
+      }
+    },
+    "lights": {
+      "match": "lantern|lamp|vending|sign|stall",
+      "lit": {
+        "minValue": 0.9,
+        "hue": [
+          35,
+          75
+        ],
+        "minSat": 0.25,
+        "core": {
+          "maxSat": 0.35,
+          "minValue": 0.95
+        }
+      },
+      "body": {
+        "minValue": 0.72
+      },
+      "open": 1,
+      "minArea": 8,
+      "minThick": 4,
+      "minShare": 0.15
+    },
+    "wind": {
+      "materials": [
+        "paper",
+        "chime",
+        "streamer",
+        "hanging",
+        "lantern",
+        "stem",
+        "canopy",
+        "blade",
+        "awning"
+      ]
+    }
   }
 }

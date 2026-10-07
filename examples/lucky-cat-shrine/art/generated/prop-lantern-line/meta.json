@@ -1,0 +1,577 @@
+{
+  "target": "prop-lantern-line",
+  "compose": "split",
+  "kind": "furniture",
+  "game": "shrine-matsuri-props",
+  "warnings": [
+    "split plate: weak registration (overlap 0.64); the edit may have moved or reshaped the base.",
+    "split rebuild: 1.85% of the base differs by more than 24 (max 244); a piece may overlap another."
+  ],
+  "assets": {
+    "plate": {
+      "name": "plate",
+      "status": "pending",
+      "width": 407,
+      "height": 408,
+      "content": {
+        "x": 0,
+        "y": 76,
+        "width": 407,
+        "height": 256
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8137254901960784
+      },
+      "part": {
+        "base": "matsuri-tall/lantern-line",
+        "baseWidth": 513,
+        "baseHeight": 256,
+        "x": 53,
+        "y": -76,
+        "joint": {
+          "x": 203.5,
+          "y": 204
+        },
+        "z": 0,
+        "role": "plate"
+      },
+      "references": [
+        {
+          "n": 1,
+          "id": "matsuri-tall/lantern-line",
+          "path": "art/generated/prop-lantern-line/base-plain.png",
+          "role": "input",
+          "source": "edit",
+          "sha256": "dbd31d49947f7d39"
+        },
+        {
+          "n": 2,
+          "path": "docs/references/style-anchor.png",
+          "role": "style",
+          "source": "anchor",
+          "sha256": "78df61fecaa81145"
+        }
+      ],
+      "registration": {
+        "iou": 0.636,
+        "scale": 1.9783,
+        "coverage": 0
+      },
+      "note": "Lantern pole fix: masks, pivots and plate re-cut; approved per the user"
+    },
+    "center-red-lantern": {
+      "name": "center-red-lantern",
+      "status": "pending",
+      "width": 79,
+      "height": 79,
+      "content": {
+        "x": 6,
+        "y": 0,
+        "width": 67,
+        "height": 79
+      },
+      "anchor": {
+        "x": 0.4873417721518987,
+        "y": 2.329113924050633
+      },
+      "part": {
+        "base": "matsuri-tall/lantern-line",
+        "baseWidth": 513,
+        "baseHeight": 256,
+        "x": 218,
+        "y": 72,
+        "joint": {
+          "x": 39,
+          "y": -1
+        },
+        "z": 5,
+        "role": "piece",
+        "mode": "detach",
+        "rig": {
+          "material": "lantern",
+          "rest": {
+            "kind": "swing",
+            "amount": [
+              0.8,
+              1.3
+            ],
+            "periodMs": [
+              3000,
+              4200
+            ]
+          },
+          "use": {
+            "kind": "swing",
+            "amount": [
+              2.5,
+              4.5
+            ],
+            "periodMs": [
+              600,
+              900
+            ],
+            "durationMs": [
+              1600,
+              2400
+            ]
+          },
+          "gust": {
+            "kind": "swing",
+            "amount": [
+              2,
+              3
+            ],
+            "periodMs": [
+              500,
+              700
+            ],
+            "durationMs": [
+              1200,
+              1500
+            ]
+          },
+          "lag": 120,
+          "stagger": 100
+        }
+      },
+      "lights": [
+        {
+          "x": 39.3,
+          "y": 38.19,
+          "radius": 30.87,
+          "color": "#f1462f",
+          "intensity": 0.94,
+          "piece": "center-red-lantern",
+          "from": "base"
+        }
+      ],
+      "note": "Lantern pole fix: masks, pivots and plate re-cut; approved per the user"
+    },
+    "left-cream-lantern": {
+      "name": "left-cream-lantern",
+      "status": "pending",
+      "width": 82,
+      "height": 82,
+      "content": {
+        "x": 7,
+        "y": 0,
+        "width": 68,
+        "height": 82
+      },
+      "anchor": {
+        "x": 1.2378048780487805,
+        "y": 2.317073170731707
+      },
+      "part": {
+        "base": "matsuri-tall/lantern-line",
+        "baseWidth": 513,
+        "baseHeight": 256,
+        "x": 155,
+        "y": 66,
+        "joint": {
+          "x": 42,
+          "y": 0
+        },
+        "z": 2,
+        "role": "piece",
+        "mode": "detach",
+        "rig": {
+          "material": "lantern",
+          "rest": {
+            "kind": "swing",
+            "amount": [
+              0.8,
+              1.3
+            ],
+            "periodMs": [
+              3000,
+              4200
+            ]
+          },
+          "use": {
+            "kind": "swing",
+            "amount": [
+              2.5,
+              4.5
+            ],
+            "periodMs": [
+              600,
+              900
+            ],
+            "durationMs": [
+              1600,
+              2400
+            ]
+          },
+          "gust": {
+            "kind": "swing",
+            "amount": [
+              2,
+              3
+            ],
+            "periodMs": [
+              500,
+              700
+            ],
+            "durationMs": [
+              1200,
+              1500
+            ]
+          },
+          "lag": 120,
+          "stagger": 100
+        }
+      },
+      "lights": [
+        {
+          "x": 41.23,
+          "y": 39.44,
+          "radius": 31.31,
+          "color": "#f9cc93",
+          "intensity": 0.97,
+          "piece": "left-cream-lantern",
+          "from": "base"
+        }
+      ],
+      "note": "Lantern pole fix: masks, pivots and plate re-cut; approved per the user"
+    },
+    "right-cream-lantern": {
+      "name": "right-cream-lantern",
+      "status": "pending",
+      "width": 83,
+      "height": 82,
+      "content": {
+        "x": 8,
+        "y": 0,
+        "width": 67,
+        "height": 82
+      },
+      "anchor": {
+        "x": -0.2469879518072289,
+        "y": 2.317073170731707
+      },
+      "part": {
+        "base": "matsuri-tall/lantern-line",
+        "baseWidth": 513,
+        "baseHeight": 256,
+        "x": 277,
+        "y": 66,
+        "joint": {
+          "x": 41,
+          "y": -1
+        },
+        "z": 1,
+        "role": "piece",
+        "mode": "detach",
+        "rig": {
+          "material": "lantern",
+          "rest": {
+            "kind": "swing",
+            "amount": [
+              0.8,
+              1.3
+            ],
+            "periodMs": [
+              3000,
+              4200
+            ]
+          },
+          "use": {
+            "kind": "swing",
+            "amount": [
+              2.5,
+              4.5
+            ],
+            "periodMs": [
+              600,
+              900
+            ],
+            "durationMs": [
+              1600,
+              2400
+            ]
+          },
+          "gust": {
+            "kind": "swing",
+            "amount": [
+              2,
+              3
+            ],
+            "periodMs": [
+              500,
+              700
+            ],
+            "durationMs": [
+              1200,
+              1500
+            ]
+          },
+          "lag": 120,
+          "stagger": 100
+        }
+      },
+      "lights": [
+        {
+          "x": 40.84,
+          "y": 39.53,
+          "radius": 30.84,
+          "color": "#f9ce96",
+          "intensity": 0.98,
+          "piece": "right-cream-lantern",
+          "from": "base"
+        }
+      ],
+      "note": "Lantern pole fix: masks, pivots and plate re-cut; approved per the user"
+    },
+    "right-red-lantern": {
+      "name": "right-red-lantern",
+      "status": "pending",
+      "width": 84,
+      "height": 84,
+      "content": {
+        "x": 8,
+        "y": 0,
+        "width": 68,
+        "height": 84
+      },
+      "anchor": {
+        "x": -0.9107142857142857,
+        "y": 2.4285714285714284
+      },
+      "part": {
+        "base": "matsuri-tall/lantern-line",
+        "baseWidth": 513,
+        "baseHeight": 256,
+        "x": 333,
+        "y": 52,
+        "joint": {
+          "x": 40,
+          "y": -1
+        },
+        "z": 3,
+        "role": "piece",
+        "mode": "fill",
+        "rig": {
+          "material": "lantern",
+          "rest": {
+            "kind": "swing",
+            "amount": [
+              0.8,
+              1.3
+            ],
+            "periodMs": [
+              3000,
+              4200
+            ]
+          },
+          "use": {
+            "kind": "swing",
+            "amount": [
+              2.5,
+              4.5
+            ],
+            "periodMs": [
+              600,
+              900
+            ],
+            "durationMs": [
+              1600,
+              2400
+            ]
+          },
+          "gust": {
+            "kind": "swing",
+            "amount": [
+              2,
+              3
+            ],
+            "periodMs": [
+              500,
+              700
+            ],
+            "durationMs": [
+              1200,
+              1500
+            ]
+          },
+          "lag": 120,
+          "stagger": 100
+        }
+      },
+      "lights": [
+        {
+          "x": 42.05,
+          "y": 43.62,
+          "radius": 30.23,
+          "color": "#f1472e",
+          "intensity": 0.95,
+          "piece": "right-red-lantern",
+          "from": "base"
+        }
+      ],
+      "note": "Lantern pole fix: masks, pivots and plate re-cut; approved per the user"
+    },
+    "left-red-lantern": {
+      "name": "left-red-lantern",
+      "status": "pending",
+      "width": 85,
+      "height": 84,
+      "content": {
+        "x": 9,
+        "y": 0,
+        "width": 67,
+        "height": 84
+      },
+      "anchor": {
+        "x": 1.8764705882352941,
+        "y": 2.4285714285714284
+      },
+      "part": {
+        "base": "matsuri-tall/lantern-line",
+        "baseWidth": 513,
+        "baseHeight": 256,
+        "x": 97,
+        "y": 52,
+        "joint": {
+          "x": 44,
+          "y": 0
+        },
+        "z": 4,
+        "role": "piece",
+        "mode": "fill",
+        "rig": {
+          "material": "lantern",
+          "rest": {
+            "kind": "swing",
+            "amount": [
+              0.8,
+              1.3
+            ],
+            "periodMs": [
+              3000,
+              4200
+            ]
+          },
+          "use": {
+            "kind": "swing",
+            "amount": [
+              2.5,
+              4.5
+            ],
+            "periodMs": [
+              600,
+              900
+            ],
+            "durationMs": [
+              1600,
+              2400
+            ]
+          },
+          "gust": {
+            "kind": "swing",
+            "amount": [
+              2,
+              3
+            ],
+            "periodMs": [
+              500,
+              700
+            ],
+            "durationMs": [
+              1200,
+              1500
+            ]
+          },
+          "lag": 120,
+          "stagger": 100
+        }
+      },
+      "lights": [
+        {
+          "x": 42,
+          "y": 43.62,
+          "radius": 30.02,
+          "color": "#f0452e",
+          "intensity": 0.94,
+          "piece": "left-red-lantern",
+          "from": "base"
+        }
+      ],
+      "note": "Lantern pole fix: masks, pivots and plate re-cut; approved per the user"
+    }
+  },
+  "lights": [
+    {
+      "x": 257.3,
+      "y": 110.19,
+      "radius": 30.87,
+      "color": "#f1462f",
+      "intensity": 0.94,
+      "piece": "center-red-lantern",
+      "from": "base"
+    },
+    {
+      "x": 139,
+      "y": 95.62,
+      "radius": 30.02,
+      "color": "#f0452e",
+      "intensity": 0.94,
+      "piece": "left-red-lantern",
+      "from": "base"
+    },
+    {
+      "x": 375.05,
+      "y": 95.62,
+      "radius": 30.23,
+      "color": "#f1472e",
+      "intensity": 0.95,
+      "piece": "right-red-lantern",
+      "from": "base"
+    },
+    {
+      "x": 196.23,
+      "y": 105.44,
+      "radius": 31.31,
+      "color": "#f9cc93",
+      "intensity": 0.97,
+      "piece": "left-cream-lantern",
+      "from": "base"
+    },
+    {
+      "x": 317.84,
+      "y": 105.53,
+      "radius": 30.84,
+      "color": "#f9ce96",
+      "intensity": 0.98,
+      "piece": "right-cream-lantern",
+      "from": "base"
+    }
+  ],
+  "prompt": "## plate\nTASK:\nRedraw the attached image EXACTLY, with one change: remove all five paper lanterns, so only the two wooden posts and the whole rope between them are left. Paint the posts and the rope where the lanterns covered them.\n\nThe attached image is lantern line.\n\nRULES:\n- Keep everything else exactly the same: shape, size, position, colours, shading and camera. Do not move, resize, rotate or redraw anything else.\n- Where the removed things were, paint what was behind them. Continue the art around them in the same style: a door, a wall, a trunk, a beam. Nothing new may appear.\n- Keep the solid flat background #FF00FF.\n- No text, no labels, no characters, no extra props.\n\nSTYLE:\nSTYLE LOCK: Cozy cat mobile game in the style of Meow Tower (Hyperbeard).\n\nPRIMARY GOAL: Warm, cheerful, cute sprites for a phone game with a flat top-down map where every object stands up and faces the camera. Everything must look like one illustrator painted it with flat colour blocks and a soft brush, with no pen lines.\n\nCORE AESTHETIC: Lineless, softly shaded colour blocks. Chunky, pillowy, slightly bulging shapes with big rounded corners, like soft toys or cushions. Warm, sunny, cheerful colour: soft but saturated, never neon, never muted or grey. Cats are white with a few small grey or orange patches, a wide head, small rounded ears set wide, tiny dark dot eyes set wide apart, a tiny mouth, no outline, no tail.\n\nEDGES: NO OUTLINES. No dark contour line around any shape. Shapes are separated by colour alone. Where a shape meets a similar colour, it has a slightly darker band of its own hue along its lower or outer edge (a wall with a darker apricot base band, a roof with a darker red lip, a window with a darker wood frame). Edges are soft and very slightly brushy, not hard vector edges. Inner detail is a darker same-hue shape, never a dark line. The only dark colour is tiny facial features.\n\nCOLOR: Warm cheerful palette measured from Meow Tower. Main fills: apricot (#F7BB5C) with a darker band (#E69B4B) and wood frames (#BF7640), butter yellow (#FFDA50, #FDE284), pale butter (#FFF7AC), tomato red (#DB4032) with a darker band (#BC352D), fresh lawn (#A7B845), leaf green (#729F3E), deep leaf (#388344), white (#FFFFFE). Accents: orange (#FE962B), soft blue (#6F8EC1). Sky only: blue to teal (#0591C2 to #81DFCF). No pink, no magenta, no purple, no grey or muddy colour on large areas, no neon.\n\nSHADING: Soft cel shading, not flat. Every form has a darker same-hue band on its lower or shadow side (a bulging floor slab is lighter at the top and darker at the bottom lip) and a gentle lighter tone along its top edge or rounded top. Soft cast shadows sit under roof overhangs, under window sills and under objects on the ground. Subtle gradients are allowed: a soft falloff inside a shaded band, a gentle top-to-bottom gradient on small rounded props, and a small soft highlight dot on round props. On large surfaces the shading is gentle: the lightness inside one colour stays within about 0.03 to 0.07 (HSL L). Small props shade more strongly, within about 0.15 to 0.25. A faint paper grain may sit over the painted art. Never harsh, glossy, metallic or airbrushed.\n\nVIEW AND PROPORTION: Front-facing oblique, as in a flat top-down game map. The camera looks at the front of every object from slightly above, so each object shows its full front face and a thin sliver of its top surface. The front face is drawn straight on, square to the camera, with horizontal bottom and top edges. Objects stand on their flat bottom edge. No isometric view, no 2:1 diamond, no three-quarter turn, no side faces, no vanishing points.\n\nDETAIL LEVEL: Readable at very small sizes. Rely on the chunky silhouette and two or three flat colours plus one darker band. No tiny patterns, no realistic materials, no text.\n\nCOMPOSITION: One asset category per image. Every asset isolated with generous crop-safe spacing, no scene, no ground, no shadow, no props that were not asked for.\n\nPALETTE:\nPaper White #FFFFFF (background), Apricot #F7BB5C (fill), Apricot Band #E69B4B (shade), Wood Frame #BF7640 (shade), Butter #FFDA50 (fill), Light Butter #FDE284 (fill), Pale Butter #FFF7AC (fill), Tomato #DB4032 (fill), Tomato Band #BC352D (shade), Orange #FE962B (fill), Lawn #A7B845 (fill), Leaf #729F3E (fill), Deep Leaf #388344 (shade), White #FFFFFE (fill), White Edge #E6E1DA (shade), Soft Blue #6F8EC1 (fill), Feature Dark #333333 (shade)\n\nSHAPE LANGUAGE:\nchunky, pillowy, slightly bulging, big rounded corners, arched windows and doors, round bushes made of a few bulges, white cats with small patches and no tail, front-facing with a sliver of top, flat bottom edge\n\nRENDERING RULES:\n- no outlines: flat colour blocks separated by colour alone\n- soft cel shading: a darker same-hue band on the lower or shadow side of every form\n- a gentle lighter tone on top edges and rounded tops\n- soft cast shadows under overhangs, sills and objects\n- subtle gradients allowed inside shaded bands and on small round props\n- soft, very slightly brushy edges\n- warm cheerful palette: apricot, butter, tomato, leaf green, white\n- soft but saturated colour, never neon, never muted\n- dark colour only for tiny eyes and mouths\n- chunky pillowy shapes with big rounded corners\n- front-facing oblique view: front face plus a sliver of the top\n- objects stand on a flat bottom edge\n- only small soft highlights, never glossy specular dots\n- a faint paper grain at most; none on tint-ready white art\n- no text or labels\n- crisp high-resolution raster\n- readable at small mobile sizes\n- isolated presentation with large spacing\n\nFINAL CHECK:\nThe same lantern line in the same place, with all five paper lanterns, so only the two wooden posts and the whole rope between them are left. Paint the posts and the rope where the lanterns covered them removed and nothing else changed.\n\nADDITIONAL DETAILS:\nArt brief: follow docs/specs/art-bible.md (LOCKED Meow Tower style) and match docs/references/style-anchor.png. Lineless, soft cel shading, warm cheerful palette, chunky pillowy shapes. Keep the approved sprite exactly as it is. Outdoors in the matsuri grounds (docs/specs/matsuri-grounds.md): lanterns swing and glow, banners and cloth flutter in the one wind field; wood, earth and the pool rim never move.",
+  "promptVersion": "v1",
+  "references": [
+    {
+      "n": 1,
+      "id": "matsuri-tall/lantern-line",
+      "path": "art/generated/prop-lantern-line/base-plain.png",
+      "role": "input",
+      "source": "edit",
+      "sha256": "dbd31d49947f7d39"
+    },
+    {
+      "n": 2,
+      "path": "docs/references/style-anchor.png",
+      "role": "style",
+      "source": "anchor",
+      "sha256": "78df61fecaa81145"
+    }
+  ],
+  "generatedAt": "2026-09-30T07:48:51.754Z",
+  "provider": "codex",
+  "plan": {
+    "status": "approved",
+    "note": "Hand plan: lantern masks, hooks and chains",
+    "reviewedAt": "2026-09-30T09:13:03.670Z"
+  }
+}

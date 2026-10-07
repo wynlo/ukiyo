@@ -1,0 +1,57 @@
+{
+  "target": "prop-tsukubai",
+  "compose": "split",
+  "kind": "furniture",
+  "game": "zen-garden-props",
+  "warnings": [],
+  "assets": {
+    "falling-water": {
+      "name": "falling-water",
+      "status": "pending",
+      "width": 72,
+      "height": 71,
+      "content": {
+        "x": 16,
+        "y": 0,
+        "width": 40,
+        "height": 71
+      },
+      "anchor": {
+        "x": 0.125,
+        "y": 2.816901408450704
+      },
+      "part": {
+        "base": "garden-tall/tsukubai",
+        "baseWidth": 512,
+        "baseHeight": 256,
+        "x": 247,
+        "y": 56,
+        "joint": {
+          "x": 36,
+          "y": 42
+        },
+        "z": 1,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "water",
+          "rest": {
+            "kind": "shimmer",
+            "amount": [
+              0.06,
+              0.08
+            ],
+            "periodMs": [
+              3200,
+              3600
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      }
+    }
+  },
+  "prompt": "(no generation: the pieces are cut from the base)",
+  "promptVersion": "v1"
+}

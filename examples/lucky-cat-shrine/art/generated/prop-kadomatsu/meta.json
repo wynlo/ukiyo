@@ -1,0 +1,156 @@
+{
+  "target": "prop-kadomatsu",
+  "compose": "split",
+  "kind": "furniture",
+  "game": "shrine-props",
+  "warnings": [],
+  "assets": {
+    "plate": {
+      "name": "plate",
+      "status": "pending",
+      "width": 218,
+      "height": 218,
+      "content": {
+        "x": 36,
+        "y": 0,
+        "width": 146,
+        "height": 218
+      },
+      "anchor": {
+        "x": 0.4610091743119266,
+        "y": 1
+      },
+      "part": {
+        "base": "shrine-feat-tall-b/kadomatsu",
+        "baseWidth": 437,
+        "baseHeight": 218,
+        "x": 118,
+        "y": 0,
+        "joint": {
+          "x": 109,
+          "y": 109
+        },
+        "z": 0,
+        "role": "plate"
+      }
+    },
+    "pine-sprig": {
+      "name": "pine-sprig",
+      "status": "pending",
+      "width": 73,
+      "height": 72,
+      "content": {
+        "x": 15,
+        "y": 0,
+        "width": 43,
+        "height": 72
+      },
+      "anchor": {
+        "x": 1.4315068493150684,
+        "y": 1.8888888888888888
+      },
+      "part": {
+        "base": "shrine-feat-tall-b/kadomatsu",
+        "baseWidth": 437,
+        "baseHeight": 218,
+        "x": 114,
+        "y": 82,
+        "joint": {
+          "x": 52,
+          "y": 58
+        },
+        "z": -1,
+        "role": "piece",
+        "mode": "detach",
+        "rig": {
+          "material": "stem",
+          "rest": {
+            "kind": "sway",
+            "amount": [
+              1,
+              1.5
+            ],
+            "periodMs": [
+              2600,
+              3600
+            ]
+          },
+          "use": {
+            "kind": "shake",
+            "amount": [
+              1.3,
+              1.5
+            ],
+            "durationMs": [
+              700,
+              900
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      }
+    },
+    "plum": {
+      "name": "plum",
+      "status": "pending",
+      "width": 47,
+      "height": 47,
+      "content": {
+        "x": 1,
+        "y": 0,
+        "width": 45,
+        "height": 47
+      },
+      "anchor": {
+        "x": -0.925531914893617,
+        "y": 3.595744680851064
+      },
+      "part": {
+        "base": "shrine-feat-tall-b/kadomatsu",
+        "baseWidth": 437,
+        "baseHeight": 218,
+        "x": 262,
+        "y": 49,
+        "joint": {
+          "x": 8,
+          "y": 41
+        },
+        "z": 2,
+        "role": "piece",
+        "mode": "detach",
+        "rig": {
+          "material": "stem",
+          "rest": {
+            "kind": "sway",
+            "amount": [
+              1,
+              1.5
+            ],
+            "periodMs": [
+              2600,
+              3600
+            ]
+          },
+          "use": {
+            "kind": "shake",
+            "amount": [
+              1.3,
+              1.5
+            ],
+            "durationMs": [
+              700,
+              900
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      }
+    }
+  },
+  "plan": {
+    "status": "approved",
+    "reviewedAt": "2026-09-28T09:03:38.348Z"
+  }
+}

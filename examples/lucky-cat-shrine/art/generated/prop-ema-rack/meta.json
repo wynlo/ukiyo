@@ -7,7 +7,7 @@
   "assets": {
     "plate": {
       "name": "plate",
-      "status": "approved",
+      "status": "pending",
       "width": 295,
       "height": 296,
       "content": {
@@ -32,32 +32,31 @@
         },
         "z": 0,
         "role": "plate"
-      },
-      "reviewedAt": "2026-09-28T09:03:38.367Z"
+      }
     },
     "plaque-1": {
       "name": "plaque-1",
-      "status": "approved",
-      "width": 62,
-      "height": 62,
+      "status": "pending",
+      "width": 64,
+      "height": 63,
       "content": {
         "x": 3,
         "y": 0,
-        "width": 56,
-        "height": 62
+        "width": 58,
+        "height": 63
       },
       "anchor": {
-        "x": 1.5080645161290323,
-        "y": 2.6451612903225805
+        "x": 1.4453125,
+        "y": 2.6031746031746033
       },
       "part": {
         "base": "shrine-feat-tall/ema-rack",
         "baseWidth": 513,
         "baseHeight": 256,
-        "x": 163,
+        "x": 164,
         "y": 92,
         "joint": {
-          "x": 29,
+          "x": 28,
           "y": 8
         },
         "z": 1,
@@ -101,32 +100,31 @@
           "lag": 120,
           "stagger": 100
         }
-      },
-      "reviewedAt": "2026-09-28T09:03:38.369Z"
+      }
     },
     "plaque-2": {
       "name": "plaque-2",
-      "status": "approved",
-      "width": 62,
-      "height": 62,
+      "status": "pending",
+      "width": 64,
+      "height": 63,
       "content": {
         "x": 2,
         "y": 0,
-        "width": 58,
-        "height": 62
+        "width": 60,
+        "height": 63
       },
       "anchor": {
-        "x": 0.5080645161290323,
-        "y": 2.6451612903225805
+        "x": 0.5078125,
+        "y": 2.6031746031746033
       },
       "part": {
         "base": "shrine-feat-tall/ema-rack",
         "baseWidth": 513,
         "baseHeight": 256,
-        "x": 225,
+        "x": 224,
         "y": 92,
         "joint": {
-          "x": 30,
+          "x": 31,
           "y": 8
         },
         "z": 2,
@@ -170,32 +168,31 @@
           "lag": 120,
           "stagger": 100
         }
-      },
-      "reviewedAt": "2026-09-28T09:03:38.371Z"
+      }
     },
     "plaque-3": {
       "name": "plaque-3",
-      "status": "approved",
-      "width": 62,
-      "height": 62,
+      "status": "pending",
+      "width": 64,
+      "height": 63,
       "content": {
         "x": 2,
         "y": 0,
-        "width": 58,
-        "height": 62
+        "width": 60,
+        "height": 63
       },
       "anchor": {
-        "x": -0.47580645161290325,
-        "y": 2.6451612903225805
+        "x": -0.4453125,
+        "y": 2.6031746031746033
       },
       "part": {
         "base": "shrine-feat-tall/ema-rack",
         "baseWidth": 513,
         "baseHeight": 256,
-        "x": 286,
+        "x": 285,
         "y": 92,
         "joint": {
-          "x": 30,
+          "x": 31,
           "y": 8
         },
         "z": 3,
@@ -239,33 +236,32 @@
           "lag": 120,
           "stagger": 100
         }
-      },
-      "reviewedAt": "2026-09-28T09:03:38.374Z"
+      }
     },
     "plaque-4": {
       "name": "plaque-4",
-      "status": "approved",
-      "width": 64,
-      "height": 63,
+      "status": "pending",
+      "width": 70,
+      "height": 70,
       "content": {
-        "x": 2,
+        "x": 6,
         "y": 0,
-        "width": 60,
-        "height": 63
+        "width": 58,
+        "height": 70
       },
       "anchor": {
-        "x": 1.5078125,
-        "y": 1.6031746031746033
+        "x": 1.3642857142857143,
+        "y": 1.5
       },
       "part": {
         "base": "shrine-feat-tall/ema-rack",
         "baseWidth": 513,
         "baseHeight": 256,
-        "x": 160,
-        "y": 155,
+        "x": 161,
+        "y": 151,
         "joint": {
-          "x": 32,
-          "y": 8
+          "x": 31,
+          "y": 12
         },
         "z": 4,
         "role": "piece",
@@ -308,33 +304,32 @@
           "lag": 120,
           "stagger": 100
         }
-      },
-      "reviewedAt": "2026-09-28T09:03:38.376Z"
+      }
     },
     "plaque-5": {
       "name": "plaque-5",
-      "status": "approved",
-      "width": 63,
-      "height": 63,
+      "status": "pending",
+      "width": 69,
+      "height": 68,
       "content": {
-        "x": 3,
+        "x": 5,
         "y": 0,
-        "width": 57,
-        "height": 63
+        "width": 59,
+        "height": 68
       },
       "anchor": {
         "x": 0.5,
-        "y": 1.6031746031746033
+        "y": 1.5147058823529411
       },
       "part": {
         "base": "shrine-feat-tall/ema-rack",
         "baseWidth": 513,
         "baseHeight": 256,
-        "x": 225,
-        "y": 155,
+        "x": 222,
+        "y": 153,
         "joint": {
-          "x": 30,
-          "y": 8
+          "x": 33,
+          "y": 10
         },
         "z": 5,
         "role": "piece",
@@ -377,33 +372,32 @@
           "lag": 120,
           "stagger": 100
         }
-      },
-      "reviewedAt": "2026-09-28T09:03:38.378Z"
+      }
     },
     "plaque-6": {
       "name": "plaque-6",
-      "status": "approved",
-      "width": 63,
-      "height": 63,
+      "status": "pending",
+      "width": 69,
+      "height": 68,
       "content": {
-        "x": 3,
+        "x": 5,
         "y": 0,
-        "width": 57,
-        "height": 63
+        "width": 59,
+        "height": 68
       },
       "anchor": {
-        "x": -0.4523809523809524,
-        "y": 1.6031746031746033
+        "x": -0.3695652173913043,
+        "y": 1.5147058823529411
       },
       "part": {
         "base": "shrine-feat-tall/ema-rack",
         "baseWidth": 513,
         "baseHeight": 256,
-        "x": 285,
-        "y": 155,
+        "x": 282,
+        "y": 153,
         "joint": {
-          "x": 31,
-          "y": 8
+          "x": 34,
+          "y": 10
         },
         "z": 6,
         "role": "piece",
@@ -446,8 +440,7 @@
           "lag": 120,
           "stagger": 100
         }
-      },
-      "reviewedAt": "2026-09-28T09:03:38.381Z"
+      }
     }
   },
   "plan": {

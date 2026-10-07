@@ -1,0 +1,205 @@
+{
+  "target": "prop-sign-tower",
+  "compose": "split",
+  "kind": "furniture",
+  "game": "neon-alley-props",
+  "warnings": [
+    "split piece blue-light: material \"light\" emits light, but no lit region was found"
+  ],
+  "assets": {
+    "blue-light": {
+      "name": "blue-light",
+      "status": "pending",
+      "width": 64,
+      "height": 64,
+      "content": {
+        "x": 0,
+        "y": 3,
+        "width": 64,
+        "height": 58
+      },
+      "anchor": {
+        "x": 0.5078125,
+        "y": 3.46875
+      },
+      "part": {
+        "base": "street-tall/sign-tower",
+        "baseWidth": 513,
+        "baseHeight": 256,
+        "x": 224,
+        "y": 34,
+        "joint": {
+          "x": 32,
+          "y": 32
+        },
+        "z": 3,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "light",
+          "rest": {
+            "kind": "glow",
+            "amount": [
+              0.18,
+              0.35
+            ],
+            "periodMs": [
+              2600,
+              2600
+            ]
+          },
+          "lag": 0,
+          "stagger": 100,
+          "phases": [
+            "dusk",
+            "night"
+          ]
+        }
+      }
+    },
+    "amber-light": {
+      "name": "amber-light",
+      "status": "pending",
+      "width": 63,
+      "height": 64,
+      "content": {
+        "x": 0,
+        "y": 2,
+        "width": 63,
+        "height": 60
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.578125
+      },
+      "part": {
+        "base": "street-tall/sign-tower",
+        "baseWidth": 513,
+        "baseHeight": 256,
+        "x": 225,
+        "y": 155,
+        "joint": {
+          "x": 31,
+          "y": 32
+        },
+        "z": 2,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "light",
+          "rest": {
+            "kind": "glow",
+            "amount": [
+              0.18,
+              0.35
+            ],
+            "periodMs": [
+              2600,
+              2600
+            ]
+          },
+          "lag": 0,
+          "stagger": 100,
+          "phases": [
+            "dusk",
+            "night"
+          ]
+        }
+      },
+      "lights": [
+        {
+          "x": 31.41,
+          "y": 32.61,
+          "radius": 30.61,
+          "color": "#fbc96d",
+          "intensity": 0.99,
+          "piece": "amber-light",
+          "from": "base"
+        }
+      ]
+    },
+    "coral-light": {
+      "name": "coral-light",
+      "status": "pending",
+      "width": 67,
+      "height": 67,
+      "content": {
+        "x": 0,
+        "y": 1,
+        "width": 67,
+        "height": 65
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 2.4029850746268657
+      },
+      "part": {
+        "base": "street-tall/sign-tower",
+        "baseWidth": 513,
+        "baseHeight": 256,
+        "x": 223,
+        "y": 95,
+        "joint": {
+          "x": 33,
+          "y": 32
+        },
+        "z": 1,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "light",
+          "rest": {
+            "kind": "glow",
+            "amount": [
+              0.18,
+              0.35
+            ],
+            "periodMs": [
+              2600,
+              2600
+            ]
+          },
+          "lag": 0,
+          "stagger": 100,
+          "phases": [
+            "dusk",
+            "night"
+          ]
+        }
+      },
+      "lights": [
+        {
+          "x": 33.26,
+          "y": 37.53,
+          "radius": 13.84,
+          "color": "#fbcdc9",
+          "intensity": 0.99,
+          "piece": "coral-light",
+          "from": "base"
+        }
+      ]
+    }
+  },
+  "prompt": "(no generation: the pieces are cut from the base)",
+  "promptVersion": "v1",
+  "lights": [
+    {
+      "x": 256.41,
+      "y": 187.61,
+      "radius": 30.61,
+      "color": "#fbc96d",
+      "intensity": 0.99,
+      "piece": "amber-light",
+      "from": "base"
+    },
+    {
+      "x": 256.26,
+      "y": 132.53,
+      "radius": 13.84,
+      "color": "#fbcdc9",
+      "intensity": 0.99,
+      "piece": "coral-light",
+      "from": "base"
+    }
+  ]
+}

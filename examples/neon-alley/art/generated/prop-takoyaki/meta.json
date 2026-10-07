@@ -1,0 +1,154 @@
+{
+  "target": "prop-takoyaki",
+  "compose": "split",
+  "kind": "item",
+  "game": "neon-alley-props",
+  "warnings": [],
+  "assets": {
+    "plate": {
+      "name": "plate",
+      "status": "pending",
+      "width": 98,
+      "height": 98,
+      "content": {
+        "x": 0,
+        "y": 0,
+        "width": 98,
+        "height": 98
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "part": {
+        "base": "street-small/takoyaki",
+        "baseWidth": 98,
+        "baseHeight": 98,
+        "x": 0,
+        "y": 0,
+        "joint": {
+          "x": 49,
+          "y": 49
+        },
+        "z": 0,
+        "role": "plate"
+      }
+    },
+    "left-stick": {
+      "name": "left-stick",
+      "status": "pending",
+      "width": 40,
+      "height": 39,
+      "content": {
+        "x": 9,
+        "y": 0,
+        "width": 22,
+        "height": 39
+      },
+      "anchor": {
+        "x": -0.05,
+        "y": 1.2564102564102564
+      },
+      "part": {
+        "base": "street-small/takoyaki",
+        "baseWidth": 98,
+        "baseHeight": 98,
+        "x": 51,
+        "y": 0,
+        "joint": {
+          "x": 20,
+          "y": 33
+        },
+        "z": 1,
+        "role": "piece",
+        "mode": "detach",
+        "rig": {
+          "material": "stem",
+          "rest": {
+            "kind": "sway",
+            "amount": [
+              1,
+              1.5
+            ],
+            "periodMs": [
+              2600,
+              3600
+            ]
+          },
+          "use": {
+            "kind": "shake",
+            "amount": [
+              1.3,
+              1.5
+            ],
+            "durationMs": [
+              700,
+              900
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      }
+    },
+    "right-stick": {
+      "name": "right-stick",
+      "status": "pending",
+      "width": 39,
+      "height": 39,
+      "content": {
+        "x": 9,
+        "y": 0,
+        "width": 21,
+        "height": 39
+      },
+      "anchor": {
+        "x": -0.41025641025641024,
+        "y": 1.1794871794871795
+      },
+      "part": {
+        "base": "street-small/takoyaki",
+        "baseWidth": 98,
+        "baseHeight": 98,
+        "x": 65,
+        "y": 3,
+        "joint": {
+          "x": 15,
+          "y": 34
+        },
+        "z": 2,
+        "role": "piece",
+        "mode": "detach",
+        "rig": {
+          "material": "stem",
+          "rest": {
+            "kind": "sway",
+            "amount": [
+              1,
+              1.5
+            ],
+            "periodMs": [
+              2600,
+              3600
+            ]
+          },
+          "use": {
+            "kind": "shake",
+            "amount": [
+              1.3,
+              1.5
+            ],
+            "durationMs": [
+              700,
+              900
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      }
+    }
+  },
+  "prompt": "(no generation: the pieces are cut from the base)",
+  "promptVersion": "v1"
+}

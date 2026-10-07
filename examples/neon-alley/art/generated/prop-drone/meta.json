@@ -1,0 +1,140 @@
+{
+  "target": "prop-drone",
+  "compose": "split",
+  "kind": "item",
+  "game": "neon-alley-props",
+  "warnings": [
+    "split rebuild: 2.60% of the base differs by more than 24 (max 255); a piece may overlap another."
+  ],
+  "assets": {
+    "plate": {
+      "name": "plate",
+      "status": "pending",
+      "references": [
+        {
+          "n": 1,
+          "id": "street-small/drone",
+          "path": "art/generated/prop-drone/base-plain.png",
+          "role": "input",
+          "source": "edit",
+          "sha256": "863d3fe5b546b153"
+        },
+        {
+          "n": 2,
+          "path": "art/generated/neon-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "f795a5fc3a838618"
+        }
+      ],
+      "registration": {
+        "iou": 0.948,
+        "scale": 2.2206,
+        "coverage": 0
+      },
+      "width": 97,
+      "height": 96,
+      "content": {
+        "x": 2,
+        "y": 0,
+        "width": 93,
+        "height": 96
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "part": {
+        "base": "street-small/drone",
+        "baseWidth": 97,
+        "baseHeight": 96,
+        "x": 0,
+        "y": 0,
+        "joint": {
+          "x": 48.5,
+          "y": 48
+        },
+        "z": 0,
+        "role": "plate"
+      }
+    },
+    "antenna": {
+      "name": "antenna",
+      "status": "pending",
+      "width": 21,
+      "height": 20,
+      "content": {
+        "x": 2,
+        "y": 0,
+        "width": 17,
+        "height": 20
+      },
+      "anchor": {
+        "x": 0.40476190476190477,
+        "y": 1.8
+      },
+      "part": {
+        "base": "street-small/drone",
+        "baseWidth": 97,
+        "baseHeight": 96,
+        "x": 40,
+        "y": 12,
+        "joint": {
+          "x": 11,
+          "y": 16
+        },
+        "z": 1,
+        "role": "piece",
+        "mode": "fill",
+        "rig": {
+          "material": "stem",
+          "rest": {
+            "kind": "sway",
+            "amount": [
+              1,
+              1.5
+            ],
+            "periodMs": [
+              2600,
+              3600
+            ]
+          },
+          "use": {
+            "kind": "shake",
+            "amount": [
+              1.3,
+              1.5
+            ],
+            "durationMs": [
+              700,
+              900
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      }
+    }
+  },
+  "prompt": "## plate\nTASK:\nRedraw the attached image EXACTLY, with one change: remove the antenna. Paint what is behind them.\n\nThe attached image is drone.\n\nRULES:\n- Keep everything else exactly the same: shape, size, position, colours, shading and camera. Do not move, resize, rotate or redraw anything else.\n- Where the removed things were, paint what was behind them. Continue the art around them in the same style: a door, a wall, a trunk, a beam. Nothing new may appear.\n- Keep the solid flat background #00FF00.\n- No text, no labels, no characters, no extra props.\n\nSTYLE:\nSTYLE LOCK: A cosy cyberpunk night market run by cats.\n\nPRIMARY GOAL: Cute, soft sprites for a phone game with a flat top-down street map where every object stands up and faces the camera. The city is a friendly place at night: chunky machines, glowing panels, round cats.\n\nCORE AESTHETIC: Lineless, softly shaded colour blocks, like a cosy kawaii game moved to a neon city. Chunky, pillowy, rounded machines in deep indigo (#3B3F7A) and plum (#6A4A8C), lit by flat glowing panels in cyan, coral and amber. Cats are cream-white with small patches, a wide head, small rounded ears, tiny dark dot eyes, no tail.\n\nEDGES: NO OUTLINES. No dark contour line around any shape. Shapes are separated by colour alone. Where a shape meets a similar colour, it has a darker band of its own hue along its lower edge. Panel detail is a darker same-hue shape, never a line. The only dark colour is tiny eyes.\n\nCOLOR: Bodies in indigo (#3B3F7A) with a darker band (#2A2C5C), plum (#6A4A8C) and steel blue (#7C8DB5). Light panels in neon cyan (#4FE3F0), hot coral (#FF5E7A) and amber (#FFB84D). Cats and cloth in cream (#FFF4E6). Never green: the background is pure #00FF00.\n\nSHADING: Soft cel shading. A darker same-hue band on the lower side of every form, and a soft cyan or coral light along the edge nearest a glowing panel. Glow stays inside the object. No bloom, no rain, no fog.\n\nVIEW AND PROPORTION: Front-facing oblique. Each object shows its full front face and a thin sliver of its top. Objects stand on a flat bottom edge. Chunky, short proportions.\n\nDETAIL LEVEL: Readable at very small sizes. Signs show simple glyph shapes, never readable text. No tiny panels or cables.\n\nCOMPOSITION: One asset category per image. Every asset isolated on flat #00FF00 with generous crop-safe spacing, no scene, no ground.\n\nPALETTE:\nChroma #00FF00 (background), Indigo #3B3F7A (fill), Indigo Band #2A2C5C (shade), Plum #6A4A8C (fill), Neon Cyan #4FE3F0 (fill), Hot Coral #FF5E7A (fill), Amber #FFB84D (fill), Cream #FFF4E6 (fill), Cream Band #E3D3C4 (shade), Steel Blue #7C8DB5 (fill)\n\nSHAPE LANGUAGE:\nchunky, pillowy, big rounded corners, soft boxy machines, round kawaii cats with no tail, front-facing with a sliver of top, flat bottom edge\n\nRENDERING RULES:\n- no outlines: colour blocks separated by colour alone\n- a darker same-hue band on the lower side of every form\n- a soft coloured light on the edge nearest a light panel\n- glowing panels are flat bright colour; any glow stays inside the silhouette\n- signs show simple glyph shapes, never readable letters\n- cats are cream-white with small patches, tiny dot eyes, no tail\n- chunky pillowy shapes with big rounded corners\n- front-facing oblique view: front face plus a sliver of the top\n- never use green anywhere on a subject; the background is pure\n- crisp high-resolution raster\n- isolated presentation with large spacing\n\nFINAL CHECK:\nThe same drone in the same place, with the antenna. Paint what is behind them removed and nothing else changed.",
+  "promptVersion": "v1",
+  "references": [
+    {
+      "n": 1,
+      "id": "street-small/drone",
+      "path": "art/generated/prop-drone/base-plain.png",
+      "role": "input",
+      "source": "edit",
+      "sha256": "863d3fe5b546b153"
+    },
+    {
+      "n": 2,
+      "path": "art/generated/neon-style/raw.png",
+      "role": "style",
+      "source": "first-target",
+      "sha256": "f795a5fc3a838618"
+    }
+  ],
+  "generatedAt": "2026-10-07T13:43:21.307Z",
+  "provider": "codex"
+}

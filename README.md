@@ -117,7 +117,7 @@ Every field is in the [manifest reference](skills/ukiyo/reference/manifest.md).
   are packed as overlays and can be tint-ready.
 - **Multipart props.** `split` targets cut an approved sprite into pieces
   with joints, so lanterns and paper strips can move. `ukiyo plan` picks the
-  pieces.
+  pieces. Below: 21 props from the examples, motion scaled up 4x.
 - **Lights.** `final` finds lit regions in the art and `pack` writes them
   into the atlas.
 

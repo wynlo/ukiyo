@@ -1,0 +1,57 @@
+{
+  "target": "prop-can",
+  "compose": "split",
+  "kind": "item",
+  "game": "neon-alley-props",
+  "warnings": [],
+  "assets": {
+    "pull-tab": {
+      "name": "pull-tab",
+      "status": "pending",
+      "width": 23,
+      "height": 24,
+      "content": {
+        "x": 0,
+        "y": 5,
+        "width": 23,
+        "height": 14
+      },
+      "anchor": {
+        "x": 0.41304347826086957,
+        "y": 2.125
+      },
+      "part": {
+        "base": "street-small/can",
+        "baseWidth": 97,
+        "baseHeight": 96,
+        "x": 39,
+        "y": -3,
+        "joint": {
+          "x": 12,
+          "y": 17
+        },
+        "z": 1,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "loose",
+          "use": {
+            "kind": "hop",
+            "amount": [
+              1.2,
+              1.6
+            ],
+            "durationMs": [
+              260,
+              340
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      }
+    }
+  },
+  "prompt": "(no generation: the pieces are cut from the base)",
+  "promptVersion": "v1"
+}

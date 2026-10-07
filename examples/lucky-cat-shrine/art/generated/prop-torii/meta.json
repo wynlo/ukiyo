@@ -1,0 +1,302 @@
+{
+  "target": "prop-torii",
+  "compose": "split",
+  "kind": "scenery",
+  "game": "shrine-props",
+  "warnings": [],
+  "assets": {
+    "plate": {
+      "name": "plate",
+      "status": "pending",
+      "width": 546,
+      "height": 547,
+      "content": {
+        "x": 0,
+        "y": 56,
+        "width": 546,
+        "height": 435
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8976234003656307
+      },
+      "part": {
+        "base": "shrine-torii",
+        "baseWidth": 654,
+        "baseHeight": 435,
+        "x": 54,
+        "y": -56,
+        "joint": {
+          "x": 273,
+          "y": 273.5
+        },
+        "z": 0,
+        "role": "plate"
+      }
+    },
+    "shide-a": {
+      "name": "shide-a",
+      "status": "pending",
+      "width": 105,
+      "height": 105,
+      "content": {
+        "x": 29,
+        "y": 0,
+        "width": 47,
+        "height": 105
+      },
+      "anchor": {
+        "x": 1.3047619047619048,
+        "y": 2.447619047619048
+      },
+      "part": {
+        "base": "shrine-torii",
+        "baseWidth": 654,
+        "baseHeight": 435,
+        "x": 190,
+        "y": 178,
+        "joint": {
+          "x": 49,
+          "y": 12
+        },
+        "z": 1,
+        "role": "piece",
+        "mode": "detach",
+        "rig": {
+          "material": "paper",
+          "rest": {
+            "kind": "flutter",
+            "amount": [
+              1.5,
+              1.5
+            ],
+            "periodMs": [
+              2000,
+              2000
+            ]
+          },
+          "gust": {
+            "kind": "shake",
+            "amount": [
+              1.5,
+              2.2
+            ],
+            "durationMs": [
+              600,
+              800
+            ]
+          },
+          "lag": 90,
+          "stagger": 100
+        }
+      }
+    },
+    "shide-b": {
+      "name": "shide-b",
+      "status": "pending",
+      "width": 109,
+      "height": 108,
+      "content": {
+        "x": 31,
+        "y": 0,
+        "width": 47,
+        "height": 108
+      },
+      "anchor": {
+        "x": 0.5045871559633027,
+        "y": 2.2777777777777777
+      },
+      "part": {
+        "base": "shrine-torii",
+        "baseWidth": 654,
+        "baseHeight": 435,
+        "x": 272,
+        "y": 189,
+        "joint": {
+          "x": 54,
+          "y": 11
+        },
+        "z": 2,
+        "role": "piece",
+        "mode": "detach",
+        "rig": {
+          "material": "paper",
+          "rest": {
+            "kind": "flutter",
+            "amount": [
+              1.5,
+              1.5
+            ],
+            "periodMs": [
+              2000,
+              2000
+            ]
+          },
+          "gust": {
+            "kind": "shake",
+            "amount": [
+              1.5,
+              2.2
+            ],
+            "durationMs": [
+              600,
+              800
+            ]
+          },
+          "lag": 90,
+          "stagger": 100
+        }
+      }
+    },
+    "shide-c": {
+      "name": "shide-c",
+      "status": "pending",
+      "width": 103,
+      "height": 103,
+      "content": {
+        "x": 28,
+        "y": 0,
+        "width": 47,
+        "height": 103
+      },
+      "anchor": {
+        "x": -0.3106796116504854,
+        "y": 2.4757281553398056
+      },
+      "part": {
+        "base": "shrine-torii",
+        "baseWidth": 654,
+        "baseHeight": 435,
+        "x": 359,
+        "y": 180,
+        "joint": {
+          "x": 53,
+          "y": 8
+        },
+        "z": 3,
+        "role": "piece",
+        "mode": "detach",
+        "rig": {
+          "material": "paper",
+          "rest": {
+            "kind": "flutter",
+            "amount": [
+              1.5,
+              1.5
+            ],
+            "periodMs": [
+              2000,
+              2000
+            ]
+          },
+          "gust": {
+            "kind": "shake",
+            "amount": [
+              1.5,
+              2.2
+            ],
+            "durationMs": [
+              600,
+              800
+            ]
+          },
+          "lag": 90,
+          "stagger": 100
+        }
+      }
+    },
+    "rope": {
+      "name": "rope",
+      "status": "pending",
+      "width": 418,
+      "height": 419,
+      "content": {
+        "x": 0,
+        "y": 161,
+        "width": 418,
+        "height": 97
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.1169451073985681
+      },
+      "part": {
+        "base": "shrine-torii",
+        "baseWidth": 654,
+        "baseHeight": 435,
+        "x": 118,
+        "y": -33,
+        "joint": {
+          "x": 207,
+          "y": 238
+        },
+        "z": 4,
+        "role": "piece",
+        "mode": "detach",
+        "rig": {
+          "material": "hanging",
+          "rest": {
+            "kind": "swing",
+            "amount": [
+              0.3,
+              0.3
+            ],
+            "periodMs": [
+              5200,
+              5200
+            ]
+          },
+          "use": {
+            "kind": "swing",
+            "amount": [
+              2.5,
+              4.5
+            ],
+            "periodMs": [
+              600,
+              900
+            ],
+            "durationMs": [
+              1600,
+              2400
+            ]
+          },
+          "gust": {
+            "kind": "swing",
+            "amount": [
+              2,
+              3
+            ],
+            "periodMs": [
+              500,
+              700
+            ],
+            "durationMs": [
+              1200,
+              1500
+            ]
+          },
+          "lag": 120,
+          "stagger": 100
+        }
+      }
+    },
+    "shimenawa": {
+      "name": "shimenawa",
+      "status": "pending",
+      "registration": {
+        "iou": 0.993,
+        "scale": 0.8795,
+        "coverage": 0
+      }
+    }
+  },
+  "prompt": "## shimenawa\nTASK:\nRedraw the attached image EXACTLY, and add one thing: a thick butter-straw shimenawa rope hung across the gate just under the red crossbeam, with three white zigzag paper shide hanging from it.\n\nThe attached image is a red shrine torii gate with an orange top beam and butter stone feet, drawn in a flat marker colour.\n\nRULES:\n- Keep the object's shape, size, position and camera exactly the same. Do not move, resize, rotate or redraw it.\n- Keep the object in exactly the same flat marker colour #8FB3E0. Only the added thing has new colours.\n- The added thing is fixed to the object naturally: it hangs from a beam, sits on a ledge or is tied to a post. It may extend past the outline where it needs to.\n- Colour the added thing from the style palette.\n- No outlines: shapes are flat colour blocks separated by colour alone, with soft slightly brushy edges and a darker same-hue band on the lower edge; the only dark marks are tiny eyes and mouths.\n- Keep the solid flat background #FF00FF. Nothing new may use a colour close to it or to #8FB3E0.\n- No text, no labels, no characters, no extra props.\n\nSTYLE:\nSTYLE LOCK: Cozy cat mobile game in the style of Meow Tower (Hyperbeard).\n\nPRIMARY GOAL: Warm, cheerful, cute sprites for a phone game with a flat top-down map where every object stands up and faces the camera. Everything must look like one illustrator painted it with flat colour blocks and a soft brush, with no pen lines.\n\nCORE AESTHETIC: Lineless, softly shaded colour blocks. Chunky, pillowy, slightly bulging shapes with big rounded corners, like soft toys or cushions. Warm, sunny, cheerful colour: soft but saturated, never neon, never muted or grey. Cats are white with a few small grey or orange patches, a wide head, small rounded ears set wide, tiny dark dot eyes set wide apart, a tiny mouth, no outline, no tail.\n\nEDGES: NO OUTLINES. No dark contour line around any shape. Shapes are separated by colour alone. Where a shape meets a similar colour, it has a slightly darker band of its own hue along its lower or outer edge (a wall with a darker apricot base band, a roof with a darker red lip, a window with a darker wood frame). Edges are soft and very slightly brushy, not hard vector edges. Inner detail is a darker same-hue shape, never a dark line. The only dark colour is tiny facial features.\n\nCOLOR: Warm cheerful palette measured from Meow Tower. Main fills: apricot (#F7BB5C) with a darker band (#E69B4B) and wood frames (#BF7640), butter yellow (#FFDA50, #FDE284), pale butter (#FFF7AC), tomato red (#DB4032) with a darker band (#BC352D), fresh lawn (#A7B845), leaf green (#729F3E), deep leaf (#388344), white (#FFFFFE). Accents: orange (#FE962B), soft blue (#6F8EC1). Sky only: blue to teal (#0591C2 to #81DFCF). No pink, no magenta, no purple, no grey or muddy colour on large areas, no neon.\n\nSHADING: Soft cel shading, not flat. Every form has a darker same-hue band on its lower or shadow side (a bulging floor slab is lighter at the top and darker at the bottom lip) and a gentle lighter tone along its top edge or rounded top. Soft cast shadows sit under roof overhangs, under window sills and under objects on the ground. Subtle gradients are allowed: a soft falloff inside a shaded band, a gentle top-to-bottom gradient on small rounded props, and a small soft highlight dot on round props. On large surfaces the shading is gentle: the lightness inside one colour stays within about 0.03 to 0.07 (HSL L). Small props shade more strongly, within about 0.15 to 0.25. A faint paper grain may sit over the painted art. Never harsh, glossy, metallic or airbrushed.\n\nVIEW AND PROPORTION: Front-facing oblique, as in a flat top-down game map. The camera looks at the front of every object from slightly above, so each object shows its full front face and a thin sliver of its top surface. The front face is drawn straight on, square to the camera, with horizontal bottom and top edges. Objects stand on their flat bottom edge. No isometric view, no 2:1 diamond, no three-quarter turn, no side faces, no vanishing points.\n\nDETAIL LEVEL: Readable at very small sizes. Rely on the chunky silhouette and two or three flat colours plus one darker band. No tiny patterns, no realistic materials, no text.\n\nCOMPOSITION: One asset category per image. Every asset isolated with generous crop-safe spacing, no scene, no ground, no shadow, no props that were not asked for.\n\nPALETTE:\nPaper White #FFFFFF (background), Apricot #F7BB5C (fill), Apricot Band #E69B4B (shade), Wood Frame #BF7640 (shade), Butter #FFDA50 (fill), Light Butter #FDE284 (fill), Pale Butter #FFF7AC (fill), Tomato #DB4032 (fill), Tomato Band #BC352D (shade), Orange #FE962B (fill), Lawn #A7B845 (fill), Leaf #729F3E (fill), Deep Leaf #388344 (shade), White #FFFFFE (fill), White Edge #E6E1DA (shade), Soft Blue #6F8EC1 (fill), Feature Dark #333333 (shade)\n\nSHAPE LANGUAGE:\nchunky, pillowy, slightly bulging, big rounded corners, arched windows and doors, round bushes made of a few bulges, white cats with small patches and no tail, front-facing with a sliver of top, flat bottom edge\n\nRENDERING RULES:\n- no outlines: flat colour blocks separated by colour alone\n- soft cel shading: a darker same-hue band on the lower or shadow side of every form\n- a gentle lighter tone on top edges and rounded tops\n- soft cast shadows under overhangs, sills and objects\n- subtle gradients allowed inside shaded bands and on small round props\n- soft, very slightly brushy edges\n- warm cheerful palette: apricot, butter, tomato, leaf green, white\n- soft but saturated colour, never neon, never muted\n- dark colour only for tiny eyes and mouths\n- chunky pillowy shapes with big rounded corners\n- front-facing oblique view: front face plus a sliver of the top\n- objects stand on a flat bottom edge\n- only small soft highlights, never glossy specular dots\n- a faint paper grain at most; none on tint-ready white art\n- no text or labels\n- crisp high-resolution raster\n- readable at small mobile sizes\n- isolated presentation with large spacing\n\nFINAL CHECK:\nSame object, same place, same marker colour, with exactly one added thing: a thick butter-straw shimenawa rope hung across the gate just under the red crossbeam, with three white zigzag paper shide hanging from it.\n\nADDITIONAL DETAILS:\nArt brief: follow docs/specs/art-bible.md (LOCKED Meow Tower style) and match docs/references/style-anchor.png. Lineless, soft cel shading, warm cheerful palette, chunky pillowy shapes. Keep the approved sprite exactly as it is.",
+  "promptVersion": "v1",
+  "generatedAt": "2026-09-28T03:04:13.668Z",
+  "provider": "codex",
+  "plan": {
+    "status": "approved",
+    "reviewedAt": "2026-09-28T09:03:38.621Z"
+  }
+}

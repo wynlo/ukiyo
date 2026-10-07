@@ -7,7 +7,7 @@
   "assets": {
     "plate": {
       "name": "plate",
-      "status": "approved",
+      "status": "pending",
       "width": 398,
       "height": 398,
       "content": {
@@ -55,33 +55,32 @@
         "scale": 2.1443,
         "coverage": 0
       },
-      "note": "Lantern pole fix: masks, pivots and plate re-cut; approved per the user",
-      "reviewedAt": "2026-09-30T09:20:30.365Z"
+      "note": "Lantern pole fix: masks, pivots and plate re-cut; approved per the user"
     },
     "lantern-1": {
       "name": "lantern-1",
-      "status": "approved",
-      "width": 101,
-      "height": 100,
+      "status": "pending",
+      "width": 89,
+      "height": 88,
       "content": {
-        "x": 14,
+        "x": 9,
         "y": 0,
-        "width": 73,
-        "height": 100
+        "width": 71,
+        "height": 88
       },
       "anchor": {
-        "x": 1.5544554455445545,
-        "y": 2.08
+        "x": 1.7078651685393258,
+        "y": 2.25
       },
       "part": {
         "base": "shrine-feat-tall-a/chochin-arch",
         "baseWidth": 512,
         "baseHeight": 256,
-        "x": 99,
-        "y": 48,
+        "x": 104,
+        "y": 58,
         "joint": {
-          "x": 47,
-          "y": 10
+          "x": 42,
+          "y": 0
         },
         "z": 1,
         "role": "piece",
@@ -135,8 +134,8 @@
       },
       "lights": [
         {
-          "x": 47.68,
-          "y": 55.39,
+          "x": 42.68,
+          "y": 45.39,
           "radius": 32.1,
           "color": "#ed3f28",
           "intensity": 0.93,
@@ -144,33 +143,32 @@
           "from": "base"
         }
       ],
-      "note": "Lantern pole fix: masks, pivots and plate re-cut; approved per the user",
-      "reviewedAt": "2026-09-30T09:20:30.376Z"
+      "note": "Lantern pole fix: masks, pivots and plate re-cut; approved per the user"
     },
     "lantern-2": {
       "name": "lantern-2",
-      "status": "approved",
-      "width": 90,
-      "height": 89,
+      "status": "pending",
+      "width": 87,
+      "height": 87,
       "content": {
-        "x": 5,
+        "x": 6,
         "y": 0,
-        "width": 80,
-        "height": 89
+        "width": 75,
+        "height": 87
       },
       "anchor": {
-        "x": 0.9,
-        "y": 2.067415730337079
+        "x": 0.9425287356321839,
+        "y": 2.0919540229885056
       },
       "part": {
         "base": "shrine-feat-tall-a/chochin-arch",
         "baseWidth": 512,
         "baseHeight": 256,
-        "x": 175,
-        "y": 72,
+        "x": 174,
+        "y": 74,
         "joint": {
-          "x": 42,
-          "y": 1
+          "x": 43,
+          "y": -1
         },
         "z": 2,
         "role": "piece",
@@ -224,8 +222,8 @@
       },
       "lights": [
         {
-          "x": 42.35,
-          "y": 46.73,
+          "x": 43.35,
+          "y": 44.73,
           "radius": 32.01,
           "color": "#fcd79e",
           "intensity": 0.99,
@@ -233,23 +231,22 @@
           "from": "base"
         }
       ],
-      "note": "Lantern pole fix: masks, pivots and plate re-cut; approved per the user",
-      "reviewedAt": "2026-09-30T09:20:30.379Z"
+      "note": "Lantern pole fix: masks, pivots and plate re-cut; approved per the user"
     },
     "lantern-3": {
       "name": "lantern-3",
-      "status": "approved",
+      "status": "pending",
       "width": 87,
-      "height": 86,
+      "height": 87,
       "content": {
-        "x": 6,
+        "x": 7,
         "y": 0,
-        "width": 75,
-        "height": 86
+        "width": 73,
+        "height": 87
       },
       "anchor": {
         "x": 0.08045977011494253,
-        "y": 2.116279069767442
+        "y": 2.0919540229885056
       },
       "part": {
         "base": "shrine-feat-tall-a/chochin-arch",
@@ -322,33 +319,32 @@
           "from": "base"
         }
       ],
-      "note": "Lantern pole fix: masks, pivots and plate re-cut; approved per the user",
-      "reviewedAt": "2026-09-30T09:20:30.381Z"
+      "note": "Lantern pole fix: masks, pivots and plate re-cut; approved per the user"
     },
     "lantern-4": {
       "name": "lantern-4",
-      "status": "approved",
-      "width": 100,
-      "height": 99,
+      "status": "pending",
+      "width": 89,
+      "height": 88,
       "content": {
-        "x": 14,
+        "x": 9,
         "y": 0,
-        "width": 72,
-        "height": 99
+        "width": 71,
+        "height": 88
       },
       "anchor": {
-        "x": -0.57,
-        "y": 2.090909090909091
+        "x": -0.7078651685393258,
+        "y": 2.25
       },
       "part": {
         "base": "shrine-feat-tall-a/chochin-arch",
         "baseWidth": 512,
         "baseHeight": 256,
-        "x": 313,
-        "y": 49,
+        "x": 319,
+        "y": 58,
         "joint": {
-          "x": 51,
-          "y": 10
+          "x": 45,
+          "y": 1
         },
         "z": 4,
         "role": "piece",
@@ -402,17 +398,16 @@
       },
       "lights": [
         {
-          "x": 51.86,
-          "y": 54.67,
-          "radius": 32.28,
+          "x": 45.87,
+          "y": 45.67,
+          "radius": 32.29,
           "color": "#fcd89f",
           "intensity": 0.99,
           "piece": "lantern-4",
           "from": "base"
         }
       ],
-      "note": "Lantern pole fix: masks, pivots and plate re-cut; approved per the user",
-      "reviewedAt": "2026-09-30T09:20:30.383Z"
+      "note": "Lantern pole fix: masks, pivots and plate re-cut; approved per the user"
     }
   },
   "lights": [
@@ -444,9 +439,9 @@
       "from": "base"
     },
     {
-      "x": 364.86,
+      "x": 364.87,
       "y": 103.67,
-      "radius": 32.28,
+      "radius": 32.29,
       "color": "#fcd89f",
       "intensity": 0.99,
       "piece": "lantern-4",

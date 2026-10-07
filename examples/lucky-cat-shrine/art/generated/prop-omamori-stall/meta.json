@@ -1,0 +1,151 @@
+{
+  "target": "prop-omamori-stall",
+  "compose": "split",
+  "kind": "furniture",
+  "game": "shrine-props",
+  "warnings": [],
+  "assets": {
+    "charm-1": {
+      "name": "charm-1",
+      "status": "pending",
+      "width": 54,
+      "height": 53,
+      "content": {
+        "x": 2,
+        "y": 0,
+        "width": 50,
+        "height": 53
+      },
+      "anchor": {
+        "x": 1.3611111111111112,
+        "y": 2.188679245283019
+      },
+      "part": {
+        "base": "shrine-feat-tall-b/omamori-stall",
+        "baseWidth": 437,
+        "baseHeight": 218,
+        "x": 145,
+        "y": 102,
+        "joint": {
+          "x": 27,
+          "y": 50
+        },
+        "z": 1,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "loose",
+          "use": {
+            "kind": "hop",
+            "amount": [
+              1.2,
+              1.6
+            ],
+            "durationMs": [
+              260,
+              340
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      }
+    },
+    "charm-2": {
+      "name": "charm-2",
+      "status": "pending",
+      "width": 54,
+      "height": 53,
+      "content": {
+        "x": 2,
+        "y": 0,
+        "width": 50,
+        "height": 53
+      },
+      "anchor": {
+        "x": 0.5092592592592593,
+        "y": 2.188679245283019
+      },
+      "part": {
+        "base": "shrine-feat-tall-b/omamori-stall",
+        "baseWidth": 437,
+        "baseHeight": 218,
+        "x": 191,
+        "y": 102,
+        "joint": {
+          "x": 27,
+          "y": 50
+        },
+        "z": 2,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "loose",
+          "use": {
+            "kind": "hop",
+            "amount": [
+              1.2,
+              1.6
+            ],
+            "durationMs": [
+              260,
+              340
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      }
+    },
+    "charm-3": {
+      "name": "charm-3",
+      "status": "pending",
+      "width": 53,
+      "height": 53,
+      "content": {
+        "x": 2,
+        "y": 0,
+        "width": 49,
+        "height": 53
+      },
+      "anchor": {
+        "x": -0.3490566037735849,
+        "y": 2.188679245283019
+      },
+      "part": {
+        "base": "shrine-feat-tall-b/omamori-stall",
+        "baseWidth": 437,
+        "baseHeight": 218,
+        "x": 237,
+        "y": 102,
+        "joint": {
+          "x": 26,
+          "y": 50
+        },
+        "z": 3,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "loose",
+          "use": {
+            "kind": "hop",
+            "amount": [
+              1.2,
+              1.6
+            ],
+            "durationMs": [
+              260,
+              340
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      }
+    }
+  },
+  "plan": {
+    "status": "approved",
+    "reviewedAt": "2026-09-28T09:03:38.559Z"
+  }
+}

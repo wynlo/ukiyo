@@ -4,12 +4,12 @@
   "kind": "scenery",
   "game": "shrine-haiden-grand",
   "warnings": [
-    "split rebuild: 1.16% of the base differs by more than 24 (max 215); a piece may overlap another."
+    "split rebuild: 1.13% of the base differs by more than 24 (max 229); a piece may overlap another."
   ],
   "assets": {
     "plate": {
       "name": "plate",
-      "status": "approved",
+      "status": "pending",
       "references": [
         {
           "n": 1,
@@ -65,33 +65,32 @@
         },
         "z": 0,
         "role": "plate"
-      },
-      "reviewedAt": "2026-10-01T04:13:18.721Z"
+      }
     },
     "shide-1": {
       "name": "shide-1",
-      "status": "approved",
-      "width": 79,
-      "height": 79,
+      "status": "pending",
+      "width": 78,
+      "height": 77,
       "content": {
         "x": 21,
         "y": 0,
-        "width": 37,
-        "height": 79
+        "width": 36,
+        "height": 77
       },
       "anchor": {
-        "x": 2.0822784810126582,
-        "y": 4.012658227848101
+        "x": 2.0961538461538463,
+        "y": 4.103896103896104
       },
       "part": {
         "base": "shrine-haiden-4",
         "baseWidth": 1339,
         "baseHeight": 893,
-        "x": 505,
-        "y": 576,
+        "x": 506,
+        "y": 577,
         "joint": {
-          "x": 40,
-          "y": 1
+          "x": 39,
+          "y": 0
         },
         "z": 1,
         "role": "piece",
@@ -123,33 +122,32 @@
           "lag": 90,
           "stagger": 100
         }
-      },
-      "reviewedAt": "2026-10-01T04:13:19.575Z"
+      }
     },
     "shide-2": {
       "name": "shide-2",
-      "status": "approved",
+      "status": "pending",
       "width": 75,
-      "height": 75,
+      "height": 74,
       "content": {
-        "x": 19,
+        "x": 20,
         "y": 0,
-        "width": 37,
-        "height": 75
+        "width": 35,
+        "height": 74
       },
       "anchor": {
         "x": 1.46,
-        "y": 4.053333333333334
+        "y": 4.094594594594595
       },
       "part": {
         "base": "shrine-haiden-4",
         "baseWidth": 1339,
         "baseHeight": 893,
         "x": 560,
-        "y": 589,
+        "y": 590,
         "joint": {
           "x": 37,
-          "y": 0
+          "y": -1
         },
         "z": 2,
         "role": "piece",
@@ -181,33 +179,32 @@
           "lag": 90,
           "stagger": 100
         }
-      },
-      "reviewedAt": "2026-10-01T04:13:19.855Z"
+      }
     },
     "shide-3": {
       "name": "shide-3",
-      "status": "approved",
-      "width": 77,
-      "height": 76,
+      "status": "pending",
+      "width": 75,
+      "height": 74,
       "content": {
         "x": 20,
         "y": 0,
-        "width": 37,
-        "height": 76
+        "width": 35,
+        "height": 74
       },
       "anchor": {
-        "x": -0.4090909090909091,
-        "y": 4
+        "x": -0.43333333333333335,
+        "y": 4.094594594594595
       },
       "part": {
         "base": "shrine-haiden-4",
         "baseWidth": 1339,
         "baseHeight": 893,
-        "x": 701,
-        "y": 589,
+        "x": 702,
+        "y": 590,
         "joint": {
-          "x": 37,
-          "y": 0
+          "x": 36,
+          "y": -1
         },
         "z": 3,
         "role": "piece",
@@ -239,12 +236,11 @@
           "lag": 90,
           "stagger": 100
         }
-      },
-      "reviewedAt": "2026-10-01T04:13:20.136Z"
+      }
     },
     "shide-4": {
       "name": "shide-4",
-      "status": "approved",
+      "status": "pending",
       "width": 78,
       "height": 78,
       "content": {
@@ -297,8 +293,7 @@
           "lag": 90,
           "stagger": 100
         }
-      },
-      "reviewedAt": "2026-10-01T04:13:20.391Z"
+      }
     },
     "bell": {
       "name": "bell",
@@ -379,7 +374,7 @@
     },
     "left-banner": {
       "name": "left-banner",
-      "status": "approved",
+      "status": "pending",
       "width": 164,
       "height": 164,
       "content": {
@@ -389,17 +384,17 @@
         "height": 164
       },
       "anchor": {
-        "x": 4.3567073170731705,
+        "x": 4.350609756097561,
         "y": 1.7378048780487805
       },
       "part": {
         "base": "shrine-haiden-4",
         "baseWidth": 1339,
         "baseHeight": 893,
-        "x": -45,
+        "x": -44,
         "y": 608,
         "joint": {
-          "x": 81,
+          "x": 80,
           "y": 3
         },
         "z": 6,
@@ -443,32 +438,31 @@
           "lag": 110,
           "stagger": 100
         }
-      },
-      "reviewedAt": "2026-10-01T04:13:18.149Z"
+      }
     },
     "right-banner": {
       "name": "right-banner",
-      "status": "approved",
-      "width": 161,
-      "height": 161,
+      "status": "pending",
+      "width": 160,
+      "height": 160,
       "content": {
-        "x": 51,
+        "x": 50,
         "y": 0,
-        "width": 59,
-        "height": 161
+        "width": 60,
+        "height": 160
       },
       "anchor": {
-        "x": -3.4130434782608696,
-        "y": 1.7701863354037266
+        "x": -3.440625,
+        "y": 1.78125
       },
       "part": {
         "base": "shrine-haiden-4",
         "baseWidth": 1339,
         "baseHeight": 893,
-        "x": 1219,
+        "x": 1220,
         "y": 608,
         "joint": {
-          "x": 82,
+          "x": 81,
           "y": 3
         },
         "z": 7,
@@ -512,8 +506,7 @@
           "lag": 110,
           "stagger": 100
         }
-      },
-      "reviewedAt": "2026-10-01T04:13:19.008Z"
+      }
     },
     "crest": {
       "name": "crest",
@@ -579,7 +572,7 @@
     },
     "wing-left-lantern": {
       "name": "wing-left-lantern",
-      "status": "approved",
+      "status": "pending",
       "width": 112,
       "height": 111,
       "content": {
@@ -654,20 +647,19 @@
       },
       "lights": [
         {
-          "x": 58.89,
-          "y": 55.27,
-          "radius": 32.3,
-          "color": "#f58551",
+          "x": 59.09,
+          "y": 54.77,
+          "radius": 32.55,
+          "color": "#f58550",
           "intensity": 0.96,
           "piece": "wing-left-lantern",
           "from": "base"
         }
-      ],
-      "reviewedAt": "2026-10-01T04:13:20.673Z"
+      ]
     },
     "left-lantern": {
       "name": "left-lantern",
-      "status": "approved",
+      "status": "pending",
       "width": 136,
       "height": 136,
       "content": {
@@ -742,20 +734,19 @@
       },
       "lights": [
         {
-          "x": 66.28,
-          "y": 69.55,
-          "radius": 37.87,
-          "color": "#f27e4d",
+          "x": 66.73,
+          "y": 69.24,
+          "radius": 38.21,
+          "color": "#f27e4c",
           "intensity": 0.95,
           "piece": "left-lantern",
           "from": "base"
         }
-      ],
-      "reviewedAt": "2026-10-01T04:13:18.421Z"
+      ]
     },
     "inner-left-lantern": {
       "name": "inner-left-lantern",
-      "status": "approved",
+      "status": "pending",
       "width": 128,
       "height": 128,
       "content": {
@@ -830,20 +821,19 @@
       },
       "lights": [
         {
-          "x": 63.9,
-          "y": 61.12,
-          "radius": 37.85,
-          "color": "#f48250",
-          "intensity": 0.96,
+          "x": 64.2,
+          "y": 61.3,
+          "radius": 38.4,
+          "color": "#f3824f",
+          "intensity": 0.95,
           "piece": "inner-left-lantern",
           "from": "base"
         }
-      ],
-      "reviewedAt": "2026-10-01T04:13:17.592Z"
+      ]
     },
     "inner-right-lantern": {
       "name": "inner-right-lantern",
-      "status": "approved",
+      "status": "pending",
       "width": 128,
       "height": 128,
       "content": {
@@ -918,31 +908,30 @@
       },
       "lights": [
         {
-          "x": 64.54,
-          "y": 61.23,
-          "radius": 38.23,
-          "color": "#f38250",
+          "x": 64.45,
+          "y": 61.32,
+          "radius": 38.41,
+          "color": "#f38350",
           "intensity": 0.95,
           "piece": "inner-right-lantern",
           "from": "base"
         }
-      ],
-      "reviewedAt": "2026-10-01T04:13:17.868Z"
+      ]
     },
     "right-lantern": {
       "name": "right-lantern",
-      "status": "approved",
+      "status": "pending",
       "width": 136,
-      "height": 136,
+      "height": 135,
       "content": {
         "x": 33,
         "y": 0,
         "width": 70,
-        "height": 136
+        "height": 135
       },
       "anchor": {
         "x": -2.474264705882353,
-        "y": 2.9338235294117645
+        "y": 2.9555555555555557
       },
       "part": {
         "base": "shrine-haiden-4",
@@ -1007,19 +996,18 @@
       "lights": [
         {
           "x": 70.53,
-          "y": 68.32,
-          "radius": 37.47,
-          "color": "#f17b4b",
+          "y": 68.38,
+          "radius": 37.55,
+          "color": "#f17b4a",
           "intensity": 0.95,
           "piece": "right-lantern",
           "from": "base"
         }
-      ],
-      "reviewedAt": "2026-10-01T04:13:19.294Z"
+      ]
     },
     "wing-right-lantern": {
       "name": "wing-right-lantern",
-      "status": "approved",
+      "status": "pending",
       "width": 112,
       "height": 111,
       "content": {
@@ -1094,16 +1082,15 @@
       },
       "lights": [
         {
-          "x": 53.36,
-          "y": 55.61,
-          "radius": 32.4,
+          "x": 53.22,
+          "y": 55.19,
+          "radius": 32.59,
           "color": "#f58450",
           "intensity": 0.96,
           "piece": "wing-right-lantern",
           "from": "base"
         }
-      ],
-      "reviewedAt": "2026-10-01T04:13:20.953Z"
+      ]
     }
   },
   "prompt": "## plate\nTASK:\nRedraw the attached image EXACTLY, with one change: remove the six red paper lanterns, the four white paper shide, the gold bell with its striped rope and tassel, and the two red cloth banners with their cream tops. Paint the walls, windows, pillars, door lattice, eaves and stone platform behind them, and leave the wooden banner poles and their crossbars. Where a lantern hung in front of a wall, paint the soft darker apricot shadow band that the eaves cast on the wall there, as on the rest of the wall under the eaves.\n\nThe attached image is the grandest Japanese shrine main hall with a two-tier copper-orange roof, gold trim, a round gold maneki crest, paper lanterns, white paper shide, a gold bell and two red cloth banners.\n\nRULES:\n- Keep everything else exactly the same: shape, size, position, colours, shading and camera. Do not move, resize, rotate or redraw anything else.\n- Where the removed things were, paint what was behind them. Continue the art around them in the same style: a door, a wall, a trunk, a beam. Nothing new may appear.\n- Keep the solid flat background #FF00FF.\n- No text, no labels, no characters, no extra props.\n\nSTYLE:\nSTYLE LOCK: Cozy cat mobile game in the style of Meow Tower (Hyperbeard).\n\nPRIMARY GOAL: Warm, cheerful, cute sprites for a phone game with a flat top-down map where every object stands up and faces the camera. Everything must look like one illustrator painted it with flat colour blocks and a soft brush, with no pen lines.\n\nCORE AESTHETIC: Lineless, softly shaded colour blocks. Chunky, pillowy, slightly bulging shapes with big rounded corners, like soft toys or cushions. Warm, sunny, cheerful colour: soft but saturated, never neon, never muted or grey. Cats are white with a few small grey or orange patches, a wide head, small rounded ears set wide, tiny dark dot eyes set wide apart, a tiny mouth, no outline, no tail.\n\nEDGES: NO OUTLINES. No dark contour line around any shape. Shapes are separated by colour alone. Where a shape meets a similar colour, it has a slightly darker band of its own hue along its lower or outer edge (a wall with a darker apricot base band, a roof with a darker red lip, a window with a darker wood frame). Edges are soft and very slightly brushy, not hard vector edges. Inner detail is a darker same-hue shape, never a dark line. The only dark colour is tiny facial features.\n\nCOLOR: Warm cheerful palette measured from Meow Tower. Main fills: apricot (#F7BB5C) with a darker band (#E69B4B) and wood frames (#BF7640), butter yellow (#FFDA50, #FDE284), pale butter (#FFF7AC), tomato red (#DB4032) with a darker band (#BC352D), fresh lawn (#A7B845), leaf green (#729F3E), deep leaf (#388344), white (#FFFFFE). Accents: orange (#FE962B), soft blue (#6F8EC1). Sky only: blue to teal (#0591C2 to #81DFCF). No pink, no magenta, no purple, no grey or muddy colour on large areas, no neon.\n\nSHADING: Soft cel shading, not flat. Every form has a darker same-hue band on its lower or shadow side (a bulging floor slab is lighter at the top and darker at the bottom lip) and a gentle lighter tone along its top edge or rounded top. Soft cast shadows sit under roof overhangs, under window sills and under objects on the ground. Subtle gradients are allowed: a soft falloff inside a shaded band, a gentle top-to-bottom gradient on small rounded props, and a small soft highlight dot on round props. On large surfaces the shading is gentle: the lightness inside one colour stays within about 0.03 to 0.07 (HSL L). Small props shade more strongly, within about 0.15 to 0.25. A faint paper grain may sit over the painted art. Never harsh, glossy, metallic or airbrushed.\n\nVIEW AND PROPORTION: Front-facing oblique, as in a flat top-down game map. The camera looks at the front of every object from slightly above, so each object shows its full front face and a thin sliver of its top surface. The front face is drawn straight on, square to the camera, with horizontal bottom and top edges. Objects stand on their flat bottom edge. No isometric view, no 2:1 diamond, no three-quarter turn, no side faces, no vanishing points.\n\nDETAIL LEVEL: Readable at very small sizes. Rely on the chunky silhouette and two or three flat colours plus one darker band. No tiny patterns, no realistic materials, no text.\n\nCOMPOSITION: One asset category per image. Every asset isolated with generous crop-safe spacing, no scene, no ground, no shadow, no props that were not asked for.\n\nPALETTE:\nPaper White #FFFFFF (background), Apricot #F7BB5C (fill), Apricot Band #E69B4B (shade), Wood Frame #BF7640 (shade), Butter #FFDA50 (fill), Light Butter #FDE284 (fill), Pale Butter #FFF7AC (fill), Tomato #DB4032 (fill), Tomato Band #BC352D (shade), Orange #FE962B (fill), Lawn #A7B845 (fill), Leaf #729F3E (fill), Deep Leaf #388344 (shade), White #FFFFFE (fill), White Edge #E6E1DA (shade), Soft Blue #6F8EC1 (fill), Feature Dark #333333 (shade)\n\nSHAPE LANGUAGE:\nchunky, pillowy, slightly bulging, big rounded corners, arched windows and doors, round bushes made of a few bulges, white cats with small patches and no tail, front-facing with a sliver of top, flat bottom edge\n\nRENDERING RULES:\n- no outlines: flat colour blocks separated by colour alone\n- soft cel shading: a darker same-hue band on the lower or shadow side of every form\n- a gentle lighter tone on top edges and rounded tops\n- soft cast shadows under overhangs, sills and objects\n- subtle gradients allowed inside shaded bands and on small round props\n- soft, very slightly brushy edges\n- warm cheerful palette: apricot, butter, tomato, leaf green, white\n- soft but saturated colour, never neon, never muted\n- dark colour only for tiny eyes and mouths\n- chunky pillowy shapes with big rounded corners\n- front-facing oblique view: front face plus a sliver of the top\n- objects stand on a flat bottom edge\n- only small soft highlights, never glossy specular dots\n- a faint paper grain at most; none on tint-ready white art\n- no text or labels\n- crisp high-resolution raster\n- readable at small mobile sizes\n- isolated presentation with large spacing\n\nFINAL CHECK:\nThe same the grandest Japanese shrine main hall with a two-tier copper-orange roof, gold trim, a round gold maneki crest, paper lanterns, white paper shide, a gold bell and two red cloth banners in the same place, with the six red paper lanterns, the four white paper shide, the gold bell with its striped rope and tassel, and the two red cloth banners with their cream tops. Paint the walls, windows, pillars, door lattice, eaves and stone platform behind them, and leave the wooden banner poles and their crossbars. Where a lantern hung in front of a wall, paint the soft darker apricot shadow band that the eaves cast on the wall there, as on the rest of the wall under the eaves removed and nothing else changed.\n\nADDITIONAL DETAILS:\nArt brief: follow docs/specs/art-bible.md (LOCKED Meow Tower style) and match docs/references/style-anchor.png. Lineless, soft cel shading, warm cheerful palette, chunky pillowy shapes. Keep the approved sprite exactly as it is. Outdoors in the courtyard (docs/specs/shrine-upgrades.md): lanterns swing and glow, paper shide and cloth banners flutter and the bell sways in the one wind field; wood, stone and the roof never move.",
@@ -1147,54 +1134,54 @@
       "from": "base"
     },
     {
-      "x": 110.89,
-      "y": 634.27,
-      "radius": 32.3,
-      "color": "#f58551",
+      "x": 111.09,
+      "y": 633.77,
+      "radius": 32.55,
+      "color": "#f58550",
       "intensity": 0.96,
       "piece": "wing-left-lantern",
       "from": "base"
     },
     {
-      "x": 260.28,
-      "y": 563.55,
-      "radius": 37.87,
-      "color": "#f27e4d",
+      "x": 260.73,
+      "y": 563.24,
+      "radius": 38.21,
+      "color": "#f27e4c",
       "intensity": 0.95,
       "piece": "left-lantern",
       "from": "base"
     },
     {
-      "x": 397.9,
-      "y": 570.12,
-      "radius": 37.85,
-      "color": "#f48250",
-      "intensity": 0.96,
+      "x": 398.2,
+      "y": 570.3,
+      "radius": 38.4,
+      "color": "#f3824f",
+      "intensity": 0.95,
       "piece": "inner-left-lantern",
       "from": "base"
     },
     {
-      "x": 940.54,
-      "y": 570.23,
-      "radius": 38.23,
-      "color": "#f38250",
+      "x": 940.45,
+      "y": 570.32,
+      "radius": 38.41,
+      "color": "#f38350",
       "intensity": 0.95,
       "piece": "inner-right-lantern",
       "from": "base"
     },
     {
       "x": 1076.53,
-      "y": 562.32,
-      "radius": 37.47,
-      "color": "#f17b4b",
+      "y": 562.38,
+      "radius": 37.55,
+      "color": "#f17b4a",
       "intensity": 0.95,
       "piece": "right-lantern",
       "from": "base"
     },
     {
-      "x": 1226.36,
-      "y": 634.61,
-      "radius": 32.4,
+      "x": 1226.22,
+      "y": 634.19,
+      "radius": 32.59,
       "color": "#f58450",
       "intensity": 0.96,
       "piece": "wing-right-lantern",

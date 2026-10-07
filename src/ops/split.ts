@@ -174,6 +174,234 @@ function fillHoles(mask: Uint8Array, source: Raster, taken: Uint8Array): void {
   }
 }
 
+/**
+ * Move thin strips (2 px or less across) to the art they touch most. A piece
+ * box often takes the edge of the beam it hangs from, or a sliver of the next
+ * piece, and the plate keeps a sliver of a piece that the colour test missed.
+ * A strip is what a 3x3 opening of its owner's solid pixels removes. Each
+ * 8-connected strip goes to the owner whose pixels border it most, if that is
+ * more than the border with its own owner's core. A strip that joins two parts
+ * of one piece (a thin cord) borders its own core most and stays.
+ */
+export function moveThinStrips(source: Raster, masks: readonly Uint8Array[]): void {
+  const { width, height, data } = source;
+  const n = width * height;
+  const owner = new Int32Array(n).fill(-1);
+  for (let p = 0; p < n; p += 1) {
+    if ((data[p * 4 + 3] ?? 0) < ALPHA_ON) continue;
+    owner[p] = 0;
+    for (let i = 0; i < masks.length; i += 1) {
+      if (masks[i]![p]) {
+        owner[p] = i + 1;
+        break;
+      }
+    }
+  }
+  // Core: pixels that survive a 3x3 opening of their owner's region.
+  const eroded = new Uint8Array(n);
+  for (let y = 1; y < height - 1; y += 1) {
+    for (let x = 1; x < width - 1; x += 1) {
+      const p = y * width + x;
+      const o = owner[p]!;
+      if (o < 0) continue;
+      let all = true;
+      for (let oy = -1; oy <= 1 && all; oy += 1) for (let ox = -1; ox <= 1; ox += 1) if (owner[p + oy * width + ox] !== o) all = false;
+      if (all) eroded[p] = 1;
+    }
+  }
+  const core = new Uint8Array(n);
+  for (let p = 0; p < n; p += 1) {
+    if (!eroded[p]) continue;
+    const x = p % width;
+    const y = (p - x) / width;
+    for (let oy = -1; oy <= 1; oy += 1) for (let ox = -1; ox <= 1; ox += 1) core[(y + oy) * width + x + ox] = 1;
+  }
+  const seen = new Uint8Array(n);
+  const stack: number[] = [];
+  for (let start = 0; start < n; start += 1) {
+    const o = owner[start]!;
+    if (o < 0 || core[start] || seen[start]) continue;
+    // One strip: the 8-connected non-core pixels of one owner.
+    const strip: number[] = [];
+    seen[start] = 1;
+    stack.push(start);
+    while (stack.length > 0) {
+      const q = stack.pop()!;
+      strip.push(q);
+      const qx = q % width;
+      const qy = (q - qx) / width;
+      for (let oy = -1; oy <= 1; oy += 1) {
+        for (let ox = -1; ox <= 1; ox += 1) {
+          const nx = qx + ox;
+          const ny = qy + oy;
+          if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
+          const m = ny * width + nx;
+          if (!seen[m] && owner[m] === o && !core[m]) {
+            seen[m] = 1;
+            stack.push(m);
+          }
+        }
+      }
+    }
+    const touch = new Map<number, number>();
+    let own = 0;
+    for (const q of strip) {
+      const qx = q % width;
+      const qy = (q - qx) / width;
+      for (const [ox, oy] of [[1, 0], [-1, 0], [0, 1], [0, -1]] as const) {
+        const nx = qx + ox;
+        const ny = qy + oy;
+        if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
+        const m = ny * width + nx;
+        const other = owner[m]!;
+        if (other < 0) continue;
+        if (other === o) {
+          if (core[m]) own += 1;
+        } else touch.set(other, (touch.get(other) ?? 0) + 1);
+      }
+    }
+    let best = -1;
+    let bestN = own;
+    for (const [other, count] of touch) {
+      if (count > bestN) {
+        bestN = count;
+        best = other;
+      }
+    }
+    if (best < 0) continue;
+    for (const q of strip) {
+      if (o > 0) masks[o - 1]![q] = 0;
+      if (best > 0) masks[best - 1]![q] = 1;
+      owner[q] = best;
+    }
+  }
+}
+
+/**
+ * Move small islands out of each piece. A piece is one object, so a solid
+ * region that does not touch its largest region and is under a quarter of
+ * its size is a scrap of something else (the post next to a plaque). It goes
+ * to the owner it borders most, or to the plate.
+ */
+export function moveIslands(source: Raster, masks: readonly Uint8Array[]): void {
+  const { width, height, data } = source;
+  const n = width * height;
+  const solid = (p: number) => (data[p * 4 + 3] ?? 0) >= ALPHA_ON;
+  for (const [i, mask] of masks.entries()) {
+    const label = new Int32Array(n).fill(-1);
+    const regions: number[][] = [];
+    const stack: number[] = [];
+    for (let start = 0; start < n; start += 1) {
+      if (!mask[start] || !solid(start) || label[start] !== -1) continue;
+      const region: number[] = [];
+      label[start] = regions.length;
+      stack.push(start);
+      while (stack.length > 0) {
+        const q = stack.pop()!;
+        region.push(q);
+        const qx = q % width;
+        const qy = (q - qx) / width;
+        for (let oy = -1; oy <= 1; oy += 1) {
+          for (let ox = -1; ox <= 1; ox += 1) {
+            const nx = qx + ox;
+            const ny = qy + oy;
+            if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
+            const m = ny * width + nx;
+            if (mask[m] && solid(m) && label[m] === -1) {
+              label[m] = regions.length;
+              stack.push(m);
+            }
+          }
+        }
+      }
+      regions.push(region);
+    }
+    if (regions.length < 2) continue;
+    const largest = Math.max(...regions.map((r) => r.length));
+    for (const region of regions) {
+      if (region.length >= largest * 0.25) continue;
+      const touch = new Map<number, number>();
+      for (const q of region) {
+        const qx = q % width;
+        const qy = (q - qx) / width;
+        for (const [ox, oy] of [[1, 0], [-1, 0], [0, 1], [0, -1]] as const) {
+          const nx = qx + ox;
+          const ny = qy + oy;
+          if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
+          const m = ny * width + nx;
+          if (mask[m] || !solid(m)) continue;
+          const other = masks.findIndex((o, j) => j !== i && o[m]);
+          touch.set(other, (touch.get(other) ?? 0) + 1);
+        }
+      }
+      let best = -1;
+      let bestN = 0;
+      for (const [other, count] of touch) {
+        if (count > bestN) {
+          bestN = count;
+          best = other;
+        }
+      }
+      for (const q of region) {
+        mask[q] = 0;
+        if (best >= 0) masks[best]![q] = 1;
+      }
+    }
+  }
+}
+
+/**
+ * Give each soft edge pixel (alpha below ALPHA_ON) to the art it belongs to.
+ * A colour or box test sorts soft pixels badly: a piece picks up the faint
+ * edge of the beam it hangs from, and the plate keeps a faint outline of each
+ * piece taken out of it. Here each soft pixel goes to the owner of the
+ * nearest solid pixel within `reach` px: a piece (its mask gains it) or the
+ * plate (every mask loses it). A soft pixel with no solid pixel that near is
+ * halo; it is returned so the caller can clear it from the plate too.
+ */
+export function assignSoftEdges(source: Raster, masks: readonly Uint8Array[], reach: number): Uint8Array {
+  const { width, height, data } = source;
+  const n = width * height;
+  // Owner of each solid pixel: piece index + 1, or 0 for the plate.
+  const owner = new Int32Array(n).fill(-1);
+  for (let p = 0; p < n; p += 1) {
+    if ((data[p * 4 + 3] ?? 0) < ALPHA_ON) continue;
+    owner[p] = 0;
+    for (let i = 0; i < masks.length; i += 1) {
+      if (masks[i]![p]) {
+        owner[p] = i + 1;
+        break;
+      }
+    }
+  }
+  const halo = new Uint8Array(n);
+  for (let p = 0; p < n; p += 1) {
+    const a = data[p * 4 + 3] ?? 0;
+    if (a === 0 || a >= ALPHA_ON) continue;
+    const x = p % width;
+    const y = (p - x) / width;
+    let best = -1;
+    let bestD = Infinity;
+    for (let oy = -reach; oy <= reach; oy += 1) {
+      for (let ox = -reach; ox <= reach; ox += 1) {
+        const nx = x + ox;
+        const ny = y + oy;
+        if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
+        const o = owner[ny * width + nx]!;
+        const d = ox * ox + oy * oy;
+        if (o >= 0 && d < bestD) {
+          bestD = d;
+          best = o;
+        }
+      }
+    }
+    for (const mask of masks) mask[p] = 0;
+    if (best > 0) masks[best - 1]![p] = 1;
+    else if (best < 0) halo[p] = 1;
+  }
+  return halo;
+}
+
 /** Pixels of `mask` within `reach` px (square) of a pixel in `near`. */
 export function band(mask: Uint8Array, near: Uint8Array, width: number, height: number, reach: number): Uint8Array {
   const out = new Uint8Array(mask.length);

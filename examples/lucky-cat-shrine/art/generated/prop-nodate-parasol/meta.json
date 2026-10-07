@@ -1,0 +1,103 @@
+{
+  "target": "prop-nodate-parasol",
+  "compose": "split",
+  "kind": "furniture",
+  "game": "shrine-props",
+  "warnings": [],
+  "assets": {
+    "plate": {
+      "name": "plate",
+      "status": "pending",
+      "width": 254,
+      "height": 255,
+      "content": {
+        "x": 0,
+        "y": 53,
+        "width": 254,
+        "height": 149
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.792156862745098
+      },
+      "part": {
+        "base": "shrine-feat-tall-a/nodate-parasol",
+        "baseWidth": 512,
+        "baseHeight": 256,
+        "x": 129,
+        "y": 54,
+        "joint": {
+          "x": 127,
+          "y": 127.5
+        },
+        "z": 0,
+        "role": "plate"
+      }
+    },
+    "parasol": {
+      "name": "parasol",
+      "status": "pending",
+      "width": 250,
+      "height": 251,
+      "content": {
+        "x": 0,
+        "y": 69,
+        "width": 250,
+        "height": 113
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.294820717131474
+      },
+      "part": {
+        "base": "shrine-feat-tall-a/nodate-parasol",
+        "baseWidth": 512,
+        "baseHeight": 256,
+        "x": 131,
+        "y": -69,
+        "joint": {
+          "x": 125,
+          "y": 175
+        },
+        "z": 1,
+        "role": "piece",
+        "mode": "detach",
+        "rig": {
+          "material": "canopy",
+          "rest": {
+            "kind": "sway",
+            "amount": [
+              0.6,
+              0.6
+            ],
+            "periodMs": [
+              5200,
+              5200
+            ]
+          },
+          "use": {
+            "kind": "swing",
+            "amount": [
+              2,
+              2
+            ],
+            "periodMs": [
+              900,
+              900
+            ],
+            "durationMs": [
+              1800,
+              1800
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      }
+    }
+  },
+  "plan": {
+    "status": "approved",
+    "reviewedAt": "2026-09-28T09:03:38.224Z"
+  }
+}

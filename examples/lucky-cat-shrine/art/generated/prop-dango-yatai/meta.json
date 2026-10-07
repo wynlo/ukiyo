@@ -1,0 +1,286 @@
+{
+  "target": "prop-dango-yatai",
+  "compose": "split",
+  "kind": "furniture",
+  "game": "shrine-props",
+  "warnings": [
+    "split rebuild: 1.40% of the base differs by more than 24 (max 181); a piece may overlap another."
+  ],
+  "assets": {
+    "plate": {
+      "name": "plate",
+      "status": "pending",
+      "width": 304,
+      "height": 304,
+      "content": {
+        "x": 0,
+        "y": 24,
+        "width": 304,
+        "height": 256
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9210526315789473
+      },
+      "part": {
+        "base": "shrine-feat-tall-a/dango-yatai",
+        "baseWidth": 512,
+        "baseHeight": 256,
+        "x": 104,
+        "y": -24,
+        "joint": {
+          "x": 152,
+          "y": 152
+        },
+        "z": 0,
+        "role": "plate"
+      },
+      "references": [
+        {
+          "n": 1,
+          "id": "shrine-feat-tall-a/dango-yatai",
+          "path": "art/generated/prop-dango-yatai/base-plain.png",
+          "role": "input",
+          "source": "edit",
+          "sha256": "eb5d8023275f12a9"
+        },
+        {
+          "n": 2,
+          "path": "docs/references/style-anchor.png",
+          "role": "style",
+          "source": "anchor",
+          "sha256": "78df61fecaa81145"
+        }
+      ],
+      "registration": {
+        "iou": 0.986,
+        "scale": 2.3432,
+        "coverage": 0
+      },
+      "note": "Lantern pole fix: masks, pivots and plate re-cut; approved per the user"
+    },
+    "lantern": {
+      "name": "lantern",
+      "status": "pending",
+      "width": 83,
+      "height": 83,
+      "content": {
+        "x": 7,
+        "y": 0,
+        "width": 69,
+        "height": 83
+      },
+      "anchor": {
+        "x": -0.20481927710843373,
+        "y": 2.2048192771084336
+      },
+      "part": {
+        "base": "shrine-feat-tall-a/dango-yatai",
+        "baseWidth": 512,
+        "baseHeight": 256,
+        "x": 273,
+        "y": 73,
+        "joint": {
+          "x": 41,
+          "y": 2
+        },
+        "z": 1,
+        "role": "piece",
+        "mode": "fill",
+        "rig": {
+          "material": "lantern",
+          "rest": {
+            "kind": "swing",
+            "amount": [
+              0.8,
+              1.3
+            ],
+            "periodMs": [
+              3000,
+              4200
+            ]
+          },
+          "use": {
+            "kind": "swing",
+            "amount": [
+              2.5,
+              4.5
+            ],
+            "periodMs": [
+              600,
+              900
+            ],
+            "durationMs": [
+              1600,
+              2400
+            ]
+          },
+          "gust": {
+            "kind": "swing",
+            "amount": [
+              2,
+              3
+            ],
+            "periodMs": [
+              500,
+              700
+            ],
+            "durationMs": [
+              1200,
+              1500
+            ]
+          },
+          "lag": 120,
+          "stagger": 100
+        }
+      },
+      "lights": [
+        {
+          "x": 41.47,
+          "y": 43.69,
+          "radius": 32.12,
+          "color": "#fbc74a",
+          "intensity": 0.98,
+          "piece": "lantern",
+          "from": "base"
+        }
+      ],
+      "note": "Lantern pole fix: masks, pivots and plate re-cut; approved per the user"
+    },
+    "wheel": {
+      "name": "wheel",
+      "status": "pending",
+      "width": 100,
+      "height": 100,
+      "content": {
+        "x": 0,
+        "y": 1,
+        "width": 100,
+        "height": 98
+      },
+      "anchor": {
+        "x": -0.04,
+        "y": 0.99
+      },
+      "part": {
+        "base": "shrine-feat-tall-a/dango-yatai",
+        "baseWidth": 512,
+        "baseHeight": 256,
+        "x": 260,
+        "y": 157,
+        "joint": {
+          "x": 50,
+          "y": 51
+        },
+        "z": 2,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "wheel",
+          "use": {
+            "kind": "swing",
+            "amount": [
+              7,
+              9
+            ],
+            "periodMs": [
+              1000,
+              1200
+            ],
+            "durationMs": [
+              1600,
+              2000
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      },
+      "note": "Lantern pole fix: masks, pivots and plate re-cut; approved per the user"
+    },
+    "awning": {
+      "name": "awning",
+      "status": "pending",
+      "width": 278,
+      "height": 278,
+      "content": {
+        "x": 0,
+        "y": 99,
+        "width": 278,
+        "height": 80
+      },
+      "anchor": {
+        "x": 0.5467625899280576,
+        "y": 1.276978417266187
+      },
+      "part": {
+        "base": "shrine-feat-tall-a/dango-yatai",
+        "baseWidth": 512,
+        "baseHeight": 256,
+        "x": 104,
+        "y": -99,
+        "joint": {
+          "x": 138,
+          "y": 103
+        },
+        "z": 3,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "awning",
+          "rest": {
+            "kind": "stretch",
+            "amount": [
+              0.02,
+              0.03
+            ],
+            "periodMs": [
+              2800,
+              3200
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      },
+      "note": "Lantern pole fix: masks, pivots and plate re-cut; approved per the user"
+    }
+  },
+  "lights": [
+    {
+      "x": 314.47,
+      "y": 116.69,
+      "radius": 32.12,
+      "color": "#fbc74a",
+      "intensity": 0.98,
+      "piece": "lantern",
+      "from": "base"
+    }
+  ],
+  "plan": {
+    "status": "approved",
+    "note": "Hand plan: lantern masks, hooks and chains",
+    "reviewedAt": "2026-09-30T09:13:04.739Z"
+  },
+  "prompt": "## plate\nTASK:\nRedraw the attached image EXACTLY, with one change: remove the yellow paper lantern and its short stick. Paint the red cloth, the wooden posts and the counter behind it.\n\nThe attached image is a festival dango cart with a striped awning, a lantern and a wheel.\n\nRULES:\n- Keep everything else exactly the same: shape, size, position, colours, shading and camera. Do not move, resize, rotate or redraw anything else.\n- Where the removed things were, paint what was behind them. Continue the art around them in the same style: a door, a wall, a trunk, a beam. Nothing new may appear.\n- Keep the solid flat background #FF00FF.\n- No text, no labels, no characters, no extra props.\n\nSTYLE:\nSTYLE LOCK: Cozy cat mobile game in the style of Meow Tower (Hyperbeard).\n\nPRIMARY GOAL: Warm, cheerful, cute sprites for a phone game with a flat top-down map where every object stands up and faces the camera. Everything must look like one illustrator painted it with flat colour blocks and a soft brush, with no pen lines.\n\nCORE AESTHETIC: Lineless, softly shaded colour blocks. Chunky, pillowy, slightly bulging shapes with big rounded corners, like soft toys or cushions. Warm, sunny, cheerful colour: soft but saturated, never neon, never muted or grey. Cats are white with a few small grey or orange patches, a wide head, small rounded ears set wide, tiny dark dot eyes set wide apart, a tiny mouth, no outline, no tail.\n\nEDGES: NO OUTLINES. No dark contour line around any shape. Shapes are separated by colour alone. Where a shape meets a similar colour, it has a slightly darker band of its own hue along its lower or outer edge (a wall with a darker apricot base band, a roof with a darker red lip, a window with a darker wood frame). Edges are soft and very slightly brushy, not hard vector edges. Inner detail is a darker same-hue shape, never a dark line. The only dark colour is tiny facial features.\n\nCOLOR: Warm cheerful palette measured from Meow Tower. Main fills: apricot (#F7BB5C) with a darker band (#E69B4B) and wood frames (#BF7640), butter yellow (#FFDA50, #FDE284), pale butter (#FFF7AC), tomato red (#DB4032) with a darker band (#BC352D), fresh lawn (#A7B845), leaf green (#729F3E), deep leaf (#388344), white (#FFFFFE). Accents: orange (#FE962B), soft blue (#6F8EC1). Sky only: blue to teal (#0591C2 to #81DFCF). No pink, no magenta, no purple, no grey or muddy colour on large areas, no neon.\n\nSHADING: Soft cel shading, not flat. Every form has a darker same-hue band on its lower or shadow side (a bulging floor slab is lighter at the top and darker at the bottom lip) and a gentle lighter tone along its top edge or rounded top. Soft cast shadows sit under roof overhangs, under window sills and under objects on the ground. Subtle gradients are allowed: a soft falloff inside a shaded band, a gentle top-to-bottom gradient on small rounded props, and a small soft highlight dot on round props. On large surfaces the shading is gentle: the lightness inside one colour stays within about 0.03 to 0.07 (HSL L). Small props shade more strongly, within about 0.15 to 0.25. A faint paper grain may sit over the painted art. Never harsh, glossy, metallic or airbrushed.\n\nVIEW AND PROPORTION: Front-facing oblique, as in a flat top-down game map. The camera looks at the front of every object from slightly above, so each object shows its full front face and a thin sliver of its top surface. The front face is drawn straight on, square to the camera, with horizontal bottom and top edges. Objects stand on their flat bottom edge. No isometric view, no 2:1 diamond, no three-quarter turn, no side faces, no vanishing points.\n\nDETAIL LEVEL: Readable at very small sizes. Rely on the chunky silhouette and two or three flat colours plus one darker band. No tiny patterns, no realistic materials, no text.\n\nCOMPOSITION: One asset category per image. Every asset isolated with generous crop-safe spacing, no scene, no ground, no shadow, no props that were not asked for.\n\nPALETTE:\nPaper White #FFFFFF (background), Apricot #F7BB5C (fill), Apricot Band #E69B4B (shade), Wood Frame #BF7640 (shade), Butter #FFDA50 (fill), Light Butter #FDE284 (fill), Pale Butter #FFF7AC (fill), Tomato #DB4032 (fill), Tomato Band #BC352D (shade), Orange #FE962B (fill), Lawn #A7B845 (fill), Leaf #729F3E (fill), Deep Leaf #388344 (shade), White #FFFFFE (fill), White Edge #E6E1DA (shade), Soft Blue #6F8EC1 (fill), Feature Dark #333333 (shade)\n\nSHAPE LANGUAGE:\nchunky, pillowy, slightly bulging, big rounded corners, arched windows and doors, round bushes made of a few bulges, white cats with small patches and no tail, front-facing with a sliver of top, flat bottom edge\n\nRENDERING RULES:\n- no outlines: flat colour blocks separated by colour alone\n- soft cel shading: a darker same-hue band on the lower or shadow side of every form\n- a gentle lighter tone on top edges and rounded tops\n- soft cast shadows under overhangs, sills and objects\n- subtle gradients allowed inside shaded bands and on small round props\n- soft, very slightly brushy edges\n- warm cheerful palette: apricot, butter, tomato, leaf green, white\n- soft but saturated colour, never neon, never muted\n- dark colour only for tiny eyes and mouths\n- chunky pillowy shapes with big rounded corners\n- front-facing oblique view: front face plus a sliver of the top\n- objects stand on a flat bottom edge\n- only small soft highlights, never glossy specular dots\n- a faint paper grain at most; none on tint-ready white art\n- no text or labels\n- crisp high-resolution raster\n- readable at small mobile sizes\n- isolated presentation with large spacing\n\nFINAL CHECK:\nThe same a festival dango cart with a striped awning, a lantern and a wheel in the same place, with the yellow paper lantern and its short stick. Paint the red cloth, the wooden posts and the counter behind it removed and nothing else changed.\n\nADDITIONAL DETAILS:\nArt brief: follow docs/specs/art-bible.md (LOCKED Meow Tower style) and match docs/references/style-anchor.png. Lineless, soft cel shading, warm cheerful palette, chunky pillowy shapes. Keep the approved sprite exactly as it is.",
+  "promptVersion": "v1",
+  "references": [
+    {
+      "n": 1,
+      "id": "shrine-feat-tall-a/dango-yatai",
+      "path": "art/generated/prop-dango-yatai/base-plain.png",
+      "role": "input",
+      "source": "edit",
+      "sha256": "eb5d8023275f12a9"
+    },
+    {
+      "n": 2,
+      "path": "docs/references/style-anchor.png",
+      "role": "style",
+      "source": "anchor",
+      "sha256": "78df61fecaa81145"
+    }
+  ],
+  "generatedAt": "2026-09-30T08:16:32.499Z",
+  "provider": "codex"
+}

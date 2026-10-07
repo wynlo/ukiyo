@@ -1,0 +1,165 @@
+{
+  "target": "prop-battery",
+  "compose": "split",
+  "kind": "item",
+  "game": "neon-alley-props",
+  "warnings": [
+    "split piece left-light: material \"light\" emits light, but no lit region was found",
+    "split piece right-light: material \"light\" emits light, but no lit region was found",
+    "split piece battery-light: material \"light\" emits light, but no lit region was found"
+  ],
+  "assets": {
+    "left-light": {
+      "name": "left-light",
+      "status": "pending",
+      "width": 38,
+      "height": 38,
+      "content": {
+        "x": 11,
+        "y": 0,
+        "width": 16,
+        "height": 38
+      },
+      "anchor": {
+        "x": 1.1973684210526316,
+        "y": 0.23684210526315788
+      },
+      "part": {
+        "base": "street-small/battery",
+        "baseWidth": 97,
+        "baseHeight": 96,
+        "x": 3,
+        "y": 39,
+        "joint": {
+          "x": 19,
+          "y": 17
+        },
+        "z": 2,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "light",
+          "rest": {
+            "kind": "glow",
+            "amount": [
+              0.18,
+              0.35
+            ],
+            "periodMs": [
+              2600,
+              2600
+            ]
+          },
+          "lag": 0,
+          "stagger": 100,
+          "phases": [
+            "dusk",
+            "night"
+          ]
+        }
+      }
+    },
+    "right-light": {
+      "name": "right-light",
+      "status": "pending",
+      "width": 37,
+      "height": 36,
+      "content": {
+        "x": 11,
+        "y": 0,
+        "width": 15,
+        "height": 36
+      },
+      "anchor": {
+        "x": -0.22972972972972974,
+        "y": 0.19444444444444445
+      },
+      "part": {
+        "base": "street-small/battery",
+        "baseWidth": 97,
+        "baseHeight": 96,
+        "x": 57,
+        "y": 41,
+        "joint": {
+          "x": 18,
+          "y": 16
+        },
+        "z": 3,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "light",
+          "rest": {
+            "kind": "glow",
+            "amount": [
+              0.18,
+              0.35
+            ],
+            "periodMs": [
+              2600,
+              2600
+            ]
+          },
+          "lag": 0,
+          "stagger": 100,
+          "phases": [
+            "dusk",
+            "night"
+          ]
+        }
+      }
+    },
+    "battery-light": {
+      "name": "battery-light",
+      "status": "pending",
+      "width": 31,
+      "height": 31,
+      "content": {
+        "x": 0,
+        "y": 3,
+        "width": 31,
+        "height": 25
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.0967741935483871
+      },
+      "part": {
+        "base": "street-small/battery",
+        "baseWidth": 97,
+        "baseHeight": 96,
+        "x": 33,
+        "y": 45,
+        "joint": {
+          "x": 15,
+          "y": 15
+        },
+        "z": 1,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "light",
+          "rest": {
+            "kind": "glow",
+            "amount": [
+              0.18,
+              0.35
+            ],
+            "periodMs": [
+              2600,
+              2600
+            ]
+          },
+          "lag": 0,
+          "stagger": 100,
+          "phases": [
+            "dusk",
+            "night"
+          ]
+        }
+      }
+    }
+  },
+  "prompt": "(no generation: the pieces are cut from the base)",
+  "promptVersion": "v1"
+}

@@ -1,0 +1,400 @@
+{
+  "target": "prop-tanabata-bamboo",
+  "compose": "split",
+  "kind": "furniture",
+  "game": "shrine-props",
+  "warnings": [],
+  "assets": {
+    "plate": {
+      "name": "plate",
+      "status": "pending",
+      "width": 80,
+      "height": 80,
+      "content": {
+        "x": 0,
+        "y": 8,
+        "width": 80,
+        "height": 64
+      },
+      "anchor": {
+        "x": 0.575,
+        "y": 0.9
+      },
+      "part": {
+        "base": "shrine-feat-tall-a/tanabata-bamboo",
+        "baseWidth": 512,
+        "baseHeight": 256,
+        "x": 210,
+        "y": 184,
+        "joint": {
+          "x": 40,
+          "y": 40
+        },
+        "z": 0,
+        "role": "plate"
+      }
+    },
+    "plant": {
+      "name": "plant",
+      "status": "pending",
+      "width": 198,
+      "height": 198,
+      "content": {
+        "x": 7,
+        "y": 0,
+        "width": 184,
+        "height": 198
+      },
+      "anchor": {
+        "x": 0.5404040404040404,
+        "y": 1.292929292929293
+      },
+      "part": {
+        "base": "shrine-feat-tall-a/tanabata-bamboo",
+        "baseWidth": 512,
+        "baseHeight": 256,
+        "x": 149,
+        "y": 0,
+        "joint": {
+          "x": 99,
+          "y": 196
+        },
+        "z": 1,
+        "role": "piece",
+        "mode": "detach",
+        "rig": {
+          "material": "canopy",
+          "rest": {
+            "kind": "flutter",
+            "amount": [
+              1.3,
+              1.3
+            ],
+            "periodMs": [
+              2600,
+              2600
+            ]
+          },
+          "use": {
+            "kind": "shake",
+            "amount": [
+              1.2,
+              1.4
+            ],
+            "durationMs": [
+              900,
+              1000
+            ]
+          },
+          "gust": {
+            "kind": "shake",
+            "amount": [
+              1,
+              1
+            ],
+            "durationMs": [
+              650,
+              650
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      }
+    },
+    "strip-1": {
+      "name": "strip-1",
+      "status": "pending",
+      "width": 68,
+      "height": 68,
+      "content": {
+        "x": 19,
+        "y": 0,
+        "width": 30,
+        "height": 68
+      },
+      "anchor": {
+        "x": 0.14705882352941177,
+        "y": 3.1176470588235294
+      },
+      "part": {
+        "base": "shrine-feat-tall-a/tanabata-bamboo",
+        "baseWidth": 512,
+        "baseHeight": 256,
+        "x": 246,
+        "y": 44,
+        "joint": {
+          "x": 30,
+          "y": -9
+        },
+        "z": 2,
+        "role": "piece",
+        "mode": "detach",
+        "parent": "plant",
+        "rig": {
+          "material": "paper",
+          "rest": {
+            "kind": "flutter",
+            "amount": [
+              1.3,
+              1.5
+            ],
+            "periodMs": [
+              1900,
+              2400
+            ]
+          },
+          "gust": {
+            "kind": "shake",
+            "amount": [
+              1.5,
+              2.2
+            ],
+            "durationMs": [
+              600,
+              800
+            ]
+          },
+          "lag": 90,
+          "stagger": 100
+        }
+      }
+    },
+    "strip-2": {
+      "name": "strip-2",
+      "status": "pending",
+      "width": 96,
+      "height": 96,
+      "content": {
+        "x": 12,
+        "y": 0,
+        "width": 72,
+        "height": 96
+      },
+      "anchor": {
+        "x": -0.16666666666666666,
+        "y": 2.3020833333333335
+      },
+      "part": {
+        "base": "shrine-feat-tall-a/tanabata-bamboo",
+        "baseWidth": 512,
+        "baseHeight": 256,
+        "x": 272,
+        "y": 35,
+        "joint": {
+          "x": 30,
+          "y": 36
+        },
+        "z": 2.01,
+        "role": "piece",
+        "mode": "detach",
+        "parent": "plant",
+        "rig": {
+          "material": "paper",
+          "rest": {
+            "kind": "flutter",
+            "amount": [
+              1.3,
+              1.5
+            ],
+            "periodMs": [
+              1900,
+              2400
+            ]
+          },
+          "gust": {
+            "kind": "shake",
+            "amount": [
+              1.5,
+              2.2
+            ],
+            "durationMs": [
+              600,
+              800
+            ]
+          },
+          "lag": 90,
+          "stagger": 100
+        }
+      }
+    },
+    "strip-3": {
+      "name": "strip-3",
+      "status": "pending",
+      "width": 51,
+      "height": 51,
+      "content": {
+        "x": 12,
+        "y": 0,
+        "width": 27,
+        "height": 51
+      },
+      "anchor": {
+        "x": 1.3725490196078431,
+        "y": 2.607843137254902
+      },
+      "part": {
+        "base": "shrine-feat-tall-a/tanabata-bamboo",
+        "baseWidth": 512,
+        "baseHeight": 256,
+        "x": 186,
+        "y": 123,
+        "joint": {
+          "x": 27,
+          "y": -12
+        },
+        "z": 2.02,
+        "role": "piece",
+        "mode": "detach",
+        "parent": "plant",
+        "rig": {
+          "material": "paper",
+          "rest": {
+            "kind": "flutter",
+            "amount": [
+              1.3,
+              1.5
+            ],
+            "periodMs": [
+              1900,
+              2400
+            ]
+          },
+          "gust": {
+            "kind": "shake",
+            "amount": [
+              1.5,
+              2.2
+            ],
+            "durationMs": [
+              600,
+              800
+            ]
+          },
+          "lag": 90,
+          "stagger": 100
+        }
+      }
+    },
+    "strip-4": {
+      "name": "strip-4",
+      "status": "pending",
+      "width": 67,
+      "height": 67,
+      "content": {
+        "x": 20,
+        "y": 0,
+        "width": 27,
+        "height": 67
+      },
+      "anchor": {
+        "x": 1.4179104477611941,
+        "y": 1.671641791044776
+      },
+      "part": {
+        "base": "shrine-feat-tall-a/tanabata-bamboo",
+        "baseWidth": 512,
+        "baseHeight": 256,
+        "x": 161,
+        "y": 144,
+        "joint": {
+          "x": 34,
+          "y": 1
+        },
+        "z": 2.03,
+        "role": "piece",
+        "mode": "detach",
+        "parent": "plant",
+        "rig": {
+          "material": "paper",
+          "rest": {
+            "kind": "flutter",
+            "amount": [
+              1.3,
+              1.5
+            ],
+            "periodMs": [
+              1900,
+              2400
+            ]
+          },
+          "gust": {
+            "kind": "shake",
+            "amount": [
+              1.5,
+              2.2
+            ],
+            "durationMs": [
+              600,
+              800
+            ]
+          },
+          "lag": 90,
+          "stagger": 100
+        }
+      }
+    },
+    "strip-5": {
+      "name": "strip-5",
+      "status": "pending",
+      "width": 49,
+      "height": 48,
+      "content": {
+        "x": 11,
+        "y": 0,
+        "width": 27,
+        "height": 48
+      },
+      "anchor": {
+        "x": -0.02040816326530612,
+        "y": 2.2083333333333335
+      },
+      "part": {
+        "base": "shrine-feat-tall-a/tanabata-bamboo",
+        "baseWidth": 512,
+        "baseHeight": 256,
+        "x": 257,
+        "y": 150,
+        "joint": {
+          "x": 25,
+          "y": -10
+        },
+        "z": 2.04,
+        "role": "piece",
+        "mode": "detach",
+        "parent": "plant",
+        "rig": {
+          "material": "paper",
+          "rest": {
+            "kind": "flutter",
+            "amount": [
+              1.3,
+              1.5
+            ],
+            "periodMs": [
+              1900,
+              2400
+            ]
+          },
+          "gust": {
+            "kind": "shake",
+            "amount": [
+              1.5,
+              2.2
+            ],
+            "durationMs": [
+              600,
+              800
+            ]
+          },
+          "lag": 90,
+          "stagger": 100
+        }
+      }
+    }
+  },
+  "plan": {
+    "status": "approved",
+    "reviewedAt": "2026-09-28T10:44:30.717Z"
+  }
+}

@@ -35,6 +35,23 @@
         "y": 0,
         "width": 285,
         "height": 256
+      },
+      "complexity": {
+        "score": 0.42,
+        "regions": 34,
+        "protrusion": 0.076,
+        "edges": 0.552,
+        "components": 1
+      },
+      "effects": {
+        "wind": "none",
+        "light": "none",
+        "lights": 0,
+        "lit": 4,
+        "why": "no wind material; 4 regions look lit, not a light source by the rules: check",
+        "hash": "5a75958ecd50",
+        "source": "plan",
+        "status": "pending"
       }
     },
     "stone-lantern": {
@@ -67,6 +84,23 @@
         "y": 0,
         "width": 181,
         "height": 256
+      },
+      "complexity": {
+        "score": 0.482,
+        "regions": 37,
+        "protrusion": 0.098,
+        "edges": 0.549,
+        "components": 1
+      },
+      "effects": {
+        "wind": "none",
+        "light": "art",
+        "lights": 0,
+        "lit": 3,
+        "why": "no wind material; light source by the rules, 0 points",
+        "hash": "25dc907cc58b",
+        "source": "plan",
+        "status": "pending"
       }
     },
     "cherry": {
@@ -99,7 +133,25 @@
         "y": 0,
         "width": 281,
         "height": 256
-      }
+      },
+      "complexity": {
+        "score": 0.55,
+        "regions": 39,
+        "protrusion": 0.132,
+        "edges": 0.585,
+        "components": 1
+      },
+      "effects": {
+        "wind": "none",
+        "light": "none",
+        "lights": 0,
+        "lit": 1,
+        "why": "no wind material; 1 region look lit, not a light source by the rules: check",
+        "hash": "0965d21455d2",
+        "source": "plan",
+        "status": "pending"
+      },
+      "still": true
     },
     "tsukubai": {
       "name": "tsukubai",
@@ -131,6 +183,23 @@
         "y": 0,
         "width": 250,
         "height": 256
+      },
+      "complexity": {
+        "score": 0.444,
+        "regions": 35,
+        "protrusion": 0.086,
+        "edges": 0.615,
+        "components": 1
+      },
+      "effects": {
+        "wind": "none",
+        "light": "none",
+        "lights": 0,
+        "lit": 3,
+        "why": "no wind material; 3 regions look lit, not a light source by the rules: check",
+        "hash": "9c7a03ed2fc5",
+        "source": "plan",
+        "status": "pending"
       }
     }
   },

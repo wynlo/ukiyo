@@ -7,58 +7,57 @@
   "assets": {
     "plate": {
       "name": "plate",
-      "status": "approved",
-      "width": 74,
-      "height": 75,
+      "status": "pending",
+      "width": 72,
+      "height": 72,
       "content": {
         "x": 0,
-        "y": 4,
-        "width": 74,
-        "height": 67
+        "y": 3,
+        "width": 72,
+        "height": 66
       },
       "anchor": {
-        "x": 0.4864864864864865,
-        "y": 0.9466666666666667
+        "x": 0.4861111111111111,
+        "y": 0.9583333333333334
       },
       "part": {
         "base": "shrine-feat-tall/omikuji-tree",
         "baseWidth": 512,
         "baseHeight": 256,
-        "x": 220,
-        "y": 185,
+        "x": 221,
+        "y": 187,
         "joint": {
-          "x": 37,
-          "y": 37.5
+          "x": 36,
+          "y": 36
         },
         "z": 0,
         "role": "plate"
-      },
-      "reviewedAt": "2026-09-28T09:03:38.281Z"
+      }
     },
     "canopy": {
       "name": "canopy",
-      "status": "approved",
-      "width": 237,
-      "height": 238,
+      "status": "pending",
+      "width": 227,
+      "height": 228,
       "content": {
         "x": 0,
-        "y": 2,
-        "width": 237,
-        "height": 234
+        "y": 9,
+        "width": 227,
+        "height": 210
       },
       "anchor": {
-        "x": 0.5021097046413502,
-        "y": 1.084033613445378
+        "x": 0.5242290748898678,
+        "y": 1.162280701754386
       },
       "part": {
         "base": "shrine-feat-tall/omikuji-tree",
         "baseWidth": 512,
         "baseHeight": 256,
         "x": 137,
-        "y": -2,
+        "y": -9,
         "joint": {
           "x": 119,
-          "y": 202
+          "y": 209
         },
         "z": 1,
         "role": "piece",
@@ -101,18 +100,17 @@
           "lag": 0,
           "stagger": 100
         }
-      },
-      "reviewedAt": "2026-09-28T10:44:30.706Z"
+      }
     },
     "paper-1": {
       "name": "paper-1",
-      "status": "approved",
+      "status": "pending",
       "width": 49,
       "height": 49,
       "content": {
-        "x": 9,
+        "x": 10,
         "y": 0,
-        "width": 31,
+        "width": 29,
         "height": 49
       },
       "anchor": {
@@ -160,33 +158,32 @@
           "lag": 90,
           "stagger": 100
         }
-      },
-      "reviewedAt": "2026-09-28T10:44:30.695Z"
+      }
     },
     "paper-2": {
       "name": "paper-2",
-      "status": "approved",
+      "status": "pending",
       "width": 49,
-      "height": 49,
+      "height": 48,
       "content": {
         "x": 9,
         "y": 0,
         "width": 31,
-        "height": 49
+        "height": 48
       },
       "anchor": {
         "x": 1.7755102040816326,
-        "y": 3.510204081632653
+        "y": 3.5625
       },
       "part": {
         "base": "shrine-feat-tall/omikuji-tree",
         "baseWidth": 512,
         "baseHeight": 256,
         "x": 169,
-        "y": 84,
+        "y": 85,
         "joint": {
           "x": 27,
-          "y": -2
+          "y": -3
         },
         "z": 2.01,
         "role": "piece",
@@ -219,22 +216,21 @@
           "lag": 90,
           "stagger": 100
         }
-      },
-      "reviewedAt": "2026-09-28T10:44:30.697Z"
+      }
     },
     "paper-3": {
       "name": "paper-3",
-      "status": "approved",
-      "width": 49,
+      "status": "pending",
+      "width": 48,
       "height": 48,
       "content": {
         "x": 10,
         "y": 0,
-        "width": 29,
+        "width": 28,
         "height": 48
       },
       "anchor": {
-        "x": -0.6938775510204082,
+        "x": -0.7083333333333334,
         "y": 3.625
       },
       "part": {
@@ -278,33 +274,32 @@
           "lag": 90,
           "stagger": 100
         }
-      },
-      "reviewedAt": "2026-09-28T10:44:30.699Z"
+      }
     },
     "paper-4": {
       "name": "paper-4",
-      "status": "approved",
-      "width": 51,
-      "height": 51,
+      "status": "pending",
+      "width": 52,
+      "height": 52,
       "content": {
-        "x": 8,
+        "x": 9,
         "y": 0,
-        "width": 35,
-        "height": 51
+        "width": 34,
+        "height": 52
       },
       "anchor": {
-        "x": -1.4901960784313726,
-        "y": 2.803921568627451
+        "x": -1.4615384615384615,
+        "y": 2.769230769230769
       },
       "part": {
         "base": "shrine-feat-tall/omikuji-tree",
         "baseWidth": 512,
         "baseHeight": 256,
         "x": 332,
-        "y": 113,
+        "y": 112,
         "joint": {
           "x": 15,
-          "y": 1
+          "y": 2
         },
         "z": 2.03,
         "role": "piece",
@@ -337,32 +332,31 @@
           "lag": 90,
           "stagger": 100
         }
-      },
-      "reviewedAt": "2026-09-28T10:44:30.701Z"
+      }
     },
     "paper-5": {
       "name": "paper-5",
-      "status": "approved",
-      "width": 50,
+      "status": "pending",
+      "width": 51,
       "height": 50,
       "content": {
         "x": 9,
         "y": 0,
-        "width": 32,
+        "width": 33,
         "height": 50
       },
       "anchor": {
-        "x": 2.06,
+        "x": 2.0392156862745097,
         "y": 2.18
       },
       "part": {
         "base": "shrine-feat-tall/omikuji-tree",
         "baseWidth": 512,
         "baseHeight": 256,
-        "x": 153,
+        "x": 152,
         "y": 147,
         "joint": {
-          "x": 31,
+          "x": 32,
           "y": 1
         },
         "z": 2.04,
@@ -396,12 +390,11 @@
           "lag": 90,
           "stagger": 100
         }
-      },
-      "reviewedAt": "2026-09-28T10:44:30.703Z"
+      }
     },
     "paper-6": {
       "name": "paper-6",
-      "status": "approved",
+      "status": "pending",
       "width": 49,
       "height": 48,
       "content": {
@@ -455,32 +448,31 @@
           "lag": 90,
           "stagger": 100
         }
-      },
-      "reviewedAt": "2026-09-28T10:44:30.704Z"
+      }
     },
     "paper-7": {
       "name": "paper-7",
-      "status": "approved",
-      "width": 50,
+      "status": "pending",
+      "width": 51,
       "height": 50,
       "content": {
-        "x": 10,
+        "x": 11,
         "y": 0,
-        "width": 30,
+        "width": 29,
         "height": 50
       },
       "anchor": {
-        "x": 0.86,
+        "x": 0.8627450980392157,
         "y": 1.56
       },
       "part": {
         "base": "shrine-feat-tall/omikuji-tree",
         "baseWidth": 512,
         "baseHeight": 256,
-        "x": 213,
+        "x": 212,
         "y": 178,
         "joint": {
-          "x": 25,
+          "x": 26,
           "y": 2
         },
         "z": 2.06,
@@ -514,8 +506,7 @@
           "lag": 90,
           "stagger": 100
         }
-      },
-      "reviewedAt": "2026-09-28T10:44:30.705Z"
+      }
     }
   },
   "plan": {

@@ -1,0 +1,92 @@
+{
+  "target": "prop-mikoshi",
+  "compose": "split",
+  "kind": "furniture",
+  "game": "shrine-props",
+  "warnings": [],
+  "assets": {
+    "plate": {
+      "name": "plate",
+      "status": "pending",
+      "width": 268,
+      "height": 269,
+      "content": {
+        "x": 0,
+        "y": 39,
+        "width": 268,
+        "height": 191
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8550185873605948
+      },
+      "part": {
+        "base": "shrine-feat-tall-b/mikoshi",
+        "baseWidth": 436,
+        "baseHeight": 218,
+        "x": 84,
+        "y": -12,
+        "joint": {
+          "x": 134,
+          "y": 134.5
+        },
+        "z": 0,
+        "role": "plate"
+      }
+    },
+    "finial": {
+      "name": "finial",
+      "status": "pending",
+      "width": 60,
+      "height": 61,
+      "content": {
+        "x": 0,
+        "y": 12,
+        "width": 60,
+        "height": 37
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 3.7704918032786887
+      },
+      "part": {
+        "base": "shrine-feat-tall-b/mikoshi",
+        "baseWidth": 436,
+        "baseHeight": 218,
+        "x": 188,
+        "y": -12,
+        "joint": {
+          "x": 27,
+          "y": 43
+        },
+        "z": 1,
+        "role": "piece",
+        "mode": "detach",
+        "rig": {
+          "material": "lever",
+          "use": {
+            "kind": "swing",
+            "amount": [
+              4,
+              4
+            ],
+            "periodMs": [
+              500,
+              500
+            ],
+            "durationMs": [
+              1200,
+              1200
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      }
+    }
+  },
+  "plan": {
+    "status": "approved",
+    "reviewedAt": "2026-09-28T10:44:30.717Z"
+  }
+}

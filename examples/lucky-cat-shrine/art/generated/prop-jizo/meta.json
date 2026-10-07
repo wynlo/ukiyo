@@ -1,0 +1,152 @@
+{
+  "target": "prop-jizo",
+  "compose": "split",
+  "kind": "furniture",
+  "game": "shrine-props",
+  "warnings": [],
+  "assets": {
+    "plate": {
+      "name": "plate",
+      "status": "pending",
+      "width": 167,
+      "height": 166,
+      "content": {
+        "x": 17,
+        "y": 0,
+        "width": 133,
+        "height": 166
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "part": {
+        "base": "shrine-feat-statues/jizo",
+        "baseWidth": 333,
+        "baseHeight": 166,
+        "x": 83,
+        "y": 0,
+        "joint": {
+          "x": 83.5,
+          "y": 83
+        },
+        "z": 0,
+        "role": "plate"
+      }
+    },
+    "pinwheel": {
+      "name": "pinwheel",
+      "status": "pending",
+      "registration": {
+        "iou": 0.994,
+        "scale": 2.2573,
+        "coverage": 0
+      },
+      "width": 166,
+      "height": 166,
+      "content": {
+        "x": 1,
+        "y": 0,
+        "width": 164,
+        "height": 166
+      },
+      "anchor": {
+        "x": 0.3463855421686747,
+        "y": 1
+      },
+      "part": {
+        "base": "shrine-feat-statues/jizo",
+        "baseWidth": 333,
+        "baseHeight": 166,
+        "x": 109,
+        "y": 0,
+        "joint": {
+          "x": 83,
+          "y": 83
+        },
+        "z": 0.5,
+        "role": "add"
+      }
+    },
+    "blades": {
+      "name": "blades",
+      "status": "pending",
+      "width": 54,
+      "height": 54,
+      "content": {
+        "x": 0,
+        "y": 2,
+        "width": 54,
+        "height": 50
+      },
+      "anchor": {
+        "x": -0.9907407407407407,
+        "y": 1.6481481481481481
+      },
+      "part": {
+        "base": "shrine-feat-statues/jizo",
+        "baseWidth": 333,
+        "baseHeight": 166,
+        "x": 220,
+        "y": 77,
+        "joint": {
+          "x": 24,
+          "y": 29
+        },
+        "z": 1,
+        "role": "piece",
+        "mode": "detach",
+        "rig": {
+          "material": "blade",
+          "rest": {
+            "kind": "spin",
+            "amount": [
+              70,
+              70
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      }
+    },
+    "stick": {
+      "name": "stick",
+      "status": "pending",
+      "width": 55,
+      "height": 55,
+      "content": {
+        "x": 22,
+        "y": 0,
+        "width": 11,
+        "height": 55
+      },
+      "anchor": {
+        "x": -0.8636363636363636,
+        "y": 1
+      },
+      "part": {
+        "base": "shrine-feat-statues/jizo",
+        "baseWidth": 333,
+        "baseHeight": 166,
+        "x": 214,
+        "y": 111,
+        "joint": {
+          "x": 29,
+          "y": 29
+        },
+        "z": 2,
+        "role": "piece",
+        "mode": "detach"
+      }
+    }
+  },
+  "prompt": "## pinwheel\nTASK:\nRedraw the attached image EXACTLY, and add one thing: a small paper pinwheel (kazaguruma) with four butter and tomato-red blades on a thin wooden stick, standing on the ground beside the statue on its right.\n\nThe attached image is a small stone jizō statue in a red knitted cap and bib, drawn in a flat marker colour.\n\nRULES:\n- Keep the object's shape, size, position and camera exactly the same. Do not move, resize, rotate or redraw it.\n- Keep the object in exactly the same flat marker colour #8FB3E0. Only the added thing has new colours.\n- The added thing is fixed to the object naturally: it hangs from a beam, sits on a ledge or is tied to a post. It may extend past the outline where it needs to.\n- Colour the added thing from the style palette.\n- No outlines: shapes are flat colour blocks separated by colour alone, with soft slightly brushy edges and a darker same-hue band on the lower edge; the only dark marks are tiny eyes and mouths.\n- Keep the solid flat background #FF00FF. Nothing new may use a colour close to it or to #8FB3E0.\n- No text, no labels, no characters, no extra props.\n\nSTYLE:\nSTYLE LOCK: Cozy cat mobile game in the style of Meow Tower (Hyperbeard).\n\nPRIMARY GOAL: Warm, cheerful, cute sprites for a phone game with a flat top-down map where every object stands up and faces the camera. Everything must look like one illustrator painted it with flat colour blocks and a soft brush, with no pen lines.\n\nCORE AESTHETIC: Lineless, softly shaded colour blocks. Chunky, pillowy, slightly bulging shapes with big rounded corners, like soft toys or cushions. Warm, sunny, cheerful colour: soft but saturated, never neon, never muted or grey. Cats are white with a few small grey or orange patches, a wide head, small rounded ears set wide, tiny dark dot eyes set wide apart, a tiny mouth, no outline, no tail.\n\nEDGES: NO OUTLINES. No dark contour line around any shape. Shapes are separated by colour alone. Where a shape meets a similar colour, it has a slightly darker band of its own hue along its lower or outer edge (a wall with a darker apricot base band, a roof with a darker red lip, a window with a darker wood frame). Edges are soft and very slightly brushy, not hard vector edges. Inner detail is a darker same-hue shape, never a dark line. The only dark colour is tiny facial features.\n\nCOLOR: Warm cheerful palette measured from Meow Tower. Main fills: apricot (#F7BB5C) with a darker band (#E69B4B) and wood frames (#BF7640), butter yellow (#FFDA50, #FDE284), pale butter (#FFF7AC), tomato red (#DB4032) with a darker band (#BC352D), fresh lawn (#A7B845), leaf green (#729F3E), deep leaf (#388344), white (#FFFFFE). Accents: orange (#FE962B), soft blue (#6F8EC1). Sky only: blue to teal (#0591C2 to #81DFCF). No pink, no magenta, no purple, no grey or muddy colour on large areas, no neon.\n\nSHADING: Soft cel shading, not flat. Every form has a darker same-hue band on its lower or shadow side (a bulging floor slab is lighter at the top and darker at the bottom lip) and a gentle lighter tone along its top edge or rounded top. Soft cast shadows sit under roof overhangs, under window sills and under objects on the ground. Subtle gradients are allowed: a soft falloff inside a shaded band, a gentle top-to-bottom gradient on small rounded props, and a small soft highlight dot on round props. On large surfaces the shading is gentle: the lightness inside one colour stays within about 0.03 to 0.07 (HSL L). Small props shade more strongly, within about 0.15 to 0.25. A faint paper grain may sit over the painted art. Never harsh, glossy, metallic or airbrushed.\n\nVIEW AND PROPORTION: Front-facing oblique, as in a flat top-down game map. The camera looks at the front of every object from slightly above, so each object shows its full front face and a thin sliver of its top surface. The front face is drawn straight on, square to the camera, with horizontal bottom and top edges. Objects stand on their flat bottom edge. No isometric view, no 2:1 diamond, no three-quarter turn, no side faces, no vanishing points.\n\nDETAIL LEVEL: Readable at very small sizes. Rely on the chunky silhouette and two or three flat colours plus one darker band. No tiny patterns, no realistic materials, no text.\n\nCOMPOSITION: One asset category per image. Every asset isolated with generous crop-safe spacing, no scene, no ground, no shadow, no props that were not asked for.\n\nPALETTE:\nPaper White #FFFFFF (background), Apricot #F7BB5C (fill), Apricot Band #E69B4B (shade), Wood Frame #BF7640 (shade), Butter #FFDA50 (fill), Light Butter #FDE284 (fill), Pale Butter #FFF7AC (fill), Tomato #DB4032 (fill), Tomato Band #BC352D (shade), Orange #FE962B (fill), Lawn #A7B845 (fill), Leaf #729F3E (fill), Deep Leaf #388344 (shade), White #FFFFFE (fill), White Edge #E6E1DA (shade), Soft Blue #6F8EC1 (fill), Feature Dark #333333 (shade)\n\nSHAPE LANGUAGE:\nchunky, pillowy, slightly bulging, big rounded corners, arched windows and doors, round bushes made of a few bulges, white cats with small patches and no tail, front-facing with a sliver of top, flat bottom edge\n\nRENDERING RULES:\n- no outlines: flat colour blocks separated by colour alone\n- soft cel shading: a darker same-hue band on the lower or shadow side of every form\n- a gentle lighter tone on top edges and rounded tops\n- soft cast shadows under overhangs, sills and objects\n- subtle gradients allowed inside shaded bands and on small round props\n- soft, very slightly brushy edges\n- warm cheerful palette: apricot, butter, tomato, leaf green, white\n- soft but saturated colour, never neon, never muted\n- dark colour only for tiny eyes and mouths\n- chunky pillowy shapes with big rounded corners\n- front-facing oblique view: front face plus a sliver of the top\n- objects stand on a flat bottom edge\n- only small soft highlights, never glossy specular dots\n- a faint paper grain at most; none on tint-ready white art\n- no text or labels\n- crisp high-resolution raster\n- readable at small mobile sizes\n- isolated presentation with large spacing\n\nFINAL CHECK:\nSame object, same place, same marker colour, with exactly one added thing: a small paper pinwheel (kazaguruma) with four butter and tomato-red blades on a thin wooden stick, standing on the ground beside the statue on its right.\n\nADDITIONAL DETAILS:\nArt brief: follow docs/specs/art-bible.md (LOCKED Meow Tower style) and match docs/references/style-anchor.png. Lineless, soft cel shading, warm cheerful palette, chunky pillowy shapes. Keep the approved sprite exactly as it is.",
+  "promptVersion": "v1",
+  "generatedAt": "2026-09-28T03:09:09.565Z",
+  "provider": "codex",
+  "plan": {
+    "status": "approved",
+    "reviewedAt": "2026-09-28T09:03:38.658Z"
+  }
+}

@@ -16,7 +16,7 @@ import { aspectPad, declaredAspect, matchesAspect, padToAspect } from './ops/asp
 import { colorDistance, estimateBackground, parseHex, readRaster, toSharp, writePng, type Raster } from './ops/raster.js';
 import { contactSheet, framePlayer, type SheetEntry } from './ops/sheet.js';
 import { composeEditPrompt, composeLayerPrompt, composePrompt, composeSplitPrompt, defaultSize, framePoseInstruction } from './prompt/compose.js';
-import { band, blendFill, clear, cutToFinal, dilate, emptyRaster, masked, newPixels, opaqueOutside, rebuildError, resampleEdit, selectPiece } from './ops/split.js';
+import { assignSoftEdges, band, moveIslands, moveThinStrips, blendFill, clear, cutToFinal, dilate, emptyRaster, masked, newPixels, opaqueOutside, rebuildError, resampleEdit, selectPiece } from './ops/split.js';
 import { measureComplexity } from './ops/complexity.js';
 import { planPieces, type KeptPiece, type Label } from './ops/plan.js';
 import { DEFAULT_LIGHT_RULES, detectLights, findLitCopies, type LightPoint, type LightRules } from './ops/lights.js';
@@ -439,10 +439,22 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
       if (count === 0) warnings.push(`piece ${piece.id}: the mask selects no pixels`);
     }
 
+    // Thin strips and soft edge pixels go to the art they border; halo with no solid art near it is dropped.
+    const halos = new Map<string, Uint8Array>();
+    for (const [from, source] of sources) {
+      const own = target.pieces.filter((piece) => (piece.from ?? 'base') === from && masks.has(piece.id)).map((piece) => masks.get(piece.id)!);
+      if (!own.length) continue;
+      moveThinStrips(source, own);
+      moveIslands(source, own);
+      halos.set(from, assignSoftEdges(source, own, 2));
+    }
+
     // The plate and each add's rest: the source minus its moving pieces, with a seam band kept along each cut.
     const rests = new Map<string, Raster>();
     for (const [from, source] of sources) {
       const out = masked(source, new Uint8Array(width * height).fill(1));
+      const halo = halos.get(from);
+      if (halo) clear(out, halo);
       const removed = new Uint8Array(width * height);
       for (const piece of target.pieces) {
         if ((piece.from ?? 'base') !== from || piece.mode === 'cover') continue;
@@ -495,6 +507,8 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
       const source = sources.get(entry.id);
       if (source) for (let p = 0; p < width * height; p += 1) if ((source.data[p * 4 + 3] ?? 0) > 0) ignore[p] = 1;
     }
+    const baseHalo = halos.get('base');
+    if (baseHalo) for (let p = 0; p < baseHalo.length; p += 1) if (baseHalo[p]) ignore[p] = 1;
     // Cover pieces lie on a plate that still has them; only the pieces cut out of it must fill their holes.
     const layered = [plate, ...target.pieces.filter((piece) => (piece.from ?? 'base') === 'base' && piece.mode !== 'cover').map((piece) => pieceRasters.get(piece.id)).filter((r): r is Raster => Boolean(r))];
     const error = rebuildError(layered, base, ignore);

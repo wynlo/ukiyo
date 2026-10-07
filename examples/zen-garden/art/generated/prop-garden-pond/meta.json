@@ -1,0 +1,57 @@
+{
+  "target": "prop-garden-pond",
+  "compose": "split",
+  "kind": "scenery",
+  "game": "zen-garden-props",
+  "warnings": [],
+  "assets": {
+    "water": {
+      "name": "water",
+      "status": "pending",
+      "width": 307,
+      "height": 308,
+      "content": {
+        "x": 0,
+        "y": 61,
+        "width": 307,
+        "height": 186
+      },
+      "anchor": {
+        "x": 0.46579804560260585,
+        "y": 0.9837662337662337
+      },
+      "part": {
+        "base": "garden-pond",
+        "baseWidth": 432,
+        "baseHeight": 288,
+        "x": 73,
+        "y": -15,
+        "joint": {
+          "x": 151,
+          "y": 156
+        },
+        "z": 1,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "water",
+          "rest": {
+            "kind": "shimmer",
+            "amount": [
+              0.06,
+              0.08
+            ],
+            "periodMs": [
+              3200,
+              3600
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      }
+    }
+  },
+  "prompt": "(no generation: the pieces are cut from the base)",
+  "promptVersion": "v1"
+}

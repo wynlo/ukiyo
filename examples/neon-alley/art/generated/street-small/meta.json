@@ -35,7 +35,25 @@
         "y": 0,
         "width": 83,
         "height": 96
-      }
+      },
+      "complexity": {
+        "score": 0.375,
+        "regions": 32,
+        "protrusion": 0.058,
+        "edges": 0.525,
+        "components": 1
+      },
+      "effects": {
+        "wind": "none",
+        "light": "none",
+        "lights": 0,
+        "lit": 3,
+        "why": "no wind material; 3 regions look lit, not a light source by the rules: check",
+        "hash": "2ff612f9ddb4",
+        "source": "plan",
+        "status": "pending"
+      },
+      "still": true
     },
     "can": {
       "name": "can",
@@ -67,6 +85,23 @@
         "y": 0,
         "width": 61,
         "height": 96
+      },
+      "complexity": {
+        "score": 0.279,
+        "regions": 33,
+        "protrusion": 0,
+        "edges": 0.347,
+        "components": 1
+      },
+      "effects": {
+        "wind": "none",
+        "light": "none",
+        "lights": 0,
+        "lit": 3,
+        "why": "no wind material; 3 regions look lit, not a light source by the rules: check",
+        "hash": "455159f6258d",
+        "source": "plan",
+        "status": "pending"
       }
     },
     "drone": {
@@ -99,6 +134,23 @@
         "y": 0,
         "width": 89,
         "height": 96
+      },
+      "complexity": {
+        "score": 0.308,
+        "regions": 30,
+        "protrusion": 0.026,
+        "edges": 0.465,
+        "components": 1
+      },
+      "effects": {
+        "wind": "none",
+        "light": "none",
+        "lights": 0,
+        "lit": 1,
+        "why": "no wind material; 1 region look lit, not a light source by the rules: check",
+        "hash": "3344080d5043",
+        "source": "plan",
+        "status": "pending"
       }
     },
     "chip": {
@@ -131,7 +183,25 @@
         "y": 2,
         "width": 100,
         "height": 96
-      }
+      },
+      "complexity": {
+        "score": 0.335,
+        "regions": 35,
+        "protrusion": 0,
+        "edges": 0.42,
+        "components": 1
+      },
+      "effects": {
+        "wind": "none",
+        "light": "none",
+        "lights": 0,
+        "lit": 1,
+        "why": "no wind material; 1 region look lit, not a light source by the rules: check",
+        "hash": "bb0a37d774b9",
+        "source": "plan",
+        "status": "pending"
+      },
+      "still": true
     },
     "takoyaki": {
       "name": "takoyaki",
@@ -163,6 +233,23 @@
         "y": 1,
         "width": 98,
         "height": 96
+      },
+      "complexity": {
+        "score": 0.365,
+        "regions": 33,
+        "protrusion": 0.045,
+        "edges": 0.604,
+        "components": 1
+      },
+      "effects": {
+        "wind": "none",
+        "light": "none",
+        "lights": 0,
+        "lit": 3,
+        "why": "no wind material; 3 regions look lit, not a light source by the rules: check",
+        "hash": "c715fe878a5a",
+        "source": "plan",
+        "status": "pending"
       }
     },
     "battery": {
@@ -195,6 +282,23 @@
         "y": 0,
         "width": 65,
         "height": 96
+      },
+      "complexity": {
+        "score": 0.369,
+        "regions": 37,
+        "protrusion": 0.003,
+        "edges": 0.447,
+        "components": 1
+      },
+      "effects": {
+        "wind": "none",
+        "light": "none",
+        "lights": 0,
+        "lit": 0,
+        "why": "no wind material; no lit regions",
+        "hash": "6d94bde459de",
+        "source": "plan",
+        "status": "pending"
       }
     }
   },

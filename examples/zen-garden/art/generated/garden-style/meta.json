@@ -27,6 +27,23 @@
         "y": 27,
         "width": 150,
         "height": 96
+      },
+      "complexity": {
+        "score": 0.45,
+        "regions": 45,
+        "protrusion": 0.002,
+        "edges": 0.452,
+        "components": 1
+      },
+      "effects": {
+        "wind": "none",
+        "light": "none",
+        "lights": 0,
+        "lit": 0,
+        "why": "no wind material; no lit regions",
+        "hash": "44723160e225",
+        "source": "plan",
+        "status": "pending"
       }
     },
     "bench": {
@@ -51,6 +68,23 @@
         "y": 49,
         "width": 194,
         "height": 96
+      },
+      "complexity": {
+        "score": 0.49,
+        "regions": 34,
+        "protrusion": 0.125,
+        "edges": 0.478,
+        "components": 1
+      },
+      "effects": {
+        "wind": "none",
+        "light": "none",
+        "lights": 0,
+        "lit": 0,
+        "why": "no wind material; no lit regions",
+        "hash": "3ac0db8780ee",
+        "source": "plan",
+        "status": "pending"
       }
     },
     "shrub-pot": {
@@ -75,6 +109,23 @@
         "y": 2,
         "width": 99,
         "height": 96
+      },
+      "complexity": {
+        "score": 0.38,
+        "regions": 38,
+        "protrusion": 0.001,
+        "edges": 0.574,
+        "components": 1
+      },
+      "effects": {
+        "wind": "none",
+        "light": "none",
+        "lights": 0,
+        "lit": 0,
+        "why": "no wind material; no lit regions",
+        "hash": "bc223108b949",
+        "source": "plan",
+        "status": "pending"
       }
     },
     "water-bowl": {
@@ -99,6 +150,23 @@
         "y": 32,
         "width": 159,
         "height": 96
+      },
+      "complexity": {
+        "score": 0.233,
+        "regions": 29,
+        "protrusion": 0,
+        "edges": 0.336,
+        "components": 1
+      },
+      "effects": {
+        "wind": "none",
+        "light": "none",
+        "lights": 0,
+        "lit": 0,
+        "why": "no wind material; no lit regions",
+        "hash": "d7859e688ae1",
+        "source": "plan",
+        "status": "pending"
       }
     },
     "persimmon": {
@@ -123,6 +191,23 @@
         "y": 7,
         "width": 110,
         "height": 96
+      },
+      "complexity": {
+        "score": 0.291,
+        "regions": 33,
+        "protrusion": 0,
+        "edges": 0.372,
+        "components": 1
+      },
+      "effects": {
+        "wind": "none",
+        "light": "none",
+        "lights": 0,
+        "lit": 2,
+        "why": "no wind material; 2 regions look lit, not a light source by the rules: check",
+        "hash": "4733b461b230",
+        "source": "plan",
+        "status": "pending"
       }
     },
     "fence": {
@@ -147,6 +232,23 @@
         "y": 20,
         "width": 136,
         "height": 96
+      },
+      "complexity": {
+        "score": 0.85,
+        "regions": 45,
+        "protrusion": 0.312,
+        "edges": 0.715,
+        "components": 1
+      },
+      "effects": {
+        "wind": "none",
+        "light": "none",
+        "lights": 0,
+        "lit": 4,
+        "why": "no wind material; 4 regions look lit, not a light source by the rules: check",
+        "hash": "e936347d9a11",
+        "source": "plan",
+        "status": "pending"
       }
     }
   },

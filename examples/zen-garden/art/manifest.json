@@ -1,16 +1,267 @@
 [
-  { "target": "garden-style", "compose": "sheet", "kind": "item", "game": "garden", "background": "#FF00FF",
+  {
+    "target": "garden-style",
+    "compose": "sheet",
+    "kind": "item",
+    "game": "garden",
+    "background": "#FF00FF",
     "category": "Style reference for a calm watercolour garden game",
-    "assets": ["a round mossy boulder", "a small wooden bench", "a clay pot of round green shrubs", "a pale stone bowl of water", "a round orange persimmon", "a small bamboo fence section"],
-    "names": ["boulder", "bench", "shrub-pot", "water-bowl", "persimmon", "fence"] },
-  { "target": "garden-tall", "compose": "sheet", "kind": "furniture", "game": "garden", "background": "#FF00FF",
+    "assets": [
+      "a round mossy boulder",
+      "a small wooden bench",
+      "a clay pot of round green shrubs",
+      "a pale stone bowl of water",
+      "a round orange persimmon",
+      "a small bamboo fence section"
+    ],
+    "names": [
+      "boulder",
+      "bench",
+      "shrub-pot",
+      "water-bowl",
+      "persimmon",
+      "fence"
+    ]
+  },
+  {
+    "target": "garden-tall",
+    "compose": "sheet",
+    "kind": "furniture",
+    "game": "garden",
+    "background": "#FF00FF",
     "category": "Tall Japanese garden pieces",
-    "assets": ["a bonsai-shaped pine tree with three cloud-shaped pads", "a grey stone lantern with a warm lit window", "a weeping cherry tree in soft bloom", "a bamboo water spout pouring into a stone basin"],
-    "names": ["pine", "stone-lantern", "cherry", "tsukubai"] },
-  { "target": "garden-pond", "compose": "single", "kind": "scenery", "game": "garden", "background": "#FF00FF",
-    "subject": "a small round pond with calm teal water, a rim of rounded grey stones, two orange koi and a few round lily leaves" },
-  { "target": "garden-critters", "compose": "sheet", "kind": "critter", "game": "garden", "background": "#FF00FF",
+    "assets": [
+      "a bonsai-shaped pine tree with three cloud-shaped pads",
+      "a grey stone lantern with a warm lit window",
+      "a weeping cherry tree in soft bloom",
+      "a bamboo water spout pouring into a stone basin"
+    ],
+    "names": [
+      "pine",
+      "stone-lantern",
+      "cherry",
+      "tsukubai"
+    ]
+  },
+  {
+    "target": "prop-tsukubai",
+    "compose": "split",
+    "kind": "furniture",
+    "game": "zen-garden-props",
+    "aspect": "1:1",
+    "base": "garden-tall/tsukubai",
+    "subject": "tsukubai",
+    "pieces": [
+      {
+        "id": "falling-water",
+        "box": [
+          265,
+          58,
+          301,
+          142
+        ],
+        "seeds": [
+          [
+            285,
+            100
+          ]
+        ],
+        "except": [
+          "#96ccc7",
+          "#9a9a95",
+          "#6aaba5",
+          "#fcdca6"
+        ],
+        "tolerance": 30,
+        "mode": "cover",
+        "joint": [
+          283,
+          98
+        ],
+        "z": 1,
+        "material": "water"
+      }
+    ],
+    "plan": {
+      "source": "auto",
+      "score": 0.444
+    }
+  },
+  {
+    "target": "prop-stone-lantern",
+    "compose": "split",
+    "kind": "furniture",
+    "game": "zen-garden-props",
+    "aspect": "1:1",
+    "base": "garden-tall/stone-lantern",
+    "subject": "stone lantern",
+    "pieces": [
+      {
+        "id": "left-light",
+        "box": [
+          210,
+          102,
+          227,
+          143
+        ],
+        "seeds": [
+          [
+            219,
+            122
+          ]
+        ],
+        "except": [
+          "#d9cab6",
+          "#979895",
+          "#bbb3a3",
+          "#767a7b"
+        ],
+        "tolerance": 30,
+        "mode": "cover",
+        "joint": [
+          218,
+          122
+        ],
+        "z": 3,
+        "material": "light"
+      },
+      {
+        "id": "right-light",
+        "box": [
+          286,
+          102,
+          304,
+          143
+        ],
+        "seeds": [
+          [
+            295,
+            122
+          ]
+        ],
+        "except": [
+          "#9a9486",
+          "#787a78",
+          "#a4abac",
+          "#595a57"
+        ],
+        "tolerance": 30,
+        "mode": "cover",
+        "joint": [
+          294,
+          122
+        ],
+        "z": 2,
+        "material": "light"
+      },
+      {
+        "id": "center-light",
+        "box": [
+          237,
+          102,
+          279,
+          145
+        ],
+        "seeds": [
+          [
+            258,
+            123
+          ]
+        ],
+        "except": [
+          "#9a9387",
+          "#7b7469",
+          "#b7a895"
+        ],
+        "tolerance": 30,
+        "mode": "cover",
+        "joint": [
+          257,
+          124
+        ],
+        "z": 1,
+        "material": "light"
+      }
+    ],
+    "plan": {
+      "source": "auto",
+      "score": 0.482
+    }
+  },
+  {
+    "target": "garden-pond",
+    "compose": "single",
+    "kind": "scenery",
+    "game": "garden",
+    "background": "#FF00FF",
+    "subject": "a small round pond with calm teal water, a rim of rounded grey stones, two orange koi and a few round lily leaves"
+  },
+  {
+    "target": "prop-garden-pond",
+    "compose": "split",
+    "kind": "scenery",
+    "game": "zen-garden-props",
+    "aspect": "1:1",
+    "base": "garden-pond/garden-pond",
+    "subject": "a small round pond with calm teal water, a rim of rounded grey stones, two orange koi and a few round lily leaves",
+    "pieces": [
+      {
+        "id": "water",
+        "box": [
+          75,
+          52,
+          374,
+          230
+        ],
+        "seeds": [
+          [
+            212,
+            92
+          ]
+        ],
+        "except": [
+          "#c8c7b8",
+          "#e6dcc5",
+          "#a7aba7",
+          "#77858b"
+        ],
+        "tolerance": 30,
+        "mode": "cover",
+        "joint": [
+          224,
+          141
+        ],
+        "z": 1,
+        "material": "water"
+      }
+    ],
+    "plan": {
+      "source": "auto",
+      "score": 0.21
+    }
+  },
+  {
+    "target": "garden-critters",
+    "compose": "sheet",
+    "kind": "critter",
+    "game": "garden",
+    "background": "#FF00FF",
     "category": "Round cute garden animals",
-    "assets": ["a round green frog sitting", "a white and orange koi fish", "a round snail with a sand-coloured shell", "a small white crane standing on one leg", "a round brown sparrow", "a sleepy round turtle"],
-    "names": ["frog", "koi", "snail", "crane", "sparrow", "turtle"] }
+    "assets": [
+      "a round green frog sitting",
+      "a white and orange koi fish",
+      "a round snail with a sand-coloured shell",
+      "a small white crane standing on one leg",
+      "a round brown sparrow",
+      "a sleepy round turtle"
+    ],
+    "names": [
+      "frog",
+      "koi",
+      "snail",
+      "crane",
+      "sparrow",
+      "turtle"
+    ]
+  }
 ]

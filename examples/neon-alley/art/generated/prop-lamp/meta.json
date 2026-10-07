@@ -1,0 +1,208 @@
+{
+  "target": "prop-lamp",
+  "compose": "split",
+  "kind": "furniture",
+  "game": "neon-alley-props",
+  "warnings": [],
+  "assets": {
+    "plate": {
+      "name": "plate",
+      "status": "pending",
+      "width": 256,
+      "height": 256,
+      "content": {
+        "x": 64,
+        "y": 0,
+        "width": 128,
+        "height": 256
+      },
+      "anchor": {
+        "x": 0.548828125,
+        "y": 1
+      },
+      "part": {
+        "base": "street-tall/lamp",
+        "baseWidth": 513,
+        "baseHeight": 256,
+        "x": 116,
+        "y": 0,
+        "joint": {
+          "x": 128,
+          "y": 128
+        },
+        "z": 0,
+        "role": "plate"
+      }
+    },
+    "glowing-panel": {
+      "name": "glowing-panel",
+      "status": "pending",
+      "width": 68,
+      "height": 67,
+      "content": {
+        "x": 17,
+        "y": 0,
+        "width": 34,
+        "height": 67
+      },
+      "anchor": {
+        "x": 1.0073529411764706,
+        "y": 1.8507462686567164
+      },
+      "part": {
+        "base": "street-tall/lamp",
+        "baseWidth": 513,
+        "baseHeight": 256,
+        "x": 188,
+        "y": 132,
+        "joint": {
+          "x": 34,
+          "y": 33
+        },
+        "z": 2,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "light",
+          "rest": {
+            "kind": "glow",
+            "amount": [
+              0.18,
+              0.35
+            ],
+            "periodMs": [
+              2600,
+              2600
+            ]
+          },
+          "lag": 0,
+          "stagger": 100,
+          "phases": [
+            "dusk",
+            "night"
+          ]
+        }
+      },
+      "lights": [
+        {
+          "x": 34.01,
+          "y": 34.64,
+          "radius": 10,
+          "color": "#fcd77e",
+          "intensity": 0.99,
+          "piece": "glowing-panel",
+          "from": "base"
+        }
+      ]
+    },
+    "lantern": {
+      "name": "lantern",
+      "status": "pending",
+      "width": 101,
+      "height": 100,
+      "content": {
+        "x": 3,
+        "y": 0,
+        "width": 95,
+        "height": 100
+      },
+      "anchor": {
+        "x": 0.21287128712871287,
+        "y": 2.16
+      },
+      "part": {
+        "base": "street-tall/lamp",
+        "baseWidth": 513,
+        "baseHeight": 256,
+        "x": 235,
+        "y": 40,
+        "joint": {
+          "x": 49,
+          "y": 5
+        },
+        "z": 1,
+        "role": "piece",
+        "mode": "detach",
+        "rig": {
+          "material": "lantern",
+          "rest": {
+            "kind": "swing",
+            "amount": [
+              0.8,
+              1.3
+            ],
+            "periodMs": [
+              3000,
+              4200
+            ]
+          },
+          "use": {
+            "kind": "swing",
+            "amount": [
+              2.5,
+              4.5
+            ],
+            "periodMs": [
+              600,
+              900
+            ],
+            "durationMs": [
+              1600,
+              2400
+            ]
+          },
+          "gust": {
+            "kind": "swing",
+            "amount": [
+              2,
+              3
+            ],
+            "periodMs": [
+              500,
+              700
+            ],
+            "durationMs": [
+              1200,
+              1500
+            ]
+          },
+          "lag": 120,
+          "stagger": 100
+        }
+      },
+      "lights": [
+        {
+          "x": 50.58,
+          "y": 45.63,
+          "radius": 42.96,
+          "color": "#fbc559",
+          "intensity": 0.99,
+          "piece": "lantern",
+          "from": "base"
+        }
+      ]
+    }
+  },
+  "prompt": "(no generation: the pieces are cut from the base)",
+  "promptVersion": "v1",
+  "lights": [
+    {
+      "x": 222.01,
+      "y": 166.64,
+      "radius": 10,
+      "color": "#fcd77e",
+      "intensity": 0.99,
+      "piece": "glowing-panel",
+      "from": "base"
+    },
+    {
+      "x": 285.58,
+      "y": 85.63,
+      "radius": 42.96,
+      "color": "#fbc559",
+      "intensity": 0.99,
+      "piece": "lantern",
+      "from": "base"
+    }
+  ]
+}

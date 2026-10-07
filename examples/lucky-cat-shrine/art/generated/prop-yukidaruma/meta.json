@@ -1,0 +1,160 @@
+{
+  "target": "prop-yukidaruma",
+  "compose": "split",
+  "kind": "furniture",
+  "game": "shrine-props",
+  "warnings": [
+    "split rebuild: 1.67% of the base differs by more than 24 (max 231); a piece may overlap another."
+  ],
+  "assets": {
+    "plate": {
+      "name": "plate",
+      "status": "pending",
+      "registration": {
+        "iou": 0.849,
+        "scale": 2.1223,
+        "coverage": 0
+      },
+      "width": 106,
+      "height": 106,
+      "content": {
+        "x": 8,
+        "y": 0,
+        "width": 90,
+        "height": 106
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "part": {
+        "base": "shrine-feat-small-b/yukidaruma",
+        "baseWidth": 256,
+        "baseHeight": 128,
+        "x": 75,
+        "y": 22,
+        "joint": {
+          "x": 53,
+          "y": 53
+        },
+        "z": 0,
+        "role": "plate"
+      }
+    },
+    "hat": {
+      "name": "hat",
+      "status": "pending",
+      "width": 61,
+      "height": 61,
+      "content": {
+        "x": 0,
+        "y": 7,
+        "width": 61,
+        "height": 47
+      },
+      "anchor": {
+        "x": 0.32786885245901637,
+        "y": 2.2131147540983607
+      },
+      "part": {
+        "base": "shrine-feat-small-b/yukidaruma",
+        "baseWidth": 256,
+        "baseHeight": 128,
+        "x": 108,
+        "y": -7,
+        "joint": {
+          "x": 22,
+          "y": 51
+        },
+        "z": 1,
+        "role": "piece",
+        "mode": "fill",
+        "rig": {
+          "material": "lever",
+          "use": {
+            "kind": "swing",
+            "amount": [
+              -6,
+              -6
+            ],
+            "periodMs": [
+              600,
+              600
+            ],
+            "durationMs": [
+              1600,
+              1600
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      }
+    },
+    "scarf-tail": {
+      "name": "scarf-tail",
+      "status": "pending",
+      "width": 33,
+      "height": 33,
+      "content": {
+        "x": 1,
+        "y": 0,
+        "width": 31,
+        "height": 33
+      },
+      "anchor": {
+        "x": 0.030303030303030304,
+        "y": 1.393939393939394
+      },
+      "part": {
+        "base": "shrine-feat-small-b/yukidaruma",
+        "baseWidth": 256,
+        "baseHeight": 128,
+        "x": 127,
+        "y": 82,
+        "joint": {
+          "x": 16,
+          "y": 4
+        },
+        "z": 2,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "paper",
+          "rest": {
+            "kind": "flutter",
+            "amount": [
+              1.3,
+              1.5
+            ],
+            "periodMs": [
+              1900,
+              2400
+            ]
+          },
+          "gust": {
+            "kind": "shake",
+            "amount": [
+              1.5,
+              2.2
+            ],
+            "durationMs": [
+              600,
+              800
+            ]
+          },
+          "lag": 90,
+          "stagger": 100
+        }
+      }
+    }
+  },
+  "prompt": "## plate\nTASK:\nRedraw the attached image EXACTLY, with one change: remove the orange bucket hat. Paint the round top of the white snow head where the hat was.\n\nThe attached image is a small snowman with a red scarf and an orange bucket hat.\n\nRULES:\n- Keep everything else exactly the same: shape, size, position, colours, shading and camera. Do not move, resize, rotate or redraw anything else.\n- Where the removed things were, paint what was behind them. Continue the art around them in the same style: a door, a wall, a trunk, a beam. Nothing new may appear.\n- Keep the solid flat background #FF00FF.\n- No text, no labels, no characters, no extra props.\n\nSTYLE:\nSTYLE LOCK: Cozy cat mobile game in the style of Meow Tower (Hyperbeard).\n\nPRIMARY GOAL: Warm, cheerful, cute sprites for a phone game with a flat top-down map where every object stands up and faces the camera. Everything must look like one illustrator painted it with flat colour blocks and a soft brush, with no pen lines.\n\nCORE AESTHETIC: Lineless, softly shaded colour blocks. Chunky, pillowy, slightly bulging shapes with big rounded corners, like soft toys or cushions. Warm, sunny, cheerful colour: soft but saturated, never neon, never muted or grey. Cats are white with a few small grey or orange patches, a wide head, small rounded ears set wide, tiny dark dot eyes set wide apart, a tiny mouth, no outline, no tail.\n\nEDGES: NO OUTLINES. No dark contour line around any shape. Shapes are separated by colour alone. Where a shape meets a similar colour, it has a slightly darker band of its own hue along its lower or outer edge (a wall with a darker apricot base band, a roof with a darker red lip, a window with a darker wood frame). Edges are soft and very slightly brushy, not hard vector edges. Inner detail is a darker same-hue shape, never a dark line. The only dark colour is tiny facial features.\n\nCOLOR: Warm cheerful palette measured from Meow Tower. Main fills: apricot (#F7BB5C) with a darker band (#E69B4B) and wood frames (#BF7640), butter yellow (#FFDA50, #FDE284), pale butter (#FFF7AC), tomato red (#DB4032) with a darker band (#BC352D), fresh lawn (#A7B845), leaf green (#729F3E), deep leaf (#388344), white (#FFFFFE). Accents: orange (#FE962B), soft blue (#6F8EC1). Sky only: blue to teal (#0591C2 to #81DFCF). No pink, no magenta, no purple, no grey or muddy colour on large areas, no neon.\n\nSHADING: Soft cel shading, not flat. Every form has a darker same-hue band on its lower or shadow side (a bulging floor slab is lighter at the top and darker at the bottom lip) and a gentle lighter tone along its top edge or rounded top. Soft cast shadows sit under roof overhangs, under window sills and under objects on the ground. Subtle gradients are allowed: a soft falloff inside a shaded band, a gentle top-to-bottom gradient on small rounded props, and a small soft highlight dot on round props. On large surfaces the shading is gentle: the lightness inside one colour stays within about 0.03 to 0.07 (HSL L). Small props shade more strongly, within about 0.15 to 0.25. A faint paper grain may sit over the painted art. Never harsh, glossy, metallic or airbrushed.\n\nVIEW AND PROPORTION: Front-facing oblique, as in a flat top-down game map. The camera looks at the front of every object from slightly above, so each object shows its full front face and a thin sliver of its top surface. The front face is drawn straight on, square to the camera, with horizontal bottom and top edges. Objects stand on their flat bottom edge. No isometric view, no 2:1 diamond, no three-quarter turn, no side faces, no vanishing points.\n\nDETAIL LEVEL: Readable at very small sizes. Rely on the chunky silhouette and two or three flat colours plus one darker band. No tiny patterns, no realistic materials, no text.\n\nCOMPOSITION: One asset category per image. Every asset isolated with generous crop-safe spacing, no scene, no ground, no shadow, no props that were not asked for.\n\nPALETTE:\nPaper White #FFFFFF (background), Apricot #F7BB5C (fill), Apricot Band #E69B4B (shade), Wood Frame #BF7640 (shade), Butter #FFDA50 (fill), Light Butter #FDE284 (fill), Pale Butter #FFF7AC (fill), Tomato #DB4032 (fill), Tomato Band #BC352D (shade), Orange #FE962B (fill), Lawn #A7B845 (fill), Leaf #729F3E (fill), Deep Leaf #388344 (shade), White #FFFFFE (fill), White Edge #E6E1DA (shade), Soft Blue #6F8EC1 (fill), Feature Dark #333333 (shade)\n\nSHAPE LANGUAGE:\nchunky, pillowy, slightly bulging, big rounded corners, arched windows and doors, round bushes made of a few bulges, white cats with small patches and no tail, front-facing with a sliver of top, flat bottom edge\n\nRENDERING RULES:\n- no outlines: flat colour blocks separated by colour alone\n- soft cel shading: a darker same-hue band on the lower or shadow side of every form\n- a gentle lighter tone on top edges and rounded tops\n- soft cast shadows under overhangs, sills and objects\n- subtle gradients allowed inside shaded bands and on small round props\n- soft, very slightly brushy edges\n- warm cheerful palette: apricot, butter, tomato, leaf green, white\n- soft but saturated colour, never neon, never muted\n- dark colour only for tiny eyes and mouths\n- chunky pillowy shapes with big rounded corners\n- front-facing oblique view: front face plus a sliver of the top\n- objects stand on a flat bottom edge\n- only small soft highlights, never glossy specular dots\n- a faint paper grain at most; none on tint-ready white art\n- no text or labels\n- crisp high-resolution raster\n- readable at small mobile sizes\n- isolated presentation with large spacing\n\nFINAL CHECK:\nThe same a small snowman with a red scarf and an orange bucket hat in the same place, with the orange bucket hat. Paint the round top of the white snow head where the hat was removed and nothing else changed.\n\nADDITIONAL DETAILS:\nArt brief: follow docs/specs/art-bible.md (LOCKED Meow Tower style) and match docs/references/style-anchor.png. Lineless, soft cel shading, warm cheerful palette, chunky pillowy shapes. Keep the approved sprite exactly as it is.",
+  "promptVersion": "v1",
+  "generatedAt": "2026-09-28T03:07:04.439Z",
+  "provider": "codex",
+  "plan": {
+    "status": "approved",
+    "reviewedAt": "2026-09-28T10:44:30.722Z"
+  }
+}

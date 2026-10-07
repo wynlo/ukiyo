@@ -1,0 +1,142 @@
+{
+  "target": "prop-taiko-drum",
+  "compose": "split",
+  "kind": "furniture",
+  "game": "shrine-props",
+  "warnings": [],
+  "assets": {
+    "plate": {
+      "name": "plate",
+      "status": "pending",
+      "width": 186,
+      "height": 186,
+      "content": {
+        "x": 16,
+        "y": 0,
+        "width": 154,
+        "height": 186
+      },
+      "anchor": {
+        "x": 0.5053763440860215,
+        "y": 1
+      },
+      "part": {
+        "base": "shrine-feat-mid-b/taiko-drum",
+        "baseWidth": 372,
+        "baseHeight": 186,
+        "x": 92,
+        "y": 0,
+        "joint": {
+          "x": 93,
+          "y": 93
+        },
+        "z": 0,
+        "role": "plate"
+      }
+    },
+    "stick-l": {
+      "name": "stick-l",
+      "status": "pending",
+      "width": 109,
+      "height": 108,
+      "content": {
+        "x": 38,
+        "y": 0,
+        "width": 33,
+        "height": 108
+      },
+      "anchor": {
+        "x": 1.2935779816513762,
+        "y": 1.1851851851851851
+      },
+      "part": {
+        "base": "shrine-feat-mid-b/taiko-drum",
+        "baseWidth": 372,
+        "baseHeight": 186,
+        "x": 45,
+        "y": 58,
+        "joint": {
+          "x": 54,
+          "y": 102
+        },
+        "z": 1,
+        "role": "piece",
+        "mode": "detach",
+        "rig": {
+          "material": "lever",
+          "use": {
+            "kind": "swing",
+            "amount": [
+              8,
+              8
+            ],
+            "periodMs": [
+              260,
+              260
+            ],
+            "durationMs": [
+              700,
+              700
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      }
+    },
+    "stick-r": {
+      "name": "stick-r",
+      "status": "pending",
+      "width": 109,
+      "height": 108,
+      "content": {
+        "x": 37,
+        "y": 0,
+        "width": 35,
+        "height": 108
+      },
+      "anchor": {
+        "x": -0.28440366972477066,
+        "y": 1.1851851851851851
+      },
+      "part": {
+        "base": "shrine-feat-mid-b/taiko-drum",
+        "baseWidth": 372,
+        "baseHeight": 186,
+        "x": 217,
+        "y": 58,
+        "joint": {
+          "x": 54,
+          "y": 102
+        },
+        "z": 2,
+        "role": "piece",
+        "mode": "detach",
+        "rig": {
+          "material": "lever",
+          "use": {
+            "kind": "swing",
+            "amount": [
+              -8,
+              -8
+            ],
+            "periodMs": [
+              260,
+              260
+            ],
+            "durationMs": [
+              700,
+              700
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      }
+    }
+  },
+  "plan": {
+    "status": "approved",
+    "reviewedAt": "2026-09-28T09:03:38.364Z"
+  }
+}

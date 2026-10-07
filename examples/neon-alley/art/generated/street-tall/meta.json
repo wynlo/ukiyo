@@ -35,6 +35,23 @@
         "y": 0,
         "width": 211,
         "height": 256
+      },
+      "complexity": {
+        "score": 0.35,
+        "regions": 35,
+        "protrusion": 0.015,
+        "edges": 0.552,
+        "components": 1
+      },
+      "effects": {
+        "wind": "none",
+        "light": "art",
+        "lights": 0,
+        "lit": 8,
+        "why": "no wind material; light source by the rules, 0 points",
+        "hash": "f94fb5a3514c",
+        "source": "plan",
+        "status": "pending"
       }
     },
     "noodle-stall": {
@@ -67,6 +84,23 @@
         "y": 0,
         "width": 254,
         "height": 256
+      },
+      "complexity": {
+        "score": 0.471,
+        "regions": 42,
+        "protrusion": 0.065,
+        "edges": 0.424,
+        "components": 1
+      },
+      "effects": {
+        "wind": "none",
+        "light": "art",
+        "lights": 0,
+        "lit": 6,
+        "why": "no wind material; light source by the rules, 0 points",
+        "hash": "3b032f6c11bc",
+        "source": "plan",
+        "status": "pending"
       }
     },
     "lamp": {
@@ -99,6 +133,23 @@
         "y": 0,
         "width": 149,
         "height": 256
+      },
+      "complexity": {
+        "score": 0.606,
+        "regions": 55,
+        "protrusion": 0.129,
+        "edges": 0.483,
+        "components": 1
+      },
+      "effects": {
+        "wind": "none",
+        "light": "art",
+        "lights": 0,
+        "lit": 1,
+        "why": "no wind material; light source by the rules, 0 points",
+        "hash": "72328f968300",
+        "source": "plan",
+        "status": "pending"
       }
     },
     "sign-tower": {
@@ -131,6 +182,23 @@
         "y": 0,
         "width": 125,
         "height": 256
+      },
+      "complexity": {
+        "score": 0.363,
+        "regions": 35,
+        "protrusion": 0.029,
+        "edges": 0.483,
+        "components": 1
+      },
+      "effects": {
+        "wind": "none",
+        "light": "art",
+        "lights": 0,
+        "lit": 2,
+        "why": "no wind material; light source by the rules, 0 points",
+        "hash": "1b52b8c89b2f",
+        "source": "plan",
+        "status": "pending"
       }
     }
   },

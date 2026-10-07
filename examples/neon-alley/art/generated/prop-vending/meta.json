@@ -1,0 +1,129 @@
+{
+  "target": "prop-vending",
+  "compose": "split",
+  "kind": "furniture",
+  "game": "neon-alley-props",
+  "warnings": [
+    "split piece right-display: material \"light\" emits light, but no lit region was found"
+  ],
+  "assets": {
+    "right-display": {
+      "name": "right-display",
+      "status": "pending",
+      "width": 32,
+      "height": 32,
+      "content": {
+        "x": 0,
+        "y": 0,
+        "width": 32,
+        "height": 32
+      },
+      "anchor": {
+        "x": -1.703125,
+        "y": 4.8125
+      },
+      "part": {
+        "base": "street-tall/vending",
+        "baseWidth": 513,
+        "baseHeight": 256,
+        "x": 311,
+        "y": 102,
+        "joint": {
+          "x": 16,
+          "y": 16
+        },
+        "z": 1,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "light",
+          "rest": {
+            "kind": "glow",
+            "amount": [
+              0.18,
+              0.35
+            ],
+            "periodMs": [
+              2600,
+              2600
+            ]
+          },
+          "lag": 0,
+          "stagger": 100,
+          "phases": [
+            "dusk",
+            "night"
+          ]
+        }
+      }
+    }
+  },
+  "prompt": "(no generation: the pieces are cut from the base)",
+  "promptVersion": "v1",
+  "lights": [
+    {
+      "x": 202.66,
+      "y": 78,
+      "radius": 4.51,
+      "color": "#d5f3f9",
+      "intensity": 0.98,
+      "from": "base"
+    },
+    {
+      "x": 203.56,
+      "y": 135.13,
+      "radius": 11.16,
+      "color": "#fbd89b",
+      "intensity": 0.98,
+      "from": "base"
+    },
+    {
+      "x": 222.63,
+      "y": 129,
+      "radius": 4.51,
+      "color": "#fbaac6",
+      "intensity": 0.98,
+      "from": "base"
+    },
+    {
+      "x": 227.34,
+      "y": 103.76,
+      "radius": 7.36,
+      "color": "#faadd0",
+      "intensity": 0.98,
+      "from": "base"
+    },
+    {
+      "x": 228.01,
+      "y": 86.41,
+      "radius": 6,
+      "color": "#fbb1d1",
+      "intensity": 0.98,
+      "from": "base"
+    },
+    {
+      "x": 231.23,
+      "y": 172.45,
+      "radius": 9.74,
+      "color": "#faaccc",
+      "intensity": 0.98,
+      "from": "base"
+    },
+    {
+      "x": 253.49,
+      "y": 99.79,
+      "radius": 8.63,
+      "color": "#fbd189",
+      "intensity": 0.98,
+      "from": "base"
+    },
+    {
+      "x": 265.09,
+      "y": 171.42,
+      "radius": 11.62,
+      "color": "#fbd591",
+      "intensity": 0.98,
+      "from": "base"
+    }
+  ]
+}

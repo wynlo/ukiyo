@@ -1,0 +1,223 @@
+{
+  "target": "prop-stone-lantern",
+  "compose": "split",
+  "kind": "furniture",
+  "game": "zen-garden-props",
+  "warnings": [],
+  "assets": {
+    "left-light": {
+      "name": "left-light",
+      "status": "pending",
+      "width": 39,
+      "height": 39,
+      "content": {
+        "x": 11,
+        "y": 0,
+        "width": 17,
+        "height": 39
+      },
+      "anchor": {
+        "x": 1.4743589743589745,
+        "y": 3.948717948717949
+      },
+      "part": {
+        "base": "garden-tall/stone-lantern",
+        "baseWidth": 513,
+        "baseHeight": 256,
+        "x": 199,
+        "y": 102,
+        "joint": {
+          "x": 19,
+          "y": 20
+        },
+        "z": 3,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "light",
+          "rest": {
+            "kind": "glow",
+            "amount": [
+              0.18,
+              0.35
+            ],
+            "periodMs": [
+              2600,
+              2600
+            ]
+          },
+          "lag": 0,
+          "stagger": 100,
+          "phases": [
+            "dusk",
+            "night"
+          ]
+        }
+      },
+      "lights": [
+        {
+          "x": 19.86,
+          "y": 20.29,
+          "radius": 10.2,
+          "color": "#fbd998",
+          "intensity": 0.98,
+          "piece": "left-light",
+          "from": "base"
+        }
+      ]
+    },
+    "right-light": {
+      "name": "right-light",
+      "status": "pending",
+      "width": 39,
+      "height": 39,
+      "content": {
+        "x": 11,
+        "y": 0,
+        "width": 17,
+        "height": 39
+      },
+      "anchor": {
+        "x": -0.47435897435897434,
+        "y": 3.948717948717949
+      },
+      "part": {
+        "base": "garden-tall/stone-lantern",
+        "baseWidth": 513,
+        "baseHeight": 256,
+        "x": 275,
+        "y": 102,
+        "joint": {
+          "x": 19,
+          "y": 20
+        },
+        "z": 2,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "light",
+          "rest": {
+            "kind": "glow",
+            "amount": [
+              0.18,
+              0.35
+            ],
+            "periodMs": [
+              2600,
+              2600
+            ]
+          },
+          "lag": 0,
+          "stagger": 100,
+          "phases": [
+            "dusk",
+            "night"
+          ]
+        }
+      },
+      "lights": [
+        {
+          "x": 19.14,
+          "y": 22.92,
+          "radius": 8.97,
+          "color": "#fad593",
+          "intensity": 0.98,
+          "piece": "right-light",
+          "from": "base"
+        }
+      ]
+    },
+    "center-light": {
+      "name": "center-light",
+      "status": "pending",
+      "width": 42,
+      "height": 42,
+      "content": {
+        "x": 0,
+        "y": 1,
+        "width": 42,
+        "height": 40
+      },
+      "anchor": {
+        "x": 0.4880952380952381,
+        "y": 3.642857142857143
+      },
+      "part": {
+        "base": "garden-tall/stone-lantern",
+        "baseWidth": 513,
+        "baseHeight": 256,
+        "x": 236,
+        "y": 103,
+        "joint": {
+          "x": 21,
+          "y": 21
+        },
+        "z": 1,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "light",
+          "rest": {
+            "kind": "glow",
+            "amount": [
+              0.18,
+              0.35
+            ],
+            "periodMs": [
+              2600,
+              2600
+            ]
+          },
+          "lag": 0,
+          "stagger": 100,
+          "phases": [
+            "dusk",
+            "night"
+          ]
+        }
+      },
+      "lights": [
+        {
+          "x": 20.95,
+          "y": 21,
+          "radius": 19.69,
+          "color": "#fce0a6",
+          "intensity": 0.99,
+          "piece": "center-light",
+          "from": "base"
+        }
+      ]
+    }
+  },
+  "prompt": "(no generation: the pieces are cut from the base)",
+  "promptVersion": "v1",
+  "lights": [
+    {
+      "x": 218.86,
+      "y": 122.29,
+      "radius": 10.2,
+      "color": "#fbd998",
+      "intensity": 0.98,
+      "piece": "left-light",
+      "from": "base"
+    },
+    {
+      "x": 294.14,
+      "y": 124.92,
+      "radius": 8.97,
+      "color": "#fad593",
+      "intensity": 0.98,
+      "piece": "right-light",
+      "from": "base"
+    },
+    {
+      "x": 256.95,
+      "y": 124,
+      "radius": 19.69,
+      "color": "#fce0a6",
+      "intensity": 0.99,
+      "piece": "center-light",
+      "from": "base"
+    }
+  ]
+}

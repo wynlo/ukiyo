@@ -1,0 +1,244 @@
+{
+  "target": "shrine-feat-statues",
+  "compose": "sheet",
+  "kind": "furniture",
+  "game": "shrine-features",
+  "warnings": [],
+  "assets": {
+    "jizo": {
+      "name": "jizo",
+      "status": "approved",
+      "sourceBox": {
+        "x": 119,
+        "y": 98,
+        "width": 310,
+        "height": 401,
+        "area": 95735
+      },
+      "width": 333,
+      "height": 166,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "content": {
+        "x": 102,
+        "y": 0,
+        "width": 129,
+        "height": 166
+      },
+      "complexity": {
+        "score": 0.144,
+        "regions": 23,
+        "protrusion": 0.011,
+        "edges": 0.277,
+        "components": 1
+      },
+      "reviewedAt": "2026-09-28T09:03:37.819Z",
+      "effects": {
+        "wind": [
+          "blade"
+        ],
+        "light": "none",
+        "lights": 0,
+        "lit": 2,
+        "why": "split pieces of blade; 2 regions look lit, not a light source by the rules: check",
+        "hash": "a5fb160b899a",
+        "source": "plan",
+        "status": "approved",
+        "reviewedAt": "2026-09-28T10:44:30.648Z"
+      }
+    },
+    "tanuki-statue": {
+      "name": "tanuki-statue",
+      "status": "approved",
+      "width": 332,
+      "height": 166,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "content": {
+        "x": 108,
+        "y": 0,
+        "width": 116,
+        "height": 166
+      },
+      "complexity": {
+        "score": 0.35,
+        "regions": 35,
+        "protrusion": 0.013,
+        "edges": 0.509,
+        "components": 1
+      },
+      "reviewedAt": "2026-09-28T09:03:37.821Z",
+      "effects": {
+        "wind": "none",
+        "light": "none",
+        "lights": 0,
+        "lit": 3,
+        "why": "its split has no wind piece; 3 regions look lit, not a light source by the rules: check",
+        "hash": "e1b3827ed5fa",
+        "source": "plan",
+        "status": "approved",
+        "reviewedAt": "2026-09-28T10:44:30.650Z"
+      }
+    },
+    "maneki-neko": {
+      "name": "maneki-neko",
+      "status": "approved",
+      "width": 333,
+      "height": 166,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "content": {
+        "x": 101,
+        "y": 0,
+        "width": 131,
+        "height": 166
+      },
+      "complexity": {
+        "score": 0.197,
+        "regions": 21,
+        "protrusion": 0.025,
+        "edges": 0.41,
+        "components": 1
+      },
+      "reviewedAt": "2026-09-28T09:03:37.825Z",
+      "effects": {
+        "wind": "none",
+        "light": "none",
+        "lights": 0,
+        "lit": 3,
+        "why": "its split has no wind piece; 3 regions look lit, not a light source by the rules: check",
+        "hash": "89da03928fe4",
+        "source": "plan",
+        "status": "approved",
+        "reviewedAt": "2026-09-28T10:44:30.651Z"
+      }
+    },
+    "frog-statue": {
+      "name": "frog-statue",
+      "status": "approved",
+      "width": 332,
+      "height": 166,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "content": {
+        "x": 67,
+        "y": 0,
+        "width": 198,
+        "height": 166
+      },
+      "complexity": {
+        "score": 0.221,
+        "regions": 34,
+        "protrusion": 0.004,
+        "edges": 0.212,
+        "components": 1
+      },
+      "reviewedAt": "2026-09-28T09:03:37.828Z",
+      "effects": {
+        "wind": "none",
+        "light": "none",
+        "lights": 0,
+        "lit": 0,
+        "why": "no wind material; no lit regions",
+        "hash": "b50efdd400a6",
+        "source": "plan",
+        "status": "approved",
+        "reviewedAt": "2026-09-28T10:44:30.652Z"
+      }
+    },
+    "stone-rabbit": {
+      "name": "stone-rabbit",
+      "status": "approved",
+      "width": 332,
+      "height": 166,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "content": {
+        "x": 116,
+        "y": 0,
+        "width": 100,
+        "height": 166
+      },
+      "complexity": {
+        "score": 0.825,
+        "regions": 32,
+        "protrusion": 0.269,
+        "edges": 0.458,
+        "components": 5
+      },
+      "still": true,
+      "reviewedAt": "2026-09-28T09:03:37.831Z",
+      "effects": {
+        "wind": "none",
+        "light": "none",
+        "lights": 0,
+        "lit": 0,
+        "why": "no wind material; no lit regions",
+        "hash": "f45229bed155",
+        "source": "plan",
+        "status": "approved",
+        "reviewedAt": "2026-09-28T10:44:30.654Z"
+      }
+    },
+    "iwakura-stone": {
+      "name": "iwakura-stone",
+      "status": "approved",
+      "sourceBox": {
+        "x": 1049,
+        "y": 589,
+        "width": 425,
+        "height": 361,
+        "area": 125830
+      },
+      "width": 332,
+      "height": 166,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "content": {
+        "x": 68,
+        "y": 0,
+        "width": 196,
+        "height": 166
+      },
+      "complexity": {
+        "score": 0.166,
+        "regions": 28,
+        "protrusion": 0.001,
+        "edges": 0.223,
+        "components": 1
+      },
+      "reviewedAt": "2026-09-28T09:03:37.833Z",
+      "effects": {
+        "wind": [
+          "paper"
+        ],
+        "light": "none",
+        "lights": 0,
+        "lit": 1,
+        "why": "split pieces of paper; 1 region look lit, not a light source by the rules: check",
+        "hash": "e6d04474c6df",
+        "source": "plan",
+        "status": "approved",
+        "reviewedAt": "2026-09-28T10:44:30.659Z"
+      }
+    }
+  },
+  "prompt": "TASK:\nCreate one production-ready sticker sheet containing exactly 6 game sprites.\n\nPROJECT CONTEXT:\nKissaten Engine: A cozy idle-game engine. The sample game is Hidamari Shrine: a small Japanese shrine precinct where the player places lanterns, ema racks, fortune trees and tea stands, and round critter visitors come to pray, ring the bell, draw fortunes and nap. Plus a component library of generic cozy sprites.\n\nSTYLE:\nSTYLE LOCK: Cozy cat mobile game in the style of Meow Tower (Hyperbeard).\n\nPRIMARY GOAL: Warm, cheerful, cute sprites for a phone game with a flat top-down map where every object stands up and faces the camera. Everything must look like one illustrator painted it with flat colour blocks and a soft brush, with no pen lines.\n\nCORE AESTHETIC: Lineless, softly shaded colour blocks. Chunky, pillowy, slightly bulging shapes with big rounded corners, like soft toys or cushions. Warm, sunny, cheerful colour: soft but saturated, never neon, never muted or grey. Cats are white with a few small grey or orange patches, a wide head, small rounded ears set wide, tiny dark dot eyes set wide apart, a tiny mouth, no outline, no tail.\n\nEDGES: NO OUTLINES. No dark contour line around any shape. Shapes are separated by colour alone. Where a shape meets a similar colour, it has a slightly darker band of its own hue along its lower or outer edge (a wall with a darker apricot base band, a roof with a darker red lip, a window with a darker wood frame). Edges are soft and very slightly brushy, not hard vector edges. Inner detail is a darker same-hue shape, never a dark line. The only dark colour is tiny facial features.\n\nCOLOR: Warm cheerful palette measured from Meow Tower. Main fills: apricot (#F7BB5C) with a darker band (#E69B4B) and wood frames (#BF7640), butter yellow (#FFDA50, #FDE284), pale butter (#FFF7AC), tomato red (#DB4032) with a darker band (#BC352D), fresh lawn (#A7B845), leaf green (#729F3E), deep leaf (#388344), white (#FFFFFE). Accents: orange (#FE962B), soft blue (#6F8EC1). Sky only: blue to teal (#0591C2 to #81DFCF). No pink, no magenta, no purple, no grey or muddy colour on large areas, no neon.\n\nSHADING: Soft cel shading, not flat. Every form has a darker same-hue band on its lower or shadow side (a bulging floor slab is lighter at the top and darker at the bottom lip) and a gentle lighter tone along its top edge or rounded top. Soft cast shadows sit under roof overhangs, under window sills and under objects on the ground. Subtle gradients are allowed: a soft falloff inside a shaded band, a gentle top-to-bottom gradient on small rounded props, and a small soft highlight dot on round props. On large surfaces the shading is gentle: the lightness inside one colour stays within about 0.03 to 0.07 (HSL L). Small props shade more strongly, within about 0.15 to 0.25. A faint paper grain may sit over the painted art. Never harsh, glossy, metallic or airbrushed.\n\nVIEW AND PROPORTION: Front-facing oblique, as in a flat top-down game map. The camera looks at the front of every object from slightly above, so each object shows its full front face and a thin sliver of its top surface. The front face is drawn straight on, square to the camera, with horizontal bottom and top edges. Objects stand on their flat bottom edge. No isometric view, no 2:1 diamond, no three-quarter turn, no side faces, no vanishing points.\n\nDETAIL LEVEL: Readable at very small sizes. Rely on the chunky silhouette and two or three flat colours plus one darker band. No tiny patterns, no realistic materials, no text.\n\nCOMPOSITION: One asset category per image. Every asset isolated with generous crop-safe spacing, no scene, no ground, no shadow, no props that were not asked for.\n\nPALETTE:\nPaper White #FFFFFF (background), Apricot #F7BB5C (fill), Apricot Band #E69B4B (shade), Wood Frame #BF7640 (shade), Butter #FFDA50 (fill), Light Butter #FDE284 (fill), Pale Butter #FFF7AC (fill), Tomato #DB4032 (fill), Tomato Band #BC352D (shade), Orange #FE962B (fill), Lawn #A7B845 (fill), Leaf #729F3E (fill), Deep Leaf #388344 (shade), White #FFFFFE (fill), White Edge #E6E1DA (shade), Soft Blue #6F8EC1 (fill), Feature Dark #333333 (shade)\n\nSHAPE LANGUAGE:\nchunky, pillowy, slightly bulging, big rounded corners, arched windows and doors, round bushes made of a few bulges, white cats with small patches and no tail, front-facing with a sliver of top, flat bottom edge\n\nRENDERING RULES:\n- no outlines: flat colour blocks separated by colour alone\n- soft cel shading: a darker same-hue band on the lower or shadow side of every form\n- a gentle lighter tone on top edges and rounded tops\n- soft cast shadows under overhangs, sills and objects\n- subtle gradients allowed inside shaded bands and on small round props\n- soft, very slightly brushy edges\n- warm cheerful palette: apricot, butter, tomato, leaf green, white\n- soft but saturated colour, never neon, never muted\n- dark colour only for tiny eyes and mouths\n- chunky pillowy shapes with big rounded corners\n- front-facing oblique view: front face plus a sliver of the top\n- objects stand on a flat bottom edge\n- only small soft highlights, never glossy specular dots\n- a faint paper grain at most; none on tint-ready white art\n- no text or labels\n- crisp high-resolution raster\n- readable at small mobile sizes\n- isolated presentation with large spacing\n\nCATEGORY:\nJapanese shrine statues and stones\n\nEXACT ASSETS:\n1. a small round jizo stone statue in warm pale butter stone with closed eyes, wearing a soft tomato-red bib and a tomato-red knit cap\n2. a round shigaraki tanuki statue in warm apricot-brown clay with a straw hat and a small sake flask, big round belly, no tail\n3. a round white maneki-neko beckoning cat statue with small orange and grey patches, one paw raised, a tomato-red collar with a butter bell, no tail\n4. a chunky round stone frog statue in warm pale butter stone with a leaf-green moss spot on its head\n5. a small round stone rabbit statue in warm pale butter stone with long rounded ears and a tiny tomato-red bib, no tail\n6. a big round sacred rock in warm pale butter stone with a thick butter-straw shimenawa rope tied round it and white zigzag paper shide\n\nCANVAS AND LAYOUT:\nOutput size 1536x1024. Solid flat background #FF00FF with no texture, no vignette, no border. Nothing in the picture may use a colour close to the background colour.\nThe game shows each asset in a 2:1 (width:height) frame. Compose each asset to suit that frame, and keep its natural proportions: do not stretch or squash it.\nArrange the assets in a neat grid in reading order (left to right, then top to bottom), one asset per cell.\nKeep every asset isolated.\nDo not let assets touch or overlap.\nUse front-facing views only.\nLeave generous crop-safe spacing around every asset, at least one asset-width apart.\nNo labels, text, numbers, scene, ground line, or decorative filler.\n\nSPRITE RULES:\nUse strong, rounded silhouettes that remain readable at 48x48px.\nUse no more than 3 base colours per asset, plus their shading tones.\nSoft cel shading: each form has a darker same-hue band on its lower or shadow side, a gentle lighter tone on its top edge, and soft cast shadows under overhangs and under objects. Subtle gradients inside the shaded band and on small round props are fine, with a small soft highlight on round props. Gentle on large surfaces, stronger on small props. Never harsh, glossy or metallic.\nAvoid tiny details, intricate textures, and visual clutter.\nNo outlines: shapes are flat colour blocks separated by colour alone, with soft slightly brushy edges and a darker same-hue band on the lower edge; the only dark marks are tiny eyes and mouths.\nKeep the palette, edge treatment, proportions, and detail level consistent across the whole sheet.\nDraw every asset at a similar visual scale.\n\nNEGATIVE PROMPT:\noutlines, dark outlines, black outlines, brown outlines, contour lines, ink lines, line art, sticker outline around world objects, dark inner lines, isometric view, 2:1 dimetric view, diamond-shaped tops, three-quarter turn, visible side faces, vanishing-point perspective, tails, eye shine, eye highlights, big anime eyes, eyelashes, harsh shading, hard black shadows, airbrush shading, glossy rendering, glossy specular highlights, metallic sheen, strong rim lighting, hard cast shadows, heavy noise, wood grain, fur strands, muted colours, grey or muddy colours, desaturated colours, neon colours, fluorescent colours, pink, magenta, purple, pastel candy colours, thin spindly shapes, sharp pointy shapes, hard vector edges, painterly brushwork, watercolor, pixel art, realism, 3D render, clutter, tiny details, long limbs, necks, fingers, lily pads, scene background, text, labels, watermark, JPEG artifacts\n\nFINAL CHECK:\nExactly 6 assets.\nEvery requested asset is present once, in the listed order.\nEvery asset is separate, readable, and crop-safe.\n\nADDITIONAL DETAILS:\nFollow the locked art bible docs/specs/art-bible.md and match the style anchor docs/references/style-anchor.png (the oblique-style sheet) and docs/references/ref-c-target-style.png. Front-facing oblique view for a top-down map: show the front face and a thin sliver of the top. No isometric angle, no three-quarter turn. Lineless Meow Tower style: no dark outlines at all. Shapes are separated by colour. Soft cel shading on every form: a darker band of the same hue on the shadow side and the lower side, gentle lighter tones on the tops, and soft cast shadows under roofs, caps, eaves and overhangs. Warm, soft, cheerful palette: apricot #F7BB5C wood with #E69B4B bands and #BF7640 frames, butter #FFDA50, light butter #FDE284, pale butter #FFF7AC, tomato #DB4032, orange #FE962B, leaf #729F3E, deep leaf #388344, warm pale butter stone. No blue, no purple, no pink, no grey metal on props. A subtle paper grain over everything. Chunky, pillowy, rounded shapes with soft corners. At most three fills per prop. Each object stands on a flat bottom edge that meets the ground; draw no ground patch and no shadow under it. Leave wide empty space between assets. Light comes from the upper left. BACKGROUND: the whole background is one solid flat magenta #FF00FF. No black background, no glow, no halo, no text.",
+  "promptVersion": "v1",
+  "generatedAt": "2026-09-27T15:08:09.890Z",
+  "provider": "codex",
+  "detected": 6,
+  "expected": 6
+}

@@ -1,0 +1,122 @@
+{
+  "target": "matsuri-yagura",
+  "compose": "single",
+  "kind": "scenery",
+  "game": "shrine-matsuri-features",
+  "warnings": [],
+  "assets": {
+    "matsuri-yagura": {
+      "name": "matsuri-yagura",
+      "status": "approved",
+      "references": [
+        {
+          "n": 1,
+          "path": "docs/references/style-anchor.png",
+          "role": "style",
+          "source": "anchor",
+          "sha256": "78df61fecaa81145"
+        },
+        {
+          "n": 2,
+          "id": "shrine-feat-tall-b/mikoshi",
+          "path": "art/generated/shrine-feat-tall-b/final/mikoshi.png",
+          "role": "style",
+          "source": "explicit",
+          "status": "approved",
+          "sha256": "ec43705fae5027a8"
+        },
+        {
+          "n": 3,
+          "id": "shrine-feat-tall-a/chochin-arch",
+          "path": "art/generated/shrine-feat-tall-a/final/chochin-arch.png",
+          "role": "style",
+          "source": "explicit",
+          "status": "approved",
+          "sha256": "be0419c64b6006ba"
+        },
+        {
+          "n": 4,
+          "id": "ramen-bld-3/warehouse",
+          "path": "art/generated/ramen-bld-3/final/warehouse.png",
+          "role": "proportions",
+          "source": "auto",
+          "status": "approved",
+          "sha256": "e96fd56d76c23b23"
+        }
+      ],
+      "width": 654,
+      "height": 435,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "content": {
+        "x": 47,
+        "y": 0,
+        "width": 560,
+        "height": 435
+      },
+      "complexity": {
+        "score": 0.803,
+        "regions": 45,
+        "protrusion": 0.267,
+        "edges": 0.503,
+        "components": 1
+      },
+      "effects": {
+        "wind": [
+          "lantern"
+        ],
+        "light": "art",
+        "lights": 6,
+        "lit": 9,
+        "why": "split pieces of lantern; light source by the rules, 6 points",
+        "hash": "3a9ed5988e92",
+        "source": "plan",
+        "status": "approved",
+        "reviewedAt": "2026-09-29T06:11:33.565Z"
+      },
+      "reviewedAt": "2026-09-29T06:11:33.561Z"
+    }
+  },
+  "prompt": "TASK:\nCreate one production-ready game sprite: a festival yagura tower for bon odori: a square two-level apricot wooden scaffold tower on four stout legs, a small platform deck at the top with a tomato-red and cream striped cloth skirt wrapped round it, a big round taiko drum on the deck, a small pointed roof above, and strings of small round cream and tomato paper chochin lanterns running down from the roof corners to the ground on both sides.\n\nPROJECT CONTEXT:\nKissaten Engine: A cozy idle-game engine. The sample game is Lucky Cat Shrine: a small Japanese shrine precinct where the player places lanterns, ema racks, fortune trees and tea stands, and round kawaii cat visitors (every visitor is a cat) come to pray, ring the bell, draw fortunes and nap. Plus a component library of generic cozy sprites.\n\nSTYLE:\nSTYLE LOCK: Cozy cat mobile game in the style of Meow Tower (Hyperbeard).\n\nPRIMARY GOAL: Warm, cheerful, cute sprites for a phone game with a flat top-down map where every object stands up and faces the camera. Everything must look like one illustrator painted it with flat colour blocks and a soft brush, with no pen lines.\n\nCORE AESTHETIC: Lineless, softly shaded colour blocks. Chunky, pillowy, slightly bulging shapes with big rounded corners, like soft toys or cushions. Warm, sunny, cheerful colour: soft but saturated, never neon, never muted or grey. Cats are white with a few small grey or orange patches, a wide head, small rounded ears set wide, tiny dark dot eyes set wide apart, a tiny mouth, no outline, no tail.\n\nEDGES: NO OUTLINES. No dark contour line around any shape. Shapes are separated by colour alone. Where a shape meets a similar colour, it has a slightly darker band of its own hue along its lower or outer edge (a wall with a darker apricot base band, a roof with a darker red lip, a window with a darker wood frame). Edges are soft and very slightly brushy, not hard vector edges. Inner detail is a darker same-hue shape, never a dark line. The only dark colour is tiny facial features.\n\nCOLOR: Warm cheerful palette measured from Meow Tower. Main fills: apricot (#F7BB5C) with a darker band (#E69B4B) and wood frames (#BF7640), butter yellow (#FFDA50, #FDE284), pale butter (#FFF7AC), tomato red (#DB4032) with a darker band (#BC352D), fresh lawn (#A7B845), leaf green (#729F3E), deep leaf (#388344), white (#FFFFFE). Accents: orange (#FE962B), soft blue (#6F8EC1). Sky only: blue to teal (#0591C2 to #81DFCF). No pink, no magenta, no purple, no grey or muddy colour on large areas, no neon.\n\nSHADING: Soft cel shading, not flat. Every form has a darker same-hue band on its lower or shadow side (a bulging floor slab is lighter at the top and darker at the bottom lip) and a gentle lighter tone along its top edge or rounded top. Soft cast shadows sit under roof overhangs, under window sills and under objects on the ground. Subtle gradients are allowed: a soft falloff inside a shaded band, a gentle top-to-bottom gradient on small rounded props, and a small soft highlight dot on round props. On large surfaces the shading is gentle: the lightness inside one colour stays within about 0.03 to 0.07 (HSL L). Small props shade more strongly, within about 0.15 to 0.25. A faint paper grain may sit over the painted art. Never harsh, glossy, metallic or airbrushed.\n\nVIEW AND PROPORTION: Front-facing oblique, as in a flat top-down game map. The camera looks at the front of every object from slightly above, so each object shows its full front face and a thin sliver of its top surface. The front face is drawn straight on, square to the camera, with horizontal bottom and top edges. Objects stand on their flat bottom edge. No isometric view, no 2:1 diamond, no three-quarter turn, no side faces, no vanishing points.\n\nDETAIL LEVEL: Readable at very small sizes. Rely on the chunky silhouette and two or three flat colours plus one darker band. No tiny patterns, no realistic materials, no text.\n\nCOMPOSITION: One asset category per image. Every asset isolated with generous crop-safe spacing, no scene, no ground, no shadow, no props that were not asked for.\n\nPALETTE:\nPaper White #FFFFFF (background), Apricot #F7BB5C (fill), Apricot Band #E69B4B (shade), Wood Frame #BF7640 (shade), Butter #FFDA50 (fill), Light Butter #FDE284 (fill), Pale Butter #FFF7AC (fill), Tomato #DB4032 (fill), Tomato Band #BC352D (shade), Orange #FE962B (fill), Lawn #A7B845 (fill), Leaf #729F3E (fill), Deep Leaf #388344 (shade), White #FFFFFE (fill), White Edge #E6E1DA (shade), Soft Blue #6F8EC1 (fill), Feature Dark #333333 (shade)\n\nSHAPE LANGUAGE:\nchunky, pillowy, slightly bulging, big rounded corners, arched windows and doors, round bushes made of a few bulges, white cats with small patches and no tail, front-facing with a sliver of top, flat bottom edge\n\nRENDERING RULES:\n- no outlines: flat colour blocks separated by colour alone\n- soft cel shading: a darker same-hue band on the lower or shadow side of every form\n- a gentle lighter tone on top edges and rounded tops\n- soft cast shadows under overhangs, sills and objects\n- subtle gradients allowed inside shaded bands and on small round props\n- soft, very slightly brushy edges\n- warm cheerful palette: apricot, butter, tomato, leaf green, white\n- soft but saturated colour, never neon, never muted\n- dark colour only for tiny eyes and mouths\n- chunky pillowy shapes with big rounded corners\n- front-facing oblique view: front face plus a sliver of the top\n- objects stand on a flat bottom edge\n- only small soft highlights, never glossy specular dots\n- a faint paper grain at most; none on tint-ready white art\n- no text or labels\n- crisp high-resolution raster\n- readable at small mobile sizes\n- isolated presentation with large spacing\n\nCANVAS AND LAYOUT:\nOutput size 1024x1024. Solid flat background #FF00FF with no texture, no vignette, no border. Nothing in the picture may use a colour close to the background colour.\nThe game shows each asset in a 3:2 (width:height) frame. Compose each asset to suit that frame, and keep its natural proportions: do not stretch or squash it.\nOne asset only, centred, filling about 80% of the canvas, fully inside the frame.\nFront-facing view. No ground line, no scene, no labels, no text.\n\nSPRITE RULES:\nStrong rounded silhouette, readable when shrunk.\nNo outlines: shapes are flat colour blocks separated by colour alone, with soft slightly brushy edges and a darker same-hue band on the lower edge; the only dark marks are tiny eyes and mouths.\nSoft cel shading: each form has a darker same-hue band on its lower or shadow side, a gentle lighter tone on its top edge, and soft cast shadows under overhangs and under objects. Subtle gradients inside the shaded band and on small round props are fine, with a small soft highlight on round props. Gentle on large surfaces, stronger on small props. Never harsh, glossy or metallic.\n\nNEGATIVE PROMPT:\noutlines, dark outlines, black outlines, brown outlines, contour lines, ink lines, line art, sticker outline around world objects, dark inner lines, isometric view, 2:1 dimetric view, diamond-shaped tops, three-quarter turn, visible side faces, vanishing-point perspective, tails, eye shine, eye highlights, big anime eyes, eyelashes, harsh shading, hard black shadows, airbrush shading, glossy rendering, glossy specular highlights, metallic sheen, strong rim lighting, hard cast shadows, heavy noise, wood grain, fur strands, muted colours, grey or muddy colours, desaturated colours, neon colours, fluorescent colours, pink, magenta, purple, pastel candy colours, thin spindly shapes, sharp pointy shapes, hard vector edges, painterly brushwork, watercolor, pixel art, realism, 3D render, clutter, tiny details, long limbs, necks, fingers, lily pads, scene background, text, labels, watermark, JPEG artifacts\n\nFINAL CHECK:\nExactly one asset, complete, isolated, and crop-safe.\n\nADDITIONAL DETAILS:\nFollow the locked art bible docs/specs/art-bible.md and match the style anchor docs/references/style-anchor.png (the oblique-style sheet) and docs/references/ref-c-target-style.png. Front-facing oblique view for a top-down map: show the front face and a thin sliver of the top. No isometric angle, no three-quarter turn. Lineless Meow Tower style: no dark outlines at all. Shapes are separated by colour. Soft cel shading on every form: a darker band of the same hue on the shadow side and the lower side, gentle lighter tones on the tops, and soft cast shadows under roofs, awnings, eaves and overhangs. Warm, soft, cheerful palette: apricot #F7BB5C wood with #E69B4B bands and #BF7640 frames, butter #FFDA50, light butter #FDE284, pale butter #FFF7AC, tomato #DB4032, orange #FE962B, leaf #729F3E, deep leaf #388344, cream white, warm pale butter stone. No blue, no purple, no pink, no grey metal on props. A subtle paper grain over everything. Chunky, pillowy, rounded shapes with soft corners. At most three main fills per prop. Each object stands on a flat bottom edge that meets the ground; draw no ground patch and no shadow under it. Leave wide empty space between assets. Light comes from the upper left. BACKGROUND: the whole background is one solid flat magenta #FF00FF from edge to edge, never white, never dark. No black background, no glow, no halo, no light bloom, no text, no letters, no kanji. These are festival (matsuri) stalls and pieces for the summer festival grounds beside a small Japanese cat shrine, seen at dusk under paper lanterns: draw them exactly like the approved shrine features, same style, same palette, same scale language. Brief: docs/specs/matsuri-grounds.md. Any paper lantern is a round or barrel chochin with a pale butter or cream glowing body and small tomato caps, hung from its top. Cloth (noren, awnings, banners) hangs with a clear free lower edge. One connected shape, wider than tall at the base. The lantern strings slope down to the left and right edges. The deck skirt is cloth with a free lower edge.",
+  "promptVersion": "v1",
+  "references": [
+    {
+      "n": 1,
+      "path": "docs/references/style-anchor.png",
+      "role": "style",
+      "source": "anchor",
+      "sha256": "78df61fecaa81145"
+    },
+    {
+      "n": 2,
+      "id": "shrine-feat-tall-b/mikoshi",
+      "path": "art/generated/shrine-feat-tall-b/final/mikoshi.png",
+      "role": "style",
+      "source": "explicit",
+      "status": "approved",
+      "sha256": "ec43705fae5027a8"
+    },
+    {
+      "n": 3,
+      "id": "shrine-feat-tall-a/chochin-arch",
+      "path": "art/generated/shrine-feat-tall-a/final/chochin-arch.png",
+      "role": "style",
+      "source": "explicit",
+      "status": "approved",
+      "sha256": "be0419c64b6006ba"
+    },
+    {
+      "n": 4,
+      "id": "ramen-bld-3/warehouse",
+      "path": "art/generated/ramen-bld-3/final/warehouse.png",
+      "role": "proportions",
+      "source": "auto",
+      "status": "approved",
+      "sha256": "e96fd56d76c23b23"
+    }
+  ],
+  "generatedAt": "2026-09-29T03:59:14.730Z",
+  "provider": "codex"
+}
