@@ -11,7 +11,7 @@ reads a JSON hash.
 
 ## Examples
 
-Five projects in [`examples/`](examples), one style each. All are lineless.
+Six projects in [`examples/`](examples), one style each. All are lineless.
 
 | Example | Style |
 |---|---|
@@ -20,6 +20,7 @@ Five projects in [`examples/`](examples), one style each. All are lineless.
 | [`zen-garden`](examples/zen-garden) | Soft watercolour |
 | [`starfall`](examples/starfall) | Vinyl toy spaceships |
 | [`neon-alley`](examples/neon-alley) | Cosy cyberpunk |
+| [`runeforge`](examples/runeforge) | Hand-painted RPG weapons and runes |
 
 ![Lucky Cat Shrine](docs/examples/lucky-cat-shrine.png)
 
@@ -30,6 +31,8 @@ Five projects in [`examples/`](examples), one style each. All are lineless.
 ![Starfall](docs/examples/starfall.png)
 
 ![Neon Alley](docs/examples/neon-alley.png)
+
+![Runeforge](docs/examples/runeforge.png)
 
 ## Requirements
 
@@ -117,7 +120,8 @@ Every field is in the [manifest reference](skills/ukiyo/reference/manifest.md).
   are packed as overlays and can be tint-ready.
 - **Multipart props.** `split` targets cut an approved sprite into pieces
   with joints, so lanterns and paper strips can move. `ukiyo plan` picks the
-  pieces. Below: 21 props from the examples, motion scaled up 4x.
+  pieces. Below: props from the examples at rest, in a gust of wind, then
+  each one used. Motion is scaled up 5x.
 - **Lights.** `final` finds lit regions in the art and `pack` writes them
   into the atlas.
 

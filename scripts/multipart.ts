@@ -20,21 +20,25 @@ const rowGap = 56;
 const propHeight = 260;
 const pieceHeight = 110;
 
-// GIF: frames at 12.5 fps. Rest motion is small, so it is scaled up to show.
-const frameMs = 80;
-const loopMs = 2400;
-const boost = 4;
-const cellW = 220;
-const cellH = 200;
-const columns = 7;
-
-/** Motions drawn as a turn about the joint. Glow, shimmer and flicker are not drawn. */
-const turns = new Set(['swing', 'flutter', 'sway']);
+// GIF: frames at about 10 fps over one loop with three beats: rest motion all the
+// time, a gust of wind that crosses the grid, then each prop used in turn.
+// Rest motion is small, so it is scaled up to show.
+const frameMs = 96;
+const loopMs = 7200;
+const restBoost = 5;
+const impulseBoost = 5;
+const gustStartMs = 400;
+const gustStepMs = 160; // per grid column
+const useStartMs = 2800;
+const useSpanMs = 1200; // the last prop is used this long after the first
+const cellW = 300;
+const cellH = 250;
+const columns = 5;
 
 /** Props for the pieces image, in order. */
 const featured = ['prop-furin-stand', 'prop-noodle-stall', 'prop-ema-rack', 'prop-hono-chochin', 'prop-koinobori', 'prop-chochin-arch'];
-/** Props left out: the soft edges of these pieces were cut with the hall behind them. */
-const skip = new Set(['prop-shrine-haiden-4']);
+/** Props left out: the hall's pieces carry soft edges of the hall; the mikoshi and drone move only a tiny part. */
+const skip = new Set(['prop-shrine-haiden-4', 'prop-mikoshi', 'prop-drone']);
 
 interface Part {
   x: number;
@@ -43,7 +47,13 @@ interface Part {
   parent?: string;
   z: number;
   role?: string;
-  rig?: { rest?: { kind: string; amount: [number, number]; periodMs: [number, number] } };
+  rig?: { lag?: number; stagger?: number; rest?: Motion; use?: Motion; gust?: Motion };
+}
+interface Motion {
+  kind: string;
+  amount: [number, number];
+  periodMs?: [number, number];
+  durationMs?: [number, number];
 }
 interface Piece {
   name: string;
@@ -78,7 +88,7 @@ for (const name of fs.readdirSync(root).sort()) {
     }
     // A split with no plate draws its base under the pieces; skip those here.
     if (!pieces.some((p) => p.part.role === 'plate')) continue;
-    if (!pieces.some((p) => turns.has(p.part.rig?.rest?.kind ?? ''))) continue;
+    if (!pieces.some((p) => p.part.rig?.rest || p.part.rig?.use || p.part.rig?.gust)) continue;
     pieces.sort((a, b) => a.part.z - b.part.z);
     const x0 = Math.min(...pieces.map((p) => p.part.x));
     const y0 = Math.min(...pieces.map((p) => p.part.y));
@@ -101,57 +111,129 @@ const seed = (s: string) => {
   return ((h >>> 0) % 10000) / 10000;
 };
 
-/** Angle in degrees of a piece at time t, from its rest motion. */
-const angle = (p: Piece, t: number) => {
-  const rest = p.part.rig?.rest;
-  if (!rest || !turns.has(rest.kind)) return 0;
-  const r = seed(p.name);
-  const amount = (rest.amount[0] + (rest.amount[1] - rest.amount[0]) * r) * boost;
-  const period = rest.periodMs[0] + (rest.periodMs[1] - rest.periodMs[0]) * r;
-  // Whole cycles per loop so the GIF loops without a jump.
-  const cycles = Math.max(1, Math.round(loopMs / period));
-  return amount * Math.sin((2 * Math.PI * cycles * t) / loopMs + r * 2 * Math.PI);
-};
+/** A piece's pose, relative to its rest frame. Angles in degrees, offsets in native px. */
+interface Pose {
+  a: number;
+  dy: number;
+  sy: number;
+  light: number;
+}
+const still: Pose = { a: 0, dy: 0, sy: 1, light: 0 };
 
-/** Composites a prop at native size, each piece turned about its joint. */
-async function assemble(prop: Prop, t: number | null): Promise<Buffer> {
+/** When the gust reaches a prop and when the prop is used, in ms from the loop start. */
+interface Cue {
+  gust: number;
+  use: number;
+}
+
+const pick = (band: [number, number] | undefined, r: number, fallback: number) => (band ? band[0] + (band[1] - band[0]) * r : fallback);
+/** 1 at the start of an impulse, easing to 0 at its end. */
+const decay = (t: number, d: number) => (t < 0 || t > d ? 0 : (1 - t / d) ** 2);
+
+/** Adds one motion at local time t (ms since it started; any t for rest) to a pose. */
+function apply(pose: Pose, m: Motion, t: number, r: number, boost: number, loop: boolean): void {
+  const amount = pick(m.amount, r, 0) * boost;
+  const period = pick(m.periodMs, r, 600);
+  const d = pick(m.durationMs, r, period * 2);
+  // Rest loops use whole cycles per loop so the GIF loops without a jump.
+  const phase = loop ? (2 * Math.PI * Math.max(1, Math.round(loopMs / period)) * t) / loopMs + r * 2 * Math.PI : (2 * Math.PI * t) / period;
+  const env = loop ? 1 : decay(t, d);
+  if (!loop && env === 0) return;
+  switch (m.kind) {
+    case 'swing':
+    case 'flutter':
+    case 'sway':
+      pose.a += amount * Math.sin(phase) * env;
+      break;
+    case 'shake':
+      // One cycle per two frames: any faster aliases to a slow drift.
+      pose.a += amount * Math.sin((2 * Math.PI * t) / (frameMs * 2) + Math.PI / 2) * env;
+      break;
+    case 'hop':
+      // Amount in world px; native art is about 4x that.
+      if (!loop && t <= d) pose.dy -= amount * 4 * Math.sin((Math.PI * t) / d);
+      break;
+    case 'stretch':
+      pose.sy += (amount / boost) * 2 * Math.sin(phase) * env;
+      break;
+    case 'spin':
+      // Degrees per second; rounded to whole turns per loop.
+      pose.a += (360 * Math.max(1, Math.round((amount / boost) * (loopMs / 1000) / 360)) * t) / loopMs;
+      break;
+    case 'glow':
+    case 'shimmer':
+    case 'flicker':
+      pose.light += (amount / boost) * 1.5 * (0.5 + 0.5 * Math.sin(phase));
+      break;
+  }
+}
+
+/** The pose of a piece at loop time t, before its parent's turn. */
+function pose(p: Piece, t: number, cue: Cue, depth: number, sibling: number): Pose {
+  const rig = p.part.rig;
+  const out = { ...still };
+  if (!rig) return out;
+  const r = seed(p.name);
+  // A child starts its impulse `lag` ms per level after the root; siblings `stagger` ms apart.
+  // Capped so the last impulse ends before the loop does.
+  const delay = (rig.lag ?? 0) * depth + (rig.stagger ?? 0) * Math.min(sibling, 4);
+  if (rig.rest) apply(out, rig.rest, t, r, rig.rest.kind === 'spin' ? 1 : restBoost, true);
+  if (rig.gust) apply(out, rig.gust, t - cue.gust - delay, r, impulseBoost, false);
+  if (rig.use) apply(out, rig.use, t - cue.use - delay, r, impulseBoost, false);
+  return out;
+}
+
+/** Composites a prop at native size, each piece posed about its joint. `t` null draws the rest frame. */
+async function assemble(prop: Prop, t: number | null, cue: Cue = { gust: 0, use: 0 }): Promise<Buffer> {
   const byName = new Map(prop.pieces.map((p) => [p.name, p]));
-  const world = new Map<string, { a: number; jx: number; jy: number }>();
-  const place = (p: Piece): { a: number; jx: number; jy: number } => {
+  const depthOf = (p: Piece): number => (p.part.parent && byName.get(p.part.parent) ? 1 + depthOf(byName.get(p.part.parent)!) : 0);
+  // Index among pieces of the same material, for the stagger.
+  const siblingOf = new Map<string, number>();
+  const counts = new Map<string, number>();
+  for (const p of prop.pieces) {
+    const key = JSON.stringify(p.part.rig?.rest ?? p.part.rig?.use ?? null);
+    siblingOf.set(p.name, counts.get(key) ?? 0);
+    counts.set(key, (counts.get(key) ?? 0) + 1);
+  }
+  const world = new Map<string, { a: number; jx: number; jy: number; pose: Pose }>();
+  const place = (p: Piece): { a: number; jx: number; jy: number; pose: Pose } => {
     const done = world.get(p.name);
     if (done) return done;
     const j = p.part.joint ?? { x: p.w / 2, y: p.h / 2 };
     let jx = p.part.x + j.x;
     let jy = p.part.y + j.y;
-    let a = t === null ? 0 : angle(p, t);
+    const own = t === null ? still : pose(p, t, cue, depthOf(p), siblingOf.get(p.name) ?? 0);
+    let a = own.a;
+    jy += own.dy;
     const parent = p.part.parent ? byName.get(p.part.parent) : undefined;
     if (parent) {
-      // Turn this joint with the parent, about the parent's rest joint.
+      // Move this joint with the parent, about the parent's rest joint.
       const pw = place(parent);
       const pj = parent.part.joint ?? { x: parent.w / 2, y: parent.h / 2 };
       const px = parent.part.x + pj.x;
       const py = parent.part.y + pj.y;
-      const r = (pw.a * Math.PI) / 180;
+      const rad = (pw.a * Math.PI) / 180;
       const dx = jx - px;
       const dy = jy - py;
-      jx = pw.jx + dx * Math.cos(r) - dy * Math.sin(r);
-      jy = pw.jy + dx * Math.sin(r) + dy * Math.cos(r);
+      jx = pw.jx + dx * Math.cos(rad) - dy * Math.sin(rad);
+      jy = pw.jy + dx * Math.sin(rad) + dy * Math.cos(rad);
       a += pw.a;
     }
-    const w = { a, jx, jy };
+    const w = { a, jx, jy, pose: own };
     world.set(p.name, w);
     return w;
   };
 
   const margin = Math.round(Math.max(prop.box.w, prop.box.h) * 0.08);
-  // Draw on a larger canvas so a turned piece never overflows it, then crop.
+  // Draw on a larger canvas so a moved piece never overflows it, then crop.
   const big = margin + Math.max(...prop.pieces.map((p) => Math.hypot(p.w, p.h)));
   const off = Math.ceil(big - margin);
   const layers: sharp.OverlayOptions[] = [];
   for (const p of prop.pieces) {
     const w = place(p);
     const j = p.part.joint ?? { x: p.w / 2, y: p.h / 2 };
-    if (Math.abs(w.a) < 0.01) {
+    const { sy, light } = w.pose;
+    if (Math.abs(w.a) < 0.01 && Math.abs(sy - 1) < 0.002 && light < 0.005) {
       layers.push({
         input: p.file,
         left: Math.round(w.jx - j.x - prop.box.x + margin) + off,
@@ -159,10 +241,20 @@ async function assemble(prop: Prop, t: number | null): Promise<Buffer> {
       });
       continue;
     }
+    let img = sharp(p.file);
+    let jy = j.y;
+    let h = p.h;
+    if (Math.abs(sy - 1) >= 0.002) {
+      // Stretch about the joint.
+      h = Math.max(1, Math.round(p.h * sy));
+      jy = j.y * sy;
+      img = sharp(await img.resize(p.w, h, { fit: 'fill' }).png().toBuffer());
+    }
+    if (light >= 0.005) img = sharp(await img.modulate({ brightness: 1 + light }).png().toBuffer());
     // Pad so the joint is the centre, then turn about the centre.
-    const R = Math.ceil(Math.max(Math.hypot(j.x, j.y), Math.hypot(p.w - j.x, j.y), Math.hypot(j.x, p.h - j.y), Math.hypot(p.w - j.x, p.h - j.y)));
-    const padded = await sharp(p.file)
-      .extend({ left: R - Math.round(j.x), top: R - Math.round(j.y), right: R - p.w + Math.round(j.x), bottom: R - p.h + Math.round(j.y), background: { r: 0, g: 0, b: 0, alpha: 0 } })
+    const R = Math.ceil(Math.max(Math.hypot(j.x, jy), Math.hypot(p.w - j.x, jy), Math.hypot(j.x, h - jy), Math.hypot(p.w - j.x, h - jy))) + 1;
+    const padded = await img
+      .extend({ left: R - Math.round(j.x), top: R - Math.round(jy), right: R - p.w + Math.round(j.x), bottom: R - h + Math.round(jy), background: { r: 0, g: 0, b: 0, alpha: 0 } })
       .rotate(w.a, { background: { r: 0, g: 0, b: 0, alpha: 0 } })
       .png()
       .toBuffer({ resolveWithObject: true });
@@ -237,7 +329,7 @@ fs.mkdirSync(outDir, { recursive: true });
   console.log(`wrote ${path.relative(process.cwd(), file)}`);
 }
 
-// GIF: every prop in a grid, each piece turning about its joint.
+// GIF: every prop in a grid, each piece moved about its joint.
 {
   const rows = Math.ceil(props.length / columns);
   const gifW = columns * cellW + pad * 2;
@@ -253,13 +345,15 @@ fs.mkdirSync(outDir, { recursive: true });
   for (let t = 0; t < loopMs; t += frameMs) {
     const layers: sharp.OverlayOptions[] = [];
     for (const [i, prop] of props.entries()) {
-      const full = await assemble(prop, t);
+      const col = i % columns;
+      const row = Math.floor(i / columns);
+      // The gust crosses left to right; props are used in a shuffled order so neighbours differ.
+      const cue = { gust: gustStartMs + col * gustStepMs + row * 60, use: useStartMs + (((i * 7) % props.length) / props.length) * useSpanMs };
+      const full = await assemble(prop, t, cue);
       const m = await sharp(full).metadata();
       const w = Math.max(1, Math.round(m.width! * scales[i]!));
       const h = Math.max(1, Math.round(m.height! * scales[i]!));
       const img = await sharp(full).resize(w, h).png().toBuffer();
-      const col = i % columns;
-      const row = Math.floor(i / columns);
       layers.push({ input: img, left: pad + col * cellW + Math.round((cellW - w) / 2), top: pad + row * cellH + (cellH - gap / 2 - h) });
     }
     frames.push(
@@ -274,5 +368,5 @@ fs.mkdirSync(outDir, { recursive: true });
   await sharp(frames, { join: { animated: true } })
     .gif({ delay: frameMs, loop: 0, effort: 10 })
     .toFile(file);
-  console.log(`wrote ${path.relative(process.cwd(), file)} (${props.length} props)`);
+  console.log(`wrote ${path.relative(process.cwd(), file)} (${props.length} props: ${props.map((p) => p.target).join(' ')})`);
 }
