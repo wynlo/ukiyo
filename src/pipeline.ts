@@ -412,7 +412,9 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
       const asset = meta.assets[name];
       if (!asset?.width || !asset.height) continue;
       if (name === rig.root) {
-        asset.part = { base: frameNameOf(`${target.target}/${rig.root}`), baseWidth: root.width, baseHeight: root.height, x: 0, y: 0, joint: { x: root.width / 2, y: root.height / 2 }, z: 0, role: 'plate' };
+        const content = root.content ?? { x: 0, y: 0, width: root.width, height: root.height };
+        const pivot = rig.pivot ?? [content.x + content.width / 2, content.y + content.height];
+        asset.part = { base: frameNameOf(`${target.target}/${rig.root}`), baseWidth: root.width, baseHeight: root.height, x: 0, y: 0, joint: { x: pivot[0], y: pivot[1] }, z: 0, role: 'plate', ...(rig.animations ? { animations: rig.animations } : {}) };
         continue;
       }
       const bone = rig.bones[name];
@@ -428,7 +430,8 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
       }
       const joint = jointOf(name);
       const motion = partRig(bone.material, bone.motion);
-      const parent = bone.parent && bone.parent !== rig.root ? { parent: bone.parent } : {};
+      // Every bone hangs from the root unless it is planted, so it moves with the body.
+      const parent = bone.planted ? {} : { parent: bone.parent ?? rig.root };
       asset.part = { base: frameNameOf(`${target.target}/${rig.root}`), baseWidth: root.width, baseHeight: root.height, x: at.x, y: at.y, joint: { x: joint[0], y: joint[1] }, z: bone.z, role: 'piece', ...parent, ...(motion ? { rig: motion } : {}) };
     }
   };

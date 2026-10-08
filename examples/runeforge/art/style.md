@@ -1,6 +1,6 @@
 ---
 name: Runeforge Toon v2
-description: "Simple lineless toon sprites for a cosy top-down adventure game, like a toy diorama: chunky rounded weapons, runes and chibi heroes about two and a half heads tall, flat bright colours with one soft darker shade per form, no outlines, no text."
+description: "Simple lineless toon sprites for a cosy top-down adventure game, like a toy diorama: chunky rounded weapons, runes and round blob heroes with floating hands, flat bright colours with one soft darker shade per form, no outlines, no text."
 shading: "Toy-like toon shading: each form is one flat colour with one soft darker shade of the same hue on its lower side and one small soft highlight on round tops. Nothing else. No texture, no scratches, no wood grain, no metal reflections."
 canvas:
   aspectRatio: 1:1
@@ -17,8 +17,8 @@ shapeLanguage:
   - toy-like
   - rounded everything
   - simple silhouettes
-  - big round heads on characters
-  - short stubby limbs with round mitten hands
+  - "characters are round blobs: head and body merged into one soft rounded shape"
+  - "no arms and no legs: small round floating hands and small round feet"
   - few parts
 palette:
   - { name: Paper, hex: "#FFFFFF", usage: background }
@@ -63,7 +63,7 @@ COLOR: Bright and friendly. Steel (#D6E2EE) blades, wood (#C98A4B) handles, gold
 
 SHADING: One flat colour per form, one soft darker shade of the same hue on its lower side, one small soft highlight on round tops and gems. Nothing else.
 
-PROPORTION: Weapons are short and chunky with oversized heads and blades. Characters are chibi: about two and a half heads tall, a big round head, a small round body, short stubby arms with round mitten hands, short stubby legs with round boots. Simple dot eyes.
+PROPORTION: Weapons are short and chunky with oversized heads and blades. Characters are super chibi, like a round kawaii mascot: the head and body are ONE soft rounded blob, a little wider at the bottom, about as wide as it is tall. No neck, no arms, no legs. Two small round mitten hands float beside the blob, and two small round feet peek out under it. Tiny solid dot eyes and a tiny mouth.
 
 DETAIL LEVEL: Two or three colours per item plus one accent. A gem is a simple round or diamond shape. Rune glyphs are bold simple marks, never letters.
 

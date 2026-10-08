@@ -1,11 +1,13 @@
 /**
- * Renders the multipart prop images for the README from the split targets in
- * examples/: docs/examples/multipart.gif and runeforge.gif (every prop with a
- * moving piece, the pieces turning about their joints) and
- * docs/examples/multipart.png (some
- * props assembled, then their pieces). Run with `npm run showcase`.
+ * Renders the multipart images for the README from the split targets and
+ * rigged parts targets in examples/: docs/examples/multipart.gif and
+ * runeforge.gif (every prop with a moving piece, the pieces turning about their
+ * joints) and docs/examples/multipart.png (some props assembled, then their
+ * pieces). Run with `npm run showcase`. With target names as arguments, writes
+ * only a preview GIF of those targets to the temp directory.
  */
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import sharp from 'sharp';
 
@@ -47,6 +49,20 @@ interface Part {
   z: number;
   role?: string;
   rig?: { lag?: number; stagger?: number; rest?: Motion; use?: Motion; gust?: Motion };
+  animations?: Record<string, Clip>;
+}
+interface Clip {
+  durationMs: number;
+  loop: boolean;
+  keys: Record<string, Key[]>;
+}
+interface Key {
+  t: number;
+  a?: number;
+  dx?: number;
+  dy?: number;
+  sx?: number;
+  sy?: number;
 }
 interface Motion {
   kind: string;
@@ -66,6 +82,8 @@ interface Prop {
   target: string;
   /** Characters move at their real size: their bones already swing far. */
   boost: number;
+  /** Keyframed clips of a rigged character, from its root part. */
+  clips?: Record<string, Clip>;
   pieces: Piece[];
   box: { x: number; y: number; w: number; h: number };
 }
@@ -103,7 +121,7 @@ for (const name of fs.readdirSync(root).sort()) {
     const y0 = Math.min(...pieces.map((p) => p.part.y));
     const x1 = Math.max(...pieces.map((p) => p.part.x + p.w));
     const y1 = Math.max(...pieces.map((p) => p.part.y + p.h));
-    props.push({ example: name, target: t.target, boost: t.kind === 'character' ? 1 : 5, pieces, box: { x: x0, y: y0, w: x1 - x0, h: y1 - y0 } });
+    props.push({ example: name, target: t.target, boost: t.kind === 'character' ? 1 : 5, clips: pieces.find((p) => p.part.role === 'plate')?.part.animations, pieces, box: { x: x0, y: y0, w: x1 - x0, h: y1 - y0 } });
   }
 }
 if (!props.length) {
@@ -123,11 +141,13 @@ const seed = (s: string) => {
 /** A piece's pose, relative to its rest frame. Angles in degrees, offsets in native px. */
 interface Pose {
   a: number;
+  dx: number;
   dy: number;
+  sx: number;
   sy: number;
   light: number;
 }
-const still: Pose = { a: 0, dy: 0, sy: 1, light: 0 };
+const still: Pose = { a: 0, dx: 0, dy: 0, sx: 1, sy: 1, light: 0 };
 
 /** When the gust reaches a prop and when the prop is used, in ms from the loop start. */
 interface Cue {
@@ -177,8 +197,41 @@ function apply(pose: Pose, m: Motion, t: number, r: number, boost: number, loop:
   }
 }
 
+/** A clip's pose of one part at clip time t, eased between keys; null when the clip does not key the part. */
+function sampleClip(clip: Clip, part: string, t: number): Pose | null {
+  const keys = clip.keys[part];
+  if (!keys?.length) return null;
+  const sorted = [...keys].sort((a, b) => a.t - b.t);
+  const at = (k: Key): Pose => ({ a: k.a ?? 0, dx: k.dx ?? 0, dy: k.dy ?? 0, sx: k.sx ?? 1, sy: k.sy ?? 1, light: 0 });
+  if (t <= sorted[0]!.t) return at(sorted[0]!);
+  for (let i = 0; i < sorted.length - 1; i += 1) {
+    const k0 = sorted[i]!;
+    const k1 = sorted[i + 1]!;
+    if (t > k1.t) continue;
+    const u = (t - k0.t) / Math.max(1, k1.t - k0.t);
+    const e = u * u * (3 - 2 * u);
+    const p0 = at(k0);
+    const p1 = at(k1);
+    return { a: p0.a + (p1.a - p0.a) * e, dx: p0.dx + (p1.dx - p0.dx) * e, dy: p0.dy + (p1.dy - p0.dy) * e, sx: p0.sx + (p1.sx - p0.sx) * e, sy: p0.sy + (p1.sy - p0.sy) * e, light: 0 };
+  }
+  return at(sorted.at(-1)!);
+}
+
+/** A rigged character's clip pose: `attack` while it plays after the use cue, else `idle` on a loop. */
+function clipPose(clips: Record<string, Clip>, part: string, t: number, cue: Cue): Pose | null {
+  const attack = clips.attack;
+  if (attack && t >= cue.use && t <= cue.use + attack.durationMs) {
+    const posed = sampleClip(attack, part, t - cue.use);
+    if (posed) return posed;
+  }
+  const idle = clips.idle;
+  return idle ? sampleClip(idle, part, t % idle.durationMs) : null;
+}
+
 /** The pose of a piece at loop time t, before its parent's turn. */
-function pose(p: Piece, t: number, cue: Cue, depth: number, sibling: number, boost: number): Pose {
+function pose(p: Piece, t: number, cue: Cue, depth: number, sibling: number, boost: number, clips?: Record<string, Clip>): Pose {
+  const keyed = clips ? clipPose(clips, p.name, t, cue) : null;
+  if (keyed) return keyed;
   const rig = p.part.rig;
   const out = { ...still };
   if (!rig) return out;
@@ -211,8 +264,9 @@ async function assemble(prop: Prop, t: number | null, cue: Cue = { gust: 0, use:
     const j = p.part.joint ?? { x: p.w / 2, y: p.h / 2 };
     let jx = p.part.x + j.x;
     let jy = p.part.y + j.y;
-    const own = t === null ? still : pose(p, t, cue, depthOf(p), siblingOf.get(p.name) ?? 0, prop.boost);
+    const own = t === null ? still : pose(p, t, cue, depthOf(p), siblingOf.get(p.name) ?? 0, prop.boost, prop.clips);
     let a = own.a;
+    jx += own.dx;
     jy += own.dy;
     const parent = p.part.parent ? byName.get(p.part.parent) : undefined;
     if (parent) {
@@ -241,8 +295,8 @@ async function assemble(prop: Prop, t: number | null, cue: Cue = { gust: 0, use:
   for (const p of prop.pieces) {
     const w = place(p);
     const j = p.part.joint ?? { x: p.w / 2, y: p.h / 2 };
-    const { sy, light } = w.pose;
-    if (Math.abs(w.a) < 0.01 && Math.abs(sy - 1) < 0.002 && light < 0.005) {
+    const { sx, sy, light } = w.pose;
+    if (Math.abs(w.a) < 0.01 && Math.abs(sy - 1) < 0.002 && Math.abs(sx - 1) < 0.002 && light < 0.005) {
       layers.push({
         input: p.file,
         left: Math.round(w.jx - j.x - prop.box.x + margin) + off,
@@ -251,19 +305,23 @@ async function assemble(prop: Prop, t: number | null, cue: Cue = { gust: 0, use:
       continue;
     }
     let img = sharp(p.file);
+    let jx = j.x;
     let jy = j.y;
+    let w0 = p.w;
     let h = p.h;
-    if (Math.abs(sy - 1) >= 0.002) {
+    if (Math.abs(sy - 1) >= 0.002 || Math.abs(sx - 1) >= 0.002) {
       // Stretch about the joint.
+      w0 = Math.max(1, Math.round(p.w * sx));
       h = Math.max(1, Math.round(p.h * sy));
+      jx = j.x * sx;
       jy = j.y * sy;
-      img = sharp(await img.resize(p.w, h, { fit: 'fill' }).png().toBuffer());
+      img = sharp(await img.resize(w0, h, { fit: 'fill' }).png().toBuffer());
     }
     if (light >= 0.005) img = sharp(await img.modulate({ brightness: 1 + light }).png().toBuffer());
     // Pad so the joint is the centre, then turn about the centre.
-    const R = Math.ceil(Math.max(Math.hypot(j.x, jy), Math.hypot(p.w - j.x, jy), Math.hypot(j.x, h - jy), Math.hypot(p.w - j.x, h - jy))) + 1;
+    const R = Math.ceil(Math.max(Math.hypot(jx, jy), Math.hypot(w0 - jx, jy), Math.hypot(jx, h - jy), Math.hypot(w0 - jx, h - jy))) + 1;
     const padded = await img
-      .extend({ left: R - Math.round(j.x), top: R - Math.round(jy), right: R - p.w + Math.round(j.x), bottom: R - h + Math.round(jy), background: { r: 0, g: 0, b: 0, alpha: 0 } })
+      .extend({ left: R - Math.round(jx), top: R - Math.round(jy), right: R - w0 + Math.round(jx), bottom: R - h + Math.round(jy), background: { r: 0, g: 0, b: 0, alpha: 0 } })
       .rotate(w.a, { background: { r: 0, g: 0, b: 0, alpha: 0 } })
       .png()
       .toBuffer({ resolveWithObject: true });
@@ -291,6 +349,14 @@ const trimmed = async (input: Buffer | string, height: number) => {
 };
 
 fs.mkdirSync(outDir, { recursive: true });
+
+// `tsx scripts/multipart.ts <targets...>` previews only those targets in a temp GIF.
+const only = process.argv.slice(2);
+if (only.length) {
+  const file = path.join(os.tmpdir(), 'ukiyo-preview.gif');
+  await writeGif(props.filter((p) => only.includes(p.target)), file);
+  process.exit(0);
+}
 
 // Static image: the assembled prop, then its pieces.
 {

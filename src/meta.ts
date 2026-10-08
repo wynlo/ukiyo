@@ -139,6 +139,15 @@ export type PartMeta = {
   parent?: string;
   /** How it moves (a piece with a `material`). */
   rig?: PartRig;
+  /** On the root of a rigged parts target: keyframed clips, by name. */
+  animations?: Record<string, RigClip>;
+};
+
+/** A keyframed clip: per part, poses at times in ms. Channels missing from a key are the rest pose. */
+export type RigClip = {
+  durationMs: number;
+  loop: boolean;
+  keys: Record<string, { t: number; a?: number; dx?: number; dy?: number; sx?: number; sy?: number }[]>;
 };
 
 export type TargetMeta = {

@@ -20,7 +20,7 @@ Six projects in [`examples/`](examples), one style each. All are lineless.
 | [`zen-garden`](examples/zen-garden) | Soft watercolour |
 | [`starfall`](examples/starfall) | Vinyl toy spaceships |
 | [`neon-alley`](examples/neon-alley) | Cosy cyberpunk |
-| [`runeforge`](examples/runeforge) | Toon RPG weapons, runes and rigged chibi heroes |
+| [`runeforge`](examples/runeforge) | Toon RPG weapons, runes and rigged blob heroes |
 
 ![Lucky Cat Shrine](docs/examples/lucky-cat-shrine.png)
 
@@ -123,10 +123,11 @@ Every field is in the [manifest reference](skills/ukiyo/reference/manifest.md).
   pieces. Below: props from the examples at rest, in a gust of wind, then
   each one used. Motion is scaled up 5x.
 - **Rigged characters.** A `parts` target draws a character as separate
-  parts (head, torso, arms with their weapons, legs), each limb whole with a
-  round end. Its `rig` places each part's joint on its parent, and `final`
-  writes the same part data as a split. Below: Runeforge's five heroes and
-  six glowing staffs.
+  parts: a round body, floating hands and feet, and each held item. Its `rig`
+  places each part's joint on its parent, and its keyframed clips (`idle`,
+  `attack`) move the body, hands and weapons together. `final` writes the
+  same part data as a split. Below: Runeforge's five heroes and six glowing
+  staffs.
 - **Lights.** `final` finds lit regions in the art and `pack` writes them
   into the atlas.
 

@@ -3,10 +3,16 @@
   "compose": "parts",
   "kind": "character",
   "game": "rpg",
-  "warnings": [],
+  "warnings": [
+    "part \"front-hand\" has no bone in rig.bones, or its parent chain does not reach \"body\"; it is not placed.",
+    "part \"back-hand\" has no bone in rig.bones, or its parent chain does not reach \"body\"; it is not placed.",
+    "part \"front-foot\" has no bone in rig.bones, or its parent chain does not reach \"body\"; it is not placed.",
+    "part \"back-foot\" has no bone in rig.bones, or its parent chain does not reach \"body\"; it is not placed.",
+    "part \"weapon\" has no bone in rig.bones, or its parent chain does not reach \"body\"; it is not placed."
+  ],
   "assets": {
-    "head": {
-      "name": "head",
+    "body": {
+      "name": "body",
       "status": "approved",
       "references": [
         {
@@ -15,7 +21,7 @@
           "path": "art/generated/hero-wizard/cut/hero-wizard.png",
           "role": "input",
           "source": "edit",
-          "sha256": "517dc4f4bcd9de39"
+          "sha256": "183c909fbc6686b8"
         },
         {
           "n": 2,
@@ -26,169 +32,232 @@
         }
       ],
       "sourceBox": {
-        "x": 14,
-        "y": 113,
-        "width": 509,
-        "height": 583,
-        "area": 180683
+        "x": 46,
+        "y": 48,
+        "width": 522,
+        "height": 700,
+        "area": 259488
       },
-      "width": 256,
+      "width": 257,
       "height": 256,
       "anchor": {
         "x": 0.5,
         "y": 1
       },
       "part": {
-        "base": "parts-hero-wizard/torso",
-        "baseWidth": 147,
-        "baseHeight": 147,
-        "x": -50,
-        "y": -185,
+        "base": "parts-hero-wizard/body",
+        "baseWidth": 257,
+        "baseHeight": 256,
+        "x": 0,
+        "y": 0,
         "joint": {
-          "x": 125,
-          "y": 215
+          "x": 128.5,
+          "y": 256
+        },
+        "z": 0,
+        "role": "plate",
+        "animations": {
+          "idle": {
+            "durationMs": 1600,
+            "loop": true,
+            "keys": {
+              "body": [
+                {
+                  "t": 0
+                },
+                {
+                  "t": 800,
+                  "sx": 1.03,
+                  "sy": 0.96
+                },
+                {
+                  "t": 1600
+                }
+              ],
+              "front-hand": [
+                {
+                  "t": 0
+                },
+                {
+                  "t": 300
+                },
+                {
+                  "t": 1000,
+                  "dy": 4
+                },
+                {
+                  "t": 1600
+                }
+              ],
+              "back-hand": [
+                {
+                  "t": 0
+                },
+                {
+                  "t": 400
+                },
+                {
+                  "t": 1100,
+                  "dy": 4
+                },
+                {
+                  "t": 1600
+                }
+              ],
+              "weapon": [
+                {
+                  "t": 0,
+                  "a": 10
+                },
+                {
+                  "t": 1000,
+                  "a": 13
+                },
+                {
+                  "t": 1600,
+                  "a": 10
+                }
+              ]
+            }
+          },
+          "attack": {
+            "durationMs": 900,
+            "loop": false,
+            "keys": {
+              "front-hand": [
+                {
+                  "t": 0
+                },
+                {
+                  "t": 300,
+                  "dx": 4,
+                  "dy": -70
+                },
+                {
+                  "t": 450,
+                  "dx": 6,
+                  "dy": -74
+                },
+                {
+                  "t": 600,
+                  "dx": 4,
+                  "dy": -70
+                },
+                {
+                  "t": 900
+                }
+              ],
+              "weapon": [
+                {
+                  "t": 0,
+                  "a": 10
+                },
+                {
+                  "t": 300,
+                  "a": 4
+                },
+                {
+                  "t": 450,
+                  "a": 16
+                },
+                {
+                  "t": 600,
+                  "a": 4
+                },
+                {
+                  "t": 900,
+                  "a": 10
+                }
+              ],
+              "body": [
+                {
+                  "t": 0
+                },
+                {
+                  "t": 300,
+                  "sx": 0.95,
+                  "sy": 1.06
+                },
+                {
+                  "t": 600,
+                  "sx": 0.96,
+                  "sy": 1.05
+                },
+                {
+                  "t": 900
+                }
+              ],
+              "back-hand": [
+                {
+                  "t": 0
+                },
+                {
+                  "t": 300,
+                  "dx": -6,
+                  "dy": -20
+                },
+                {
+                  "t": 900
+                }
+              ]
+            }
+          }
+        }
+      },
+      "content": {
+        "x": 33,
+        "y": 0,
+        "width": 191,
+        "height": 256
+      },
+      "reviewedAt": "2026-10-08T03:10:19Z"
+    },
+    "front-hand": {
+      "name": "front-hand",
+      "status": "approved",
+      "references": [
+        {
+          "n": 1,
+          "id": "hero-wizard/hero-wizard",
+          "path": "art/generated/hero-wizard/cut/hero-wizard.png",
+          "role": "input",
+          "source": "edit",
+          "sha256": "183c909fbc6686b8"
+        },
+        {
+          "n": 2,
+          "path": "art/generated/forge-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "82fd7e0ac65376a6"
+        }
+      ],
+      "sourceBox": {
+        "x": 646,
+        "y": 393,
+        "width": 184,
+        "height": 178,
+        "area": 25596
+      },
+      "width": 68,
+      "height": 68,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "part": {
+        "base": "parts-hero-wizard/body",
+        "baseWidth": 257,
+        "baseHeight": 256,
+        "x": 203,
+        "y": 168,
+        "joint": {
+          "x": 34,
+          "y": 35
         },
         "z": 3,
         "role": "piece",
-        "rig": {
-          "material": "hero-head",
-          "rest": {
-            "kind": "sway",
-            "amount": [
-              1.5,
-              2.5
-            ],
-            "periodMs": [
-              1800,
-              2200
-            ]
-          },
-          "use": {
-            "kind": "swing",
-            "amount": [
-              4,
-              6
-            ],
-            "periodMs": [
-              450,
-              550
-            ],
-            "durationMs": [
-              700,
-              900
-            ]
-          },
-          "lag": 0,
-          "stagger": 100
-        }
-      },
-      "reviewedAt": "2026-10-07T16:50:25Z",
-      "content": {
-        "x": 16,
-        "y": 0,
-        "width": 224,
-        "height": 256
-      }
-    },
-    "torso": {
-      "name": "torso",
-      "status": "approved",
-      "references": [
-        {
-          "n": 1,
-          "id": "hero-wizard/hero-wizard",
-          "path": "art/generated/hero-wizard/cut/hero-wizard.png",
-          "role": "input",
-          "source": "edit",
-          "sha256": "517dc4f4bcd9de39"
-        },
-        {
-          "n": 2,
-          "path": "art/generated/forge-style/raw.png",
-          "role": "style",
-          "source": "first-target",
-          "sha256": "82fd7e0ac65376a6"
-        }
-      ],
-      "sourceBox": {
-        "x": 511,
-        "y": 454,
-        "width": 335,
-        "height": 296,
-        "area": 80766
-      },
-      "width": 147,
-      "height": 147,
-      "anchor": {
-        "x": 0.5,
-        "y": 1
-      },
-      "part": {
-        "base": "parts-hero-wizard/torso",
-        "baseWidth": 147,
-        "baseHeight": 147,
-        "x": 0,
-        "y": 0,
-        "joint": {
-          "x": 73.5,
-          "y": 73.5
-        },
-        "z": 0,
-        "role": "plate"
-      },
-      "reviewedAt": "2026-10-07T16:50:25Z",
-      "content": {
-        "x": 0,
-        "y": 16,
-        "width": 147,
-        "height": 131
-      }
-    },
-    "front-arm": {
-      "name": "front-arm",
-      "status": "approved",
-      "references": [
-        {
-          "n": 1,
-          "id": "hero-wizard/hero-wizard",
-          "path": "art/generated/hero-wizard/cut/hero-wizard.png",
-          "role": "input",
-          "source": "edit",
-          "sha256": "517dc4f4bcd9de39"
-        },
-        {
-          "n": 2,
-          "path": "art/generated/forge-style/raw.png",
-          "role": "style",
-          "source": "first-target",
-          "sha256": "82fd7e0ac65376a6"
-        }
-      ],
-      "sourceBox": {
-        "x": 903,
-        "y": 237,
-        "width": 346,
-        "height": 497,
-        "area": 76712
-      },
-      "width": 217,
-      "height": 217,
-      "anchor": {
-        "x": 0.5,
-        "y": 1
-      },
-      "part": {
-        "base": "parts-hero-wizard/torso",
-        "baseWidth": 147,
-        "baseHeight": 147,
-        "x": 98,
-        "y": -75,
-        "joint": {
-          "x": 42,
-          "y": 140
-        },
-        "z": 2,
-        "role": "piece",
+        "parent": "body",
         "rig": {
           "material": "front-arm",
           "rest": {
@@ -221,16 +290,16 @@
           "stagger": 100
         }
       },
-      "reviewedAt": "2026-10-07T16:50:25Z",
       "content": {
-        "x": 33,
-        "y": 0,
-        "width": 151,
-        "height": 217
-      }
+        "x": 0,
+        "y": 3,
+        "width": 68,
+        "height": 65
+      },
+      "reviewedAt": "2026-10-08T03:10:19Z"
     },
-    "back-arm": {
-      "name": "back-arm",
+    "back-hand": {
+      "name": "back-hand",
       "status": "approved",
       "references": [
         {
@@ -239,7 +308,7 @@
           "path": "art/generated/hero-wizard/cut/hero-wizard.png",
           "role": "input",
           "source": "edit",
-          "sha256": "517dc4f4bcd9de39"
+          "sha256": "183c909fbc6686b8"
         },
         {
           "n": 2,
@@ -250,30 +319,31 @@
         }
       ],
       "sourceBox": {
-        "x": 105,
-        "y": 881,
-        "width": 258,
-        "height": 229,
-        "area": 38605
+        "x": 996,
+        "y": 393,
+        "width": 180,
+        "height": 177,
+        "area": 24887
       },
-      "width": 114,
-      "height": 114,
+      "width": 66,
+      "height": 65,
       "anchor": {
         "x": 0.5,
         "y": 1
       },
       "part": {
-        "base": "parts-hero-wizard/torso",
-        "baseWidth": 147,
-        "baseHeight": 147,
-        "x": -91,
-        "y": 25,
+        "base": "parts-hero-wizard/body",
+        "baseWidth": 257,
+        "baseHeight": 256,
+        "x": -3,
+        "y": 171,
         "joint": {
-          "x": 99,
-          "y": 40
+          "x": 33,
+          "y": 32
         },
-        "z": -1,
+        "z": 1,
         "role": "piece",
+        "parent": "body",
         "rig": {
           "material": "back-arm",
           "rest": {
@@ -306,16 +376,16 @@
           "stagger": 100
         }
       },
-      "reviewedAt": "2026-10-07T16:50:25Z",
       "content": {
         "x": 0,
-        "y": 13,
-        "width": 114,
-        "height": 101
-      }
+        "y": 0,
+        "width": 66,
+        "height": 65
+      },
+      "reviewedAt": "2026-10-08T03:10:19Z"
     },
-    "front-leg": {
-      "name": "front-leg",
+    "front-foot": {
+      "name": "front-foot",
       "status": "approved",
       "references": [
         {
@@ -324,7 +394,7 @@
           "path": "art/generated/hero-wizard/cut/hero-wizard.png",
           "role": "input",
           "source": "edit",
-          "sha256": "517dc4f4bcd9de39"
+          "sha256": "183c909fbc6686b8"
         },
         {
           "n": 2,
@@ -335,72 +405,95 @@
         }
       ],
       "sourceBox": {
-        "x": 509,
-        "y": 917,
-        "width": 220,
-        "height": 238,
-        "area": 37111
+        "x": 135,
+        "y": 999,
+        "width": 198,
+        "height": 140,
+        "area": 22020
       },
-      "width": 106,
-      "height": 105,
+      "width": 74,
+      "height": 74,
       "anchor": {
         "x": 0.5,
         "y": 1
       },
       "part": {
-        "base": "parts-hero-wizard/torso",
-        "baseWidth": 147,
-        "baseHeight": 147,
-        "x": 60,
-        "y": 126,
+        "base": "parts-hero-wizard/body",
+        "baseWidth": 257,
+        "baseHeight": 256,
+        "x": 117,
+        "y": 211,
         "joint": {
-          "x": 50,
-          "y": 12
+          "x": 37,
+          "y": 48
+        },
+        "z": -1,
+        "role": "piece"
+      },
+      "content": {
+        "x": 0,
+        "y": 22,
+        "width": 74,
+        "height": 52
+      },
+      "reviewedAt": "2026-10-08T03:10:19Z"
+    },
+    "back-foot": {
+      "name": "back-foot",
+      "status": "approved",
+      "references": [
+        {
+          "n": 1,
+          "id": "hero-wizard/hero-wizard",
+          "path": "art/generated/hero-wizard/cut/hero-wizard.png",
+          "role": "input",
+          "source": "edit",
+          "sha256": "183c909fbc6686b8"
+        },
+        {
+          "n": 2,
+          "path": "art/generated/forge-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "82fd7e0ac65376a6"
+        }
+      ],
+      "sourceBox": {
+        "x": 605,
+        "y": 996,
+        "width": 198,
+        "height": 142,
+        "area": 22281
+      },
+      "width": 74,
+      "height": 74,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "part": {
+        "base": "parts-hero-wizard/body",
+        "baseWidth": 257,
+        "baseHeight": 256,
+        "x": 65,
+        "y": 212,
+        "joint": {
+          "x": 37,
+          "y": 47
         },
         "z": -2,
-        "role": "piece",
-        "rig": {
-          "material": "leg",
-          "rest": {
-            "kind": "sway",
-            "amount": [
-              1.5,
-              2.5
-            ],
-            "periodMs": [
-              1800,
-              2200
-            ]
-          },
-          "use": {
-            "kind": "swing",
-            "amount": [
-              6,
-              9
-            ],
-            "periodMs": [
-              450,
-              550
-            ],
-            "durationMs": [
-              700,
-              900
-            ]
-          },
-          "lag": 0,
-          "stagger": 100
-        }
+        "role": "piece"
       },
-      "reviewedAt": "2026-10-07T16:50:25Z",
       "content": {
-        "x": 4,
-        "y": 0,
-        "width": 98,
-        "height": 105
-      }
+        "x": 0,
+        "y": 21,
+        "width": 74,
+        "height": 53
+      },
+      "reviewedAt": "2026-10-08T03:10:19Z"
     },
-    "back-leg": {
-      "name": "back-leg",
+    "weapon": {
+      "name": "weapon",
       "status": "approved",
       "references": [
         {
@@ -409,7 +502,7 @@
           "path": "art/generated/hero-wizard/cut/hero-wizard.png",
           "role": "input",
           "source": "edit",
-          "sha256": "517dc4f4bcd9de39"
+          "sha256": "183c909fbc6686b8"
         },
         {
           "n": 2,
@@ -420,72 +513,42 @@
         }
       ],
       "sourceBox": {
-        "x": 962,
-        "y": 917,
-        "width": 234,
-        "height": 226,
-        "area": 37275
+        "x": 966,
+        "y": 667,
+        "width": 242,
+        "height": 526,
+        "area": 65565
       },
-      "width": 104,
-      "height": 104,
+      "width": 193,
+      "height": 192,
       "anchor": {
         "x": 0.5,
         "y": 1
       },
       "part": {
-        "base": "parts-hero-wizard/torso",
-        "baseWidth": 147,
-        "baseHeight": 147,
-        "x": -9,
-        "y": 126,
+        "base": "parts-hero-wizard/body",
+        "baseWidth": 257,
+        "baseHeight": 256,
+        "x": 150,
+        "y": 66,
         "joint": {
-          "x": 45,
-          "y": 12
+          "x": 87,
+          "y": 137
         },
-        "z": -3,
+        "z": 2,
         "role": "piece",
-        "rig": {
-          "material": "leg",
-          "rest": {
-            "kind": "sway",
-            "amount": [
-              1.5,
-              2.5
-            ],
-            "periodMs": [
-              1800,
-              2200
-            ]
-          },
-          "use": {
-            "kind": "swing",
-            "amount": [
-              6,
-              9
-            ],
-            "periodMs": [
-              450,
-              550
-            ],
-            "durationMs": [
-              700,
-              900
-            ]
-          },
-          "lag": 0,
-          "stagger": 100
-        }
+        "parent": "front-hand"
       },
-      "reviewedAt": "2026-10-07T16:50:25Z",
       "content": {
-        "x": 0,
-        "y": 4,
-        "width": 104,
-        "height": 100
-      }
+        "x": 52,
+        "y": 0,
+        "width": 89,
+        "height": 192
+      },
+      "reviewedAt": "2026-10-08T03:10:19Z"
     }
   },
-  "prompt": "TASK:\nCreate a production-ready separated character-parts sheet for a cozy mobile game: the character below taken apart into its pieces, each piece drawn alone.\nTake apart the EXACT character in the attached image: same colours, same face, same clothes, same outline. Do not redesign it.\n\nPROJECT CONTEXT:\nRuneforge: Fantasy RPG weapons and runes for an inventory screen.\n\nSTYLE:\nSTYLE LOCK: Simple toon sprites for a cosy top-down adventure game, like a toy diorama.\n\nPRIMARY GOAL: Weapons, runes and small heroes that read at a glance at small sizes. Simple and cute, never realistic.\n\nCORE AESTHETIC: Lineless flat colour blocks with soft rounded edges. Everything looks like a smooth matte toy. Chunky, rounded, few parts. No texture and no small detail.\n\nEDGES: NO OUTLINES. No dark contour line around any shape. Shapes are separated by colour alone.\n\nCOLOR: Bright and friendly. Steel (#D6E2EE) blades, wood (#C98A4B) handles, gold (#F7C948) fittings, leather (#8A5236) grips, stone (#8E96A3) runes. Accents: hero blue (#4A90E2), leaf green (#5CC46A), ruby (#F0504A), violet (#9B6BE8). Skin (#FFD7B0).\n\nSHADING: One flat colour per form, one soft darker shade of the same hue on its lower side, one small soft highlight on round tops and gems. Nothing else.\n\nPROPORTION: Weapons are short and chunky with oversized heads and blades. Characters are chibi: about two and a half heads tall, a big round head, a small round body, short stubby arms with round mitten hands, short stubby legs with round boots. Simple dot eyes.\n\nDETAIL LEVEL: Two or three colours per item plus one accent. A gem is a simple round or diamond shape. Rune glyphs are bold simple marks, never letters.\n\nCOMPOSITION: One asset category per image. Every asset isolated with generous crop-safe spacing. Weapons stand upright with the grip at the bottom. No background, no ground shadow.\n\nPALETTE:\nPaper #FFFFFF (background), Steel #D6E2EE (fill), Steel Shade #9EB2C8 (shade), Wood #C98A4B (fill), Wood Shade #9A6233 (shade), Gold #F7C948 (fill), Gold Shade #D49A24 (shade), Leather #8A5236 (fill), Stone #8E96A3 (fill), Skin #FFD7B0 (fill), Leaf Green #5CC46A (fill), Hero Blue #4A90E2 (fill), Ruby #F0504A (fill), Violet #9B6BE8 (fill)\n\nSHAPE LANGUAGE:\nchunky, toy-like, rounded everything, simple silhouettes, big round heads on characters, short stubby limbs with round mitten hands, few parts\n\nRENDERING RULES:\n- no outlines: flat colour blocks separated by colour alone\n- one flat colour per form plus one soft darker shade of the same hue\n- one small soft highlight on round tops and gems\n- simple shapes, no texture, no small details\n- smooth matte toy plastic, like a toy diorama\n- weapons stand upright, grip at the bottom\n- crisp high-resolution raster\n- isolated presentation with large spacing\n\nCHARACTER:\nthe chibi wizard in the attached image, facing right, with the orb staff\n\nRIG TYPE:\nhumanoid\n\nSELECTED PARTS:\n- head in the tall violet hat with the white beard, ending in a round neck stub (required)\n- torso: the violet robe with the gold belt, no head, no arms, no legs, with round shoulders (required)\n- front arm: the whole violet sleeve and hand from a round shoulder end, holding the orb staff upright (required)\n- back arm: the whole violet sleeve from a round shoulder end to the empty hand (required)\n- front leg: the whole leg from a round hip end at the top to the boot (required)\n- back leg: the whole leg from a round hip end at the top to the boot (required)\n\nPART RULES:\nEach part is drawn ONCE, alone, complete and closed, exactly as it appears on the assembled character.\nThe head piece has NO ears attached; the ears are their own pieces. The head keeps its face, cheeks and any hat or glasses the character wears.\nThe body piece is the torso ONLY: a rounded blob with NO head, NO arms, NO legs, NO feet, NO paws and NO tail attached. Its bottom edge is ONE smooth convex curve with no bumps, notches or leg stubs. Any clothing (scarf, apron, overalls, collar, satchel) is drawn ON the body piece as part of it, never as a separate piece.\nEach leg piece is a short stubby leg ending in a paw or foot, drawn upright, with a flat cut end at the top where it meets the body. Each arm piece is a short stubby arm with a flat cut end at the top. The tail has a flat cut end at its base.\nKeep TRUE RELATIVE SIZES: the body and head are the big pieces; an ear is about a third of the head; an arm or foot is about a quarter of the body. Do not enlarge small pieces to fill their cell.\n\nCANVAS AND LAYOUT:\nOutput size 1024x1024. Solid flat background #00FF00 with no texture, no vignette, no border. Nothing in the picture may use a colour close to the background colour.\nThe game shows each asset in a 1:1 (width:height) frame. Compose each asset to suit that frame, and keep its natural proportions: do not stretch or squash it.\nParts-sheet layout: a 3-column grid, one part per invisible cell, filled in reading order (left to right, then top to bottom) in EXACTLY the order the parts are listed above. The first listed part is top-left; the last is bottom-right. Do not rearrange for looks.\nLarge crop-safe gutters between cells. No part touches another. Do not show the assembled character.\nNo labels, text, numbers, arrows, scene, or decorative filler.\nDraw each part front-facing, as it appears on the assembled character.\n\nNEGATIVE PROMPT:\noutlines, dark outlines, black outlines, ink lines, line art, contour lines, sticker outline, realism, realistic anatomy, muscles, 3D render, photoreal, metal reflections, chrome, texture, wood grain, scratches, rivets, fine detail, small detail, lens flare, glow blur, blood, gore, scene background, ground shadow, motion lines, text, labels, letters, numbers, watermark, clutter\n\nFINAL CHECK:\nEvery listed part is present once, fully separated, closed, rounded, at true relative size, and crop-safe. The head has no ears. The body is a plain torso blob with a smooth bottom edge and no legs or paws. Legs are separate pieces.\n\nADDITIONAL DETAILS:\nThe robe ends above the boots so the legs show below it. Each limb is drawn complete and whole, including the part normally hidden by the body, with a round end where it joins the body. Same colours, angle and style as in the attached image. Leave a wide empty gap around every part: no part touches or nearly touches another, and each arm stays far from the torso.",
+  "prompt": "TASK:\nCreate a production-ready separated character-parts sheet for a cozy mobile game: the character below taken apart into its pieces, each piece drawn alone.\nTake apart the EXACT character in the attached image: same colours, same face, same clothes, same outline. Do not redesign it.\n\nPROJECT CONTEXT:\nRuneforge: Toon RPG weapons, runes and chibi heroes for a top-down adventure.\n\nSTYLE:\nSTYLE LOCK: Simple toon sprites for a cosy top-down adventure game, like a toy diorama.\n\nPRIMARY GOAL: Weapons, runes and small heroes that read at a glance at small sizes. Simple and cute, never realistic.\n\nCORE AESTHETIC: Lineless flat colour blocks with soft rounded edges. Everything looks like a smooth matte toy. Chunky, rounded, few parts. No texture and no small detail.\n\nEDGES: NO OUTLINES. No dark contour line around any shape. Shapes are separated by colour alone.\n\nCOLOR: Bright and friendly. Steel (#D6E2EE) blades, wood (#C98A4B) handles, gold (#F7C948) fittings, leather (#8A5236) grips, stone (#8E96A3) runes. Accents: hero blue (#4A90E2), leaf green (#5CC46A), ruby (#F0504A), violet (#9B6BE8). Skin (#FFD7B0).\n\nSHADING: One flat colour per form, one soft darker shade of the same hue on its lower side, one small soft highlight on round tops and gems. Nothing else.\n\nPROPORTION: Weapons are short and chunky with oversized heads and blades. Characters are super chibi, like a round kawaii mascot: the head and body are ONE soft rounded blob, a little wider at the bottom, about as wide as it is tall. No neck, no arms, no legs. Two small round mitten hands float beside the blob, and two small round feet peek out under it. Tiny solid dot eyes and a tiny mouth.\n\nDETAIL LEVEL: Two or three colours per item plus one accent. A gem is a simple round or diamond shape. Rune glyphs are bold simple marks, never letters.\n\nCOMPOSITION: One asset category per image. Every asset isolated with generous crop-safe spacing. Weapons stand upright with the grip at the bottom. No background, no ground shadow.\n\nPALETTE:\nPaper #FFFFFF (background), Steel #D6E2EE (fill), Steel Shade #9EB2C8 (shade), Wood #C98A4B (fill), Wood Shade #9A6233 (shade), Gold #F7C948 (fill), Gold Shade #D49A24 (shade), Leather #8A5236 (fill), Stone #8E96A3 (fill), Skin #FFD7B0 (fill), Leaf Green #5CC46A (fill), Hero Blue #4A90E2 (fill), Ruby #F0504A (fill), Violet #9B6BE8 (fill)\n\nSHAPE LANGUAGE:\nchunky, toy-like, rounded everything, simple silhouettes, characters are round blobs: head and body merged into one soft rounded shape, no arms and no legs: small round floating hands and small round feet, few parts\n\nRENDERING RULES:\n- no outlines: flat colour blocks separated by colour alone\n- one flat colour per form plus one soft darker shade of the same hue\n- one small soft highlight on round tops and gems\n- simple shapes, no texture, no small details\n- smooth matte toy plastic, like a toy diorama\n- weapons stand upright, grip at the bottom\n- crisp high-resolution raster\n- isolated presentation with large spacing\n\nCHARACTER:\nthe round blob hero in the attached image\n\nRIG TYPE:\nhumanoid\n\nSELECTED PARTS:\n- body: the whole round blob with the face and the full outfit, no hands, no feet (required)\n- front hand: a small round mitten hand, closed, holding nothing (required)\n- back hand: a small round mitten hand, closed, holding nothing (required)\n- front foot: a small round foot or boot (required)\n- back foot: a small round foot or boot (required)\n- the orb staff alone, upright, orb up (required)\n\nPART RULES (skeleton rig):\nEvery part is drawn in the SAME view, angle and style as the assembled character, so the parts fit back together. Each part is drawn ONCE, alone, whole and closed, exactly as it looks on the character.\nWhere one part covers another on the character, draw the covered area too, so each part is whole and has no hole or flat cut.\nHands and feet are drawn whole and round, the same size as on the character.\nWhen a held item is listed as its own part, the hand is an empty closed fist and the item is drawn alone, whole, upright, at its true size.\nEvery colour on a part is a colour the character has in that same place. Do not add joints, balls, stubs, sockets or skin that the character does not show.\nKeep TRUE RELATIVE SIZES, exactly as on the assembled character. Do not enlarge small pieces to fill their cell.\n\nCANVAS AND LAYOUT:\nOutput size 1024x1024. Solid flat background #00FF00 with no texture, no vignette, no border. Nothing in the picture may use a colour close to the background colour.\nThe game shows each asset in a 1:1 (width:height) frame. Compose each asset to suit that frame, and keep its natural proportions: do not stretch or squash it.\nParts-sheet layout: a 3-column grid, one part per invisible cell, filled in reading order (left to right, then top to bottom) in EXACTLY the order the parts are listed above. The first listed part is top-left; the last is bottom-right. Do not rearrange for looks.\nLarge crop-safe gutters between cells. No part touches another. Do not show the assembled character.\nNo labels, text, numbers, arrows, scene, or decorative filler.\n\nNEGATIVE PROMPT:\noutlines, dark outlines, black outlines, ink lines, line art, contour lines, sticker outline, realism, realistic anatomy, muscles, 3D render, photoreal, metal reflections, chrome, texture, wood grain, scratches, rivets, fine detail, small detail, lens flare, glow blur, blood, gore, scene background, ground shadow, motion lines, text, labels, letters, numbers, watermark, clutter\n\nFINAL CHECK:\nEvery listed part is present once, fully separated, whole, in the character's view and colours, at true relative size, and crop-safe, with no added joints, stubs or skin.\n\nADDITIONAL DETAILS:\nLeave a wide empty gap around every part: no part touches or nearly touches another.",
   "promptVersion": "v1",
   "references": [
     {
@@ -494,7 +557,7 @@
       "path": "art/generated/hero-wizard/cut/hero-wizard.png",
       "role": "input",
       "source": "edit",
-      "sha256": "517dc4f4bcd9de39"
+      "sha256": "183c909fbc6686b8"
     },
     {
       "n": 2,
@@ -504,7 +567,7 @@
       "sha256": "82fd7e0ac65376a6"
     }
   ],
-  "generatedAt": "2026-10-07T16:39:42.334Z",
+  "generatedAt": "2026-10-08T03:06:52.234Z",
   "provider": "codex",
   "detected": 6,
   "expected": 6

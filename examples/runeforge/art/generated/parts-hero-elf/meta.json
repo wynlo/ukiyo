@@ -3,10 +3,16 @@
   "compose": "parts",
   "kind": "character",
   "game": "rpg",
-  "warnings": [],
+  "warnings": [
+    "part \"front-hand\" has no bone in rig.bones, or its parent chain does not reach \"body\"; it is not placed.",
+    "part \"back-hand\" has no bone in rig.bones, or its parent chain does not reach \"body\"; it is not placed.",
+    "part \"front-foot\" has no bone in rig.bones, or its parent chain does not reach \"body\"; it is not placed.",
+    "part \"back-foot\" has no bone in rig.bones, or its parent chain does not reach \"body\"; it is not placed.",
+    "part \"weapon\" has no bone in rig.bones, or its parent chain does not reach \"body\"; it is not placed."
+  ],
   "assets": {
-    "head": {
-      "name": "head",
+    "body": {
+      "name": "body",
       "status": "approved",
       "references": [
         {
@@ -15,7 +21,7 @@
           "path": "art/generated/hero-elf/cut/hero-elf.png",
           "role": "input",
           "source": "edit",
-          "sha256": "c2bb09f43318fe52"
+          "sha256": "fa12dcf99da71220"
         },
         {
           "n": 2,
@@ -26,169 +32,220 @@
         }
       ],
       "sourceBox": {
-        "x": 11,
-        "y": 203,
-        "width": 514,
-        "height": 440,
-        "area": 163949
+        "x": 42,
+        "y": 108,
+        "width": 547,
+        "height": 568,
+        "area": 229278
       },
-      "width": 223,
-      "height": 223,
-      "anchor": {
-        "x": 0.5,
-        "y": 1
-      },
-      "part": {
-        "base": "parts-hero-elf/torso",
-        "baseWidth": 140,
-        "baseHeight": 140,
-        "x": -48,
-        "y": -170,
-        "joint": {
-          "x": 118,
-          "y": 196
-        },
-        "z": 3,
-        "role": "piece",
-        "rig": {
-          "material": "hero-head",
-          "rest": {
-            "kind": "sway",
-            "amount": [
-              1.5,
-              2.5
-            ],
-            "periodMs": [
-              1800,
-              2200
-            ]
-          },
-          "use": {
-            "kind": "swing",
-            "amount": [
-              4,
-              6
-            ],
-            "periodMs": [
-              450,
-              550
-            ],
-            "durationMs": [
-              700,
-              900
-            ]
-          },
-          "lag": 0,
-          "stagger": 100
-        }
-      },
-      "reviewedAt": "2026-10-07T16:50:25Z",
-      "content": {
-        "x": 0,
-        "y": 32,
-        "width": 223,
-        "height": 191
-      }
-    },
-    "torso": {
-      "name": "torso",
-      "status": "approved",
-      "references": [
-        {
-          "n": 1,
-          "id": "hero-elf/hero-elf",
-          "path": "art/generated/hero-elf/cut/hero-elf.png",
-          "role": "input",
-          "source": "edit",
-          "sha256": "c2bb09f43318fe52"
-        },
-        {
-          "n": 2,
-          "path": "art/generated/forge-style/raw.png",
-          "role": "style",
-          "source": "first-target",
-          "sha256": "82fd7e0ac65376a6"
-        }
-      ],
-      "sourceBox": {
-        "x": 556,
-        "y": 419,
-        "width": 321,
-        "height": 280,
-        "area": 73846
-      },
-      "width": 140,
-      "height": 140,
-      "anchor": {
-        "x": 0.5,
-        "y": 1
-      },
-      "part": {
-        "base": "parts-hero-elf/torso",
-        "baseWidth": 140,
-        "baseHeight": 140,
-        "x": 0,
-        "y": 0,
-        "joint": {
-          "x": 70,
-          "y": 70
-        },
-        "z": 0,
-        "role": "plate"
-      },
-      "reviewedAt": "2026-10-07T16:50:25Z",
-      "content": {
-        "x": 0,
-        "y": 18,
-        "width": 140,
-        "height": 122
-      }
-    },
-    "front-arm": {
-      "name": "front-arm",
-      "status": "approved",
-      "references": [
-        {
-          "n": 1,
-          "id": "hero-elf/hero-elf",
-          "path": "art/generated/hero-elf/cut/hero-elf.png",
-          "role": "input",
-          "source": "edit",
-          "sha256": "c2bb09f43318fe52"
-        },
-        {
-          "n": 2,
-          "path": "art/generated/forge-style/raw.png",
-          "role": "style",
-          "source": "first-target",
-          "sha256": "82fd7e0ac65376a6"
-        }
-      ],
-      "sourceBox": {
-        "x": 918,
-        "y": 117,
-        "width": 296,
-        "height": 592,
-        "area": 65778
-      },
-      "width": 256,
+      "width": 257,
       "height": 256,
       "anchor": {
         "x": 0.5,
         "y": 1
       },
       "part": {
-        "base": "parts-hero-elf/torso",
-        "baseWidth": 140,
-        "baseHeight": 140,
-        "x": 50,
-        "y": -98,
+        "base": "parts-hero-elf/body",
+        "baseWidth": 257,
+        "baseHeight": 256,
+        "x": 0,
+        "y": 0,
         "joint": {
-          "x": 74,
-          "y": 150
+          "x": 128.5,
+          "y": 256
         },
-        "z": 2,
+        "z": 0,
+        "role": "plate",
+        "animations": {
+          "idle": {
+            "durationMs": 1600,
+            "loop": true,
+            "keys": {
+              "body": [
+                {
+                  "t": 0
+                },
+                {
+                  "t": 800,
+                  "sx": 1.03,
+                  "sy": 0.96
+                },
+                {
+                  "t": 1600
+                }
+              ],
+              "front-hand": [
+                {
+                  "t": 0
+                },
+                {
+                  "t": 300
+                },
+                {
+                  "t": 1000,
+                  "dy": 4
+                },
+                {
+                  "t": 1600
+                }
+              ],
+              "back-hand": [
+                {
+                  "t": 0
+                },
+                {
+                  "t": 400
+                },
+                {
+                  "t": 1100,
+                  "dy": 4
+                },
+                {
+                  "t": 1600
+                }
+              ],
+              "weapon": [
+                {
+                  "t": 0,
+                  "a": 0
+                },
+                {
+                  "t": 1000,
+                  "a": 3
+                },
+                {
+                  "t": 1600,
+                  "a": 0
+                }
+              ]
+            }
+          },
+          "attack": {
+            "durationMs": 1000,
+            "loop": false,
+            "keys": {
+              "front-hand": [
+                {
+                  "t": 0
+                },
+                {
+                  "t": 250,
+                  "dx": 14
+                },
+                {
+                  "t": 750,
+                  "dx": 14
+                },
+                {
+                  "t": 1000
+                }
+              ],
+              "back-hand": [
+                {
+                  "t": 0
+                },
+                {
+                  "t": 250,
+                  "dx": 207,
+                  "dy": 6
+                },
+                {
+                  "t": 550,
+                  "dx": 167,
+                  "dy": 6
+                },
+                {
+                  "t": 600,
+                  "dx": 213,
+                  "dy": 4
+                },
+                {
+                  "t": 750,
+                  "dx": 207,
+                  "dy": 6
+                },
+                {
+                  "t": 1000
+                }
+              ],
+              "body": [
+                {
+                  "t": 0
+                },
+                {
+                  "t": 250,
+                  "a": -3,
+                  "sx": 0.97,
+                  "sy": 1.03
+                },
+                {
+                  "t": 600,
+                  "a": 2,
+                  "sx": 1.03,
+                  "sy": 0.97
+                },
+                {
+                  "t": 1000
+                }
+              ]
+            }
+          }
+        }
+      },
+      "content": {
+        "x": 5,
+        "y": 0,
+        "width": 247,
+        "height": 256
+      },
+      "reviewedAt": "2026-10-08T03:10:19Z"
+    },
+    "front-hand": {
+      "name": "front-hand",
+      "status": "approved",
+      "references": [
+        {
+          "n": 1,
+          "id": "hero-elf/hero-elf",
+          "path": "art/generated/hero-elf/cut/hero-elf.png",
+          "role": "input",
+          "source": "edit",
+          "sha256": "fa12dcf99da71220"
+        },
+        {
+          "n": 2,
+          "path": "art/generated/forge-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "82fd7e0ac65376a6"
+        }
+      ],
+      "sourceBox": {
+        "x": 693,
+        "y": 382,
+        "width": 164,
+        "height": 159,
+        "area": 20491
+      },
+      "width": 74,
+      "height": 74,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "part": {
+        "base": "parts-hero-elf/body",
+        "baseWidth": 257,
+        "baseHeight": 256,
+        "x": 221,
+        "y": 153,
+        "joint": {
+          "x": 37,
+          "y": 38
+        },
+        "z": 3,
         "role": "piece",
+        "parent": "body",
         "rig": {
           "material": "front-arm",
           "rest": {
@@ -221,16 +278,16 @@
           "stagger": 100
         }
       },
-      "reviewedAt": "2026-10-07T16:50:25Z",
       "content": {
-        "x": 63,
-        "y": 0,
-        "width": 130,
-        "height": 256
-      }
+        "x": 0,
+        "y": 2,
+        "width": 74,
+        "height": 72
+      },
+      "reviewedAt": "2026-10-08T03:10:19Z"
     },
-    "back-arm": {
-      "name": "back-arm",
+    "back-hand": {
+      "name": "back-hand",
       "status": "approved",
       "references": [
         {
@@ -239,7 +296,7 @@
           "path": "art/generated/hero-elf/cut/hero-elf.png",
           "role": "input",
           "source": "edit",
-          "sha256": "c2bb09f43318fe52"
+          "sha256": "fa12dcf99da71220"
         },
         {
           "n": 2,
@@ -250,30 +307,31 @@
         }
       ],
       "sourceBox": {
-        "x": 111,
-        "y": 814,
-        "width": 260,
-        "height": 267,
-        "area": 36607
+        "x": 1017,
+        "y": 381,
+        "width": 163,
+        "height": 159,
+        "area": 20445
       },
-      "width": 117,
-      "height": 116,
+      "width": 75,
+      "height": 75,
       "anchor": {
         "x": 0.5,
         "y": 1
       },
       "part": {
-        "base": "parts-hero-elf/torso",
-        "baseWidth": 140,
-        "baseHeight": 140,
-        "x": -76,
-        "y": 28,
+        "base": "parts-hero-elf/body",
+        "baseWidth": 257,
+        "baseHeight": 256,
+        "x": -16,
+        "y": 152,
         "joint": {
-          "x": 92,
-          "y": 24
+          "x": 37,
+          "y": 39
         },
-        "z": -1,
+        "z": 1,
         "role": "piece",
+        "parent": "body",
         "rig": {
           "material": "back-arm",
           "rest": {
@@ -306,16 +364,16 @@
           "stagger": 100
         }
       },
-      "reviewedAt": "2026-10-07T16:50:25Z",
       "content": {
-        "x": 2,
-        "y": 0,
-        "width": 113,
-        "height": 116
-      }
+        "x": 0,
+        "y": 3,
+        "width": 75,
+        "height": 72
+      },
+      "reviewedAt": "2026-10-08T03:10:19Z"
     },
-    "front-leg": {
-      "name": "front-leg",
+    "front-foot": {
+      "name": "front-foot",
       "status": "approved",
       "references": [
         {
@@ -324,7 +382,7 @@
           "path": "art/generated/hero-elf/cut/hero-elf.png",
           "role": "input",
           "source": "edit",
-          "sha256": "c2bb09f43318fe52"
+          "sha256": "fa12dcf99da71220"
         },
         {
           "n": 2,
@@ -335,72 +393,95 @@
         }
       ],
       "sourceBox": {
-        "x": 497,
-        "y": 806,
-        "width": 237,
-        "height": 334,
-        "area": 59195
+        "x": 159,
+        "y": 924,
+        "width": 176,
+        "height": 104,
+        "area": 14600
       },
-      "width": 146,
-      "height": 146,
+      "width": 80,
+      "height": 80,
       "anchor": {
         "x": 0.5,
         "y": 1
       },
       "part": {
-        "base": "parts-hero-elf/torso",
-        "baseWidth": 140,
-        "baseHeight": 140,
-        "x": 20,
-        "y": 100,
+        "base": "parts-hero-elf/body",
+        "baseWidth": 257,
+        "baseHeight": 256,
+        "x": 122,
+        "y": 203,
         "joint": {
-          "x": 88,
-          "y": 16
+          "x": 40,
+          "y": 56
+        },
+        "z": -1,
+        "role": "piece"
+      },
+      "content": {
+        "x": 0,
+        "y": 32,
+        "width": 80,
+        "height": 48
+      },
+      "reviewedAt": "2026-10-08T03:10:19Z"
+    },
+    "back-foot": {
+      "name": "back-foot",
+      "status": "approved",
+      "references": [
+        {
+          "n": 1,
+          "id": "hero-elf/hero-elf",
+          "path": "art/generated/hero-elf/cut/hero-elf.png",
+          "role": "input",
+          "source": "edit",
+          "sha256": "fa12dcf99da71220"
+        },
+        {
+          "n": 2,
+          "path": "art/generated/forge-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "82fd7e0ac65376a6"
+        }
+      ],
+      "sourceBox": {
+        "x": 544,
+        "y": 922,
+        "width": 180,
+        "height": 105,
+        "area": 15042
+      },
+      "width": 82,
+      "height": 82,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "part": {
+        "base": "parts-hero-elf/body",
+        "baseWidth": 257,
+        "baseHeight": 256,
+        "x": 53,
+        "y": 201,
+        "joint": {
+          "x": 41,
+          "y": 58
         },
         "z": -2,
-        "role": "piece",
-        "rig": {
-          "material": "leg",
-          "rest": {
-            "kind": "sway",
-            "amount": [
-              1.5,
-              2.5
-            ],
-            "periodMs": [
-              1800,
-              2200
-            ]
-          },
-          "use": {
-            "kind": "swing",
-            "amount": [
-              6,
-              9
-            ],
-            "periodMs": [
-              450,
-              550
-            ],
-            "durationMs": [
-              700,
-              900
-            ]
-          },
-          "lag": 0,
-          "stagger": 100
-        }
+        "role": "piece"
       },
-      "reviewedAt": "2026-10-07T16:50:25Z",
       "content": {
-        "x": 21,
-        "y": 0,
-        "width": 104,
-        "height": 146
-      }
+        "x": 0,
+        "y": 34,
+        "width": 82,
+        "height": 48
+      },
+      "reviewedAt": "2026-10-08T03:10:19Z"
     },
-    "back-leg": {
-      "name": "back-leg",
+    "weapon": {
+      "name": "weapon",
       "status": "approved",
       "references": [
         {
@@ -409,7 +490,7 @@
           "path": "art/generated/hero-elf/cut/hero-elf.png",
           "role": "input",
           "source": "edit",
-          "sha256": "c2bb09f43318fe52"
+          "sha256": "fa12dcf99da71220"
         },
         {
           "n": 2,
@@ -420,72 +501,42 @@
         }
       ],
       "sourceBox": {
-        "x": 963,
-        "y": 806,
-        "width": 253,
-        "height": 319,
-        "area": 58896
+        "x": 983,
+        "y": 643,
+        "width": 163,
+        "height": 529,
+        "area": 39960
       },
-      "width": 139,
-      "height": 139,
+      "width": 240,
+      "height": 239,
       "anchor": {
         "x": 0.5,
         "y": 1
       },
       "part": {
-        "base": "parts-hero-elf/torso",
-        "baseWidth": 140,
-        "baseHeight": 140,
-        "x": -28,
-        "y": 100,
+        "base": "parts-hero-elf/body",
+        "baseWidth": 257,
+        "baseHeight": 256,
+        "x": 121,
+        "y": 72,
         "joint": {
-          "x": 60,
-          "y": 16
+          "x": 137,
+          "y": 119
         },
-        "z": -3,
+        "z": 2,
         "role": "piece",
-        "rig": {
-          "material": "leg",
-          "rest": {
-            "kind": "sway",
-            "amount": [
-              1.5,
-              2.5
-            ],
-            "periodMs": [
-              1800,
-              2200
-            ]
-          },
-          "use": {
-            "kind": "swing",
-            "amount": [
-              6,
-              9
-            ],
-            "periodMs": [
-              450,
-              550
-            ],
-            "durationMs": [
-              700,
-              900
-            ]
-          },
-          "lag": 0,
-          "stagger": 100
-        }
+        "parent": "front-hand"
       },
-      "reviewedAt": "2026-10-07T16:50:25Z",
       "content": {
-        "x": 14,
+        "x": 83,
         "y": 0,
-        "width": 111,
-        "height": 139
-      }
+        "width": 74,
+        "height": 239
+      },
+      "reviewedAt": "2026-10-08T03:10:19Z"
     }
   },
-  "prompt": "TASK:\nCreate a production-ready separated character-parts sheet for a cozy mobile game: the character below taken apart into its pieces, each piece drawn alone.\nTake apart the EXACT character in the attached image: same colours, same face, same clothes, same outline. Do not redesign it.\n\nPROJECT CONTEXT:\nRuneforge: Fantasy RPG weapons and runes for an inventory screen.\n\nSTYLE:\nSTYLE LOCK: Simple toon sprites for a cosy top-down adventure game, like a toy diorama.\n\nPRIMARY GOAL: Weapons, runes and small heroes that read at a glance at small sizes. Simple and cute, never realistic.\n\nCORE AESTHETIC: Lineless flat colour blocks with soft rounded edges. Everything looks like a smooth matte toy. Chunky, rounded, few parts. No texture and no small detail.\n\nEDGES: NO OUTLINES. No dark contour line around any shape. Shapes are separated by colour alone.\n\nCOLOR: Bright and friendly. Steel (#D6E2EE) blades, wood (#C98A4B) handles, gold (#F7C948) fittings, leather (#8A5236) grips, stone (#8E96A3) runes. Accents: hero blue (#4A90E2), leaf green (#5CC46A), ruby (#F0504A), violet (#9B6BE8). Skin (#FFD7B0).\n\nSHADING: One flat colour per form, one soft darker shade of the same hue on its lower side, one small soft highlight on round tops and gems. Nothing else.\n\nPROPORTION: Weapons are short and chunky with oversized heads and blades. Characters are chibi: about two and a half heads tall, a big round head, a small round body, short stubby arms with round mitten hands, short stubby legs with round boots. Simple dot eyes.\n\nDETAIL LEVEL: Two or three colours per item plus one accent. A gem is a simple round or diamond shape. Rune glyphs are bold simple marks, never letters.\n\nCOMPOSITION: One asset category per image. Every asset isolated with generous crop-safe spacing. Weapons stand upright with the grip at the bottom. No background, no ground shadow.\n\nPALETTE:\nPaper #FFFFFF (background), Steel #D6E2EE (fill), Steel Shade #9EB2C8 (shade), Wood #C98A4B (fill), Wood Shade #9A6233 (shade), Gold #F7C948 (fill), Gold Shade #D49A24 (shade), Leather #8A5236 (fill), Stone #8E96A3 (fill), Skin #FFD7B0 (fill), Leaf Green #5CC46A (fill), Hero Blue #4A90E2 (fill), Ruby #F0504A (fill), Violet #9B6BE8 (fill)\n\nSHAPE LANGUAGE:\nchunky, toy-like, rounded everything, simple silhouettes, big round heads on characters, short stubby limbs with round mitten hands, few parts\n\nRENDERING RULES:\n- no outlines: flat colour blocks separated by colour alone\n- one flat colour per form plus one soft darker shade of the same hue\n- one small soft highlight on round tops and gems\n- simple shapes, no texture, no small details\n- smooth matte toy plastic, like a toy diorama\n- weapons stand upright, grip at the bottom\n- crisp high-resolution raster\n- isolated presentation with large spacing\n\nCHARACTER:\nthe chibi elf ranger in the attached image, facing right, with the longbow\n\nRIG TYPE:\nhumanoid\n\nSELECTED PARTS:\n- head with the green hood, the blonde hair and both pointed ears, ending in a round neck stub (required)\n- torso: the green tunic with the belt and strap, no head, no arms, no legs, with round shoulders (required)\n- front arm: the whole bare arm from a round shoulder end to the mitten hand, holding the longbow upright (required)\n- back arm: the whole bare arm from a round shoulder end to the empty mitten hand (required)\n- front leg: the whole leg from a round hip end at the top to the brown boot (required)\n- back leg: the whole leg from a round hip end at the top to the brown boot (required)\n\nPART RULES:\nEach part is drawn ONCE, alone, complete and closed, exactly as it appears on the assembled character.\nThe head piece has NO ears attached; the ears are their own pieces. The head keeps its face, cheeks and any hat or glasses the character wears.\nThe body piece is the torso ONLY: a rounded blob with NO head, NO arms, NO legs, NO feet, NO paws and NO tail attached. Its bottom edge is ONE smooth convex curve with no bumps, notches or leg stubs. Any clothing (scarf, apron, overalls, collar, satchel) is drawn ON the body piece as part of it, never as a separate piece.\nEach leg piece is a short stubby leg ending in a paw or foot, drawn upright, with a flat cut end at the top where it meets the body. Each arm piece is a short stubby arm with a flat cut end at the top. The tail has a flat cut end at its base.\nKeep TRUE RELATIVE SIZES: the body and head are the big pieces; an ear is about a third of the head; an arm or foot is about a quarter of the body. Do not enlarge small pieces to fill their cell.\n\nCANVAS AND LAYOUT:\nOutput size 1024x1024. Solid flat background #00FF00 with no texture, no vignette, no border. Nothing in the picture may use a colour close to the background colour.\nThe game shows each asset in a 1:1 (width:height) frame. Compose each asset to suit that frame, and keep its natural proportions: do not stretch or squash it.\nParts-sheet layout: a 3-column grid, one part per invisible cell, filled in reading order (left to right, then top to bottom) in EXACTLY the order the parts are listed above. The first listed part is top-left; the last is bottom-right. Do not rearrange for looks.\nLarge crop-safe gutters between cells. No part touches another. Do not show the assembled character.\nNo labels, text, numbers, arrows, scene, or decorative filler.\nDraw each part front-facing, as it appears on the assembled character.\n\nNEGATIVE PROMPT:\noutlines, dark outlines, black outlines, ink lines, line art, contour lines, sticker outline, realism, realistic anatomy, muscles, 3D render, photoreal, metal reflections, chrome, texture, wood grain, scratches, rivets, fine detail, small detail, lens flare, glow blur, blood, gore, scene background, ground shadow, motion lines, text, labels, letters, numbers, watermark, clutter\n\nFINAL CHECK:\nEvery listed part is present once, fully separated, closed, rounded, at true relative size, and crop-safe. The head has no ears. The body is a plain torso blob with a smooth bottom edge and no legs or paws. Legs are separate pieces.\n\nADDITIONAL DETAILS:\nThe ears stay on the head piece. Each limb is drawn complete and whole, including the part normally hidden under the tunic, with a round end where it joins the body. Same pose and angle as in the attached image.",
+  "prompt": "TASK:\nCreate a production-ready separated character-parts sheet for a cozy mobile game: the character below taken apart into its pieces, each piece drawn alone.\nTake apart the EXACT character in the attached image: same colours, same face, same clothes, same outline. Do not redesign it.\n\nPROJECT CONTEXT:\nRuneforge: Toon RPG weapons, runes and chibi heroes for a top-down adventure.\n\nSTYLE:\nSTYLE LOCK: Simple toon sprites for a cosy top-down adventure game, like a toy diorama.\n\nPRIMARY GOAL: Weapons, runes and small heroes that read at a glance at small sizes. Simple and cute, never realistic.\n\nCORE AESTHETIC: Lineless flat colour blocks with soft rounded edges. Everything looks like a smooth matte toy. Chunky, rounded, few parts. No texture and no small detail.\n\nEDGES: NO OUTLINES. No dark contour line around any shape. Shapes are separated by colour alone.\n\nCOLOR: Bright and friendly. Steel (#D6E2EE) blades, wood (#C98A4B) handles, gold (#F7C948) fittings, leather (#8A5236) grips, stone (#8E96A3) runes. Accents: hero blue (#4A90E2), leaf green (#5CC46A), ruby (#F0504A), violet (#9B6BE8). Skin (#FFD7B0).\n\nSHADING: One flat colour per form, one soft darker shade of the same hue on its lower side, one small soft highlight on round tops and gems. Nothing else.\n\nPROPORTION: Weapons are short and chunky with oversized heads and blades. Characters are super chibi, like a round kawaii mascot: the head and body are ONE soft rounded blob, a little wider at the bottom, about as wide as it is tall. No neck, no arms, no legs. Two small round mitten hands float beside the blob, and two small round feet peek out under it. Tiny solid dot eyes and a tiny mouth.\n\nDETAIL LEVEL: Two or three colours per item plus one accent. A gem is a simple round or diamond shape. Rune glyphs are bold simple marks, never letters.\n\nCOMPOSITION: One asset category per image. Every asset isolated with generous crop-safe spacing. Weapons stand upright with the grip at the bottom. No background, no ground shadow.\n\nPALETTE:\nPaper #FFFFFF (background), Steel #D6E2EE (fill), Steel Shade #9EB2C8 (shade), Wood #C98A4B (fill), Wood Shade #9A6233 (shade), Gold #F7C948 (fill), Gold Shade #D49A24 (shade), Leather #8A5236 (fill), Stone #8E96A3 (fill), Skin #FFD7B0 (fill), Leaf Green #5CC46A (fill), Hero Blue #4A90E2 (fill), Ruby #F0504A (fill), Violet #9B6BE8 (fill)\n\nSHAPE LANGUAGE:\nchunky, toy-like, rounded everything, simple silhouettes, characters are round blobs: head and body merged into one soft rounded shape, no arms and no legs: small round floating hands and small round feet, few parts\n\nRENDERING RULES:\n- no outlines: flat colour blocks separated by colour alone\n- one flat colour per form plus one soft darker shade of the same hue\n- one small soft highlight on round tops and gems\n- simple shapes, no texture, no small details\n- smooth matte toy plastic, like a toy diorama\n- weapons stand upright, grip at the bottom\n- crisp high-resolution raster\n- isolated presentation with large spacing\n\nCHARACTER:\nthe round blob hero in the attached image\n\nRIG TYPE:\nhumanoid\n\nSELECTED PARTS:\n- body: the whole round blob with the face and the full outfit, no hands, no feet (required)\n- front hand: a small round mitten hand, closed, holding nothing (required)\n- back hand: a small round mitten hand, closed, holding nothing (required)\n- front foot: a small round foot or boot (required)\n- back foot: a small round foot or boot (required)\n- the longbow alone, upright, with its string (required)\n\nPART RULES (skeleton rig):\nEvery part is drawn in the SAME view, angle and style as the assembled character, so the parts fit back together. Each part is drawn ONCE, alone, whole and closed, exactly as it looks on the character.\nWhere one part covers another on the character, draw the covered area too, so each part is whole and has no hole or flat cut.\nHands and feet are drawn whole and round, the same size as on the character.\nWhen a held item is listed as its own part, the hand is an empty closed fist and the item is drawn alone, whole, upright, at its true size.\nEvery colour on a part is a colour the character has in that same place. Do not add joints, balls, stubs, sockets or skin that the character does not show.\nKeep TRUE RELATIVE SIZES, exactly as on the assembled character. Do not enlarge small pieces to fill their cell.\n\nCANVAS AND LAYOUT:\nOutput size 1024x1024. Solid flat background #00FF00 with no texture, no vignette, no border. Nothing in the picture may use a colour close to the background colour.\nThe game shows each asset in a 1:1 (width:height) frame. Compose each asset to suit that frame, and keep its natural proportions: do not stretch or squash it.\nParts-sheet layout: a 3-column grid, one part per invisible cell, filled in reading order (left to right, then top to bottom) in EXACTLY the order the parts are listed above. The first listed part is top-left; the last is bottom-right. Do not rearrange for looks.\nLarge crop-safe gutters between cells. No part touches another. Do not show the assembled character.\nNo labels, text, numbers, arrows, scene, or decorative filler.\n\nNEGATIVE PROMPT:\noutlines, dark outlines, black outlines, ink lines, line art, contour lines, sticker outline, realism, realistic anatomy, muscles, 3D render, photoreal, metal reflections, chrome, texture, wood grain, scratches, rivets, fine detail, small detail, lens flare, glow blur, blood, gore, scene background, ground shadow, motion lines, text, labels, letters, numbers, watermark, clutter\n\nFINAL CHECK:\nEvery listed part is present once, fully separated, whole, in the character's view and colours, at true relative size, and crop-safe, with no added joints, stubs or skin.\n\nADDITIONAL DETAILS:\nLeave a wide empty gap around every part: no part touches or nearly touches another.",
   "promptVersion": "v1",
   "references": [
     {
@@ -494,7 +545,7 @@
       "path": "art/generated/hero-elf/cut/hero-elf.png",
       "role": "input",
       "source": "edit",
-      "sha256": "c2bb09f43318fe52"
+      "sha256": "fa12dcf99da71220"
     },
     {
       "n": 2,
@@ -504,7 +555,7 @@
       "sha256": "82fd7e0ac65376a6"
     }
   ],
-  "generatedAt": "2026-10-07T16:21:04.684Z",
+  "generatedAt": "2026-10-08T03:05:56.751Z",
   "provider": "codex",
   "detected": 6,
   "expected": 6

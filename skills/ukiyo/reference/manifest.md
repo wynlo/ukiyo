@@ -324,19 +324,30 @@ cuts the parts and scales them consistently.
 - The prompt tells the model: head without ears, clothes on the body, small
   limbs with cut ends, true relative sizes, strict grid order.
 - `rig` assembles the parts into a skeleton. `root` is the part every other
-  part hangs from (the torso). It is written as the plate. Each entry of
-  `bones` gives `joint` (the pivot in the part's final px), `at` (where that
-  joint sits in its parent's final px), `parent` (default: the root), `z`
-  (draw order, the root is 0, negative draws behind it), `material` and an
-  optional `motion` override. `final` writes `part` like a split, so `pack`
-  and the game read both the same way. Ask for each limb drawn whole with a
-  round end where it joins the body, so a turning limb never opens a gap.
+  part hangs from (the body). It is written as the plate; `pivot` is where it
+  squashes and turns (default: its bottom centre). Each entry of `bones` gives
+  `joint` (the pivot in the part's final px), `at` (where that joint sits in
+  its parent's final px), `parent` (default: the root), `z` (draw order, the
+  root is 0, negative draws behind it), `material`, and optional `mirror`
+  (flip the part left to right) and `planted` (not attached to the root: feet
+  stay on the ground when the body moves). `final` writes `part` like a
+  split, so `pack` and the game read both the same way.
+- `rig.animations` holds keyframed clips (`idle`, `attack`, ...). Each key
+  gives a part's pose at `t` ms: `a` degrees about its joint, `dx`/`dy` px,
+  `sx`/`sy` scale about its joint. Missing channels are the rest pose; keys
+  ease in and out. The clips are written to the root part's
+  `part.animations`.
+- Rigs work best with few joints: a round body with floating hands and feet,
+  and each held item as its own part attached to its hand. With a `rig`, the
+  prompt asks for whole parts in the character's own view and colours.
 
   ```json
-  "rig": { "root": "torso", "bones": {
-    "head":      { "joint": [118, 196], "at": [70, 26],  "z": 3,  "material": "hero-head" },
-    "front-arm": { "joint": [74, 150],  "at": [124, 52], "z": 2,  "material": "front-arm" },
-    "back-leg":  { "joint": [60, 16],   "at": [40, 116], "z": -3, "material": "leg" } } }
+  "rig": { "root": "body", "bones": {
+    "front-hand": { "joint": [29, 31], "at": [235, 204], "z": 3 },
+    "weapon":     { "joint": [76, 108], "at": [29, 31], "parent": "front-hand", "z": 2 },
+    "front-foot": { "joint": [34, 45], "at": [154, 258], "z": -1, "planted": true } },
+    "animations": { "idle": { "durationMs": 1600, "keys": {
+      "body": [{ "t": 0 }, { "t": 800, "sx": 1.03, "sy": 0.96 }, { "t": 1600 }] } } } }
   ```
 
 ## Kinds (in `ukiyo.json`)

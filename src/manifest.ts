@@ -188,12 +188,16 @@ export const targetSchema = z.discriminatedUnion('compose', [
     rig: z
       .object({
         root: nameSchema,
+        /** The root's pivot in its final px: where it turns and squashes (the hips). Default: its bottom centre. */
+        pivot: z.tuple([z.number(), z.number()]).optional(),
         bones: z.record(
           nameSchema,
           z.object({
             joint: z.tuple([z.number(), z.number()]),
             at: z.tuple([z.number(), z.number()]),
             parent: nameSchema.optional(),
+            /** Not attached to the root: it stays put when the root moves (feet on the ground). */
+            planted: z.boolean().optional(),
             /** Mirror the part left to right (a limb drawn for the other side). `joint` stays in the drawn part's px. */
             mirror: z.boolean().optional(),
             z: z.number(),
@@ -201,6 +205,25 @@ export const targetSchema = z.discriminatedUnion('compose', [
             motion: z.object({ rest: planMotion.optional(), use: planMotion.optional(), gust: planMotion.optional() }).optional(),
           }),
         ),
+        /**
+         * Keyframed clips (`idle`, `attack`, ...). Each key gives a part's pose at `t` ms:
+         * `a` degrees about its joint, `dx`/`dy` px, `sx`/`sy` scale about its joint.
+         * A missing channel is the rest pose. Keys ease in and out. Written to the
+         * root part's `part.animations`.
+         */
+        animations: z
+          .record(
+            z.string().min(1),
+            z.object({
+              durationMs: z.number().positive(),
+              loop: z.boolean().default(true),
+              keys: z.record(
+                nameSchema,
+                z.array(z.object({ t: z.number().min(0), a: z.number().optional(), dx: z.number().optional(), dy: z.number().optional(), sx: z.number().optional(), sy: z.number().optional() })).min(1),
+              ),
+            }),
+          )
+          .optional(),
       })
       .optional(),
     /**

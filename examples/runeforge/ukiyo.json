@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "Runeforge",
-    "description": "Toon RPG weapons, runes and chibi heroes for a top-down adventure."
+    "description": "Toon RPG weapons, runes and round blob heroes for a top-down adventure."
   },
   "style": {
     "file": "art/style.md",

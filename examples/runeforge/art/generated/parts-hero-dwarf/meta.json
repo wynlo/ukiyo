@@ -3,10 +3,17 @@
   "compose": "parts",
   "kind": "character",
   "game": "rpg",
-  "warnings": [],
+  "warnings": [
+    "part \"front-hand\" has no bone in rig.bones, or its parent chain does not reach \"body\"; it is not placed.",
+    "part \"back-hand\" has no bone in rig.bones, or its parent chain does not reach \"body\"; it is not placed.",
+    "part \"front-foot\" has no bone in rig.bones, or its parent chain does not reach \"body\"; it is not placed.",
+    "part \"back-foot\" has no bone in rig.bones, or its parent chain does not reach \"body\"; it is not placed.",
+    "part \"weapon\" has no bone in rig.bones, or its parent chain does not reach \"body\"; it is not placed.",
+    "part \"shield\" has no bone in rig.bones, or its parent chain does not reach \"body\"; it is not placed."
+  ],
   "assets": {
-    "head": {
-      "name": "head",
+    "body": {
+      "name": "body",
       "status": "approved",
       "references": [
         {
@@ -15,7 +22,7 @@
           "path": "art/generated/hero-dwarf/cut/hero-dwarf.png",
           "role": "input",
           "source": "edit",
-          "sha256": "a5c494312e3da078"
+          "sha256": "bd1fa6cba5858134"
         },
         {
           "n": 2,
@@ -26,150 +33,11 @@
         }
       ],
       "sourceBox": {
-        "x": 12,
-        "y": 142,
-        "width": 467,
-        "height": 487,
-        "area": 161129
-      },
-      "width": 247,
-      "height": 247,
-      "anchor": {
-        "x": 0.5,
-        "y": 1
-      },
-      "part": {
-        "base": "parts-hero-dwarf/torso",
-        "baseWidth": 185,
-        "baseHeight": 185,
-        "x": -45,
-        "y": -165,
-        "joint": {
-          "x": 140,
-          "y": 200
-        },
-        "z": 3,
-        "role": "piece",
-        "rig": {
-          "material": "hero-head",
-          "rest": {
-            "kind": "sway",
-            "amount": [
-              1.5,
-              2.5
-            ],
-            "periodMs": [
-              1800,
-              2200
-            ]
-          },
-          "use": {
-            "kind": "swing",
-            "amount": [
-              4,
-              6
-            ],
-            "periodMs": [
-              450,
-              550
-            ],
-            "durationMs": [
-              700,
-              900
-            ]
-          },
-          "lag": 0,
-          "stagger": 100
-        }
-      },
-      "reviewedAt": "2026-10-07T16:50:25Z",
-      "content": {
-        "x": 5,
-        "y": 0,
-        "width": 237,
-        "height": 247
-      }
-    },
-    "torso": {
-      "name": "torso",
-      "status": "approved",
-      "references": [
-        {
-          "n": 1,
-          "id": "hero-dwarf/hero-dwarf",
-          "path": "art/generated/hero-dwarf/cut/hero-dwarf.png",
-          "role": "input",
-          "source": "edit",
-          "sha256": "a5c494312e3da078"
-        },
-        {
-          "n": 2,
-          "path": "art/generated/forge-style/raw.png",
-          "role": "style",
-          "source": "first-target",
-          "sha256": "82fd7e0ac65376a6"
-        }
-      ],
-      "sourceBox": {
-        "x": 492,
-        "y": 366,
-        "width": 361,
-        "height": 297,
-        "area": 92201
-      },
-      "width": 185,
-      "height": 185,
-      "anchor": {
-        "x": 0.5,
-        "y": 1
-      },
-      "part": {
-        "base": "parts-hero-dwarf/torso",
-        "baseWidth": 185,
-        "baseHeight": 185,
-        "x": 0,
-        "y": 0,
-        "joint": {
-          "x": 92.5,
-          "y": 92.5
-        },
-        "z": 0,
-        "role": "plate"
-      },
-      "reviewedAt": "2026-10-07T16:50:25Z",
-      "content": {
-        "x": 0,
-        "y": 33,
-        "width": 185,
-        "height": 152
-      }
-    },
-    "front-arm": {
-      "name": "front-arm",
-      "status": "approved",
-      "references": [
-        {
-          "n": 1,
-          "id": "hero-dwarf/hero-dwarf",
-          "path": "art/generated/hero-dwarf/cut/hero-dwarf.png",
-          "role": "input",
-          "source": "edit",
-          "sha256": "a5c494312e3da078"
-        },
-        {
-          "n": 2,
-          "path": "art/generated/forge-style/raw.png",
-          "role": "style",
-          "source": "first-target",
-          "sha256": "82fd7e0ac65376a6"
-        }
-      ],
-      "sourceBox": {
-        "x": 861,
-        "y": 131,
-        "width": 385,
-        "height": 503,
-        "area": 104001
+        "x": 66,
+        "y": 74,
+        "width": 477,
+        "height": 620,
+        "area": 227418
       },
       "width": 256,
       "height": 256,
@@ -178,17 +46,241 @@
         "y": 1
       },
       "part": {
-        "base": "parts-hero-dwarf/torso",
-        "baseWidth": 185,
-        "baseHeight": 185,
-        "x": -170,
-        "y": -75,
+        "base": "parts-hero-dwarf/body",
+        "baseWidth": 256,
+        "baseHeight": 256,
+        "x": 0,
+        "y": 0,
         "joint": {
-          "x": 185,
-          "y": 170
+          "x": 128,
+          "y": 256
         },
-        "z": 2,
+        "z": 0,
+        "role": "plate",
+        "animations": {
+          "idle": {
+            "durationMs": 1600,
+            "loop": true,
+            "keys": {
+              "body": [
+                {
+                  "t": 0
+                },
+                {
+                  "t": 800,
+                  "sx": 1.03,
+                  "sy": 0.96
+                },
+                {
+                  "t": 1600
+                }
+              ],
+              "front-hand": [
+                {
+                  "t": 0
+                },
+                {
+                  "t": 300
+                },
+                {
+                  "t": 1000,
+                  "dy": 4
+                },
+                {
+                  "t": 1600
+                }
+              ],
+              "back-hand": [
+                {
+                  "t": 0
+                },
+                {
+                  "t": 400
+                },
+                {
+                  "t": 1100,
+                  "dy": 4
+                },
+                {
+                  "t": 1600
+                }
+              ],
+              "weapon": [
+                {
+                  "t": 0,
+                  "a": 25
+                },
+                {
+                  "t": 1000,
+                  "a": 28
+                },
+                {
+                  "t": 1600,
+                  "a": 25
+                }
+              ]
+            }
+          },
+          "attack": {
+            "durationMs": 700,
+            "loop": false,
+            "keys": {
+              "front-hand": [
+                {
+                  "t": 0
+                },
+                {
+                  "t": 200,
+                  "dx": -24,
+                  "dy": -46
+                },
+                {
+                  "t": 260,
+                  "dx": -26,
+                  "dy": -48
+                },
+                {
+                  "t": 360,
+                  "dx": 22,
+                  "dy": 4
+                },
+                {
+                  "t": 480,
+                  "dx": 18,
+                  "dy": 2
+                },
+                {
+                  "t": 700
+                }
+              ],
+              "weapon": [
+                {
+                  "t": 0,
+                  "a": 25
+                },
+                {
+                  "t": 200,
+                  "a": -35
+                },
+                {
+                  "t": 260,
+                  "a": -40
+                },
+                {
+                  "t": 360,
+                  "a": 120
+                },
+                {
+                  "t": 480,
+                  "a": 110
+                },
+                {
+                  "t": 700,
+                  "a": 25
+                }
+              ],
+              "body": [
+                {
+                  "t": 0
+                },
+                {
+                  "t": 200,
+                  "a": -5,
+                  "sx": 0.95,
+                  "sy": 1.05
+                },
+                {
+                  "t": 360,
+                  "a": 6,
+                  "dx": 5,
+                  "sx": 1.06,
+                  "sy": 0.94
+                },
+                {
+                  "t": 480,
+                  "a": 4,
+                  "dx": 4
+                },
+                {
+                  "t": 700
+                }
+              ],
+              "back-hand": [
+                {
+                  "t": 0
+                },
+                {
+                  "t": 200,
+                  "dx": -4,
+                  "dy": 6
+                },
+                {
+                  "t": 360,
+                  "dx": 4,
+                  "dy": -4
+                },
+                {
+                  "t": 700
+                }
+              ]
+            }
+          }
+        }
+      },
+      "content": {
+        "x": 29,
+        "y": 0,
+        "width": 198,
+        "height": 256
+      },
+      "reviewedAt": "2026-10-08T03:10:19Z"
+    },
+    "front-hand": {
+      "name": "front-hand",
+      "status": "approved",
+      "references": [
+        {
+          "n": 1,
+          "id": "hero-dwarf/hero-dwarf",
+          "path": "art/generated/hero-dwarf/cut/hero-dwarf.png",
+          "role": "input",
+          "source": "edit",
+          "sha256": "bd1fa6cba5858134"
+        },
+        {
+          "n": 2,
+          "path": "art/generated/forge-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "82fd7e0ac65376a6"
+        }
+      ],
+      "sourceBox": {
+        "x": 664,
+        "y": 514,
+        "width": 144,
+        "height": 133,
+        "area": 14982
+      },
+      "width": 61,
+      "height": 61,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "part": {
+        "base": "parts-hero-dwarf/body",
+        "baseWidth": 256,
+        "baseHeight": 256,
+        "x": 196,
+        "y": 170,
+        "joint": {
+          "x": 30,
+          "y": 33
+        },
+        "z": 3,
         "role": "piece",
+        "parent": "body",
         "rig": {
           "material": "front-arm",
           "rest": {
@@ -221,16 +313,16 @@
           "stagger": 100
         }
       },
-      "reviewedAt": "2026-10-07T16:50:25Z",
       "content": {
-        "x": 30,
-        "y": 0,
-        "width": 196,
-        "height": 256
-      }
+        "x": 0,
+        "y": 5,
+        "width": 61,
+        "height": 56
+      },
+      "reviewedAt": "2026-10-08T03:10:19Z"
     },
-    "back-arm": {
-      "name": "back-arm",
+    "back-hand": {
+      "name": "back-hand",
       "status": "approved",
       "references": [
         {
@@ -239,7 +331,7 @@
           "path": "art/generated/hero-dwarf/cut/hero-dwarf.png",
           "role": "input",
           "source": "edit",
-          "sha256": "a5c494312e3da078"
+          "sha256": "bd1fa6cba5858134"
         },
         {
           "n": 2,
@@ -250,30 +342,31 @@
         }
       ],
       "sourceBox": {
-        "x": 26,
-        "y": 759,
-        "width": 472,
-        "height": 359,
-        "area": 120531
+        "x": 989,
+        "y": 515,
+        "width": 147,
+        "height": 134,
+        "area": 15193
       },
-      "width": 240,
-      "height": 240,
+      "width": 61,
+      "height": 61,
       "anchor": {
         "x": 0.5,
         "y": 1
       },
       "part": {
-        "base": "parts-hero-dwarf/torso",
-        "baseWidth": 185,
-        "baseHeight": 185,
-        "x": 147,
-        "y": -10,
+        "base": "parts-hero-dwarf/body",
+        "baseWidth": 256,
+        "baseHeight": 256,
+        "x": -19,
+        "y": 170,
         "joint": {
-          "x": 25,
-          "y": 100
+          "x": 30,
+          "y": 33
         },
-        "z": -1,
+        "z": 1,
         "role": "piece",
+        "parent": "body",
         "rig": {
           "material": "back-arm",
           "rest": {
@@ -306,16 +399,16 @@
           "stagger": 100
         }
       },
-      "reviewedAt": "2026-10-07T16:50:25Z",
       "content": {
         "x": 0,
-        "y": 57,
-        "width": 240,
-        "height": 183
-      }
+        "y": 5,
+        "width": 61,
+        "height": 56
+      },
+      "reviewedAt": "2026-10-08T03:10:19Z"
     },
-    "front-leg": {
-      "name": "front-leg",
+    "front-foot": {
+      "name": "front-foot",
       "status": "approved",
       "references": [
         {
@@ -324,7 +417,7 @@
           "path": "art/generated/hero-dwarf/cut/hero-dwarf.png",
           "role": "input",
           "source": "edit",
-          "sha256": "a5c494312e3da078"
+          "sha256": "bd1fa6cba5858134"
         },
         {
           "n": 2,
@@ -335,157 +428,205 @@
         }
       ],
       "sourceBox": {
-        "x": 516,
-        "y": 818,
-        "width": 264,
-        "height": 270,
-        "area": 53096
+        "x": 56,
+        "y": 1035,
+        "width": 157,
+        "height": 100,
+        "area": 12727
       },
-      "width": 140,
+      "width": 66,
+      "height": 66,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "part": {
+        "base": "parts-hero-dwarf/body",
+        "baseWidth": 256,
+        "baseHeight": 256,
+        "x": 122,
+        "y": 213,
+        "joint": {
+          "x": 33,
+          "y": 45
+        },
+        "z": -1,
+        "role": "piece"
+      },
+      "content": {
+        "x": 0,
+        "y": 24,
+        "width": 66,
+        "height": 42
+      },
+      "reviewedAt": "2026-10-08T03:10:19Z"
+    },
+    "back-foot": {
+      "name": "back-foot",
+      "status": "approved",
+      "references": [
+        {
+          "n": 1,
+          "id": "hero-dwarf/hero-dwarf",
+          "path": "art/generated/hero-dwarf/cut/hero-dwarf.png",
+          "role": "input",
+          "source": "edit",
+          "sha256": "bd1fa6cba5858134"
+        },
+        {
+          "n": 2,
+          "path": "art/generated/forge-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "82fd7e0ac65376a6"
+        }
+      ],
+      "sourceBox": {
+        "x": 318,
+        "y": 1036,
+        "width": 159,
+        "height": 99,
+        "area": 12868
+      },
+      "width": 67,
+      "height": 67,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "part": {
+        "base": "parts-hero-dwarf/body",
+        "baseWidth": 256,
+        "baseHeight": 256,
+        "x": 67,
+        "y": 212,
+        "joint": {
+          "x": 33,
+          "y": 46
+        },
+        "z": -2,
+        "role": "piece"
+      },
+      "content": {
+        "x": 0,
+        "y": 25,
+        "width": 67,
+        "height": 42
+      },
+      "reviewedAt": "2026-10-08T03:10:19Z"
+    },
+    "weapon": {
+      "name": "weapon",
+      "status": "approved",
+      "references": [
+        {
+          "n": 1,
+          "id": "hero-dwarf/hero-dwarf",
+          "path": "art/generated/hero-dwarf/cut/hero-dwarf.png",
+          "role": "input",
+          "source": "edit",
+          "sha256": "bd1fa6cba5858134"
+        },
+        {
+          "n": 2,
+          "path": "art/generated/forge-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "82fd7e0ac65376a6"
+        }
+      ],
+      "sourceBox": {
+        "x": 501,
+        "y": 746,
+        "width": 319,
+        "height": 423,
+        "area": 72847
+      },
+      "width": 175,
+      "height": 175,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "part": {
+        "base": "parts-hero-dwarf/body",
+        "baseWidth": 256,
+        "baseHeight": 256,
+        "x": 138,
+        "y": 78,
+        "joint": {
+          "x": 88,
+          "y": 125
+        },
+        "z": 2,
+        "role": "piece",
+        "parent": "front-hand"
+      },
+      "content": {
+        "x": 21,
+        "y": 0,
+        "width": 133,
+        "height": 175
+      },
+      "reviewedAt": "2026-10-08T03:10:19Z"
+    },
+    "shield": {
+      "name": "shield",
+      "status": "approved",
+      "references": [
+        {
+          "n": 1,
+          "id": "hero-dwarf/hero-dwarf",
+          "path": "art/generated/hero-dwarf/cut/hero-dwarf.png",
+          "role": "input",
+          "source": "edit",
+          "sha256": "bd1fa6cba5858134"
+        },
+        {
+          "n": 2,
+          "path": "art/generated/forge-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "82fd7e0ac65376a6"
+        }
+      ],
+      "sourceBox": {
+        "x": 873,
+        "y": 800,
+        "width": 332,
+        "height": 334,
+        "area": 86590
+      },
+      "width": 138,
       "height": 139,
       "anchor": {
         "x": 0.5,
         "y": 1
       },
       "part": {
-        "base": "parts-hero-dwarf/torso",
-        "baseWidth": 185,
-        "baseHeight": 185,
-        "x": 62,
-        "y": 154,
+        "base": "parts-hero-dwarf/body",
+        "baseWidth": 256,
+        "baseHeight": 256,
+        "x": -58,
+        "y": 134,
         "joint": {
-          "x": 80,
-          "y": 18
+          "x": 69,
+          "y": 69
         },
-        "z": -2,
+        "z": 2,
         "role": "piece",
-        "rig": {
-          "material": "leg",
-          "rest": {
-            "kind": "sway",
-            "amount": [
-              1.5,
-              2.5
-            ],
-            "periodMs": [
-              1800,
-              2200
-            ]
-          },
-          "use": {
-            "kind": "swing",
-            "amount": [
-              6,
-              9
-            ],
-            "periodMs": [
-              450,
-              550
-            ],
-            "durationMs": [
-              700,
-              900
-            ]
-          },
-          "lag": 0,
-          "stagger": 100
-        }
+        "parent": "back-hand"
       },
-      "reviewedAt": "2026-10-07T16:50:25Z",
-      "content": {
-        "x": 2,
-        "y": 0,
-        "width": 136,
-        "height": 139
-      }
-    },
-    "back-leg": {
-      "name": "back-leg",
-      "status": "approved",
-      "references": [
-        {
-          "n": 1,
-          "id": "hero-dwarf/hero-dwarf",
-          "path": "art/generated/hero-dwarf/cut/hero-dwarf.png",
-          "role": "input",
-          "source": "edit",
-          "sha256": "a5c494312e3da078"
-        },
-        {
-          "n": 2,
-          "path": "art/generated/forge-style/raw.png",
-          "role": "style",
-          "source": "first-target",
-          "sha256": "82fd7e0ac65376a6"
-        }
-      ],
-      "sourceBox": {
-        "x": 934,
-        "y": 815,
-        "width": 283,
-        "height": 260,
-        "area": 52888
-      },
-      "width": 146,
-      "height": 146,
-      "anchor": {
-        "x": 0.5,
-        "y": 1
-      },
-      "part": {
-        "base": "parts-hero-dwarf/torso",
-        "baseWidth": 185,
-        "baseHeight": 185,
-        "x": -12,
-        "y": 152,
-        "joint": {
-          "x": 60,
-          "y": 20
-        },
-        "z": -3,
-        "role": "piece",
-        "rig": {
-          "material": "leg",
-          "rest": {
-            "kind": "sway",
-            "amount": [
-              1.5,
-              2.5
-            ],
-            "periodMs": [
-              1800,
-              2200
-            ]
-          },
-          "use": {
-            "kind": "swing",
-            "amount": [
-              6,
-              9
-            ],
-            "periodMs": [
-              450,
-              550
-            ],
-            "durationMs": [
-              700,
-              900
-            ]
-          },
-          "lag": 0,
-          "stagger": 100
-        }
-      },
-      "reviewedAt": "2026-10-07T16:50:25Z",
       "content": {
         "x": 0,
-        "y": 12,
-        "width": 146,
-        "height": 134
-      }
+        "y": 0,
+        "width": 138,
+        "height": 139
+      },
+      "reviewedAt": "2026-10-08T03:10:19Z"
     }
   },
-  "prompt": "TASK:\nCreate a production-ready separated character-parts sheet for a cozy mobile game: the character below taken apart into its pieces, each piece drawn alone.\nTake apart the EXACT character in the attached image: same colours, same face, same clothes, same outline. Do not redesign it.\n\nPROJECT CONTEXT:\nRuneforge: Fantasy RPG weapons and runes for an inventory screen.\n\nSTYLE:\nSTYLE LOCK: Simple toon sprites for a cosy top-down adventure game, like a toy diorama.\n\nPRIMARY GOAL: Weapons, runes and small heroes that read at a glance at small sizes. Simple and cute, never realistic.\n\nCORE AESTHETIC: Lineless flat colour blocks with soft rounded edges. Everything looks like a smooth matte toy. Chunky, rounded, few parts. No texture and no small detail.\n\nEDGES: NO OUTLINES. No dark contour line around any shape. Shapes are separated by colour alone.\n\nCOLOR: Bright and friendly. Steel (#D6E2EE) blades, wood (#C98A4B) handles, gold (#F7C948) fittings, leather (#8A5236) grips, stone (#8E96A3) runes. Accents: hero blue (#4A90E2), leaf green (#5CC46A), ruby (#F0504A), violet (#9B6BE8). Skin (#FFD7B0).\n\nSHADING: One flat colour per form, one soft darker shade of the same hue on its lower side, one small soft highlight on round tops and gems. Nothing else.\n\nPROPORTION: Weapons are short and chunky with oversized heads and blades. Characters are chibi: about two and a half heads tall, a big round head, a small round body, short stubby arms with round mitten hands, short stubby legs with round boots. Simple dot eyes.\n\nDETAIL LEVEL: Two or three colours per item plus one accent. A gem is a simple round or diamond shape. Rune glyphs are bold simple marks, never letters.\n\nCOMPOSITION: One asset category per image. Every asset isolated with generous crop-safe spacing. Weapons stand upright with the grip at the bottom. No background, no ground shadow.\n\nPALETTE:\nPaper #FFFFFF (background), Steel #D6E2EE (fill), Steel Shade #9EB2C8 (shade), Wood #C98A4B (fill), Wood Shade #9A6233 (shade), Gold #F7C948 (fill), Gold Shade #D49A24 (shade), Leather #8A5236 (fill), Stone #8E96A3 (fill), Skin #FFD7B0 (fill), Leaf Green #5CC46A (fill), Hero Blue #4A90E2 (fill), Ruby #F0504A (fill), Violet #9B6BE8 (fill)\n\nSHAPE LANGUAGE:\nchunky, toy-like, rounded everything, simple silhouettes, big round heads on characters, short stubby limbs with round mitten hands, few parts\n\nRENDERING RULES:\n- no outlines: flat colour blocks separated by colour alone\n- one flat colour per form plus one soft darker shade of the same hue\n- one small soft highlight on round tops and gems\n- simple shapes, no texture, no small details\n- smooth matte toy plastic, like a toy diorama\n- weapons stand upright, grip at the bottom\n- crisp high-resolution raster\n- isolated presentation with large spacing\n\nCHARACTER:\nthe chibi dwarf in the attached image, facing right, with the war hammer and the round shield\n\nRIG TYPE:\nhumanoid\n\nSELECTED PARTS:\n- head in the horned steel helmet with the orange beard, ending in a round neck stub (required)\n- torso: the steel armour with the blue cloth and the belt, no head, no arms, no legs, with round shoulder sockets (required)\n- front arm: the whole arm from a round shoulder end to the mitten hand, holding the war hammer pointing up (required)\n- back arm: the whole arm from a round shoulder end to the mitten hand, holding the round shield (required)\n- front leg: the whole leg from a round hip end at the top to the boot (required)\n- back leg: the whole leg from a round hip end at the top to the boot (required)\n\nPART RULES:\nEach part is drawn ONCE, alone, complete and closed, exactly as it appears on the assembled character.\nThe head piece has NO ears attached; the ears are their own pieces. The head keeps its face, cheeks and any hat or glasses the character wears.\nThe body piece is the torso ONLY: a rounded blob with NO head, NO arms, NO legs, NO feet, NO paws and NO tail attached. Its bottom edge is ONE smooth convex curve with no bumps, notches or leg stubs. Any clothing (scarf, apron, overalls, collar, satchel) is drawn ON the body piece as part of it, never as a separate piece.\nEach leg piece is a short stubby leg ending in a paw or foot, drawn upright, with a flat cut end at the top where it meets the body. Each arm piece is a short stubby arm with a flat cut end at the top. The tail has a flat cut end at its base.\nKeep TRUE RELATIVE SIZES: the body and head are the big pieces; an ear is about a third of the head; an arm or foot is about a quarter of the body. Do not enlarge small pieces to fill their cell.\n\nCANVAS AND LAYOUT:\nOutput size 1024x1024. Solid flat background #00FF00 with no texture, no vignette, no border. Nothing in the picture may use a colour close to the background colour.\nThe game shows each asset in a 1:1 (width:height) frame. Compose each asset to suit that frame, and keep its natural proportions: do not stretch or squash it.\nParts-sheet layout: a 3-column grid, one part per invisible cell, filled in reading order (left to right, then top to bottom) in EXACTLY the order the parts are listed above. The first listed part is top-left; the last is bottom-right. Do not rearrange for looks.\nLarge crop-safe gutters between cells. No part touches another. Do not show the assembled character.\nNo labels, text, numbers, arrows, scene, or decorative filler.\nDraw each part front-facing, as it appears on the assembled character.\n\nNEGATIVE PROMPT:\noutlines, dark outlines, black outlines, ink lines, line art, contour lines, sticker outline, realism, realistic anatomy, muscles, 3D render, photoreal, metal reflections, chrome, texture, wood grain, scratches, rivets, fine detail, small detail, lens flare, glow blur, blood, gore, scene background, ground shadow, motion lines, text, labels, letters, numbers, watermark, clutter\n\nFINAL CHECK:\nEvery listed part is present once, fully separated, closed, rounded, at true relative size, and crop-safe. The head has no ears. The body is a plain torso blob with a smooth bottom edge and no legs or paws. Legs are separate pieces.\n\nADDITIONAL DETAILS:\nEach limb is drawn complete and whole, including the part normally hidden by the body, with a round end where it joins the body. Same colours, angle and style as in the attached image.",
+  "prompt": "TASK:\nCreate a production-ready separated character-parts sheet for a cozy mobile game: the character below taken apart into its pieces, each piece drawn alone.\nTake apart the EXACT character in the attached image: same colours, same face, same clothes, same outline. Do not redesign it.\n\nPROJECT CONTEXT:\nRuneforge: Toon RPG weapons, runes and chibi heroes for a top-down adventure.\n\nSTYLE:\nSTYLE LOCK: Simple toon sprites for a cosy top-down adventure game, like a toy diorama.\n\nPRIMARY GOAL: Weapons, runes and small heroes that read at a glance at small sizes. Simple and cute, never realistic.\n\nCORE AESTHETIC: Lineless flat colour blocks with soft rounded edges. Everything looks like a smooth matte toy. Chunky, rounded, few parts. No texture and no small detail.\n\nEDGES: NO OUTLINES. No dark contour line around any shape. Shapes are separated by colour alone.\n\nCOLOR: Bright and friendly. Steel (#D6E2EE) blades, wood (#C98A4B) handles, gold (#F7C948) fittings, leather (#8A5236) grips, stone (#8E96A3) runes. Accents: hero blue (#4A90E2), leaf green (#5CC46A), ruby (#F0504A), violet (#9B6BE8). Skin (#FFD7B0).\n\nSHADING: One flat colour per form, one soft darker shade of the same hue on its lower side, one small soft highlight on round tops and gems. Nothing else.\n\nPROPORTION: Weapons are short and chunky with oversized heads and blades. Characters are super chibi, like a round kawaii mascot: the head and body are ONE soft rounded blob, a little wider at the bottom, about as wide as it is tall. No neck, no arms, no legs. Two small round mitten hands float beside the blob, and two small round feet peek out under it. Tiny solid dot eyes and a tiny mouth.\n\nDETAIL LEVEL: Two or three colours per item plus one accent. A gem is a simple round or diamond shape. Rune glyphs are bold simple marks, never letters.\n\nCOMPOSITION: One asset category per image. Every asset isolated with generous crop-safe spacing. Weapons stand upright with the grip at the bottom. No background, no ground shadow.\n\nPALETTE:\nPaper #FFFFFF (background), Steel #D6E2EE (fill), Steel Shade #9EB2C8 (shade), Wood #C98A4B (fill), Wood Shade #9A6233 (shade), Gold #F7C948 (fill), Gold Shade #D49A24 (shade), Leather #8A5236 (fill), Stone #8E96A3 (fill), Skin #FFD7B0 (fill), Leaf Green #5CC46A (fill), Hero Blue #4A90E2 (fill), Ruby #F0504A (fill), Violet #9B6BE8 (fill)\n\nSHAPE LANGUAGE:\nchunky, toy-like, rounded everything, simple silhouettes, characters are round blobs: head and body merged into one soft rounded shape, no arms and no legs: small round floating hands and small round feet, few parts\n\nRENDERING RULES:\n- no outlines: flat colour blocks separated by colour alone\n- one flat colour per form plus one soft darker shade of the same hue\n- one small soft highlight on round tops and gems\n- simple shapes, no texture, no small details\n- smooth matte toy plastic, like a toy diorama\n- weapons stand upright, grip at the bottom\n- crisp high-resolution raster\n- isolated presentation with large spacing\n\nCHARACTER:\nthe round blob hero in the attached image\n\nRIG TYPE:\nhumanoid\n\nSELECTED PARTS:\n- body: the whole round blob with the face and the full outfit, no hands, no feet (required)\n- front hand: a small round mitten hand, closed, holding nothing (required)\n- back hand: a small round mitten hand, closed, holding nothing (required)\n- front foot: a small round foot or boot (required)\n- back foot: a small round foot or boot (required)\n- the war hammer alone, upright, head up (required)\n- the round shield alone, facing the viewer (required)\n\nPART RULES (skeleton rig):\nEvery part is drawn in the SAME view, angle and style as the assembled character, so the parts fit back together. Each part is drawn ONCE, alone, whole and closed, exactly as it looks on the character.\nWhere one part covers another on the character, draw the covered area too, so each part is whole and has no hole or flat cut.\nHands and feet are drawn whole and round, the same size as on the character.\nWhen a held item is listed as its own part, the hand is an empty closed fist and the item is drawn alone, whole, upright, at its true size.\nEvery colour on a part is a colour the character has in that same place. Do not add joints, balls, stubs, sockets or skin that the character does not show.\nKeep TRUE RELATIVE SIZES, exactly as on the assembled character. Do not enlarge small pieces to fill their cell.\n\nCANVAS AND LAYOUT:\nOutput size 1024x1024. Solid flat background #00FF00 with no texture, no vignette, no border. Nothing in the picture may use a colour close to the background colour.\nThe game shows each asset in a 1:1 (width:height) frame. Compose each asset to suit that frame, and keep its natural proportions: do not stretch or squash it.\nParts-sheet layout: a 3-column grid, one part per invisible cell, filled in reading order (left to right, then top to bottom) in EXACTLY the order the parts are listed above. The first listed part is top-left; the last is bottom-right. Do not rearrange for looks.\nLarge crop-safe gutters between cells. No part touches another. Do not show the assembled character.\nNo labels, text, numbers, arrows, scene, or decorative filler.\n\nNEGATIVE PROMPT:\noutlines, dark outlines, black outlines, ink lines, line art, contour lines, sticker outline, realism, realistic anatomy, muscles, 3D render, photoreal, metal reflections, chrome, texture, wood grain, scratches, rivets, fine detail, small detail, lens flare, glow blur, blood, gore, scene background, ground shadow, motion lines, text, labels, letters, numbers, watermark, clutter\n\nFINAL CHECK:\nEvery listed part is present once, fully separated, whole, in the character's view and colours, at true relative size, and crop-safe, with no added joints, stubs or skin.\n\nADDITIONAL DETAILS:\nLeave a wide empty gap around every part: no part touches or nearly touches another.",
   "promptVersion": "v1",
   "references": [
     {
@@ -494,7 +635,7 @@
       "path": "art/generated/hero-dwarf/cut/hero-dwarf.png",
       "role": "input",
       "source": "edit",
-      "sha256": "a5c494312e3da078"
+      "sha256": "bd1fa6cba5858134"
     },
     {
       "n": 2,
@@ -504,8 +645,8 @@
       "sha256": "82fd7e0ac65376a6"
     }
   ],
-  "generatedAt": "2026-10-07T16:32:37.533Z",
+  "generatedAt": "2026-10-08T03:04:58.484Z",
   "provider": "codex",
-  "detected": 6,
-  "expected": 6
+  "detected": 7,
+  "expected": 7
 }

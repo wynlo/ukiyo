@@ -120,6 +120,7 @@ export function composePrompt(config: ResolvedConfig, target: Target): string {
       return templates.render('parts', {
         ...view,
         reference: Boolean(target.reference),
+        rigged: Boolean(target.rig),
         rigType: target.rigType,
         parts: target.parts.map((part) => ({ label: part.label, required: part.required, pivotHint: part.pivotHint?.toLowerCase() })),
       });

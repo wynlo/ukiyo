@@ -3,10 +3,16 @@
   "compose": "parts",
   "kind": "character",
   "game": "rpg",
-  "warnings": [],
+  "warnings": [
+    "part \"front-hand\" has no bone in rig.bones, or its parent chain does not reach \"body\"; it is not placed.",
+    "part \"back-hand\" has no bone in rig.bones, or its parent chain does not reach \"body\"; it is not placed.",
+    "part \"front-foot\" has no bone in rig.bones, or its parent chain does not reach \"body\"; it is not placed.",
+    "part \"back-foot\" has no bone in rig.bones, or its parent chain does not reach \"body\"; it is not placed.",
+    "part \"weapon\" has no bone in rig.bones, or its parent chain does not reach \"body\"; it is not placed."
+  ],
   "assets": {
-    "head": {
-      "name": "head",
+    "body": {
+      "name": "body",
       "status": "approved",
       "references": [
         {
@@ -15,7 +21,7 @@
           "path": "art/generated/hero-orc/cut/hero-orc.png",
           "role": "input",
           "source": "edit",
-          "sha256": "b270a3002dff3b8f"
+          "sha256": "04f8b5b13eef4a36"
         },
         {
           "n": 2,
@@ -26,11 +32,11 @@
         }
       ],
       "sourceBox": {
-        "x": 59,
-        "y": 43,
-        "width": 368,
-        "height": 524,
-        "area": 133905
+        "x": 80,
+        "y": 115,
+        "width": 525,
+        "height": 657,
+        "area": 254893
       },
       "width": 256,
       "height": 256,
@@ -39,156 +45,241 @@
         "y": 1
       },
       "part": {
-        "base": "parts-hero-orc/torso",
-        "baseWidth": 174,
-        "baseHeight": 174,
-        "x": -38,
-        "y": -200,
+        "base": "parts-hero-orc/body",
+        "baseWidth": 256,
+        "baseHeight": 256,
+        "x": 0,
+        "y": 0,
         "joint": {
-          "x": 130,
-          "y": 240
+          "x": 128,
+          "y": 256
+        },
+        "z": 0,
+        "role": "plate",
+        "animations": {
+          "idle": {
+            "durationMs": 1600,
+            "loop": true,
+            "keys": {
+              "body": [
+                {
+                  "t": 0
+                },
+                {
+                  "t": 800,
+                  "sx": 1.03,
+                  "sy": 0.96
+                },
+                {
+                  "t": 1600
+                }
+              ],
+              "front-hand": [
+                {
+                  "t": 0
+                },
+                {
+                  "t": 300
+                },
+                {
+                  "t": 1000,
+                  "dy": 4
+                },
+                {
+                  "t": 1600
+                }
+              ],
+              "back-hand": [
+                {
+                  "t": 0
+                },
+                {
+                  "t": 400
+                },
+                {
+                  "t": 1100,
+                  "dy": 4
+                },
+                {
+                  "t": 1600
+                }
+              ],
+              "weapon": [
+                {
+                  "t": 0,
+                  "a": 25
+                },
+                {
+                  "t": 1000,
+                  "a": 28
+                },
+                {
+                  "t": 1600,
+                  "a": 25
+                }
+              ]
+            }
+          },
+          "attack": {
+            "durationMs": 700,
+            "loop": false,
+            "keys": {
+              "front-hand": [
+                {
+                  "t": 0
+                },
+                {
+                  "t": 200,
+                  "dx": -24,
+                  "dy": -46
+                },
+                {
+                  "t": 260,
+                  "dx": -26,
+                  "dy": -48
+                },
+                {
+                  "t": 360,
+                  "dx": 22,
+                  "dy": 4
+                },
+                {
+                  "t": 480,
+                  "dx": 18,
+                  "dy": 2
+                },
+                {
+                  "t": 700
+                }
+              ],
+              "weapon": [
+                {
+                  "t": 0,
+                  "a": 25
+                },
+                {
+                  "t": 200,
+                  "a": -35
+                },
+                {
+                  "t": 260,
+                  "a": -40
+                },
+                {
+                  "t": 360,
+                  "a": 120
+                },
+                {
+                  "t": 480,
+                  "a": 110
+                },
+                {
+                  "t": 700,
+                  "a": 25
+                }
+              ],
+              "body": [
+                {
+                  "t": 0
+                },
+                {
+                  "t": 200,
+                  "a": -5,
+                  "sx": 0.95,
+                  "sy": 1.05
+                },
+                {
+                  "t": 360,
+                  "a": 6,
+                  "dx": 5,
+                  "sx": 1.06,
+                  "sy": 0.94
+                },
+                {
+                  "t": 480,
+                  "a": 4,
+                  "dx": 4
+                },
+                {
+                  "t": 700
+                }
+              ],
+              "back-hand": [
+                {
+                  "t": 0
+                },
+                {
+                  "t": 200,
+                  "dx": -4,
+                  "dy": 6
+                },
+                {
+                  "t": 360,
+                  "dx": 4,
+                  "dy": -4
+                },
+                {
+                  "t": 700
+                }
+              ]
+            }
+          }
+        }
+      },
+      "content": {
+        "x": 26,
+        "y": 0,
+        "width": 204,
+        "height": 256
+      },
+      "reviewedAt": "2026-10-08T03:10:19Z"
+    },
+    "front-hand": {
+      "name": "front-hand",
+      "status": "approved",
+      "references": [
+        {
+          "n": 1,
+          "id": "hero-orc/hero-orc",
+          "path": "art/generated/hero-orc/cut/hero-orc.png",
+          "role": "input",
+          "source": "edit",
+          "sha256": "04f8b5b13eef4a36"
+        },
+        {
+          "n": 2,
+          "path": "art/generated/forge-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "82fd7e0ac65376a6"
+        }
+      ],
+      "sourceBox": {
+        "x": 683,
+        "y": 566,
+        "width": 167,
+        "height": 144,
+        "area": 18165
+      },
+      "width": 66,
+      "height": 66,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "part": {
+        "base": "parts-hero-orc/body",
+        "baseWidth": 256,
+        "baseHeight": 256,
+        "x": 217,
+        "y": 166,
+        "joint": {
+          "x": 33,
+          "y": 37
         },
         "z": 3,
         "role": "piece",
-        "rig": {
-          "material": "hero-head",
-          "rest": {
-            "kind": "sway",
-            "amount": [
-              1.5,
-              2.5
-            ],
-            "periodMs": [
-              1800,
-              2200
-            ]
-          },
-          "use": {
-            "kind": "swing",
-            "amount": [
-              4,
-              6
-            ],
-            "periodMs": [
-              450,
-              550
-            ],
-            "durationMs": [
-              700,
-              900
-            ]
-          },
-          "lag": 0,
-          "stagger": 100
-        }
-      },
-      "reviewedAt": "2026-10-07T16:50:25Z",
-      "content": {
-        "x": 38,
-        "y": 0,
-        "width": 180,
-        "height": 256
-      }
-    },
-    "torso": {
-      "name": "torso",
-      "status": "approved",
-      "references": [
-        {
-          "n": 1,
-          "id": "hero-orc/hero-orc",
-          "path": "art/generated/hero-orc/cut/hero-orc.png",
-          "role": "input",
-          "source": "edit",
-          "sha256": "b270a3002dff3b8f"
-        },
-        {
-          "n": 2,
-          "path": "art/generated/forge-style/raw.png",
-          "role": "style",
-          "source": "first-target",
-          "sha256": "82fd7e0ac65376a6"
-        }
-      ],
-      "sourceBox": {
-        "x": 495,
-        "y": 251,
-        "width": 357,
-        "height": 292,
-        "area": 84293
-      },
-      "width": 174,
-      "height": 174,
-      "anchor": {
-        "x": 0.5,
-        "y": 1
-      },
-      "part": {
-        "base": "parts-hero-orc/torso",
-        "baseWidth": 174,
-        "baseHeight": 174,
-        "x": 0,
-        "y": 0,
-        "joint": {
-          "x": 87,
-          "y": 87
-        },
-        "z": 0,
-        "role": "plate"
-      },
-      "reviewedAt": "2026-10-07T16:50:25Z",
-      "content": {
-        "x": 0,
-        "y": 31,
-        "width": 174,
-        "height": 143
-      }
-    },
-    "front-arm": {
-      "name": "front-arm",
-      "status": "approved",
-      "references": [
-        {
-          "n": 1,
-          "id": "hero-orc/hero-orc",
-          "path": "art/generated/hero-orc/cut/hero-orc.png",
-          "role": "input",
-          "source": "edit",
-          "sha256": "b270a3002dff3b8f"
-        },
-        {
-          "n": 2,
-          "path": "art/generated/forge-style/raw.png",
-          "role": "style",
-          "source": "first-target",
-          "sha256": "82fd7e0ac65376a6"
-        }
-      ],
-      "sourceBox": {
-        "x": 884,
-        "y": 103,
-        "width": 354,
-        "height": 450,
-        "area": 75222
-      },
-      "width": 219,
-      "height": 219,
-      "anchor": {
-        "x": 0.5,
-        "y": 1
-      },
-      "part": {
-        "base": "parts-hero-orc/torso",
-        "baseWidth": 174,
-        "baseHeight": 174,
-        "x": 132,
-        "y": -40,
-        "joint": {
-          "x": 28,
-          "y": 135
-        },
-        "z": 2,
-        "role": "piece",
+        "parent": "body",
         "rig": {
           "material": "front-arm",
           "rest": {
@@ -221,16 +312,16 @@
           "stagger": 100
         }
       },
-      "reviewedAt": "2026-10-07T16:50:25Z",
       "content": {
-        "x": 23,
-        "y": 0,
-        "width": 173,
-        "height": 219
-      }
+        "x": 0,
+        "y": 9,
+        "width": 66,
+        "height": 57
+      },
+      "reviewedAt": "2026-10-08T03:10:19Z"
     },
-    "back-arm": {
-      "name": "back-arm",
+    "back-hand": {
+      "name": "back-hand",
       "status": "approved",
       "references": [
         {
@@ -239,7 +330,7 @@
           "path": "art/generated/hero-orc/cut/hero-orc.png",
           "role": "input",
           "source": "edit",
-          "sha256": "b270a3002dff3b8f"
+          "sha256": "04f8b5b13eef4a36"
         },
         {
           "n": 2,
@@ -250,30 +341,31 @@
         }
       ],
       "sourceBox": {
-        "x": 121,
-        "y": 631,
-        "width": 195,
-        "height": 271,
-        "area": 36682
+        "x": 1007,
+        "y": 565,
+        "width": 162,
+        "height": 145,
+        "area": 17798
       },
-      "width": 134,
-      "height": 133,
+      "width": 64,
+      "height": 64,
       "anchor": {
         "x": 0.5,
         "y": 1
       },
       "part": {
-        "base": "parts-hero-orc/torso",
-        "baseWidth": 174,
-        "baseHeight": 174,
-        "x": -53,
-        "y": 73,
+        "base": "parts-hero-orc/body",
+        "baseWidth": 256,
+        "baseHeight": 256,
+        "x": -25,
+        "y": 168,
         "joint": {
-          "x": 78,
-          "y": 22
+          "x": 32,
+          "y": 35
         },
-        "z": -1,
+        "z": 1,
         "role": "piece",
+        "parent": "body",
         "rig": {
           "material": "back-arm",
           "rest": {
@@ -306,16 +398,16 @@
           "stagger": 100
         }
       },
-      "reviewedAt": "2026-10-07T16:50:25Z",
       "content": {
-        "x": 19,
-        "y": 0,
-        "width": 96,
-        "height": 133
-      }
+        "x": 0,
+        "y": 7,
+        "width": 64,
+        "height": 57
+      },
+      "reviewedAt": "2026-10-08T03:10:19Z"
     },
-    "back-ear": {
-      "name": "back-ear",
+    "front-foot": {
+      "name": "front-foot",
       "status": "approved",
       "references": [
         {
@@ -324,7 +416,7 @@
           "path": "art/generated/hero-orc/cut/hero-orc.png",
           "role": "input",
           "source": "edit",
-          "sha256": "b270a3002dff3b8f"
+          "sha256": "04f8b5b13eef4a36"
         },
         {
           "n": 2,
@@ -335,73 +427,41 @@
         }
       ],
       "sourceBox": {
-        "x": 499,
-        "y": 635,
-        "width": 195,
-        "height": 210,
-        "area": 28794
+        "x": 130,
+        "y": 1015,
+        "width": 201,
+        "height": 124,
+        "area": 20138
       },
-      "width": 104,
-      "height": 103,
+      "width": 79,
+      "height": 79,
       "anchor": {
         "x": 0.5,
         "y": 1
       },
       "part": {
-        "base": "parts-hero-orc/torso",
-        "baseWidth": 174,
-        "baseHeight": 174,
-        "x": -78,
-        "y": -120,
+        "base": "parts-hero-orc/body",
+        "baseWidth": 256,
+        "baseHeight": 256,
+        "x": 117,
+        "y": 205,
         "joint": {
-          "x": 88,
-          "y": 85
+          "x": 39,
+          "y": 54
         },
-        "z": 2.5,
-        "role": "piece",
-        "parent": "head",
-        "rig": {
-          "material": "hat-tip",
-          "rest": {
-            "kind": "sway",
-            "amount": [
-              3,
-              4
-            ],
-            "periodMs": [
-              2200,
-              2600
-            ]
-          },
-          "gust": {
-            "kind": "swing",
-            "amount": [
-              6,
-              8
-            ],
-            "periodMs": [
-              500,
-              700
-            ],
-            "durationMs": [
-              1200,
-              1500
-            ]
-          },
-          "lag": 100,
-          "stagger": 100
-        }
+        "z": -1,
+        "role": "piece"
       },
-      "reviewedAt": "2026-10-07T16:50:25Z",
       "content": {
-        "x": 4,
-        "y": 0,
-        "width": 96,
-        "height": 103
-      }
+        "x": 0,
+        "y": 30,
+        "width": 79,
+        "height": 49
+      },
+      "reviewedAt": "2026-10-08T03:10:19Z"
     },
-    "front-ear": {
-      "name": "front-ear",
+    "back-foot": {
+      "name": "back-foot",
       "status": "approved",
       "references": [
         {
@@ -410,7 +470,7 @@
           "path": "art/generated/hero-orc/cut/hero-orc.png",
           "role": "input",
           "source": "edit",
-          "sha256": "b270a3002dff3b8f"
+          "sha256": "04f8b5b13eef4a36"
         },
         {
           "n": 2,
@@ -421,158 +481,41 @@
         }
       ],
       "sourceBox": {
-        "x": 935,
-        "y": 636,
-        "width": 198,
-        "height": 215,
-        "area": 29301
+        "x": 531,
+        "y": 1015,
+        "width": 202,
+        "height": 124,
+        "area": 20098
       },
-      "width": 108,
-      "height": 107,
+      "width": 79,
+      "height": 79,
       "anchor": {
         "x": 0.5,
         "y": 1
       },
       "part": {
-        "base": "parts-hero-orc/torso",
-        "baseWidth": 174,
-        "baseHeight": 174,
-        "x": 170,
-        "y": -123,
+        "base": "parts-hero-orc/body",
+        "baseWidth": 256,
+        "baseHeight": 256,
+        "x": 60,
+        "y": 205,
         "joint": {
-          "x": 14,
-          "y": 88
-        },
-        "z": 2.5,
-        "role": "piece",
-        "parent": "head",
-        "rig": {
-          "material": "hat-tip",
-          "rest": {
-            "kind": "sway",
-            "amount": [
-              3,
-              4
-            ],
-            "periodMs": [
-              2200,
-              2600
-            ]
-          },
-          "gust": {
-            "kind": "swing",
-            "amount": [
-              6,
-              8
-            ],
-            "periodMs": [
-              500,
-              700
-            ],
-            "durationMs": [
-              1200,
-              1500
-            ]
-          },
-          "lag": 100,
-          "stagger": 100
-        }
-      },
-      "reviewedAt": "2026-10-07T16:50:25Z",
-      "content": {
-        "x": 5,
-        "y": 0,
-        "width": 98,
-        "height": 107
-      }
-    },
-    "front-leg": {
-      "name": "front-leg",
-      "status": "approved",
-      "references": [
-        {
-          "n": 1,
-          "id": "hero-orc/hero-orc",
-          "path": "art/generated/hero-orc/cut/hero-orc.png",
-          "role": "input",
-          "source": "edit",
-          "sha256": "b270a3002dff3b8f"
-        },
-        {
-          "n": 2,
-          "path": "art/generated/forge-style/raw.png",
-          "role": "style",
-          "source": "first-target",
-          "sha256": "82fd7e0ac65376a6"
-        }
-      ],
-      "sourceBox": {
-        "x": 245,
-        "y": 881,
-        "width": 251,
-        "height": 293,
-        "area": 53902
-      },
-      "width": 147,
-      "height": 146,
-      "anchor": {
-        "x": 0.5,
-        "y": 1
-      },
-      "part": {
-        "base": "parts-hero-orc/torso",
-        "baseWidth": 174,
-        "baseHeight": 174,
-        "x": 52,
-        "y": 140,
-        "joint": {
-          "x": 80,
-          "y": 18
+          "x": 39,
+          "y": 54
         },
         "z": -2,
-        "role": "piece",
-        "rig": {
-          "material": "leg",
-          "rest": {
-            "kind": "sway",
-            "amount": [
-              1.5,
-              2.5
-            ],
-            "periodMs": [
-              1800,
-              2200
-            ]
-          },
-          "use": {
-            "kind": "swing",
-            "amount": [
-              6,
-              9
-            ],
-            "periodMs": [
-              450,
-              550
-            ],
-            "durationMs": [
-              700,
-              900
-            ]
-          },
-          "lag": 0,
-          "stagger": 100
-        }
+        "role": "piece"
       },
-      "reviewedAt": "2026-10-07T16:50:25Z",
       "content": {
-        "x": 11,
-        "y": 0,
-        "width": 125,
-        "height": 146
-      }
+        "x": 0,
+        "y": 30,
+        "width": 79,
+        "height": 49
+      },
+      "reviewedAt": "2026-10-08T03:10:19Z"
     },
-    "back-leg": {
-      "name": "back-leg",
+    "weapon": {
+      "name": "weapon",
       "status": "approved",
       "references": [
         {
@@ -581,7 +524,7 @@
           "path": "art/generated/hero-orc/cut/hero-orc.png",
           "role": "input",
           "source": "edit",
-          "sha256": "b270a3002dff3b8f"
+          "sha256": "04f8b5b13eef4a36"
         },
         {
           "n": 2,
@@ -592,72 +535,42 @@
         }
       ],
       "sourceBox": {
-        "x": 756,
-        "y": 881,
-        "width": 277,
-        "height": 288,
-        "area": 57565
+        "x": 882,
+        "y": 789,
+        "width": 329,
+        "height": 417,
+        "area": 69681
       },
-      "width": 141,
-      "height": 141,
+      "width": 163,
+      "height": 163,
       "anchor": {
         "x": 0.5,
         "y": 1
       },
       "part": {
-        "base": "parts-hero-orc/torso",
-        "baseWidth": 174,
-        "baseHeight": 174,
-        "x": -4,
-        "y": 140,
+        "base": "parts-hero-orc/body",
+        "baseWidth": 256,
+        "baseHeight": 256,
+        "x": 169,
+        "y": 87,
         "joint": {
-          "x": 50,
-          "y": 18
+          "x": 81,
+          "y": 116
         },
-        "z": -3,
+        "z": 2,
         "role": "piece",
-        "rig": {
-          "material": "leg",
-          "rest": {
-            "kind": "sway",
-            "amount": [
-              1.5,
-              2.5
-            ],
-            "periodMs": [
-              1800,
-              2200
-            ]
-          },
-          "use": {
-            "kind": "swing",
-            "amount": [
-              6,
-              9
-            ],
-            "periodMs": [
-              450,
-              550
-            ],
-            "durationMs": [
-              700,
-              900
-            ]
-          },
-          "lag": 0,
-          "stagger": 100
-        }
+        "parent": "front-hand"
       },
-      "reviewedAt": "2026-10-07T16:50:25Z",
       "content": {
-        "x": 2,
+        "x": 17,
         "y": 0,
-        "width": 137,
-        "height": 141
-      }
+        "width": 129,
+        "height": 163
+      },
+      "reviewedAt": "2026-10-08T03:10:19Z"
     }
   },
-  "prompt": "TASK:\nCreate a production-ready separated character-parts sheet for a cozy mobile game: the character below taken apart into its pieces, each piece drawn alone.\nTake apart the EXACT character in the attached image: same colours, same face, same clothes, same outline. Do not redesign it.\n\nPROJECT CONTEXT:\nRuneforge: Fantasy RPG weapons and runes for an inventory screen.\n\nSTYLE:\nSTYLE LOCK: Simple toon sprites for a cosy top-down adventure game, like a toy diorama.\n\nPRIMARY GOAL: Weapons, runes and small heroes that read at a glance at small sizes. Simple and cute, never realistic.\n\nCORE AESTHETIC: Lineless flat colour blocks with soft rounded edges. Everything looks like a smooth matte toy. Chunky, rounded, few parts. No texture and no small detail.\n\nEDGES: NO OUTLINES. No dark contour line around any shape. Shapes are separated by colour alone.\n\nCOLOR: Bright and friendly. Steel (#D6E2EE) blades, wood (#C98A4B) handles, gold (#F7C948) fittings, leather (#8A5236) grips, stone (#8E96A3) runes. Accents: hero blue (#4A90E2), leaf green (#5CC46A), ruby (#F0504A), violet (#9B6BE8). Skin (#FFD7B0).\n\nSHADING: One flat colour per form, one soft darker shade of the same hue on its lower side, one small soft highlight on round tops and gems. Nothing else.\n\nPROPORTION: Weapons are short and chunky with oversized heads and blades. Characters are chibi: about two and a half heads tall, a big round head, a small round body, short stubby arms with round mitten hands, short stubby legs with round boots. Simple dot eyes.\n\nDETAIL LEVEL: Two or three colours per item plus one accent. A gem is a simple round or diamond shape. Rune glyphs are bold simple marks, never letters.\n\nCOMPOSITION: One asset category per image. Every asset isolated with generous crop-safe spacing. Weapons stand upright with the grip at the bottom. No background, no ground shadow.\n\nPALETTE:\nPaper #FFFFFF (background), Steel #D6E2EE (fill), Steel Shade #9EB2C8 (shade), Wood #C98A4B (fill), Wood Shade #9A6233 (shade), Gold #F7C948 (fill), Gold Shade #D49A24 (shade), Leather #8A5236 (fill), Stone #8E96A3 (fill), Skin #FFD7B0 (fill), Leaf Green #5CC46A (fill), Hero Blue #4A90E2 (fill), Ruby #F0504A (fill), Violet #9B6BE8 (fill)\n\nSHAPE LANGUAGE:\nchunky, toy-like, rounded everything, simple silhouettes, big round heads on characters, short stubby limbs with round mitten hands, few parts\n\nRENDERING RULES:\n- no outlines: flat colour blocks separated by colour alone\n- one flat colour per form plus one soft darker shade of the same hue\n- one small soft highlight on round tops and gems\n- simple shapes, no texture, no small details\n- smooth matte toy plastic, like a toy diorama\n- weapons stand upright, grip at the bottom\n- crisp high-resolution raster\n- isolated presentation with large spacing\n\nCHARACTER:\nthe chibi green orc in the attached image, facing right, with the battle axe\n\nRIG TYPE:\nhumanoid\n\nSELECTED PARTS:\n- head with the black topknot, the ears and the tusks, ending in a round neck stub (required)\n- torso: the green body with the leather vest and the belt, no head, no arms, no legs, with round shoulders (required)\n- front arm: the whole green arm from a round shoulder end to the fist, holding the battle axe pointing up (required)\n- back arm: the whole green arm from a round shoulder end to the empty round fist (required)\n- back ear (required)\n- front ear (required)\n- front leg: the whole leg from a round hip end at the top to the boot (required)\n- back leg: the whole leg from a round hip end at the top to the boot (required)\n\nPART RULES:\nEach part is drawn ONCE, alone, complete and closed, exactly as it appears on the assembled character.\nThe head piece has NO ears attached; the ears are their own pieces. The head keeps its face, cheeks and any hat or glasses the character wears.\nThe body piece is the torso ONLY: a rounded blob with NO head, NO arms, NO legs, NO feet, NO paws and NO tail attached. Its bottom edge is ONE smooth convex curve with no bumps, notches or leg stubs. Any clothing (scarf, apron, overalls, collar, satchel) is drawn ON the body piece as part of it, never as a separate piece.\nEach leg piece is a short stubby leg ending in a paw or foot, drawn upright, with a flat cut end at the top where it meets the body. Each arm piece is a short stubby arm with a flat cut end at the top. The tail has a flat cut end at its base.\nKeep TRUE RELATIVE SIZES: the body and head are the big pieces; an ear is about a third of the head; an arm or foot is about a quarter of the body. Do not enlarge small pieces to fill their cell.\n\nCANVAS AND LAYOUT:\nOutput size 1024x1024. Solid flat background #00FF00 with no texture, no vignette, no border. Nothing in the picture may use a colour close to the background colour.\nThe game shows each asset in a 1:1 (width:height) frame. Compose each asset to suit that frame, and keep its natural proportions: do not stretch or squash it.\nParts-sheet layout: a 3-column grid, one part per invisible cell, filled in reading order (left to right, then top to bottom) in EXACTLY the order the parts are listed above. The first listed part is top-left; the last is bottom-right. Do not rearrange for looks.\nLarge crop-safe gutters between cells. No part touches another. Do not show the assembled character.\nNo labels, text, numbers, arrows, scene, or decorative filler.\nDraw each part front-facing, as it appears on the assembled character.\n\nNEGATIVE PROMPT:\noutlines, dark outlines, black outlines, ink lines, line art, contour lines, sticker outline, realism, realistic anatomy, muscles, 3D render, photoreal, metal reflections, chrome, texture, wood grain, scratches, rivets, fine detail, small detail, lens flare, glow blur, blood, gore, scene background, ground shadow, motion lines, text, labels, letters, numbers, watermark, clutter\n\nFINAL CHECK:\nEvery listed part is present once, fully separated, closed, rounded, at true relative size, and crop-safe. The head has no ears. The body is a plain torso blob with a smooth bottom edge and no legs or paws. Legs are separate pieces.\n\nADDITIONAL DETAILS:\nEach limb is drawn complete and whole, including the part normally hidden by the body, with a round end where it joins the body. Same colours, angle and style as in the attached image. Leave a wide empty gap around every part: no part touches or nearly touches another, and each arm stays far from the torso.",
+  "prompt": "TASK:\nCreate a production-ready separated character-parts sheet for a cozy mobile game: the character below taken apart into its pieces, each piece drawn alone.\nTake apart the EXACT character in the attached image: same colours, same face, same clothes, same outline. Do not redesign it.\n\nPROJECT CONTEXT:\nRuneforge: Toon RPG weapons, runes and chibi heroes for a top-down adventure.\n\nSTYLE:\nSTYLE LOCK: Simple toon sprites for a cosy top-down adventure game, like a toy diorama.\n\nPRIMARY GOAL: Weapons, runes and small heroes that read at a glance at small sizes. Simple and cute, never realistic.\n\nCORE AESTHETIC: Lineless flat colour blocks with soft rounded edges. Everything looks like a smooth matte toy. Chunky, rounded, few parts. No texture and no small detail.\n\nEDGES: NO OUTLINES. No dark contour line around any shape. Shapes are separated by colour alone.\n\nCOLOR: Bright and friendly. Steel (#D6E2EE) blades, wood (#C98A4B) handles, gold (#F7C948) fittings, leather (#8A5236) grips, stone (#8E96A3) runes. Accents: hero blue (#4A90E2), leaf green (#5CC46A), ruby (#F0504A), violet (#9B6BE8). Skin (#FFD7B0).\n\nSHADING: One flat colour per form, one soft darker shade of the same hue on its lower side, one small soft highlight on round tops and gems. Nothing else.\n\nPROPORTION: Weapons are short and chunky with oversized heads and blades. Characters are super chibi, like a round kawaii mascot: the head and body are ONE soft rounded blob, a little wider at the bottom, about as wide as it is tall. No neck, no arms, no legs. Two small round mitten hands float beside the blob, and two small round feet peek out under it. Tiny solid dot eyes and a tiny mouth.\n\nDETAIL LEVEL: Two or three colours per item plus one accent. A gem is a simple round or diamond shape. Rune glyphs are bold simple marks, never letters.\n\nCOMPOSITION: One asset category per image. Every asset isolated with generous crop-safe spacing. Weapons stand upright with the grip at the bottom. No background, no ground shadow.\n\nPALETTE:\nPaper #FFFFFF (background), Steel #D6E2EE (fill), Steel Shade #9EB2C8 (shade), Wood #C98A4B (fill), Wood Shade #9A6233 (shade), Gold #F7C948 (fill), Gold Shade #D49A24 (shade), Leather #8A5236 (fill), Stone #8E96A3 (fill), Skin #FFD7B0 (fill), Leaf Green #5CC46A (fill), Hero Blue #4A90E2 (fill), Ruby #F0504A (fill), Violet #9B6BE8 (fill)\n\nSHAPE LANGUAGE:\nchunky, toy-like, rounded everything, simple silhouettes, characters are round blobs: head and body merged into one soft rounded shape, no arms and no legs: small round floating hands and small round feet, few parts\n\nRENDERING RULES:\n- no outlines: flat colour blocks separated by colour alone\n- one flat colour per form plus one soft darker shade of the same hue\n- one small soft highlight on round tops and gems\n- simple shapes, no texture, no small details\n- smooth matte toy plastic, like a toy diorama\n- weapons stand upright, grip at the bottom\n- crisp high-resolution raster\n- isolated presentation with large spacing\n\nCHARACTER:\nthe round blob hero in the attached image\n\nRIG TYPE:\nhumanoid\n\nSELECTED PARTS:\n- body: the whole round blob with the face and the full outfit, no hands, no feet (required)\n- front hand: a small round mitten hand, closed, holding nothing (required)\n- back hand: a small round mitten hand, closed, holding nothing (required)\n- front foot: a small round foot or boot (required)\n- back foot: a small round foot or boot (required)\n- the battle axe alone, upright, head up (required)\n\nPART RULES (skeleton rig):\nEvery part is drawn in the SAME view, angle and style as the assembled character, so the parts fit back together. Each part is drawn ONCE, alone, whole and closed, exactly as it looks on the character.\nWhere one part covers another on the character, draw the covered area too, so each part is whole and has no hole or flat cut.\nHands and feet are drawn whole and round, the same size as on the character.\nWhen a held item is listed as its own part, the hand is an empty closed fist and the item is drawn alone, whole, upright, at its true size.\nEvery colour on a part is a colour the character has in that same place. Do not add joints, balls, stubs, sockets or skin that the character does not show.\nKeep TRUE RELATIVE SIZES, exactly as on the assembled character. Do not enlarge small pieces to fill their cell.\n\nCANVAS AND LAYOUT:\nOutput size 1024x1024. Solid flat background #00FF00 with no texture, no vignette, no border. Nothing in the picture may use a colour close to the background colour.\nThe game shows each asset in a 1:1 (width:height) frame. Compose each asset to suit that frame, and keep its natural proportions: do not stretch or squash it.\nParts-sheet layout: a 3-column grid, one part per invisible cell, filled in reading order (left to right, then top to bottom) in EXACTLY the order the parts are listed above. The first listed part is top-left; the last is bottom-right. Do not rearrange for looks.\nLarge crop-safe gutters between cells. No part touches another. Do not show the assembled character.\nNo labels, text, numbers, arrows, scene, or decorative filler.\n\nNEGATIVE PROMPT:\noutlines, dark outlines, black outlines, ink lines, line art, contour lines, sticker outline, realism, realistic anatomy, muscles, 3D render, photoreal, metal reflections, chrome, texture, wood grain, scratches, rivets, fine detail, small detail, lens flare, glow blur, blood, gore, scene background, ground shadow, motion lines, text, labels, letters, numbers, watermark, clutter\n\nFINAL CHECK:\nEvery listed part is present once, fully separated, whole, in the character's view and colours, at true relative size, and crop-safe, with no added joints, stubs or skin.\n\nADDITIONAL DETAILS:\nLeave a wide empty gap around every part: no part touches or nearly touches another.",
   "promptVersion": "v1",
   "references": [
     {
@@ -666,7 +579,7 @@
       "path": "art/generated/hero-orc/cut/hero-orc.png",
       "role": "input",
       "source": "edit",
-      "sha256": "b270a3002dff3b8f"
+      "sha256": "04f8b5b13eef4a36"
     },
     {
       "n": 2,
@@ -676,8 +589,8 @@
       "sha256": "82fd7e0ac65376a6"
     }
   ],
-  "generatedAt": "2026-10-07T16:37:02.316Z",
+  "generatedAt": "2026-10-08T03:03:37.208Z",
   "provider": "codex",
-  "detected": 8,
-  "expected": 8
+  "detected": 6,
+  "expected": 6
 }

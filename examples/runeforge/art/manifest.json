@@ -467,7 +467,7 @@
     "kind": "character",
     "game": "rpg",
     "background": "#00FF00",
-    "subject": "a chibi human knight with a round steel helmet open at the face, a hero-blue tunic over steel armour and steel boots",
+    "subject": "a round blob knight: a round steel helmet with the visor open and a red plume on top, a blue tunic with a belt on the lower half",
     "references": [
       {
         "ref": "swords/broadsword",
@@ -478,7 +478,7 @@
         "role": "family"
       }
     ],
-    "notes": "The sword is held in the front hand and points straight up. The kite shield is held in the back hand, behind the body on the left. Copy the held item's shape and colours from the reference images, drawn small enough for the hand. RIG POSE: a full-body chibi character for a cut-out skeleton rig, about two and a half heads tall. Three-quarter view FACING RIGHT: the face, the eyes and the toes all point to the right side of the image. The front arm (nearer the viewer) is a short stubby tube that sticks out forward and down at about 45 degrees, straight, with a round shoulder and a round mitten hand, with clear background between the arm and the body. The back arm is a short stubby tube that sticks out backward and down to the left of the body, with clear background between it and the body. Legs are two short stubby legs with round boots, slightly apart in a small stride, with background between them. Nothing crosses in front of the body. No cape, no cloak, no long hair or beard over the arms. Held items stay clear of the head and body. Lineless and simple like the rest of the set."
+    "notes": "The front hand floats ahead on the right and grips the sword pointing up. The back hand floats on the left and holds the kite shield. Copy the held items' shape and colours from the reference images, drawn small enough for the hand. CHARACTER SHAPE: a super chibi round blob hero, like a round kawaii mascot. The head and body are ONE soft rounded blob, about as wide as it is tall, a little wider at the bottom. No neck, no arms, no legs. Two small round mitten hands FLOAT beside the blob, apart from it with a little background between hand and blob. Two small round feet peek out under the bottom of the blob. Three-quarter view facing right: the dot eyes, the face and the toes point to the right. Tiny solid dark dot eyes and a tiny mouth. The hero's outfit is drawn on the blob: helmet, hat, hood, hair or beard on the top, clothes and belt on the lower half. Lineless and simple like the rest of the set."
   },
   {
     "target": "hero-orc",
@@ -486,14 +486,14 @@
     "kind": "character",
     "game": "rpg",
     "background": "#00FF00",
-    "subject": "a chibi green orc with two small tusks, a black topknot, a leather vest and leather boots",
+    "subject": "a round green blob orc: a black topknot, two pointed ears, two small tusks, a leather vest with a belt on the lower half",
     "references": [
       {
         "ref": "axes/battle-axe",
         "role": "family"
       }
     ],
-    "notes": "The battle axe is held in the front hand and points straight up. The back hand is an empty round green fist. Copy the held item's shape and colours from the reference images, drawn small enough for the hand. RIG POSE: a full-body chibi character for a cut-out skeleton rig, about two and a half heads tall. Three-quarter view FACING RIGHT: the face, the eyes and the toes all point to the right side of the image. The front arm (nearer the viewer) is a short stubby tube that sticks out forward and down at about 45 degrees, straight, with a round shoulder and a round mitten hand, with clear background between the arm and the body. The back arm is a short stubby tube that sticks out backward and down to the left of the body, with clear background between it and the body. Legs are two short stubby legs with round boots, slightly apart in a small stride, with background between them. Nothing crosses in front of the body. No cape, no cloak, no long hair or beard over the arms. Held items stay clear of the head and body. Lineless and simple like the rest of the set."
+    "notes": "The front hand floats ahead on the right and grips the battle axe pointing up. The back hand floats empty on the left. Copy the held items' shape and colours from the reference images, drawn small enough for the hand. CHARACTER SHAPE: a super chibi round blob hero, like a round kawaii mascot. The head and body are ONE soft rounded blob, about as wide as it is tall, a little wider at the bottom. No neck, no arms, no legs. Two small round mitten hands FLOAT beside the blob, apart from it with a little background between hand and blob. Two small round feet peek out under the bottom of the blob. Three-quarter view facing right: the dot eyes, the face and the toes point to the right. Tiny solid dark dot eyes and a tiny mouth. The hero's outfit is drawn on the blob: helmet, hat, hood, hair or beard on the top, clothes and belt on the lower half. Lineless and simple like the rest of the set."
   },
   {
     "target": "hero-dwarf",
@@ -501,7 +501,7 @@
     "kind": "character",
     "game": "rpg",
     "background": "#00FF00",
-    "subject": "a chibi dwarf with a round steel horned helmet, a short round orange beard that stays on the chin, steel armour and leather boots",
+    "subject": "a round blob dwarf: a horned steel helmet, a big round orange beard over the front, steel armour with a belt on the lower half",
     "references": [
       {
         "ref": "axes/war-hammer",
@@ -512,7 +512,7 @@
         "role": "family"
       }
     ],
-    "notes": "The war hammer is held in the front hand and points straight up. The round shield is held in the back hand, behind the body on the left. Copy the held item's shape and colours from the reference images, drawn small enough for the hand. RIG POSE: a full-body chibi character for a cut-out skeleton rig, about two and a half heads tall. Three-quarter view FACING RIGHT: the face, the eyes and the toes all point to the right side of the image. The front arm (nearer the viewer) is a short stubby tube that sticks out forward and down at about 45 degrees, straight, with a round shoulder and a round mitten hand, with clear background between the arm and the body. The back arm is a short stubby tube that sticks out backward and down to the left of the body, with clear background between it and the body. Legs are two short stubby legs with round boots, slightly apart in a small stride, with background between them. Nothing crosses in front of the body. No cape, no cloak, no long hair or beard over the arms. Held items stay clear of the head and body. Lineless and simple like the rest of the set."
+    "notes": "The front hand floats ahead on the right and grips the war hammer pointing up. The back hand floats on the left and holds the round shield. Copy the held items' shape and colours from the reference images, drawn small enough for the hand. CHARACTER SHAPE: a super chibi round blob hero, like a round kawaii mascot. The head and body are ONE soft rounded blob, about as wide as it is tall, a little wider at the bottom. No neck, no arms, no legs. Two small round mitten hands FLOAT beside the blob, apart from it with a little background between hand and blob. Two small round feet peek out under the bottom of the blob. Three-quarter view facing right: the dot eyes, the face and the toes point to the right. Tiny solid dark dot eyes and a tiny mouth. The hero's outfit is drawn on the blob: helmet, hat, hood, hair or beard on the top, clothes and belt on the lower half. Lineless and simple like the rest of the set."
   },
   {
     "target": "hero-elf",
@@ -520,14 +520,14 @@
     "kind": "character",
     "game": "rpg",
     "background": "#00FF00",
-    "subject": "a chibi elf ranger with pointed ears, a short green hood, short blonde hair, a leaf-green tunic and brown boots",
+    "subject": "a round blob elf ranger: a green pointed hood, blonde hair, two pointed ears, a green tunic with a belt on the lower half",
     "references": [
       {
         "ref": "bows/longbow",
         "role": "family"
       }
     ],
-    "notes": "The longbow is held upright in the front hand, out ahead on the right. The back hand is empty. Copy the held item's shape and colours from the reference images, drawn small enough for the hand. RIG POSE: a full-body chibi character for a cut-out skeleton rig, about two and a half heads tall. Three-quarter view FACING RIGHT: the face, the eyes and the toes all point to the right side of the image. The front arm (nearer the viewer) is a short stubby tube that sticks out forward and down at about 45 degrees, straight, with a round shoulder and a round mitten hand, with clear background between the arm and the body. The back arm is a short stubby tube that sticks out backward and down to the left of the body, with clear background between it and the body. Legs are two short stubby legs with round boots, slightly apart in a small stride, with background between them. Nothing crosses in front of the body. No cape, no cloak, no long hair or beard over the arms. Held items stay clear of the head and body. Lineless and simple like the rest of the set."
+    "notes": "The front hand floats ahead on the right and grips the longbow upright. The back hand floats empty on the left. Copy the held items' shape and colours from the reference images, drawn small enough for the hand. CHARACTER SHAPE: a super chibi round blob hero, like a round kawaii mascot. The head and body are ONE soft rounded blob, about as wide as it is tall, a little wider at the bottom. No neck, no arms, no legs. Two small round mitten hands FLOAT beside the blob, apart from it with a little background between hand and blob. Two small round feet peek out under the bottom of the blob. Three-quarter view facing right: the dot eyes, the face and the toes point to the right. Tiny solid dark dot eyes and a tiny mouth. The hero's outfit is drawn on the blob: helmet, hat, hood, hair or beard on the top, clothes and belt on the lower half. Lineless and simple like the rest of the set."
   },
   {
     "target": "hero-wizard",
@@ -535,14 +535,14 @@
     "kind": "character",
     "game": "rpg",
     "background": "#00FF00",
-    "subject": "a chibi wizard with a tall violet pointed hat, a round white beard that stays on the chin, a violet robe that ends above the boots",
+    "subject": "a round blob wizard: a tall violet pointed hat, a round white beard over the front, a violet robe with a gold belt on the lower half",
     "references": [
       {
         "ref": "staffs/orb-staff",
         "role": "family"
       }
     ],
-    "notes": "The orb staff is held upright in the front hand, out ahead on the right. The back hand is empty. Copy the held item's shape and colours from the reference images, drawn small enough for the hand. RIG POSE: a full-body chibi character for a cut-out skeleton rig, about two and a half heads tall. Three-quarter view FACING RIGHT: the face, the eyes and the toes all point to the right side of the image. The front arm (nearer the viewer) is a short stubby tube that sticks out forward and down at about 45 degrees, straight, with a round shoulder and a round mitten hand, with clear background between the arm and the body. The back arm is a short stubby tube that sticks out backward and down to the left of the body, with clear background between it and the body. Legs are two short stubby legs with round boots, slightly apart in a small stride, with background between them. Nothing crosses in front of the body. No cape, no cloak, no long hair or beard over the arms. Held items stay clear of the head and body. Lineless and simple like the rest of the set."
+    "notes": "The front hand floats ahead on the right and grips the orb staff upright. The back hand floats empty on the left. Copy the held items' shape and colours from the reference images, drawn small enough for the hand. CHARACTER SHAPE: a super chibi round blob hero, like a round kawaii mascot. The head and body are ONE soft rounded blob, about as wide as it is tall, a little wider at the bottom. No neck, no arms, no legs. Two small round mitten hands FLOAT beside the blob, apart from it with a little background between hand and blob. Two small round feet peek out under the bottom of the blob. Three-quarter view facing right: the dot eyes, the face and the toes point to the right. Tiny solid dark dot eyes and a tiny mouth. The hero's outfit is drawn on the blob: helmet, hat, hood, hair or beard on the top, clothes and belt on the lower half. Lineless and simple like the rest of the set."
   },
   {
     "target": "parts-hero-elf",
@@ -550,102 +550,240 @@
     "kind": "character",
     "game": "rpg",
     "background": "#00FF00",
-    "subject": "the chibi elf ranger in the attached image, facing right, with the longbow",
+    "subject": "the round blob hero in the attached image",
     "reference": "hero-elf/hero-elf",
     "rigType": "humanoid",
     "parts": [
       {
-        "label": "head with the green hood, the blonde hair and both pointed ears, ending in a round neck stub"
+        "label": "body: the whole round blob with the face and the full outfit, no hands, no feet"
       },
       {
-        "label": "torso: the green tunic with the belt and strap, no head, no arms, no legs, with round shoulders"
+        "label": "front hand: a small round mitten hand, closed, holding nothing"
       },
       {
-        "label": "front arm: the whole bare arm from a round shoulder end to the mitten hand, holding the longbow upright"
+        "label": "back hand: a small round mitten hand, closed, holding nothing"
       },
       {
-        "label": "back arm: the whole bare arm from a round shoulder end to the empty mitten hand"
+        "label": "front foot: a small round foot or boot"
       },
       {
-        "label": "front leg: the whole leg from a round hip end at the top to the brown boot"
+        "label": "back foot: a small round foot or boot"
       },
       {
-        "label": "back leg: the whole leg from a round hip end at the top to the brown boot"
+        "label": "the longbow alone, upright, with its string"
       }
     ],
     "names": [
-      "head",
-      "torso",
-      "front-arm",
-      "back-arm",
-      "front-leg",
-      "back-leg"
+      "body",
+      "front-hand",
+      "back-hand",
+      "front-foot",
+      "back-foot",
+      "weapon"
     ],
-    "notes": "The ears stay on the head piece. Each limb is drawn complete and whole, including the part normally hidden under the tunic, with a round end where it joins the body. Same pose and angle as in the attached image.",
+    "notes": "Leave a wide empty gap around every part: no part touches or nearly touches another.",
     "rig": {
-      "root": "torso",
+      "root": "body",
       "bones": {
-        "head": {
+        "front-hand": {
           "joint": [
-            118,
-            196
+            37,
+            38
           ],
           "at": [
-            70,
-            26
+            258,
+            191
           ],
           "z": 3,
-          "material": "hero-head"
-        },
-        "front-arm": {
-          "joint": [
-            74,
-            150
-          ],
-          "at": [
-            124,
-            52
-          ],
-          "z": 2,
           "material": "front-arm"
         },
-        "back-arm": {
+        "back-hand": {
           "joint": [
-            92,
-            24
+            37,
+            39
           ],
           "at": [
-            16,
-            52
+            21,
+            191
           ],
-          "z": -1,
+          "z": 1,
           "material": "back-arm"
         },
-        "front-leg": {
+        "front-foot": {
           "joint": [
-            88,
-            16
+            40,
+            56
           ],
           "at": [
-            108,
-            116
+            162,
+            259
+          ],
+          "z": -1,
+          "planted": true
+        },
+        "back-foot": {
+          "joint": [
+            41,
+            58
+          ],
+          "at": [
+            94,
+            259
           ],
           "z": -2,
-          "material": "leg"
+          "planted": true
         },
-        "back-leg": {
+        "weapon": {
           "joint": [
-            60,
-            16
+            137,
+            119
           ],
           "at": [
-            32,
-            116
+            37,
+            38
           ],
-          "z": -3,
-          "material": "leg"
+          "parent": "front-hand",
+          "z": 2
+        }
+      },
+      "animations": {
+        "idle": {
+          "durationMs": 1600,
+          "loop": true,
+          "keys": {
+            "body": [
+              {
+                "t": 0
+              },
+              {
+                "t": 800,
+                "sx": 1.03,
+                "sy": 0.96
+              },
+              {
+                "t": 1600
+              }
+            ],
+            "front-hand": [
+              {
+                "t": 0
+              },
+              {
+                "t": 300
+              },
+              {
+                "t": 1000,
+                "dy": 4
+              },
+              {
+                "t": 1600
+              }
+            ],
+            "back-hand": [
+              {
+                "t": 0
+              },
+              {
+                "t": 400
+              },
+              {
+                "t": 1100,
+                "dy": 4
+              },
+              {
+                "t": 1600
+              }
+            ],
+            "weapon": [
+              {
+                "t": 0,
+                "a": 0
+              },
+              {
+                "t": 1000,
+                "a": 3
+              },
+              {
+                "t": 1600,
+                "a": 0
+              }
+            ]
+          }
+        },
+        "attack": {
+          "durationMs": 1000,
+          "loop": false,
+          "keys": {
+            "front-hand": [
+              {
+                "t": 0
+              },
+              {
+                "t": 250,
+                "dx": 14
+              },
+              {
+                "t": 750,
+                "dx": 14
+              },
+              {
+                "t": 1000
+              }
+            ],
+            "back-hand": [
+              {
+                "t": 0
+              },
+              {
+                "t": 250,
+                "dx": 207,
+                "dy": 6
+              },
+              {
+                "t": 550,
+                "dx": 167,
+                "dy": 6
+              },
+              {
+                "t": 600,
+                "dx": 213,
+                "dy": 4
+              },
+              {
+                "t": 750,
+                "dx": 207,
+                "dy": 6
+              },
+              {
+                "t": 1000
+              }
+            ],
+            "body": [
+              {
+                "t": 0
+              },
+              {
+                "t": 250,
+                "a": -3,
+                "sx": 0.97,
+                "sy": 1.03
+              },
+              {
+                "t": 600,
+                "a": 2,
+                "sx": 1.03,
+                "sy": 0.97
+              },
+              {
+                "t": 1000
+              }
+            ]
+          }
         }
       }
+    },
+    "cutout": {
+      "mergeGap": 0
     }
   },
   {
@@ -654,102 +792,290 @@
     "kind": "character",
     "game": "rpg",
     "background": "#00FF00",
-    "subject": "the chibi knight in the attached image, facing right, with the sword and the kite shield",
+    "subject": "the round blob hero in the attached image",
     "reference": "hero-knight/hero-knight",
     "rigType": "humanoid",
     "parts": [
       {
-        "label": "head in the round steel helmet with the red plume, ending in a round neck stub"
+        "label": "body: the whole round blob with the face and the full outfit, no hands, no feet"
       },
       {
-        "label": "torso: the steel armour with the blue tunic and the belt, no head, no arms, no legs, with round shoulder sockets"
+        "label": "front hand: a small round mitten hand, closed, holding nothing"
       },
       {
-        "label": "front arm: the whole steel arm from a round shoulder end to the mitten hand, holding the sword pointing up"
+        "label": "back hand: a small round mitten hand, closed, holding nothing"
       },
       {
-        "label": "back arm: the whole steel arm from a round shoulder end to the mitten hand, holding the kite shield"
+        "label": "front foot: a small round foot or boot"
       },
       {
-        "label": "front leg: the whole leg from a round hip end at the top to the boot"
+        "label": "back foot: a small round foot or boot"
       },
       {
-        "label": "back leg: the whole leg from a round hip end at the top to the boot"
+        "label": "the sword alone, upright, point up"
+      },
+      {
+        "label": "the kite shield alone, facing the viewer"
       }
     ],
     "names": [
-      "head",
-      "torso",
-      "front-arm",
-      "back-arm",
-      "front-leg",
-      "back-leg"
+      "body",
+      "front-hand",
+      "back-hand",
+      "front-foot",
+      "back-foot",
+      "weapon",
+      "shield"
     ],
-    "notes": "Each limb is drawn complete and whole, including the part normally hidden by the body, with a round end where it joins the body. Same colours, angle and style as in the attached image.",
+    "notes": "Leave a wide empty gap around every part: no part touches or nearly touches another.",
     "rig": {
-      "root": "torso",
+      "root": "body",
       "bones": {
-        "head": {
+        "front-hand": {
           "joint": [
-            150,
-            240
+            29,
+            31
           ],
           "at": [
-            95,
-            18
+            232,
+            203
           ],
           "z": 3,
-          "material": "hero-head"
-        },
-        "front-arm": {
-          "joint": [
-            172,
-            100
-          ],
-          "at": [
-            14,
-            72
-          ],
-          "z": 2,
           "material": "front-arm"
         },
-        "back-arm": {
+        "back-hand": {
           "joint": [
-            25,
-            32
+            26,
+            27
           ],
           "at": [
-            150,
-            70
+            27,
+            203
           ],
-          "z": -1,
+          "z": 1,
           "material": "back-arm"
         },
-        "front-leg": {
+        "front-foot": {
           "joint": [
-            85,
-            20
+            34,
+            45
           ],
           "at": [
-            126,
-            148
+            154,
+            258
+          ],
+          "z": -1,
+          "planted": true
+        },
+        "back-foot": {
+          "joint": [
+            33,
+            45
+          ],
+          "at": [
+            102,
+            258
           ],
           "z": -2,
-          "material": "leg"
+          "planted": true
         },
-        "back-leg": {
+        "weapon": {
           "joint": [
-            70,
-            20
+            76,
+            108
           ],
           "at": [
-            42,
-            148
+            29,
+            31
           ],
-          "z": -3,
-          "material": "leg"
+          "parent": "front-hand",
+          "z": 2
+        },
+        "shield": {
+          "joint": [
+            65,
+            65
+          ],
+          "at": [
+            26,
+            27
+          ],
+          "parent": "back-hand",
+          "z": 2
+        }
+      },
+      "animations": {
+        "idle": {
+          "durationMs": 1600,
+          "loop": true,
+          "keys": {
+            "body": [
+              {
+                "t": 0
+              },
+              {
+                "t": 800,
+                "sx": 1.03,
+                "sy": 0.96
+              },
+              {
+                "t": 1600
+              }
+            ],
+            "front-hand": [
+              {
+                "t": 0
+              },
+              {
+                "t": 300
+              },
+              {
+                "t": 1000,
+                "dy": 4
+              },
+              {
+                "t": 1600
+              }
+            ],
+            "back-hand": [
+              {
+                "t": 0
+              },
+              {
+                "t": 400
+              },
+              {
+                "t": 1100,
+                "dy": 4
+              },
+              {
+                "t": 1600
+              }
+            ],
+            "weapon": [
+              {
+                "t": 0,
+                "a": 25
+              },
+              {
+                "t": 1000,
+                "a": 28
+              },
+              {
+                "t": 1600,
+                "a": 25
+              }
+            ]
+          }
+        },
+        "attack": {
+          "durationMs": 700,
+          "loop": false,
+          "keys": {
+            "front-hand": [
+              {
+                "t": 0
+              },
+              {
+                "t": 200,
+                "dx": -24,
+                "dy": -46
+              },
+              {
+                "t": 260,
+                "dx": -26,
+                "dy": -48
+              },
+              {
+                "t": 360,
+                "dx": 22,
+                "dy": 4
+              },
+              {
+                "t": 480,
+                "dx": 18,
+                "dy": 2
+              },
+              {
+                "t": 700
+              }
+            ],
+            "weapon": [
+              {
+                "t": 0,
+                "a": 25
+              },
+              {
+                "t": 200,
+                "a": -35
+              },
+              {
+                "t": 260,
+                "a": -40
+              },
+              {
+                "t": 360,
+                "a": 120
+              },
+              {
+                "t": 480,
+                "a": 110
+              },
+              {
+                "t": 700,
+                "a": 25
+              }
+            ],
+            "body": [
+              {
+                "t": 0
+              },
+              {
+                "t": 200,
+                "a": -5,
+                "sx": 0.95,
+                "sy": 1.05
+              },
+              {
+                "t": 360,
+                "a": 6,
+                "dx": 5,
+                "sx": 1.06,
+                "sy": 0.94
+              },
+              {
+                "t": 480,
+                "a": 4,
+                "dx": 4
+              },
+              {
+                "t": 700
+              }
+            ],
+            "back-hand": [
+              {
+                "t": 0
+              },
+              {
+                "t": 200,
+                "dx": -4,
+                "dy": 6
+              },
+              {
+                "t": 360,
+                "dx": 4,
+                "dy": -4
+              },
+              {
+                "t": 700
+              }
+            ]
+          }
         }
       }
+    },
+    "cutout": {
+      "mergeGap": 0
     }
   },
   {
@@ -758,137 +1084,272 @@
     "kind": "character",
     "game": "rpg",
     "background": "#00FF00",
-    "subject": "the chibi green orc in the attached image, facing right, with the battle axe",
+    "subject": "the round blob hero in the attached image",
     "reference": "hero-orc/hero-orc",
     "rigType": "humanoid",
     "parts": [
       {
-        "label": "head with the black topknot, the ears and the tusks, ending in a round neck stub"
+        "label": "body: the whole round blob with the face and the full outfit, no hands, no feet"
       },
       {
-        "label": "torso: the green body with the leather vest and the belt, no head, no arms, no legs, with round shoulders"
+        "label": "front hand: a small round mitten hand, closed, holding nothing"
       },
       {
-        "label": "front arm: the whole green arm from a round shoulder end to the fist, holding the battle axe pointing up"
+        "label": "back hand: a small round mitten hand, closed, holding nothing"
       },
       {
-        "label": "back arm: the whole green arm from a round shoulder end to the empty round fist"
+        "label": "front foot: a small round foot or boot"
       },
       {
-        "label": "back ear"
+        "label": "back foot: a small round foot or boot"
       },
       {
-        "label": "front ear"
-      },
-      {
-        "label": "front leg: the whole leg from a round hip end at the top to the boot"
-      },
-      {
-        "label": "back leg: the whole leg from a round hip end at the top to the boot"
+        "label": "the battle axe alone, upright, head up"
       }
     ],
     "names": [
-      "head",
-      "torso",
-      "front-arm",
-      "back-arm",
-      "back-ear",
-      "front-ear",
-      "front-leg",
-      "back-leg"
+      "body",
+      "front-hand",
+      "back-hand",
+      "front-foot",
+      "back-foot",
+      "weapon"
     ],
-    "notes": "Each limb is drawn complete and whole, including the part normally hidden by the body, with a round end where it joins the body. Same colours, angle and style as in the attached image. Leave a wide empty gap around every part: no part touches or nearly touches another, and each arm stays far from the torso.",
+    "notes": "Leave a wide empty gap around every part: no part touches or nearly touches another.",
     "cutout": {
       "mergeGap": 0
     },
     "rig": {
-      "root": "torso",
+      "root": "body",
       "bones": {
-        "head": {
+        "front-hand": {
           "joint": [
-            130,
-            240
+            33,
+            37
           ],
           "at": [
-            92,
-            40
+            250,
+            203
           ],
           "z": 3,
-          "material": "hero-head"
-        },
-        "back-ear": {
-          "joint": [
-            88,
-            85
-          ],
-          "at": [
-            48,
-            165
-          ],
-          "z": 2.5,
-          "material": "hat-tip",
-          "parent": "head"
-        },
-        "front-ear": {
-          "joint": [
-            14,
-            88
-          ],
-          "at": [
-            222,
-            165
-          ],
-          "z": 2.5,
-          "material": "hat-tip",
-          "parent": "head"
-        },
-        "front-arm": {
-          "joint": [
-            28,
-            135
-          ],
-          "at": [
-            160,
-            95
-          ],
-          "z": 2,
           "material": "front-arm"
         },
-        "back-arm": {
+        "back-hand": {
           "joint": [
-            78,
-            22
+            32,
+            35
           ],
           "at": [
-            25,
-            95
+            7,
+            203
           ],
-          "z": -1,
+          "z": 1,
           "material": "back-arm"
         },
-        "front-leg": {
+        "front-foot": {
           "joint": [
-            80,
-            18
+            39,
+            54
           ],
           "at": [
-            132,
-            158
+            156,
+            259
+          ],
+          "z": -1,
+          "planted": true
+        },
+        "back-foot": {
+          "joint": [
+            39,
+            54
+          ],
+          "at": [
+            99,
+            259
           ],
           "z": -2,
-          "material": "leg"
+          "planted": true
         },
-        "back-leg": {
+        "weapon": {
           "joint": [
-            50,
-            18
+            81,
+            116
           ],
           "at": [
-            46,
-            158
+            33,
+            37
           ],
-          "z": -3,
-          "material": "leg"
+          "parent": "front-hand",
+          "z": 2
+        }
+      },
+      "animations": {
+        "idle": {
+          "durationMs": 1600,
+          "loop": true,
+          "keys": {
+            "body": [
+              {
+                "t": 0
+              },
+              {
+                "t": 800,
+                "sx": 1.03,
+                "sy": 0.96
+              },
+              {
+                "t": 1600
+              }
+            ],
+            "front-hand": [
+              {
+                "t": 0
+              },
+              {
+                "t": 300
+              },
+              {
+                "t": 1000,
+                "dy": 4
+              },
+              {
+                "t": 1600
+              }
+            ],
+            "back-hand": [
+              {
+                "t": 0
+              },
+              {
+                "t": 400
+              },
+              {
+                "t": 1100,
+                "dy": 4
+              },
+              {
+                "t": 1600
+              }
+            ],
+            "weapon": [
+              {
+                "t": 0,
+                "a": 25
+              },
+              {
+                "t": 1000,
+                "a": 28
+              },
+              {
+                "t": 1600,
+                "a": 25
+              }
+            ]
+          }
+        },
+        "attack": {
+          "durationMs": 700,
+          "loop": false,
+          "keys": {
+            "front-hand": [
+              {
+                "t": 0
+              },
+              {
+                "t": 200,
+                "dx": -24,
+                "dy": -46
+              },
+              {
+                "t": 260,
+                "dx": -26,
+                "dy": -48
+              },
+              {
+                "t": 360,
+                "dx": 22,
+                "dy": 4
+              },
+              {
+                "t": 480,
+                "dx": 18,
+                "dy": 2
+              },
+              {
+                "t": 700
+              }
+            ],
+            "weapon": [
+              {
+                "t": 0,
+                "a": 25
+              },
+              {
+                "t": 200,
+                "a": -35
+              },
+              {
+                "t": 260,
+                "a": -40
+              },
+              {
+                "t": 360,
+                "a": 120
+              },
+              {
+                "t": 480,
+                "a": 110
+              },
+              {
+                "t": 700,
+                "a": 25
+              }
+            ],
+            "body": [
+              {
+                "t": 0
+              },
+              {
+                "t": 200,
+                "a": -5,
+                "sx": 0.95,
+                "sy": 1.05
+              },
+              {
+                "t": 360,
+                "a": 6,
+                "dx": 5,
+                "sx": 1.06,
+                "sy": 0.94
+              },
+              {
+                "t": 480,
+                "a": 4,
+                "dx": 4
+              },
+              {
+                "t": 700
+              }
+            ],
+            "back-hand": [
+              {
+                "t": 0
+              },
+              {
+                "t": 200,
+                "dx": -4,
+                "dy": 6
+              },
+              {
+                "t": 360,
+                "dx": 4,
+                "dy": -4
+              },
+              {
+                "t": 700
+              }
+            ]
+          }
         }
       }
     }
@@ -899,104 +1360,288 @@
     "kind": "character",
     "game": "rpg",
     "background": "#00FF00",
-    "subject": "the chibi dwarf in the attached image, facing right, with the war hammer and the round shield",
+    "subject": "the round blob hero in the attached image",
     "reference": "hero-dwarf/hero-dwarf",
     "rigType": "humanoid",
     "parts": [
       {
-        "label": "head in the horned steel helmet with the orange beard, ending in a round neck stub"
+        "label": "body: the whole round blob with the face and the full outfit, no hands, no feet"
       },
       {
-        "label": "torso: the steel armour with the blue cloth and the belt, no head, no arms, no legs, with round shoulder sockets"
+        "label": "front hand: a small round mitten hand, closed, holding nothing"
       },
       {
-        "label": "front arm: the whole arm from a round shoulder end to the mitten hand, holding the war hammer pointing up"
+        "label": "back hand: a small round mitten hand, closed, holding nothing"
       },
       {
-        "label": "back arm: the whole arm from a round shoulder end to the mitten hand, holding the round shield"
+        "label": "front foot: a small round foot or boot"
       },
       {
-        "label": "front leg: the whole leg from a round hip end at the top to the boot"
+        "label": "back foot: a small round foot or boot"
       },
       {
-        "label": "back leg: the whole leg from a round hip end at the top to the boot"
+        "label": "the war hammer alone, upright, head up"
+      },
+      {
+        "label": "the round shield alone, facing the viewer"
       }
     ],
     "names": [
-      "head",
-      "torso",
-      "front-arm",
-      "back-arm",
-      "front-leg",
-      "back-leg"
+      "body",
+      "front-hand",
+      "back-hand",
+      "front-foot",
+      "back-foot",
+      "weapon",
+      "shield"
     ],
-    "notes": "Each limb is drawn complete and whole, including the part normally hidden by the body, with a round end where it joins the body. Same colours, angle and style as in the attached image.",
+    "notes": "Leave a wide empty gap around every part: no part touches or nearly touches another.",
     "cutout": {
       "mergeGap": 0
     },
     "rig": {
-      "root": "torso",
+      "root": "body",
       "bones": {
-        "head": {
+        "front-hand": {
           "joint": [
-            140,
-            200
+            30,
+            33
           ],
           "at": [
-            95,
-            35
+            226,
+            203
           ],
           "z": 3,
-          "material": "hero-head"
-        },
-        "front-arm": {
-          "joint": [
-            185,
-            170
-          ],
-          "at": [
-            15,
-            95
-          ],
-          "z": 2,
           "material": "front-arm"
         },
-        "back-arm": {
+        "back-hand": {
           "joint": [
-            215,
-            100
+            30,
+            33
           ],
           "at": [
-            172,
-            90
+            11,
+            203
+          ],
+          "z": 1,
+          "material": "back-arm"
+        },
+        "front-foot": {
+          "joint": [
+            33,
+            45
+          ],
+          "at": [
+            155,
+            258
           ],
           "z": -1,
-          "material": "back-arm",
-          "mirror": true
+          "planted": true
         },
-        "front-leg": {
+        "back-foot": {
           "joint": [
-            80,
-            18
+            33,
+            46
           ],
           "at": [
-            142,
-            172
+            100,
+            258
           ],
           "z": -2,
-          "material": "leg"
+          "planted": true
         },
-        "back-leg": {
+        "weapon": {
           "joint": [
-            60,
-            20
+            88,
+            125
           ],
           "at": [
-            48,
-            172
+            30,
+            33
           ],
-          "z": -3,
-          "material": "leg"
+          "parent": "front-hand",
+          "z": 2
+        },
+        "shield": {
+          "joint": [
+            69,
+            69
+          ],
+          "at": [
+            30,
+            33
+          ],
+          "parent": "back-hand",
+          "z": 2
+        }
+      },
+      "animations": {
+        "idle": {
+          "durationMs": 1600,
+          "loop": true,
+          "keys": {
+            "body": [
+              {
+                "t": 0
+              },
+              {
+                "t": 800,
+                "sx": 1.03,
+                "sy": 0.96
+              },
+              {
+                "t": 1600
+              }
+            ],
+            "front-hand": [
+              {
+                "t": 0
+              },
+              {
+                "t": 300
+              },
+              {
+                "t": 1000,
+                "dy": 4
+              },
+              {
+                "t": 1600
+              }
+            ],
+            "back-hand": [
+              {
+                "t": 0
+              },
+              {
+                "t": 400
+              },
+              {
+                "t": 1100,
+                "dy": 4
+              },
+              {
+                "t": 1600
+              }
+            ],
+            "weapon": [
+              {
+                "t": 0,
+                "a": 25
+              },
+              {
+                "t": 1000,
+                "a": 28
+              },
+              {
+                "t": 1600,
+                "a": 25
+              }
+            ]
+          }
+        },
+        "attack": {
+          "durationMs": 700,
+          "loop": false,
+          "keys": {
+            "front-hand": [
+              {
+                "t": 0
+              },
+              {
+                "t": 200,
+                "dx": -24,
+                "dy": -46
+              },
+              {
+                "t": 260,
+                "dx": -26,
+                "dy": -48
+              },
+              {
+                "t": 360,
+                "dx": 22,
+                "dy": 4
+              },
+              {
+                "t": 480,
+                "dx": 18,
+                "dy": 2
+              },
+              {
+                "t": 700
+              }
+            ],
+            "weapon": [
+              {
+                "t": 0,
+                "a": 25
+              },
+              {
+                "t": 200,
+                "a": -35
+              },
+              {
+                "t": 260,
+                "a": -40
+              },
+              {
+                "t": 360,
+                "a": 120
+              },
+              {
+                "t": 480,
+                "a": 110
+              },
+              {
+                "t": 700,
+                "a": 25
+              }
+            ],
+            "body": [
+              {
+                "t": 0
+              },
+              {
+                "t": 200,
+                "a": -5,
+                "sx": 0.95,
+                "sy": 1.05
+              },
+              {
+                "t": 360,
+                "a": 6,
+                "dx": 5,
+                "sx": 1.06,
+                "sy": 0.94
+              },
+              {
+                "t": 480,
+                "a": 4,
+                "dx": 4
+              },
+              {
+                "t": 700
+              }
+            ],
+            "back-hand": [
+              {
+                "t": 0
+              },
+              {
+                "t": 200,
+                "dx": -4,
+                "dy": 6
+              },
+              {
+                "t": 360,
+                "dx": 4,
+                "dy": -4
+              },
+              {
+                "t": 700
+              }
+            ]
+          }
         }
       }
     }
@@ -1007,104 +1652,250 @@
     "kind": "character",
     "game": "rpg",
     "background": "#00FF00",
-    "subject": "the chibi wizard in the attached image, facing right, with the orb staff",
+    "subject": "the round blob hero in the attached image",
     "reference": "hero-wizard/hero-wizard",
     "rigType": "humanoid",
     "parts": [
       {
-        "label": "head in the tall violet hat with the white beard, ending in a round neck stub"
+        "label": "body: the whole round blob with the face and the full outfit, no hands, no feet"
       },
       {
-        "label": "torso: the violet robe with the gold belt, no head, no arms, no legs, with round shoulders"
+        "label": "front hand: a small round mitten hand, closed, holding nothing"
       },
       {
-        "label": "front arm: the whole violet sleeve and hand from a round shoulder end, holding the orb staff upright"
+        "label": "back hand: a small round mitten hand, closed, holding nothing"
       },
       {
-        "label": "back arm: the whole violet sleeve from a round shoulder end to the empty hand"
+        "label": "front foot: a small round foot or boot"
       },
       {
-        "label": "front leg: the whole leg from a round hip end at the top to the boot"
+        "label": "back foot: a small round foot or boot"
       },
       {
-        "label": "back leg: the whole leg from a round hip end at the top to the boot"
+        "label": "the orb staff alone, upright, orb up"
       }
     ],
     "names": [
-      "head",
-      "torso",
-      "front-arm",
-      "back-arm",
-      "front-leg",
-      "back-leg"
+      "body",
+      "front-hand",
+      "back-hand",
+      "front-foot",
+      "back-foot",
+      "weapon"
     ],
-    "notes": "The robe ends above the boots so the legs show below it. Each limb is drawn complete and whole, including the part normally hidden by the body, with a round end where it joins the body. Same colours, angle and style as in the attached image. Leave a wide empty gap around every part: no part touches or nearly touches another, and each arm stays far from the torso.",
+    "notes": "Leave a wide empty gap around every part: no part touches or nearly touches another.",
     "cutout": {
       "mergeGap": 0
     },
     "rig": {
-      "root": "torso",
+      "root": "body",
       "bones": {
-        "head": {
+        "front-hand": {
           "joint": [
-            125,
-            215
+            34,
+            35
           ],
           "at": [
-            75,
-            30
+            237,
+            203
           ],
           "z": 3,
-          "material": "hero-head"
-        },
-        "front-arm": {
-          "joint": [
-            42,
-            140
-          ],
-          "at": [
-            140,
-            65
-          ],
-          "z": 2,
           "material": "front-arm"
         },
-        "back-arm": {
+        "back-hand": {
           "joint": [
-            15,
-            40
+            33,
+            32
           ],
           "at": [
-            8,
-            65
+            30,
+            203
+          ],
+          "z": 1,
+          "material": "back-arm"
+        },
+        "front-foot": {
+          "joint": [
+            37,
+            48
+          ],
+          "at": [
+            154,
+            259
           ],
           "z": -1,
-          "material": "back-arm",
-          "mirror": true
+          "planted": true
         },
-        "front-leg": {
+        "back-foot": {
           "joint": [
-            50,
-            12
+            37,
+            47
           ],
           "at": [
-            110,
-            138
+            102,
+            259
           ],
           "z": -2,
-          "material": "leg"
+          "planted": true
         },
-        "back-leg": {
+        "weapon": {
           "joint": [
-            45,
-            12
+            87,
+            137
           ],
           "at": [
-            36,
-            138
+            34,
+            35
           ],
-          "z": -3,
-          "material": "leg"
+          "parent": "front-hand",
+          "z": 2
+        }
+      },
+      "animations": {
+        "idle": {
+          "durationMs": 1600,
+          "loop": true,
+          "keys": {
+            "body": [
+              {
+                "t": 0
+              },
+              {
+                "t": 800,
+                "sx": 1.03,
+                "sy": 0.96
+              },
+              {
+                "t": 1600
+              }
+            ],
+            "front-hand": [
+              {
+                "t": 0
+              },
+              {
+                "t": 300
+              },
+              {
+                "t": 1000,
+                "dy": 4
+              },
+              {
+                "t": 1600
+              }
+            ],
+            "back-hand": [
+              {
+                "t": 0
+              },
+              {
+                "t": 400
+              },
+              {
+                "t": 1100,
+                "dy": 4
+              },
+              {
+                "t": 1600
+              }
+            ],
+            "weapon": [
+              {
+                "t": 0,
+                "a": 10
+              },
+              {
+                "t": 1000,
+                "a": 13
+              },
+              {
+                "t": 1600,
+                "a": 10
+              }
+            ]
+          }
+        },
+        "attack": {
+          "durationMs": 900,
+          "loop": false,
+          "keys": {
+            "front-hand": [
+              {
+                "t": 0
+              },
+              {
+                "t": 300,
+                "dx": 4,
+                "dy": -70
+              },
+              {
+                "t": 450,
+                "dx": 6,
+                "dy": -74
+              },
+              {
+                "t": 600,
+                "dx": 4,
+                "dy": -70
+              },
+              {
+                "t": 900
+              }
+            ],
+            "weapon": [
+              {
+                "t": 0,
+                "a": 10
+              },
+              {
+                "t": 300,
+                "a": 4
+              },
+              {
+                "t": 450,
+                "a": 16
+              },
+              {
+                "t": 600,
+                "a": 4
+              },
+              {
+                "t": 900,
+                "a": 10
+              }
+            ],
+            "body": [
+              {
+                "t": 0
+              },
+              {
+                "t": 300,
+                "sx": 0.95,
+                "sy": 1.06
+              },
+              {
+                "t": 600,
+                "sx": 0.96,
+                "sy": 1.05
+              },
+              {
+                "t": 900
+              }
+            ],
+            "back-hand": [
+              {
+                "t": 0
+              },
+              {
+                "t": 300,
+                "dx": -6,
+                "dy": -20
+              },
+              {
+                "t": 900
+              }
+            ]
+          }
         }
       }
     }
