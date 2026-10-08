@@ -1,0 +1,397 @@
+{
+  "project": {
+    "name": "Runeforge",
+    "description": "Toon RPG weapons, runes and chibi heroes for a top-down adventure."
+  },
+  "style": {
+    "file": "art/style.md",
+    "additionalDetails": ""
+  },
+  "prompts": {
+    "version": "v1"
+  },
+  "manifest": "art/manifest.json",
+  "out": "art/generated",
+  "provider": {
+    "name": "codex",
+    "concurrency": 1,
+    "gapMs": 6000,
+    "model": "gpt-image-2",
+    "effort": "low",
+    "timeoutMs": 420000
+  },
+  "cutout": {
+    "mode": "flood",
+    "chroma": "#00FF00",
+    "threshold": 102,
+    "feather": 1.5,
+    "despill": true,
+    "detectThreshold": 34,
+    "minArea": 400,
+    "mergeGap": 14
+  },
+  "atlas": {
+    "dir": "atlas",
+    "groupBy": "game",
+    "scale": 2,
+    "groupScale": {},
+    "unit": 64,
+    "format": "phaser-hash",
+    "padding": 8,
+    "maxSize": 4096,
+    "quantize": false,
+    "pot": false,
+    "quality": 90
+  },
+  "tints": {},
+  "kinds": {
+    "weapon": {
+      "height": 1.5,
+      "anchor": "center",
+      "aspect": "1:1"
+    },
+    "item": {
+      "height": 0.75,
+      "anchor": "center",
+      "aspect": "1:1"
+    },
+    "character": {
+      "height": 2,
+      "anchor": "bottom-center",
+      "aspect": "1:1"
+    }
+  },
+  "references": {
+    "anchors": [],
+    "firstTarget": true,
+    "auto": {
+      "max": 2,
+      "match": [
+        "kind"
+      ]
+    }
+  },
+  "rig": {
+    "prefix": "prop-",
+    "group": "runeforge-props",
+    "aspect": "1:1",
+    "stagger": 100,
+    "score": {
+      "regions": [
+        15,
+        45,
+        0.3
+      ],
+      "protrusion": [
+        0.02,
+        0.3,
+        0.4
+      ],
+      "edges": [
+        0.15,
+        0.45,
+        0.15
+      ],
+      "components": [
+        1,
+        4,
+        0.15
+      ]
+    },
+    "kinds": {
+      "weapon": {
+        "threshold": 0.2,
+        "maxParts": 4
+      },
+      "character": {
+        "threshold": 0.15,
+        "maxParts": 10
+      }
+    },
+    "materials": {
+      "gem": {
+        "describe": "a magic orb, jewel or crystal held at the top of a staff or wand: it pulses with light",
+        "pivot": "center",
+        "mode": "cover",
+        "rest": {
+          "kind": "glow",
+          "amount": [
+            0.2,
+            0.35
+          ],
+          "periodMs": [
+            2200,
+            2800
+          ]
+        },
+        "use": {
+          "kind": "glow",
+          "amount": [
+            0.5,
+            0.7
+          ],
+          "periodMs": [
+            400,
+            500
+          ],
+          "durationMs": [
+            1200,
+            1600
+          ]
+        },
+        "emits": "body"
+      },
+      "flame": {
+        "describe": "a flame or fire-shaped crystal at the top of a staff",
+        "pivot": "bottom",
+        "mode": "cover",
+        "rest": {
+          "kind": "flicker",
+          "amount": [
+            0.1,
+            0.14
+          ],
+          "periodMs": [
+            1800,
+            2400
+          ]
+        },
+        "emits": "lit"
+      },
+      "leaf": {
+        "describe": "leaves, a bud or a sprig that grows from a staff",
+        "pivot": "contact",
+        "rest": {
+          "kind": "sway",
+          "amount": [
+            2,
+            3
+          ],
+          "periodMs": [
+            2600,
+            3400
+          ]
+        },
+        "gust": {
+          "kind": "shake",
+          "amount": [
+            1.5,
+            2
+          ],
+          "durationMs": [
+            700,
+            900
+          ]
+        }
+      },
+      "head": {
+        "describe": "an ornament fixed to the top of a staff or sceptre that rocks a little when the staff is used: a crescent moon, a sunburst, a carved head",
+        "pivot": "contact",
+        "use": {
+          "kind": "swing",
+          "amount": [
+            4,
+            6
+          ],
+          "periodMs": [
+            450,
+            600
+          ],
+          "durationMs": [
+            1100,
+            1500
+          ]
+        }
+      },
+      "charm": {
+        "describe": "a ribbon, cord, feather or small charm that hangs from a staff",
+        "pivot": "contact-top",
+        "lag": 100,
+        "rest": {
+          "kind": "swing",
+          "amount": [
+            1.5,
+            2.5
+          ],
+          "periodMs": [
+            2200,
+            3000
+          ]
+        },
+        "gust": {
+          "kind": "swing",
+          "amount": [
+            3,
+            4
+          ],
+          "periodMs": [
+            500,
+            700
+          ],
+          "durationMs": [
+            1200,
+            1500
+          ]
+        }
+      },
+      "hero-head": {
+        "describe": "a chibi hero's big round head with its helmet, hood or hat: it nods about the neck",
+        "pivot": "contact-bottom",
+        "rest": {
+          "kind": "sway",
+          "amount": [
+            1.5,
+            2.5
+          ],
+          "periodMs": [
+            1800,
+            2200
+          ]
+        },
+        "use": {
+          "kind": "swing",
+          "amount": [
+            4,
+            6
+          ],
+          "periodMs": [
+            450,
+            550
+          ],
+          "durationMs": [
+            700,
+            900
+          ]
+        }
+      },
+      "front-arm": {
+        "describe": "a chibi hero's front arm with the weapon or item in its hand: it swings at the shoulder when the hero attacks",
+        "pivot": "contact",
+        "rest": {
+          "kind": "sway",
+          "amount": [
+            2,
+            3
+          ],
+          "periodMs": [
+            1800,
+            2200
+          ]
+        },
+        "use": {
+          "kind": "swing",
+          "amount": [
+            28,
+            36
+          ],
+          "periodMs": [
+            450,
+            550
+          ],
+          "durationMs": [
+            700,
+            900
+          ]
+        }
+      },
+      "back-arm": {
+        "describe": "a chibi hero's back arm, empty or with a shield: it swings at the shoulder",
+        "pivot": "contact",
+        "rest": {
+          "kind": "sway",
+          "amount": [
+            2,
+            3
+          ],
+          "periodMs": [
+            1800,
+            2200
+          ]
+        },
+        "use": {
+          "kind": "swing",
+          "amount": [
+            -14,
+            -10
+          ],
+          "periodMs": [
+            450,
+            550
+          ],
+          "durationMs": [
+            700,
+            900
+          ]
+        }
+      },
+      "leg": {
+        "describe": "a chibi hero's short leg and boot: it swings at the hip",
+        "pivot": "contact-top",
+        "rest": {
+          "kind": "sway",
+          "amount": [
+            1.5,
+            2.5
+          ],
+          "periodMs": [
+            1800,
+            2200
+          ]
+        },
+        "use": {
+          "kind": "swing",
+          "amount": [
+            6,
+            9
+          ],
+          "periodMs": [
+            450,
+            550
+          ],
+          "durationMs": [
+            700,
+            900
+          ]
+        }
+      },
+      "hat-tip": {
+        "describe": "the floppy tip of a tall pointed hat or a topknot: it sways",
+        "pivot": "contact-bottom",
+        "lag": 100,
+        "rest": {
+          "kind": "sway",
+          "amount": [
+            3,
+            4
+          ],
+          "periodMs": [
+            2200,
+            2600
+          ]
+        },
+        "gust": {
+          "kind": "swing",
+          "amount": [
+            6,
+            8
+          ],
+          "periodMs": [
+            500,
+            700
+          ],
+          "durationMs": [
+            1200,
+            1500
+          ]
+        }
+      }
+    },
+    "wind": {
+      "materials": [
+        "leaf",
+        "charm",
+        "hat-tip"
+      ]
+    }
+  }
+}

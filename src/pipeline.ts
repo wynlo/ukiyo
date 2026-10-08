@@ -5,7 +5,7 @@ import sharp from 'sharp';
 import type { ResolvedConfig } from './config.js';
 import { assetNames, type Manifest, type Target } from './manifest.js';
 import { rawPath, readMeta, removeOutputs, stagePath, targetDir, targetStatus, writeMeta, type AssetMeta, type Complexity, type EffectsReview, type PartMeta, type PartRig, type TargetStatus } from './meta.js';
-import { coerceCount, detectComponents } from './ops/autocrop.js';
+import { coerceCount, detectComponents, dropEdgeRegions } from './ops/autocrop.js';
 import { cutout } from './ops/cutout.js';
 import { alphaBounds, anchorFraction, fitTo, trimAndAlign } from './ops/crop.js';
 import { extractLayer, register, tintRaster } from './ops/register.js';
@@ -16,7 +16,7 @@ import { aspectPad, declaredAspect, matchesAspect, padToAspect } from './ops/asp
 import { colorDistance, estimateBackground, parseHex, readRaster, toSharp, writePng, type Raster } from './ops/raster.js';
 import { contactSheet, framePlayer, type SheetEntry } from './ops/sheet.js';
 import { composeEditPrompt, composeLayerPrompt, composePrompt, composeSplitPrompt, defaultSize, framePoseInstruction } from './prompt/compose.js';
-import { assignSoftEdges, band, moveIslands, moveThinStrips, blendFill, clear, cutToFinal, dilate, emptyRaster, masked, newPixels, opaqueOutside, rebuildError, resampleEdit, selectPiece } from './ops/split.js';
+import { assignSoftEdges, band, jointCap, moveIslands, moveThinStrips, blendFill, clear, cutToFinal, dilate, emptyRaster, masked, newPixels, opaqueOutside, rebuildError, resampleEdit, selectPiece } from './ops/split.js';
 import { measureComplexity } from './ops/complexity.js';
 import { planPieces, type KeptPiece, type Label } from './ops/plan.js';
 import { DEFAULT_LIGHT_RULES, detectLights, findLitCopies, type LightPoint, type LightRules } from './ops/lights.js';
@@ -378,6 +378,82 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
    * cropped to its art, padded to the declared aspect ratio about its
    * centre, and records where it sits on the base (`part`).
    */
+  /**
+   * Places each part of a rigged parts target: the root at (0, 0), every other
+   * part so its joint lands on `at` in its parent's px. Writes `part` like a split.
+   */
+  const assembleRig = async (target: Extract<Target, { compose: 'parts' }>, meta: ReturnType<typeof readMeta>, outputs: string[]): Promise<void> => {
+    const rig = target.rig!;
+    const placed = new Map<string, { x: number; y: number }>([[rig.root, { x: 0, y: 0 }]]);
+    const place = (name: string, seen: string[] = []): { x: number; y: number } | null => {
+      const done = placed.get(name);
+      if (done) return done;
+      const bone = rig.bones[name];
+      if (!bone || seen.includes(name)) return null;
+      const parent = place(bone.parent ?? rig.root, [...seen, name]);
+      if (!parent) return null;
+      const joint = jointOf(name);
+      const at = { x: parent.x + bone.at[0] - joint[0], y: parent.y + bone.at[1] - joint[1] };
+      placed.set(name, at);
+      return at;
+    };
+    /** A bone's joint in its written final: a mirrored part has its joint mirrored too. */
+    const jointOf = (name: string): [number, number] => {
+      const bone = rig.bones[name]!;
+      const width = meta.assets[name]?.width ?? 0;
+      return bone.mirror ? [width - bone.joint[0], bone.joint[1]] : bone.joint;
+    };
+    const root = meta.assets[rig.root];
+    if (!root?.width || !root.height) {
+      meta.warnings.push(`rig root "${rig.root}" has no final; the parts were not assembled.`);
+      return;
+    }
+    for (const name of outputs) {
+      const asset = meta.assets[name];
+      if (!asset?.width || !asset.height) continue;
+      if (name === rig.root) {
+        asset.part = { base: frameNameOf(`${target.target}/${rig.root}`), baseWidth: root.width, baseHeight: root.height, x: 0, y: 0, joint: { x: root.width / 2, y: root.height / 2 }, z: 0, role: 'plate' };
+        continue;
+      }
+      const bone = rig.bones[name];
+      const at = place(name);
+      if (!bone || !at) {
+        meta.warnings.push(`part "${name}" has no bone in rig.bones, or its parent chain does not reach "${rig.root}"; it is not placed.`);
+        continue;
+      }
+      if (bone.material && !config.rig?.materials[bone.material]) meta.warnings.push(`part ${name}: material "${bone.material}" is not in rig.materials`);
+      if (bone.mirror) {
+        await mirrorPng(stagePath(config, target.target, 'final', name));
+        if (asset.content) asset.content = { ...asset.content, x: asset.width - asset.content.x - asset.content.width };
+      }
+      const joint = jointOf(name);
+      const motion = partRig(bone.material, bone.motion);
+      const parent = bone.parent && bone.parent !== rig.root ? { parent: bone.parent } : {};
+      asset.part = { base: frameNameOf(`${target.target}/${rig.root}`), baseWidth: root.width, baseHeight: root.height, x: at.x, y: at.y, joint: { x: joint[0], y: joint[1] }, z: bone.z, role: 'piece', ...parent, ...(motion ? { rig: motion } : {}) };
+    }
+  };
+
+  /** Mirrors a PNG left to right in place. */
+  const mirrorPng = async (file: string): Promise<void> => {
+    const flipped = await sharp(file).flop().png().toBuffer();
+    fs.writeFileSync(file, flipped);
+  };
+
+  /** A part's motion: its material's bands, with the part's own overrides. */
+  const partRig = (name: string | undefined, motion?: { rest?: PartRig['rest']; use?: PartRig['use']; gust?: PartRig['gust'] }): PartRig | undefined => {
+    const material = name ? config.rig?.materials[name] : undefined;
+    if (!material) return undefined;
+    return {
+      material: name!,
+      ...((motion?.rest ?? material.rest) ? { rest: motion?.rest ?? material.rest } : {}),
+      ...((motion?.use ?? material.use) ? { use: motion?.use ?? material.use } : {}),
+      ...((motion?.gust ?? material.gust) ? { gust: motion?.gust ?? material.gust } : {}),
+      lag: material.lag,
+      stagger: config.rig?.stagger ?? 0,
+      ...(material.phases ? { phases: material.phases } : {}),
+    };
+  };
+
   const finalizeSplit = async (target: SplitTarget, meta: ReturnType<typeof readMeta>): Promise<void> => {
     const [baseName, baseAsset] = splitRef(target.base);
     const baseFinalFile = stagePath(config, baseName, 'final', baseAsset);
@@ -465,6 +541,12 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
       const seam = band(removed, stays, width, height, target.seam);
       // Only solid pixels stay in the band: a soft edge pixel drawn twice (plate and piece) would darken.
       for (let p = 0; p < removed.length; p += 1) if (seam[p] && (source.data[p * 4 + 3] ?? 0) >= 250) removed[p] = 0;
+      // Joint caps of root pieces stay on the plate.
+      for (const piece of target.pieces) {
+        if ((piece.from ?? 'base') !== from || piece.mode === 'cover' || piece.parent || !piece.cap) continue;
+        const cap = jointCap(masks.get(piece.id)!, piece.joint, piece.cap, width);
+        for (let p = 0; p < cap.length; p += 1) if (cap[p] && (source.data[p * 4 + 3] ?? 0) >= 250) removed[p] = 0;
+      }
       clear(out, removed);
       rests.set(from, out);
     }
@@ -480,7 +562,7 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
       if (fill) blendFill(plate, fill, dilate(region, width, height, 4), 3);
     }
 
-    // Pieces, each with a seam band of its children, so a joint between two moving pieces stays closed too.
+    // Pieces, each with a seam band and the joint caps of its children, so a joint between two moving pieces stays closed too.
     const pieceRasters = new Map<string, Raster>();
     for (const piece of target.pieces) {
       const mask = masks.get(piece.id);
@@ -492,6 +574,10 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
         if (!childMask) continue;
         const seam = band(childMask, mask, width, height, target.seam);
         for (let p = 0; p < seam.length; p += 1) if (seam[p] && (source.data[p * 4 + 3] ?? 0) >= 250) withChildren[p] = 1;
+        if (child.cap) {
+          const cap = jointCap(childMask, child.joint, child.cap, width);
+          for (let p = 0; p < cap.length; p += 1) if (cap[p] && (source.data[p * 4 + 3] ?? 0) >= 250) withChildren[p] = 1;
+        }
       }
       pieceRasters.set(piece.id, masked(source, withChildren));
     }
@@ -610,19 +696,8 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
     }
     for (const [i, piece] of target.pieces.entries()) {
       const raster = pieceRasters.get(piece.id);
-      const material = piece.material ? config.rig?.materials[piece.material] : undefined;
-      if (piece.material && !material) warnings.push(`piece ${piece.id}: material "${piece.material}" is not in rig.materials`);
-      const rig: PartRig | undefined = material
-        ? {
-            material: piece.material!,
-            ...((piece.motion?.rest ?? material.rest) ? { rest: piece.motion?.rest ?? material.rest } : {}),
-            ...((piece.motion?.use ?? material.use) ? { use: piece.motion?.use ?? material.use } : {}),
-            ...((piece.motion?.gust ?? material.gust) ? { gust: piece.motion?.gust ?? material.gust } : {}),
-            lag: material.lag,
-            stagger: config.rig?.stagger ?? 0,
-            ...(material.phases ? { phases: material.phases } : {}),
-          }
-        : undefined;
+      if (piece.material && !config.rig?.materials[piece.material]) warnings.push(`piece ${piece.id}: material "${piece.material}" is not in rig.materials`);
+      const rig = partRig(piece.material, piece.motion);
       if (raster) await write(piece.id, raster, 'piece', [piece.joint[0], piece.joint[1]], piece.z ?? i + 1, { mode: piece.mode, ...(piece.parent ? { parent: piece.parent } : {}), ...(rig ? { rig } : {}) });
     }
     // Each output carries its lights in its own px: a piece its own, the plate those of no piece.
@@ -1002,6 +1077,8 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
     const outline = config.styleGuide.linework.outlineColor;
     const ink = /^#[0-9a-f]{6}$/i.test(outline) ? parseHex(outline) : undefined;
     const result = cutout(raster, { mode, background, ink, threshold, feather: config.cutout.feather, despill: config.cutout.despill });
+    // The box is padded, so the sprite never reaches the crop edge. Art that does is a neighbour reaching into the box.
+    if (box) dropEdgeRegions(result.raster);
     fs.mkdirSync(path.dirname(out), { recursive: true });
     await writePng(result.raster, out);
   };
@@ -1416,6 +1493,8 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
           }
         }
         const padded = await enforceAspect(target, meta, outputs);
+        // After padding: bone joints are in px of the padded finals.
+        if (target.compose === 'parts' && target.rig) await assembleRig(target, meta, outputs);
         await storeLights(target, meta, outputs);
         writeMeta(config, meta);
         const declared = declaredAspect(config, target);

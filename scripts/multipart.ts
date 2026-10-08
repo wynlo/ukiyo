@@ -1,7 +1,8 @@
 /**
  * Renders the multipart prop images for the README from the split targets in
- * examples/: docs/examples/multipart.gif (every prop with a moving piece, the
- * pieces turning about their joints) and docs/examples/multipart.png (some
+ * examples/: docs/examples/multipart.gif and runeforge.gif (every prop with a
+ * moving piece, the pieces turning about their joints) and
+ * docs/examples/multipart.png (some
  * props assembled, then their pieces). Run with `npm run showcase`.
  */
 import fs from 'node:fs';
@@ -22,11 +23,9 @@ const pieceHeight = 110;
 
 // GIF: frames at about 10 fps over one loop with three beats: rest motion all the
 // time, a gust of wind that crosses the grid, then each prop used in turn.
-// Rest motion is small, so it is scaled up to show.
+// Prop motion is small, so it is scaled up 5x to show. Characters are not.
 const frameMs = 96;
 const loopMs = 7200;
-const restBoost = 5;
-const impulseBoost = 5;
 const gustStartMs = 400;
 const gustStepMs = 160; // per grid column
 const useStartMs = 2800;
@@ -63,7 +62,10 @@ interface Piece {
   part: Part;
 }
 interface Prop {
+  example: string;
   target: string;
+  /** Characters move at their real size: their bones already swing far. */
+  boost: number;
   pieces: Piece[];
   box: { x: number; y: number; w: number; h: number };
 }
@@ -76,7 +78,8 @@ for (const name of fs.readdirSync(root).sort()) {
   const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
   const manifest = JSON.parse(fs.readFileSync(path.join(dir, config.manifest), 'utf8'));
   for (const t of manifest) {
-    if (t.compose !== 'split' || skip.has(t.target)) continue;
+    // Split targets, and parts targets assembled into a rig.
+    if (!(t.compose === 'split' || (t.compose === 'parts' && t.rig)) || skip.has(t.target)) continue;
     const gen = path.join(dir, config.out, t.target);
     if (!fs.existsSync(path.join(gen, 'meta.json'))) continue;
     const meta = JSON.parse(fs.readFileSync(path.join(gen, 'meta.json'), 'utf8'));
@@ -86,15 +89,21 @@ for (const name of fs.readdirSync(root).sort()) {
       if (!a.part || !fs.existsSync(file)) continue;
       pieces.push({ name: asset, file, w: a.width, h: a.height, part: a.part });
     }
-    // A split with no plate draws its base under the pieces; skip those here.
-    if (!pieces.some((p) => p.part.role === 'plate')) continue;
+    // A split with no plate (only cover pieces) draws its base under the pieces.
+    if (!pieces.some((p) => p.part.role === 'plate')) {
+      const [baseTarget, baseAsset] = t.base.split('/');
+      const file = path.join(dir, config.out, baseTarget, 'final', `${baseAsset}.png`);
+      if (!fs.existsSync(file)) continue;
+      const { width: w = 0, height: h = 0 } = await sharp(file).metadata();
+      pieces.push({ name: 'plate', file, w, h, part: { x: 0, y: 0, z: 0, role: 'plate' } });
+    }
     if (!pieces.some((p) => p.part.rig?.rest || p.part.rig?.use || p.part.rig?.gust)) continue;
     pieces.sort((a, b) => a.part.z - b.part.z);
     const x0 = Math.min(...pieces.map((p) => p.part.x));
     const y0 = Math.min(...pieces.map((p) => p.part.y));
     const x1 = Math.max(...pieces.map((p) => p.part.x + p.w));
     const y1 = Math.max(...pieces.map((p) => p.part.y + p.h));
-    props.push({ target: t.target, pieces, box: { x: x0, y: y0, w: x1 - x0, h: y1 - y0 } });
+    props.push({ example: name, target: t.target, boost: t.kind === 'character' ? 1 : 5, pieces, box: { x: x0, y: y0, w: x1 - x0, h: y1 - y0 } });
   }
 }
 if (!props.length) {
@@ -169,7 +178,7 @@ function apply(pose: Pose, m: Motion, t: number, r: number, boost: number, loop:
 }
 
 /** The pose of a piece at loop time t, before its parent's turn. */
-function pose(p: Piece, t: number, cue: Cue, depth: number, sibling: number): Pose {
+function pose(p: Piece, t: number, cue: Cue, depth: number, sibling: number, boost: number): Pose {
   const rig = p.part.rig;
   const out = { ...still };
   if (!rig) return out;
@@ -177,9 +186,9 @@ function pose(p: Piece, t: number, cue: Cue, depth: number, sibling: number): Po
   // A child starts its impulse `lag` ms per level after the root; siblings `stagger` ms apart.
   // Capped so the last impulse ends before the loop does.
   const delay = (rig.lag ?? 0) * depth + (rig.stagger ?? 0) * Math.min(sibling, 4);
-  if (rig.rest) apply(out, rig.rest, t, r, rig.rest.kind === 'spin' ? 1 : restBoost, true);
-  if (rig.gust) apply(out, rig.gust, t - cue.gust - delay, r, impulseBoost, false);
-  if (rig.use) apply(out, rig.use, t - cue.use - delay, r, impulseBoost, false);
+  if (rig.rest) apply(out, rig.rest, t, r, rig.rest.kind === 'spin' ? 1 : boost, true);
+  if (rig.gust) apply(out, rig.gust, t - cue.gust - delay, r, boost, false);
+  if (rig.use) apply(out, rig.use, t - cue.use - delay, r, boost, false);
   return out;
 }
 
@@ -202,7 +211,7 @@ async function assemble(prop: Prop, t: number | null, cue: Cue = { gust: 0, use:
     const j = p.part.joint ?? { x: p.w / 2, y: p.h / 2 };
     let jx = p.part.x + j.x;
     let jy = p.part.y + j.y;
-    const own = t === null ? still : pose(p, t, cue, depthOf(p), siblingOf.get(p.name) ?? 0);
+    const own = t === null ? still : pose(p, t, cue, depthOf(p), siblingOf.get(p.name) ?? 0, prop.boost);
     let a = own.a;
     jy += own.dy;
     const parent = p.part.parent ? byName.get(p.part.parent) : undefined;
@@ -329,8 +338,8 @@ fs.mkdirSync(outDir, { recursive: true });
   console.log(`wrote ${path.relative(process.cwd(), file)}`);
 }
 
-// GIF: every prop in a grid, each piece moved about its joint.
-{
+/** GIF: props in a grid, each piece moved about its joint. */
+async function writeGif(props: Prop[], file: string): Promise<void> {
   const rows = Math.ceil(props.length / columns);
   const gifW = columns * cellW + pad * 2;
   const gifH = rows * cellH + pad * 2;
@@ -364,9 +373,12 @@ fs.mkdirSync(outDir, { recursive: true });
         .toBuffer(),
     );
   }
-  const file = path.join(outDir, 'multipart.gif');
   await sharp(frames, { join: { animated: true } })
     .gif({ delay: frameMs, loop: 0, effort: 10 })
     .toFile(file);
   console.log(`wrote ${path.relative(process.cwd(), file)} (${props.length} props: ${props.map((p) => p.target).join(' ')})`);
 }
+
+// Runeforge (warriors and staffs) gets its own GIF to keep each file small.
+await writeGif(props.filter((p) => p.example !== 'runeforge'), path.join(outDir, 'multipart.gif'));
+await writeGif(props.filter((p) => p.example === 'runeforge'), path.join(outDir, 'runeforge.gif'));

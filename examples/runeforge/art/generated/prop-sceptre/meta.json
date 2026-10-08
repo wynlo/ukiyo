@@ -1,0 +1,97 @@
+{
+  "target": "prop-sceptre",
+  "compose": "split",
+  "kind": "weapon",
+  "game": "runeforge-props",
+  "warnings": [],
+  "assets": {
+    "ruby": {
+      "name": "ruby",
+      "status": "approved",
+      "width": 50,
+      "height": 50,
+      "content": {
+        "x": 0,
+        "y": 0,
+        "width": 50,
+        "height": 50
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.28
+      },
+      "part": {
+        "base": "staffs/sceptre",
+        "baseWidth": 192,
+        "baseHeight": 192,
+        "x": 71,
+        "y": 32,
+        "joint": {
+          "x": 24,
+          "y": 25
+        },
+        "z": 2,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "gem",
+          "rest": {
+            "kind": "glow",
+            "amount": [
+              0.2,
+              0.35
+            ],
+            "periodMs": [
+              2200,
+              2800
+            ]
+          },
+          "use": {
+            "kind": "glow",
+            "amount": [
+              0.5,
+              0.7
+            ],
+            "periodMs": [
+              400,
+              500
+            ],
+            "durationMs": [
+              1200,
+              1600
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      },
+      "lights": [
+        {
+          "x": 24.78,
+          "y": 24.79,
+          "radius": 23.08,
+          "color": "#ee4543",
+          "intensity": 0.93,
+          "piece": "ruby",
+          "from": "base"
+        }
+      ],
+      "reviewedAt": "2026-10-07T16:50:00Z"
+    }
+  },
+  "lights": [
+    {
+      "x": 95.78,
+      "y": 56.79,
+      "radius": 23.08,
+      "color": "#ee4543",
+      "intensity": 0.93,
+      "piece": "ruby",
+      "from": "base"
+    }
+  ],
+  "plan": {
+    "status": "approved",
+    "reviewedAt": "2026-10-07T16:50:24Z"
+  }
+}

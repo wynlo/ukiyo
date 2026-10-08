@@ -1,0 +1,166 @@
+{
+  "target": "forge-style",
+  "compose": "sheet",
+  "kind": "item",
+  "game": "rpg",
+  "warnings": [],
+  "assets": {
+    "dagger": {
+      "name": "dagger",
+      "status": "approved",
+      "references": [],
+      "sourceBox": {
+        "x": 77,
+        "y": 103,
+        "width": 252,
+        "height": 490,
+        "area": 64446
+      },
+      "width": 96,
+      "height": 96,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "content": {
+        "x": 23,
+        "y": 0,
+        "width": 50,
+        "height": 96
+      },
+      "reviewedAt": "2026-10-07T16:50:00Z"
+    },
+    "shield": {
+      "name": "shield",
+      "status": "approved",
+      "references": [],
+      "sourceBox": {
+        "x": 417,
+        "y": 145,
+        "width": 411,
+        "height": 415,
+        "area": 134146
+      },
+      "width": 95,
+      "height": 96,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "content": {
+        "x": 0,
+        "y": 0,
+        "width": 95,
+        "height": 96
+      },
+      "reviewedAt": "2026-10-07T16:50:00Z"
+    },
+    "potion": {
+      "name": "potion",
+      "status": "approved",
+      "references": [],
+      "sourceBox": {
+        "x": 894,
+        "y": 156,
+        "width": 311,
+        "height": 432,
+        "area": 91598
+      },
+      "width": 97,
+      "height": 96,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "content": {
+        "x": 14,
+        "y": 0,
+        "width": 69,
+        "height": 96
+      },
+      "reviewedAt": "2026-10-07T16:50:00Z"
+    },
+    "key": {
+      "name": "key",
+      "status": "approved",
+      "references": [],
+      "sourceBox": {
+        "x": 60,
+        "y": 692,
+        "width": 269,
+        "height": 467,
+        "area": 61084
+      },
+      "width": 96,
+      "height": 96,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "content": {
+        "x": 20,
+        "y": 0,
+        "width": 56,
+        "height": 96
+      },
+      "reviewedAt": "2026-10-07T16:50:00Z"
+    },
+    "pouch": {
+      "name": "pouch",
+      "status": "approved",
+      "references": [],
+      "sourceBox": {
+        "x": 439,
+        "y": 720,
+        "width": 399,
+        "height": 431,
+        "area": 133579
+      },
+      "width": 97,
+      "height": 96,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "content": {
+        "x": 4,
+        "y": 0,
+        "width": 89,
+        "height": 96
+      },
+      "reviewedAt": "2026-10-07T16:50:00Z"
+    },
+    "scroll": {
+      "name": "scroll",
+      "status": "approved",
+      "references": [],
+      "sourceBox": {
+        "x": 972,
+        "y": 704,
+        "width": 210,
+        "height": 449,
+        "area": 78146
+      },
+      "width": 96,
+      "height": 96,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "content": {
+        "x": 25,
+        "y": 0,
+        "width": 46,
+        "height": 96
+      },
+      "reviewedAt": "2026-10-07T16:50:00Z"
+    }
+  },
+  "prompt": "TASK:\nCreate one production-ready sticker sheet containing exactly 6 game sprites.\n\nPROJECT CONTEXT:\nRuneforge: Fantasy RPG weapons and runes for an inventory screen.\n\nSTYLE:\nSTYLE LOCK: Simple toon sprites for a cosy top-down adventure game, like a toy diorama.\n\nPRIMARY GOAL: Weapons, runes and small heroes that read at a glance at small sizes. Simple and cute, never realistic.\n\nCORE AESTHETIC: Lineless flat colour blocks with soft rounded edges. Everything looks like a smooth matte toy. Chunky, rounded, few parts. No texture and no small detail.\n\nEDGES: NO OUTLINES. No dark contour line around any shape. Shapes are separated by colour alone.\n\nCOLOR: Bright and friendly. Steel (#D6E2EE) blades, wood (#C98A4B) handles, gold (#F7C948) fittings, leather (#8A5236) grips, stone (#8E96A3) runes. Accents: hero blue (#4A90E2), leaf green (#5CC46A), ruby (#F0504A), violet (#9B6BE8). Skin (#FFD7B0).\n\nSHADING: One flat colour per form, one soft darker shade of the same hue on its lower side, one small soft highlight on round tops and gems. Nothing else.\n\nPROPORTION: Weapons are short and chunky with oversized heads and blades. Characters are chibi: about two and a half heads tall, a big round head, a small round body, short stubby arms with round mitten hands, short stubby legs with round boots. Simple dot eyes.\n\nDETAIL LEVEL: Two or three colours per item plus one accent. A gem is a simple round or diamond shape. Rune glyphs are bold simple marks, never letters.\n\nCOMPOSITION: One asset category per image. Every asset isolated with generous crop-safe spacing. Weapons stand upright with the grip at the bottom. No background, no ground shadow.\n\nPALETTE:\nPaper #FFFFFF (background), Steel #D6E2EE (fill), Steel Shade #9EB2C8 (shade), Wood #C98A4B (fill), Wood Shade #9A6233 (shade), Gold #F7C948 (fill), Gold Shade #D49A24 (shade), Leather #8A5236 (fill), Stone #8E96A3 (fill), Skin #FFD7B0 (fill), Leaf Green #5CC46A (fill), Hero Blue #4A90E2 (fill), Ruby #F0504A (fill), Violet #9B6BE8 (fill)\n\nSHAPE LANGUAGE:\nchunky, toy-like, rounded everything, simple silhouettes, big round heads on characters, short stubby limbs with round mitten hands, few parts\n\nRENDERING RULES:\n- no outlines: flat colour blocks separated by colour alone\n- one flat colour per form plus one soft darker shade of the same hue\n- one small soft highlight on round tops and gems\n- simple shapes, no texture, no small details\n- smooth matte toy plastic, like a toy diorama\n- weapons stand upright, grip at the bottom\n- crisp high-resolution raster\n- isolated presentation with large spacing\n\nCATEGORY:\nStyle reference: simple toon adventure items\n\nEXACT ASSETS:\n1. a small steel dagger with a leather grip\n2. a round wooden shield with a gold rim\n3. a red potion in a round bottle\n4. a gold key\n5. a leather pouch of gold coins\n6. a rolled scroll with a red seal\n\nCANVAS AND LAYOUT:\nOutput size 1024x1024. Solid flat background #00FF00 with no texture, no vignette, no border. Nothing in the picture may use a colour close to the background colour.\nThe game shows each asset in a 1:1 (width:height) frame. Compose each asset to suit that frame, and keep its natural proportions: do not stretch or squash it.\nArrange the assets in a neat grid in reading order (left to right, then top to bottom), one asset per cell.\nKeep every asset isolated.\nDo not let assets touch or overlap.\nUse front-facing views only.\nLeave generous crop-safe spacing around every asset, at least one asset-width apart.\nNo labels, text, numbers, scene, ground line, or decorative filler.\n\nSPRITE RULES:\nUse strong, rounded silhouettes that remain readable at 40x40px.\nUse no more than 4 base colours per asset, plus their shading tones.\nToy-like toon shading: each form is one flat colour with one soft darker shade of the same hue on its lower side and one small soft highlight on round tops. Nothing else. No texture, no scratches, no wood grain, no metal reflections.\nAvoid tiny details, intricate textures, and visual clutter.\nNo outlines: shapes are flat colour blocks separated by colour alone, with soft rounded edges.\nKeep the palette, edge treatment, proportions, and detail level consistent across the whole sheet.\nDraw every asset at a similar visual scale.\n\nNEGATIVE PROMPT:\noutlines, dark outlines, black outlines, ink lines, line art, contour lines, sticker outline, realism, realistic anatomy, muscles, 3D render, photoreal, metal reflections, chrome, texture, wood grain, scratches, rivets, fine detail, small detail, lens flare, glow blur, blood, gore, scene background, ground shadow, motion lines, text, labels, letters, numbers, watermark, clutter\n\nFINAL CHECK:\nExactly 6 assets.\nEvery requested asset is present once, in the listed order.\nEvery asset is separate, readable, and crop-safe.",
+  "promptVersion": "v1",
+  "references": [],
+  "generatedAt": "2026-10-07T15:56:38.457Z",
+  "provider": "codex",
+  "detected": 6,
+  "expected": 6
+}

@@ -179,6 +179,31 @@ export const targetSchema = z.discriminatedUnion('compose', [
      */
     reference: z.string().regex(/^[a-z0-9-]+\/[a-z0-9-]+$/).optional(),
     /**
+     * Assemble the parts into a skeleton. `root` is the part every other part
+     * hangs from (the torso); it is written as the plate. Each bone gives its
+     * `joint` in its own final px and `at`, where that joint sits in its
+     * parent's final px. `final` writes `part` (position, joint, parent, z,
+     * motion) like a split, so `pack` and the game read both the same way.
+     */
+    rig: z
+      .object({
+        root: nameSchema,
+        bones: z.record(
+          nameSchema,
+          z.object({
+            joint: z.tuple([z.number(), z.number()]),
+            at: z.tuple([z.number(), z.number()]),
+            parent: nameSchema.optional(),
+            /** Mirror the part left to right (a limb drawn for the other side). `joint` stays in the drawn part's px. */
+            mirror: z.boolean().optional(),
+            z: z.number(),
+            material: z.string().optional(),
+            motion: z.object({ rest: planMotion.optional(), use: planMotion.optional(), gust: planMotion.optional() }).optional(),
+          }),
+        ),
+      })
+      .optional(),
+    /**
      * Height of each part as a fraction of the kind height, by output name.
      * Every skin then gets identical proportions, whatever the model drew.
      */
@@ -265,6 +290,12 @@ export const targetSchema = z.discriminatedUnion('compose', [
           mode: z.enum(['detach', 'cover', 'fill']).default('detach'),
           /** The point the piece turns and scales about, in base px: a hook, a stem, a hinge. */
           joint: z.tuple([z.number(), z.number()]),
+          /**
+           * Joint cap radius in base px. The parent (or the plate, for a piece with no parent)
+           * keeps the piece's pixels within this distance of the joint, so a shoulder or elbow
+           * stays closed when the piece turns. Set it to about half the limb's width.
+           */
+          cap: z.number().min(0).optional(),
           /** Draw order among the outputs. The plate is 0. Negative draws behind it. Default: list order from 1. */
           z: z.number().optional(),
           /** Another piece this one hangs from: it moves with it (a clapper on a bell). */

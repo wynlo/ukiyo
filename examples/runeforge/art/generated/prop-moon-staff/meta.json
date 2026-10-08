@@ -1,0 +1,97 @@
+{
+  "target": "prop-moon-staff",
+  "compose": "split",
+  "kind": "weapon",
+  "game": "runeforge-props",
+  "warnings": [],
+  "assets": {
+    "orb": {
+      "name": "orb",
+      "status": "approved",
+      "width": 58,
+      "height": 58,
+      "content": {
+        "x": 0,
+        "y": 2,
+        "width": 58,
+        "height": 54
+      },
+      "anchor": {
+        "x": 0.2672413793103448,
+        "y": 1.206896551724138
+      },
+      "part": {
+        "base": "staffs/moon-staff",
+        "baseWidth": 193,
+        "baseHeight": 192,
+        "x": 81,
+        "y": 26,
+        "joint": {
+          "x": 29,
+          "y": 29
+        },
+        "z": 2,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "gem",
+          "rest": {
+            "kind": "glow",
+            "amount": [
+              0.2,
+              0.35
+            ],
+            "periodMs": [
+              2200,
+              2800
+            ]
+          },
+          "use": {
+            "kind": "glow",
+            "amount": [
+              0.5,
+              0.7
+            ],
+            "periodMs": [
+              400,
+              500
+            ],
+            "durationMs": [
+              1200,
+              1600
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      },
+      "lights": [
+        {
+          "x": 28.8,
+          "y": 30.08,
+          "radius": 24.56,
+          "color": "#af70eb",
+          "intensity": 0.93,
+          "piece": "orb",
+          "from": "base"
+        }
+      ],
+      "reviewedAt": "2026-10-07T16:50:00Z"
+    }
+  },
+  "lights": [
+    {
+      "x": 109.8,
+      "y": 56.08,
+      "radius": 24.56,
+      "color": "#af70eb",
+      "intensity": 0.93,
+      "piece": "orb",
+      "from": "base"
+    }
+  ],
+  "plan": {
+    "status": "approved",
+    "reviewedAt": "2026-10-07T16:50:24Z"
+  }
+}

@@ -402,6 +402,20 @@ export function assignSoftEdges(source: Raster, masks: readonly Uint8Array[], re
   return halo;
 }
 
+/** Pixels of `mask` within `radius` px of `joint`. */
+export function jointCap(mask: Uint8Array, joint: [number, number], radius: number, width: number): Uint8Array {
+  const out = new Uint8Array(mask.length);
+  const height = mask.length / width;
+  const r2 = radius * radius;
+  for (let y = Math.max(0, Math.floor(joint[1] - radius)); y <= Math.min(height - 1, Math.ceil(joint[1] + radius)); y += 1) {
+    for (let x = Math.max(0, Math.floor(joint[0] - radius)); x <= Math.min(width - 1, Math.ceil(joint[0] + radius)); x += 1) {
+      const p = y * width + x;
+      if (mask[p] && (x - joint[0]) ** 2 + (y - joint[1]) ** 2 <= r2) out[p] = 1;
+    }
+  }
+  return out;
+}
+
 /** Pixels of `mask` within `reach` px (square) of a pixel in `near`. */
 export function band(mask: Uint8Array, near: Uint8Array, width: number, height: number, reach: number): Uint8Array {
   const out = new Uint8Array(mask.length);

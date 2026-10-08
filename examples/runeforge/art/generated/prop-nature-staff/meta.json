@@ -1,0 +1,97 @@
+{
+  "target": "prop-nature-staff",
+  "compose": "split",
+  "kind": "weapon",
+  "game": "runeforge-props",
+  "warnings": [],
+  "assets": {
+    "gem": {
+      "name": "gem",
+      "status": "approved",
+      "width": 53,
+      "height": 53,
+      "content": {
+        "x": 0,
+        "y": 1,
+        "width": 53,
+        "height": 51
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.830188679245283
+      },
+      "part": {
+        "base": "staffs/nature-staff",
+        "baseWidth": 193,
+        "baseHeight": 192,
+        "x": 70,
+        "y": -1,
+        "joint": {
+          "x": 27,
+          "y": 25
+        },
+        "z": 2,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "gem",
+          "rest": {
+            "kind": "glow",
+            "amount": [
+              0.2,
+              0.35
+            ],
+            "periodMs": [
+              2200,
+              2800
+            ]
+          },
+          "use": {
+            "kind": "glow",
+            "amount": [
+              0.5,
+              0.7
+            ],
+            "periodMs": [
+              400,
+              500
+            ],
+            "durationMs": [
+              1200,
+              1600
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      },
+      "lights": [
+        {
+          "x": 24.56,
+          "y": 24.42,
+          "radius": 18.31,
+          "color": "#8edc82",
+          "intensity": 0.86,
+          "piece": "gem",
+          "from": "base"
+        }
+      ],
+      "reviewedAt": "2026-10-07T16:50:00Z"
+    }
+  },
+  "lights": [
+    {
+      "x": 94.56,
+      "y": 23.42,
+      "radius": 18.31,
+      "color": "#8edc82",
+      "intensity": 0.86,
+      "piece": "gem",
+      "from": "base"
+    }
+  ],
+  "plan": {
+    "status": "approved",
+    "reviewedAt": "2026-10-07T16:50:24Z"
+  }
+}

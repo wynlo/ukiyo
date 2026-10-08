@@ -1,0 +1,97 @@
+{
+  "target": "prop-wand",
+  "compose": "split",
+  "kind": "weapon",
+  "game": "runeforge-props",
+  "warnings": [],
+  "assets": {
+    "star": {
+      "name": "star",
+      "status": "approved",
+      "width": 108,
+      "height": 108,
+      "content": {
+        "x": 0,
+        "y": 7,
+        "width": 108,
+        "height": 94
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9537037037037037
+      },
+      "part": {
+        "base": "staffs/wand",
+        "baseWidth": 192,
+        "baseHeight": 192,
+        "x": 42,
+        "y": -7,
+        "joint": {
+          "x": 64,
+          "y": 70
+        },
+        "z": 1,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "gem",
+          "rest": {
+            "kind": "glow",
+            "amount": [
+              0.2,
+              0.35
+            ],
+            "periodMs": [
+              2200,
+              2800
+            ]
+          },
+          "use": {
+            "kind": "glow",
+            "amount": [
+              0.5,
+              0.7
+            ],
+            "periodMs": [
+              400,
+              500
+            ],
+            "durationMs": [
+              1200,
+              1600
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      },
+      "lights": [
+        {
+          "x": 48.57,
+          "y": 50.55,
+          "radius": 35.25,
+          "color": "#fdca3a",
+          "intensity": 0.99,
+          "piece": "star",
+          "from": "base"
+        }
+      ],
+      "reviewedAt": "2026-10-07T16:50:00Z"
+    }
+  },
+  "lights": [
+    {
+      "x": 90.57,
+      "y": 43.55,
+      "radius": 35.25,
+      "color": "#fdca3a",
+      "intensity": 0.99,
+      "piece": "star",
+      "from": "base"
+    }
+  ],
+  "plan": {
+    "status": "approved",
+    "reviewedAt": "2026-10-07T16:50:24Z"
+  }
+}

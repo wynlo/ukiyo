@@ -1,0 +1,97 @@
+{
+  "target": "prop-orb-staff",
+  "compose": "split",
+  "kind": "weapon",
+  "game": "runeforge-props",
+  "warnings": [],
+  "assets": {
+    "orb": {
+      "name": "orb",
+      "status": "approved",
+      "width": 66,
+      "height": 67,
+      "content": {
+        "x": 0,
+        "y": 2,
+        "width": 66,
+        "height": 63
+      },
+      "anchor": {
+        "x": 0.3787878787878788,
+        "y": 1.208955223880597
+      },
+      "part": {
+        "base": "staffs/orb-staff",
+        "baseWidth": 192,
+        "baseHeight": 192,
+        "x": 71,
+        "y": 15,
+        "joint": {
+          "x": 34,
+          "y": 33
+        },
+        "z": 1,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "gem",
+          "rest": {
+            "kind": "glow",
+            "amount": [
+              0.2,
+              0.35
+            ],
+            "periodMs": [
+              2200,
+              2800
+            ]
+          },
+          "use": {
+            "kind": "glow",
+            "amount": [
+              0.5,
+              0.7
+            ],
+            "periodMs": [
+              400,
+              500
+            ],
+            "durationMs": [
+              1200,
+              1600
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      },
+      "lights": [
+        {
+          "x": 34.03,
+          "y": 32.87,
+          "radius": 27.43,
+          "color": "#3cacf4",
+          "intensity": 0.96,
+          "piece": "orb",
+          "from": "base"
+        }
+      ],
+      "reviewedAt": "2026-10-07T16:50:00Z"
+    }
+  },
+  "lights": [
+    {
+      "x": 105.03,
+      "y": 47.87,
+      "radius": 27.43,
+      "color": "#3cacf4",
+      "intensity": 0.96,
+      "piece": "orb",
+      "from": "base"
+    }
+  ],
+  "plan": {
+    "status": "approved",
+    "reviewedAt": "2026-10-07T16:50:24Z"
+  }
+}

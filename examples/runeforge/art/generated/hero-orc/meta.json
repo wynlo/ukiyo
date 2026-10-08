@@ -1,0 +1,66 @@
+{
+  "target": "hero-orc",
+  "compose": "single",
+  "kind": "character",
+  "game": "rpg",
+  "warnings": [],
+  "assets": {
+    "hero-orc": {
+      "name": "hero-orc",
+      "status": "approved",
+      "references": [
+        {
+          "n": 1,
+          "id": "axes/battle-axe",
+          "path": "art/generated/axes/final/battle-axe.png",
+          "role": "family",
+          "source": "explicit",
+          "status": "approved",
+          "sha256": "7f507447421e8314"
+        },
+        {
+          "n": 2,
+          "path": "art/generated/forge-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "82fd7e0ac65376a6"
+        }
+      ],
+      "width": 257,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "content": {
+        "x": 20,
+        "y": 0,
+        "width": 217,
+        "height": 256
+      },
+      "reviewedAt": "2026-10-07T16:50:00Z"
+    }
+  },
+  "prompt": "TASK:\nCreate one production-ready game sprite: a chibi green orc with two small tusks, a black topknot, a leather vest and leather boots.\n\nPROJECT CONTEXT:\nRuneforge: Fantasy RPG weapons and runes for an inventory screen.\n\nSTYLE:\nSTYLE LOCK: Simple toon sprites for a cosy top-down adventure game, like a toy diorama.\n\nPRIMARY GOAL: Weapons, runes and small heroes that read at a glance at small sizes. Simple and cute, never realistic.\n\nCORE AESTHETIC: Lineless flat colour blocks with soft rounded edges. Everything looks like a smooth matte toy. Chunky, rounded, few parts. No texture and no small detail.\n\nEDGES: NO OUTLINES. No dark contour line around any shape. Shapes are separated by colour alone.\n\nCOLOR: Bright and friendly. Steel (#D6E2EE) blades, wood (#C98A4B) handles, gold (#F7C948) fittings, leather (#8A5236) grips, stone (#8E96A3) runes. Accents: hero blue (#4A90E2), leaf green (#5CC46A), ruby (#F0504A), violet (#9B6BE8). Skin (#FFD7B0).\n\nSHADING: One flat colour per form, one soft darker shade of the same hue on its lower side, one small soft highlight on round tops and gems. Nothing else.\n\nPROPORTION: Weapons are short and chunky with oversized heads and blades. Characters are chibi: about two and a half heads tall, a big round head, a small round body, short stubby arms with round mitten hands, short stubby legs with round boots. Simple dot eyes.\n\nDETAIL LEVEL: Two or three colours per item plus one accent. A gem is a simple round or diamond shape. Rune glyphs are bold simple marks, never letters.\n\nCOMPOSITION: One asset category per image. Every asset isolated with generous crop-safe spacing. Weapons stand upright with the grip at the bottom. No background, no ground shadow.\n\nPALETTE:\nPaper #FFFFFF (background), Steel #D6E2EE (fill), Steel Shade #9EB2C8 (shade), Wood #C98A4B (fill), Wood Shade #9A6233 (shade), Gold #F7C948 (fill), Gold Shade #D49A24 (shade), Leather #8A5236 (fill), Stone #8E96A3 (fill), Skin #FFD7B0 (fill), Leaf Green #5CC46A (fill), Hero Blue #4A90E2 (fill), Ruby #F0504A (fill), Violet #9B6BE8 (fill)\n\nSHAPE LANGUAGE:\nchunky, toy-like, rounded everything, simple silhouettes, big round heads on characters, short stubby limbs with round mitten hands, few parts\n\nRENDERING RULES:\n- no outlines: flat colour blocks separated by colour alone\n- one flat colour per form plus one soft darker shade of the same hue\n- one small soft highlight on round tops and gems\n- simple shapes, no texture, no small details\n- smooth matte toy plastic, like a toy diorama\n- weapons stand upright, grip at the bottom\n- crisp high-resolution raster\n- isolated presentation with large spacing\n\nCANVAS AND LAYOUT:\nOutput size 1024x1024. Solid flat background #00FF00 with no texture, no vignette, no border. Nothing in the picture may use a colour close to the background colour.\nThe game shows each asset in a 1:1 (width:height) frame. Compose each asset to suit that frame, and keep its natural proportions: do not stretch or squash it.\nOne asset only, centred, filling about 80% of the canvas, fully inside the frame.\nFront-facing view. No ground line, no scene, no labels, no text.\n\nSPRITE RULES:\nStrong rounded silhouette, readable when shrunk.\nNo outlines: shapes are flat colour blocks separated by colour alone, with soft rounded edges.\nToy-like toon shading: each form is one flat colour with one soft darker shade of the same hue on its lower side and one small soft highlight on round tops. Nothing else. No texture, no scratches, no wood grain, no metal reflections.\n\nNEGATIVE PROMPT:\noutlines, dark outlines, black outlines, ink lines, line art, contour lines, sticker outline, realism, realistic anatomy, muscles, 3D render, photoreal, metal reflections, chrome, texture, wood grain, scratches, rivets, fine detail, small detail, lens flare, glow blur, blood, gore, scene background, ground shadow, motion lines, text, labels, letters, numbers, watermark, clutter\n\nFINAL CHECK:\nExactly one asset, complete, isolated, and crop-safe.\n\nADDITIONAL DETAILS:\nThe battle axe is held in the front hand and points straight up. The back hand is an empty round green fist. Copy the held item's shape and colours from the reference images, drawn small enough for the hand. RIG POSE: a full-body chibi character for a cut-out skeleton rig, about two and a half heads tall. Three-quarter view FACING RIGHT: the face, the eyes and the toes all point to the right side of the image. The front arm (nearer the viewer) is a short stubby tube that sticks out forward and down at about 45 degrees, straight, with a round shoulder and a round mitten hand, with clear background between the arm and the body. The back arm is a short stubby tube that sticks out backward and down to the left of the body, with clear background between it and the body. Legs are two short stubby legs with round boots, slightly apart in a small stride, with background between them. Nothing crosses in front of the body. No cape, no cloak, no long hair or beard over the arms. Held items stay clear of the head and body. Lineless and simple like the rest of the set.",
+  "promptVersion": "v1",
+  "references": [
+    {
+      "n": 1,
+      "id": "axes/battle-axe",
+      "path": "art/generated/axes/final/battle-axe.png",
+      "role": "family",
+      "source": "explicit",
+      "status": "approved",
+      "sha256": "7f507447421e8314"
+    },
+    {
+      "n": 2,
+      "path": "art/generated/forge-style/raw.png",
+      "role": "style",
+      "source": "first-target",
+      "sha256": "82fd7e0ac65376a6"
+    }
+  ],
+  "generatedAt": "2026-10-07T16:08:43.608Z",
+  "provider": "codex"
+}

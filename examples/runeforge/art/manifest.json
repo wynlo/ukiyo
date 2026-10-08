@@ -1,0 +1,1112 @@
+[
+  {
+    "target": "forge-style",
+    "compose": "sheet",
+    "kind": "item",
+    "game": "rpg",
+    "background": "#00FF00",
+    "category": "Style reference: simple toon adventure items",
+    "assets": [
+      "a small steel dagger with a leather grip",
+      "a round wooden shield with a gold rim",
+      "a red potion in a round bottle",
+      "a gold key",
+      "a leather pouch of gold coins",
+      "a rolled scroll with a red seal"
+    ],
+    "names": [
+      "dagger",
+      "shield",
+      "potion",
+      "key",
+      "pouch",
+      "scroll"
+    ]
+  },
+  {
+    "target": "swords",
+    "compose": "sheet",
+    "kind": "weapon",
+    "game": "rpg",
+    "background": "#00FF00",
+    "category": "Swords standing upright, point at the top",
+    "assets": [
+      "a chunky steel sword with a gold crossguard and a leather grip",
+      "a curved steel scimitar with a gold hilt",
+      "a big steel greatsword with a ruby in the crossguard",
+      "a thin steel rapier with a round gold guard",
+      "a pale blue ice sword with a hero-blue gem",
+      "a wooden practice sword"
+    ],
+    "names": [
+      "broadsword",
+      "scimitar",
+      "greatsword",
+      "rapier",
+      "frost-blade",
+      "wooden-sword"
+    ]
+  },
+  {
+    "target": "axes",
+    "compose": "sheet",
+    "kind": "weapon",
+    "game": "rpg",
+    "background": "#00FF00",
+    "category": "Axes and hammers standing upright, head at the top",
+    "assets": [
+      "a steel hand axe with a wooden handle",
+      "a double-bladed steel battle axe with a wooden handle",
+      "a big steel bearded axe with gold bands",
+      "a chunky steel war hammer with a wooden handle",
+      "a steel halberd on a wooden pole",
+      "a stone axe with a green glyph"
+    ],
+    "names": [
+      "hand-axe",
+      "battle-axe",
+      "bearded-axe",
+      "war-hammer",
+      "halberd",
+      "stone-axe"
+    ]
+  },
+  {
+    "target": "staffs",
+    "compose": "sheet",
+    "kind": "weapon",
+    "game": "rpg",
+    "background": "#00FF00",
+    "category": "Magic staffs and wands standing upright, head at the top",
+    "assets": [
+      "a wooden staff with a big round blue orb held in a curled top",
+      "a gold staff topped with a red fire crystal",
+      "a pale wooden staff with two green leaves and a green gem bud",
+      "a wooden staff with a gold crescent moon and a violet orb",
+      "a short wooden wand with a gold star tip",
+      "a gold sceptre with a round ruby and a sun shape"
+    ],
+    "names": [
+      "orb-staff",
+      "fire-staff",
+      "nature-staff",
+      "moon-staff",
+      "wand",
+      "sceptre"
+    ]
+  },
+  {
+    "target": "prop-wand",
+    "compose": "split",
+    "kind": "weapon",
+    "game": "runeforge-props",
+    "aspect": "1:1",
+    "base": "staffs/wand",
+    "subject": "wand",
+    "pieces": [
+      {
+        "id": "star",
+        "box": [
+          42,
+          0,
+          150,
+          99
+        ],
+        "seeds": [
+          [
+            96,
+            48
+          ]
+        ],
+        "except": [
+          "#ed9a16"
+        ],
+        "tolerance": 30,
+        "mode": "cover",
+        "joint": [
+          106,
+          63
+        ],
+        "z": 1,
+        "material": "gem"
+      }
+    ],
+    "plan": {
+      "source": "auto",
+      "score": 0.173,
+      "locked": true
+    }
+  },
+  {
+    "target": "prop-moon-staff",
+    "compose": "split",
+    "kind": "weapon",
+    "game": "runeforge-props",
+    "aspect": "1:1",
+    "base": "staffs/moon-staff",
+    "subject": "moon staff",
+    "background": "#00FF00",
+    "pieces": [
+      {
+        "id": "orb",
+        "box": [
+          82,
+          30,
+          138,
+          82
+        ],
+        "seeds": [
+          [
+            111,
+            55
+          ]
+        ],
+        "except": [
+          "#ec9816",
+          "#fdcc34",
+          "#fedb54"
+        ],
+        "tolerance": 30,
+        "mode": "cover",
+        "joint": [
+          110,
+          55
+        ],
+        "z": 2,
+        "material": "gem"
+      }
+    ],
+    "plan": {
+      "source": "auto",
+      "score": 0.247,
+      "locked": true
+    }
+  },
+  {
+    "target": "prop-orb-staff",
+    "compose": "split",
+    "kind": "weapon",
+    "game": "runeforge-props",
+    "aspect": "1:1",
+    "base": "staffs/orb-staff",
+    "subject": "orb staff",
+    "pieces": [
+      {
+        "id": "orb",
+        "box": [
+          71,
+          18,
+          138,
+          81
+        ],
+        "seeds": [
+          [
+            106,
+            48
+          ]
+        ],
+        "except": [
+          "#c76a39",
+          "#9a4826",
+          "#e2864c"
+        ],
+        "tolerance": 30,
+        "mode": "cover",
+        "joint": [
+          105,
+          48
+        ],
+        "z": 1,
+        "material": "gem"
+      }
+    ],
+    "plan": {
+      "source": "auto",
+      "score": 0.303,
+      "locked": true
+    }
+  },
+  {
+    "target": "prop-fire-staff",
+    "compose": "split",
+    "kind": "weapon",
+    "game": "runeforge-props",
+    "aspect": "1:1",
+    "base": "staffs/fire-staff",
+    "subject": "fire staff",
+    "pieces": [
+      {
+        "id": "red-orb",
+        "box": [
+          84,
+          72,
+          109,
+          96
+        ],
+        "seeds": [
+          [
+            97,
+            85
+          ]
+        ],
+        "except": [
+          "#fdc32b",
+          "#ea9514",
+          "#fdd548",
+          "#fee988"
+        ],
+        "tolerance": 30,
+        "mode": "cover",
+        "joint": [
+          96,
+          84
+        ],
+        "z": 2,
+        "material": "gem"
+      },
+      {
+        "id": "fire-crystal",
+        "box": [
+          68,
+          0,
+          126,
+          78
+        ],
+        "seeds": [
+          [
+            99,
+            29
+          ]
+        ],
+        "except": [
+          "#ec9917",
+          "#fdcb36",
+          "#feda56"
+        ],
+        "tolerance": 30,
+        "mode": "cover",
+        "joint": [
+          97,
+          76
+        ],
+        "z": 1,
+        "material": "flame"
+      }
+    ],
+    "plan": {
+      "source": "auto",
+      "score": 0.317,
+      "locked": true
+    }
+  },
+  {
+    "target": "prop-sceptre",
+    "compose": "split",
+    "kind": "weapon",
+    "game": "runeforge-props",
+    "aspect": "1:1",
+    "base": "staffs/sceptre",
+    "subject": "sceptre",
+    "pieces": [
+      {
+        "id": "ruby",
+        "box": [
+          69,
+          30,
+          122,
+          82
+        ],
+        "seeds": [
+          [
+            96,
+            58
+          ]
+        ],
+        "except": [
+          "#fdc52d",
+          "#f5a71b",
+          "#fee57a",
+          "#e38b0e"
+        ],
+        "tolerance": 30,
+        "mode": "cover",
+        "joint": [
+          95,
+          57
+        ],
+        "z": 2,
+        "material": "gem"
+      }
+    ],
+    "plan": {
+      "source": "auto",
+      "score": 0.374,
+      "locked": true
+    }
+  },
+  {
+    "target": "prop-nature-staff",
+    "compose": "split",
+    "kind": "weapon",
+    "game": "runeforge-props",
+    "aspect": "1:1",
+    "base": "staffs/nature-staff",
+    "subject": "nature staff",
+    "pieces": [
+      {
+        "id": "gem",
+        "box": [
+          73,
+          0,
+          122,
+          63
+        ],
+        "seeds": [
+          [
+            100,
+            23
+          ]
+        ],
+        "except": [
+          "#fad6ab",
+          "#e7b786",
+          "#589c47",
+          "#86c55a"
+        ],
+        "tolerance": 30,
+        "mode": "cover",
+        "joint": [
+          97,
+          24
+        ],
+        "z": 2,
+        "material": "gem"
+      }
+    ],
+    "plan": {
+      "source": "auto",
+      "score": 0.459,
+      "locked": true
+    }
+  },
+  {
+    "target": "runes",
+    "compose": "sheet",
+    "kind": "item",
+    "game": "rpg",
+    "background": "#00FF00",
+    "category": "Round rune stones facing the camera, each with one bold glyph",
+    "assets": [
+      "a round stone with a red flame glyph",
+      "a round stone with a blue wave glyph",
+      "a round stone with a green leaf glyph",
+      "a round stone with a violet star glyph",
+      "a square gold tablet with a blue lightning glyph",
+      "a round stone with a pale cross glyph"
+    ],
+    "names": [
+      "fire-rune",
+      "water-rune",
+      "earth-rune",
+      "arcane-rune",
+      "storm-tablet",
+      "ward-rune"
+    ]
+  },
+  {
+    "target": "shields",
+    "compose": "sheet",
+    "kind": "weapon",
+    "game": "rpg",
+    "background": "#00FF00",
+    "category": "Shields facing the camera",
+    "assets": [
+      "a round wooden shield with a gold rim and boss",
+      "a steel kite shield with a red chevron",
+      "a hero-blue shield with a gold diamond",
+      "a small round leather buckler",
+      "a tall wooden tower shield with steel bands",
+      "a gold sun-shaped shield with a ruby"
+    ],
+    "names": [
+      "round-shield",
+      "kite-shield",
+      "heater-shield",
+      "buckler",
+      "tower-shield",
+      "sun-shield"
+    ]
+  },
+  {
+    "target": "bows",
+    "compose": "sheet",
+    "kind": "weapon",
+    "game": "rpg",
+    "background": "#00FF00",
+    "category": "Bows standing upright and a crossbow pointing up",
+    "assets": [
+      "a simple wooden longbow with a leather grip",
+      "a short curved dark wooden bow with gold tips",
+      "a pale wooden bow with green leaves at the tips",
+      "a wooden and steel crossbow",
+      "a gold bow with a ruby in the grip",
+      "a leather quiver of arrows"
+    ],
+    "names": [
+      "longbow",
+      "recurve-bow",
+      "elven-bow",
+      "crossbow",
+      "ruby-bow",
+      "quiver"
+    ]
+  },
+  {
+    "target": "hero-knight",
+    "compose": "single",
+    "kind": "character",
+    "game": "rpg",
+    "background": "#00FF00",
+    "subject": "a chibi human knight with a round steel helmet open at the face, a hero-blue tunic over steel armour and steel boots",
+    "references": [
+      {
+        "ref": "swords/broadsword",
+        "role": "family"
+      },
+      {
+        "ref": "shields/kite-shield",
+        "role": "family"
+      }
+    ],
+    "notes": "The sword is held in the front hand and points straight up. The kite shield is held in the back hand, behind the body on the left. Copy the held item's shape and colours from the reference images, drawn small enough for the hand. RIG POSE: a full-body chibi character for a cut-out skeleton rig, about two and a half heads tall. Three-quarter view FACING RIGHT: the face, the eyes and the toes all point to the right side of the image. The front arm (nearer the viewer) is a short stubby tube that sticks out forward and down at about 45 degrees, straight, with a round shoulder and a round mitten hand, with clear background between the arm and the body. The back arm is a short stubby tube that sticks out backward and down to the left of the body, with clear background between it and the body. Legs are two short stubby legs with round boots, slightly apart in a small stride, with background between them. Nothing crosses in front of the body. No cape, no cloak, no long hair or beard over the arms. Held items stay clear of the head and body. Lineless and simple like the rest of the set."
+  },
+  {
+    "target": "hero-orc",
+    "compose": "single",
+    "kind": "character",
+    "game": "rpg",
+    "background": "#00FF00",
+    "subject": "a chibi green orc with two small tusks, a black topknot, a leather vest and leather boots",
+    "references": [
+      {
+        "ref": "axes/battle-axe",
+        "role": "family"
+      }
+    ],
+    "notes": "The battle axe is held in the front hand and points straight up. The back hand is an empty round green fist. Copy the held item's shape and colours from the reference images, drawn small enough for the hand. RIG POSE: a full-body chibi character for a cut-out skeleton rig, about two and a half heads tall. Three-quarter view FACING RIGHT: the face, the eyes and the toes all point to the right side of the image. The front arm (nearer the viewer) is a short stubby tube that sticks out forward and down at about 45 degrees, straight, with a round shoulder and a round mitten hand, with clear background between the arm and the body. The back arm is a short stubby tube that sticks out backward and down to the left of the body, with clear background between it and the body. Legs are two short stubby legs with round boots, slightly apart in a small stride, with background between them. Nothing crosses in front of the body. No cape, no cloak, no long hair or beard over the arms. Held items stay clear of the head and body. Lineless and simple like the rest of the set."
+  },
+  {
+    "target": "hero-dwarf",
+    "compose": "single",
+    "kind": "character",
+    "game": "rpg",
+    "background": "#00FF00",
+    "subject": "a chibi dwarf with a round steel horned helmet, a short round orange beard that stays on the chin, steel armour and leather boots",
+    "references": [
+      {
+        "ref": "axes/war-hammer",
+        "role": "family"
+      },
+      {
+        "ref": "shields/round-shield",
+        "role": "family"
+      }
+    ],
+    "notes": "The war hammer is held in the front hand and points straight up. The round shield is held in the back hand, behind the body on the left. Copy the held item's shape and colours from the reference images, drawn small enough for the hand. RIG POSE: a full-body chibi character for a cut-out skeleton rig, about two and a half heads tall. Three-quarter view FACING RIGHT: the face, the eyes and the toes all point to the right side of the image. The front arm (nearer the viewer) is a short stubby tube that sticks out forward and down at about 45 degrees, straight, with a round shoulder and a round mitten hand, with clear background between the arm and the body. The back arm is a short stubby tube that sticks out backward and down to the left of the body, with clear background between it and the body. Legs are two short stubby legs with round boots, slightly apart in a small stride, with background between them. Nothing crosses in front of the body. No cape, no cloak, no long hair or beard over the arms. Held items stay clear of the head and body. Lineless and simple like the rest of the set."
+  },
+  {
+    "target": "hero-elf",
+    "compose": "single",
+    "kind": "character",
+    "game": "rpg",
+    "background": "#00FF00",
+    "subject": "a chibi elf ranger with pointed ears, a short green hood, short blonde hair, a leaf-green tunic and brown boots",
+    "references": [
+      {
+        "ref": "bows/longbow",
+        "role": "family"
+      }
+    ],
+    "notes": "The longbow is held upright in the front hand, out ahead on the right. The back hand is empty. Copy the held item's shape and colours from the reference images, drawn small enough for the hand. RIG POSE: a full-body chibi character for a cut-out skeleton rig, about two and a half heads tall. Three-quarter view FACING RIGHT: the face, the eyes and the toes all point to the right side of the image. The front arm (nearer the viewer) is a short stubby tube that sticks out forward and down at about 45 degrees, straight, with a round shoulder and a round mitten hand, with clear background between the arm and the body. The back arm is a short stubby tube that sticks out backward and down to the left of the body, with clear background between it and the body. Legs are two short stubby legs with round boots, slightly apart in a small stride, with background between them. Nothing crosses in front of the body. No cape, no cloak, no long hair or beard over the arms. Held items stay clear of the head and body. Lineless and simple like the rest of the set."
+  },
+  {
+    "target": "hero-wizard",
+    "compose": "single",
+    "kind": "character",
+    "game": "rpg",
+    "background": "#00FF00",
+    "subject": "a chibi wizard with a tall violet pointed hat, a round white beard that stays on the chin, a violet robe that ends above the boots",
+    "references": [
+      {
+        "ref": "staffs/orb-staff",
+        "role": "family"
+      }
+    ],
+    "notes": "The orb staff is held upright in the front hand, out ahead on the right. The back hand is empty. Copy the held item's shape and colours from the reference images, drawn small enough for the hand. RIG POSE: a full-body chibi character for a cut-out skeleton rig, about two and a half heads tall. Three-quarter view FACING RIGHT: the face, the eyes and the toes all point to the right side of the image. The front arm (nearer the viewer) is a short stubby tube that sticks out forward and down at about 45 degrees, straight, with a round shoulder and a round mitten hand, with clear background between the arm and the body. The back arm is a short stubby tube that sticks out backward and down to the left of the body, with clear background between it and the body. Legs are two short stubby legs with round boots, slightly apart in a small stride, with background between them. Nothing crosses in front of the body. No cape, no cloak, no long hair or beard over the arms. Held items stay clear of the head and body. Lineless and simple like the rest of the set."
+  },
+  {
+    "target": "parts-hero-elf",
+    "compose": "parts",
+    "kind": "character",
+    "game": "rpg",
+    "background": "#00FF00",
+    "subject": "the chibi elf ranger in the attached image, facing right, with the longbow",
+    "reference": "hero-elf/hero-elf",
+    "rigType": "humanoid",
+    "parts": [
+      {
+        "label": "head with the green hood, the blonde hair and both pointed ears, ending in a round neck stub"
+      },
+      {
+        "label": "torso: the green tunic with the belt and strap, no head, no arms, no legs, with round shoulders"
+      },
+      {
+        "label": "front arm: the whole bare arm from a round shoulder end to the mitten hand, holding the longbow upright"
+      },
+      {
+        "label": "back arm: the whole bare arm from a round shoulder end to the empty mitten hand"
+      },
+      {
+        "label": "front leg: the whole leg from a round hip end at the top to the brown boot"
+      },
+      {
+        "label": "back leg: the whole leg from a round hip end at the top to the brown boot"
+      }
+    ],
+    "names": [
+      "head",
+      "torso",
+      "front-arm",
+      "back-arm",
+      "front-leg",
+      "back-leg"
+    ],
+    "notes": "The ears stay on the head piece. Each limb is drawn complete and whole, including the part normally hidden under the tunic, with a round end where it joins the body. Same pose and angle as in the attached image.",
+    "rig": {
+      "root": "torso",
+      "bones": {
+        "head": {
+          "joint": [
+            118,
+            196
+          ],
+          "at": [
+            70,
+            26
+          ],
+          "z": 3,
+          "material": "hero-head"
+        },
+        "front-arm": {
+          "joint": [
+            74,
+            150
+          ],
+          "at": [
+            124,
+            52
+          ],
+          "z": 2,
+          "material": "front-arm"
+        },
+        "back-arm": {
+          "joint": [
+            92,
+            24
+          ],
+          "at": [
+            16,
+            52
+          ],
+          "z": -1,
+          "material": "back-arm"
+        },
+        "front-leg": {
+          "joint": [
+            88,
+            16
+          ],
+          "at": [
+            108,
+            116
+          ],
+          "z": -2,
+          "material": "leg"
+        },
+        "back-leg": {
+          "joint": [
+            60,
+            16
+          ],
+          "at": [
+            32,
+            116
+          ],
+          "z": -3,
+          "material": "leg"
+        }
+      }
+    }
+  },
+  {
+    "target": "parts-hero-knight",
+    "compose": "parts",
+    "kind": "character",
+    "game": "rpg",
+    "background": "#00FF00",
+    "subject": "the chibi knight in the attached image, facing right, with the sword and the kite shield",
+    "reference": "hero-knight/hero-knight",
+    "rigType": "humanoid",
+    "parts": [
+      {
+        "label": "head in the round steel helmet with the red plume, ending in a round neck stub"
+      },
+      {
+        "label": "torso: the steel armour with the blue tunic and the belt, no head, no arms, no legs, with round shoulder sockets"
+      },
+      {
+        "label": "front arm: the whole steel arm from a round shoulder end to the mitten hand, holding the sword pointing up"
+      },
+      {
+        "label": "back arm: the whole steel arm from a round shoulder end to the mitten hand, holding the kite shield"
+      },
+      {
+        "label": "front leg: the whole leg from a round hip end at the top to the boot"
+      },
+      {
+        "label": "back leg: the whole leg from a round hip end at the top to the boot"
+      }
+    ],
+    "names": [
+      "head",
+      "torso",
+      "front-arm",
+      "back-arm",
+      "front-leg",
+      "back-leg"
+    ],
+    "notes": "Each limb is drawn complete and whole, including the part normally hidden by the body, with a round end where it joins the body. Same colours, angle and style as in the attached image.",
+    "rig": {
+      "root": "torso",
+      "bones": {
+        "head": {
+          "joint": [
+            150,
+            240
+          ],
+          "at": [
+            95,
+            18
+          ],
+          "z": 3,
+          "material": "hero-head"
+        },
+        "front-arm": {
+          "joint": [
+            172,
+            100
+          ],
+          "at": [
+            14,
+            72
+          ],
+          "z": 2,
+          "material": "front-arm"
+        },
+        "back-arm": {
+          "joint": [
+            25,
+            32
+          ],
+          "at": [
+            150,
+            70
+          ],
+          "z": -1,
+          "material": "back-arm"
+        },
+        "front-leg": {
+          "joint": [
+            85,
+            20
+          ],
+          "at": [
+            126,
+            148
+          ],
+          "z": -2,
+          "material": "leg"
+        },
+        "back-leg": {
+          "joint": [
+            70,
+            20
+          ],
+          "at": [
+            42,
+            148
+          ],
+          "z": -3,
+          "material": "leg"
+        }
+      }
+    }
+  },
+  {
+    "target": "parts-hero-orc",
+    "compose": "parts",
+    "kind": "character",
+    "game": "rpg",
+    "background": "#00FF00",
+    "subject": "the chibi green orc in the attached image, facing right, with the battle axe",
+    "reference": "hero-orc/hero-orc",
+    "rigType": "humanoid",
+    "parts": [
+      {
+        "label": "head with the black topknot, the ears and the tusks, ending in a round neck stub"
+      },
+      {
+        "label": "torso: the green body with the leather vest and the belt, no head, no arms, no legs, with round shoulders"
+      },
+      {
+        "label": "front arm: the whole green arm from a round shoulder end to the fist, holding the battle axe pointing up"
+      },
+      {
+        "label": "back arm: the whole green arm from a round shoulder end to the empty round fist"
+      },
+      {
+        "label": "back ear"
+      },
+      {
+        "label": "front ear"
+      },
+      {
+        "label": "front leg: the whole leg from a round hip end at the top to the boot"
+      },
+      {
+        "label": "back leg: the whole leg from a round hip end at the top to the boot"
+      }
+    ],
+    "names": [
+      "head",
+      "torso",
+      "front-arm",
+      "back-arm",
+      "back-ear",
+      "front-ear",
+      "front-leg",
+      "back-leg"
+    ],
+    "notes": "Each limb is drawn complete and whole, including the part normally hidden by the body, with a round end where it joins the body. Same colours, angle and style as in the attached image. Leave a wide empty gap around every part: no part touches or nearly touches another, and each arm stays far from the torso.",
+    "cutout": {
+      "mergeGap": 0
+    },
+    "rig": {
+      "root": "torso",
+      "bones": {
+        "head": {
+          "joint": [
+            130,
+            240
+          ],
+          "at": [
+            92,
+            40
+          ],
+          "z": 3,
+          "material": "hero-head"
+        },
+        "back-ear": {
+          "joint": [
+            88,
+            85
+          ],
+          "at": [
+            48,
+            165
+          ],
+          "z": 2.5,
+          "material": "hat-tip",
+          "parent": "head"
+        },
+        "front-ear": {
+          "joint": [
+            14,
+            88
+          ],
+          "at": [
+            222,
+            165
+          ],
+          "z": 2.5,
+          "material": "hat-tip",
+          "parent": "head"
+        },
+        "front-arm": {
+          "joint": [
+            28,
+            135
+          ],
+          "at": [
+            160,
+            95
+          ],
+          "z": 2,
+          "material": "front-arm"
+        },
+        "back-arm": {
+          "joint": [
+            78,
+            22
+          ],
+          "at": [
+            25,
+            95
+          ],
+          "z": -1,
+          "material": "back-arm"
+        },
+        "front-leg": {
+          "joint": [
+            80,
+            18
+          ],
+          "at": [
+            132,
+            158
+          ],
+          "z": -2,
+          "material": "leg"
+        },
+        "back-leg": {
+          "joint": [
+            50,
+            18
+          ],
+          "at": [
+            46,
+            158
+          ],
+          "z": -3,
+          "material": "leg"
+        }
+      }
+    }
+  },
+  {
+    "target": "parts-hero-dwarf",
+    "compose": "parts",
+    "kind": "character",
+    "game": "rpg",
+    "background": "#00FF00",
+    "subject": "the chibi dwarf in the attached image, facing right, with the war hammer and the round shield",
+    "reference": "hero-dwarf/hero-dwarf",
+    "rigType": "humanoid",
+    "parts": [
+      {
+        "label": "head in the horned steel helmet with the orange beard, ending in a round neck stub"
+      },
+      {
+        "label": "torso: the steel armour with the blue cloth and the belt, no head, no arms, no legs, with round shoulder sockets"
+      },
+      {
+        "label": "front arm: the whole arm from a round shoulder end to the mitten hand, holding the war hammer pointing up"
+      },
+      {
+        "label": "back arm: the whole arm from a round shoulder end to the mitten hand, holding the round shield"
+      },
+      {
+        "label": "front leg: the whole leg from a round hip end at the top to the boot"
+      },
+      {
+        "label": "back leg: the whole leg from a round hip end at the top to the boot"
+      }
+    ],
+    "names": [
+      "head",
+      "torso",
+      "front-arm",
+      "back-arm",
+      "front-leg",
+      "back-leg"
+    ],
+    "notes": "Each limb is drawn complete and whole, including the part normally hidden by the body, with a round end where it joins the body. Same colours, angle and style as in the attached image.",
+    "cutout": {
+      "mergeGap": 0
+    },
+    "rig": {
+      "root": "torso",
+      "bones": {
+        "head": {
+          "joint": [
+            140,
+            200
+          ],
+          "at": [
+            95,
+            35
+          ],
+          "z": 3,
+          "material": "hero-head"
+        },
+        "front-arm": {
+          "joint": [
+            185,
+            170
+          ],
+          "at": [
+            15,
+            95
+          ],
+          "z": 2,
+          "material": "front-arm"
+        },
+        "back-arm": {
+          "joint": [
+            215,
+            100
+          ],
+          "at": [
+            172,
+            90
+          ],
+          "z": -1,
+          "material": "back-arm",
+          "mirror": true
+        },
+        "front-leg": {
+          "joint": [
+            80,
+            18
+          ],
+          "at": [
+            142,
+            172
+          ],
+          "z": -2,
+          "material": "leg"
+        },
+        "back-leg": {
+          "joint": [
+            60,
+            20
+          ],
+          "at": [
+            48,
+            172
+          ],
+          "z": -3,
+          "material": "leg"
+        }
+      }
+    }
+  },
+  {
+    "target": "parts-hero-wizard",
+    "compose": "parts",
+    "kind": "character",
+    "game": "rpg",
+    "background": "#00FF00",
+    "subject": "the chibi wizard in the attached image, facing right, with the orb staff",
+    "reference": "hero-wizard/hero-wizard",
+    "rigType": "humanoid",
+    "parts": [
+      {
+        "label": "head in the tall violet hat with the white beard, ending in a round neck stub"
+      },
+      {
+        "label": "torso: the violet robe with the gold belt, no head, no arms, no legs, with round shoulders"
+      },
+      {
+        "label": "front arm: the whole violet sleeve and hand from a round shoulder end, holding the orb staff upright"
+      },
+      {
+        "label": "back arm: the whole violet sleeve from a round shoulder end to the empty hand"
+      },
+      {
+        "label": "front leg: the whole leg from a round hip end at the top to the boot"
+      },
+      {
+        "label": "back leg: the whole leg from a round hip end at the top to the boot"
+      }
+    ],
+    "names": [
+      "head",
+      "torso",
+      "front-arm",
+      "back-arm",
+      "front-leg",
+      "back-leg"
+    ],
+    "notes": "The robe ends above the boots so the legs show below it. Each limb is drawn complete and whole, including the part normally hidden by the body, with a round end where it joins the body. Same colours, angle and style as in the attached image. Leave a wide empty gap around every part: no part touches or nearly touches another, and each arm stays far from the torso.",
+    "cutout": {
+      "mergeGap": 0
+    },
+    "rig": {
+      "root": "torso",
+      "bones": {
+        "head": {
+          "joint": [
+            125,
+            215
+          ],
+          "at": [
+            75,
+            30
+          ],
+          "z": 3,
+          "material": "hero-head"
+        },
+        "front-arm": {
+          "joint": [
+            42,
+            140
+          ],
+          "at": [
+            140,
+            65
+          ],
+          "z": 2,
+          "material": "front-arm"
+        },
+        "back-arm": {
+          "joint": [
+            15,
+            40
+          ],
+          "at": [
+            8,
+            65
+          ],
+          "z": -1,
+          "material": "back-arm",
+          "mirror": true
+        },
+        "front-leg": {
+          "joint": [
+            50,
+            12
+          ],
+          "at": [
+            110,
+            138
+          ],
+          "z": -2,
+          "material": "leg"
+        },
+        "back-leg": {
+          "joint": [
+            45,
+            12
+          ],
+          "at": [
+            36,
+            138
+          ],
+          "z": -3,
+          "material": "leg"
+        }
+      }
+    }
+  }
+]

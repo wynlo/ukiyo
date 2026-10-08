@@ -1,0 +1,511 @@
+{
+  "target": "parts-hero-knight",
+  "compose": "parts",
+  "kind": "character",
+  "game": "rpg",
+  "warnings": [],
+  "assets": {
+    "head": {
+      "name": "head",
+      "status": "approved",
+      "references": [
+        {
+          "n": 1,
+          "id": "hero-knight/hero-knight",
+          "path": "art/generated/hero-knight/cut/hero-knight.png",
+          "role": "input",
+          "source": "edit",
+          "sha256": "7d21de05240b7563"
+        },
+        {
+          "n": 2,
+          "path": "art/generated/forge-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "82fd7e0ac65376a6"
+        }
+      ],
+      "sourceBox": {
+        "x": 20,
+        "y": 102,
+        "width": 467,
+        "height": 518,
+        "area": 156084
+      },
+      "width": 257,
+      "height": 256,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "part": {
+        "base": "parts-hero-knight/torso",
+        "baseWidth": 163,
+        "baseHeight": 163,
+        "x": -55,
+        "y": -222,
+        "joint": {
+          "x": 150,
+          "y": 240
+        },
+        "z": 3,
+        "role": "piece",
+        "rig": {
+          "material": "hero-head",
+          "rest": {
+            "kind": "sway",
+            "amount": [
+              1.5,
+              2.5
+            ],
+            "periodMs": [
+              1800,
+              2200
+            ]
+          },
+          "use": {
+            "kind": "swing",
+            "amount": [
+              4,
+              6
+            ],
+            "periodMs": [
+              450,
+              550
+            ],
+            "durationMs": [
+              700,
+              900
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      },
+      "reviewedAt": "2026-10-07T16:50:25Z",
+      "content": {
+        "x": 13,
+        "y": 0,
+        "width": 231,
+        "height": 256
+      }
+    },
+    "torso": {
+      "name": "torso",
+      "status": "approved",
+      "references": [
+        {
+          "n": 1,
+          "id": "hero-knight/hero-knight",
+          "path": "art/generated/hero-knight/cut/hero-knight.png",
+          "role": "input",
+          "source": "edit",
+          "sha256": "7d21de05240b7563"
+        },
+        {
+          "n": 2,
+          "path": "art/generated/forge-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "82fd7e0ac65376a6"
+        }
+      ],
+      "sourceBox": {
+        "x": 526,
+        "y": 352,
+        "width": 328,
+        "height": 288,
+        "area": 76372
+      },
+      "width": 163,
+      "height": 163,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "part": {
+        "base": "parts-hero-knight/torso",
+        "baseWidth": 163,
+        "baseHeight": 163,
+        "x": 0,
+        "y": 0,
+        "joint": {
+          "x": 81.5,
+          "y": 81.5
+        },
+        "z": 0,
+        "role": "plate"
+      },
+      "reviewedAt": "2026-10-07T16:50:25Z",
+      "content": {
+        "x": 0,
+        "y": 20,
+        "width": 163,
+        "height": 143
+      }
+    },
+    "front-arm": {
+      "name": "front-arm",
+      "status": "approved",
+      "references": [
+        {
+          "n": 1,
+          "id": "hero-knight/hero-knight",
+          "path": "art/generated/hero-knight/cut/hero-knight.png",
+          "role": "input",
+          "source": "edit",
+          "sha256": "7d21de05240b7563"
+        },
+        {
+          "n": 2,
+          "path": "art/generated/forge-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "82fd7e0ac65376a6"
+        }
+      ],
+      "sourceBox": {
+        "x": 908,
+        "y": 156,
+        "width": 321,
+        "height": 457,
+        "area": 77531
+      },
+      "width": 227,
+      "height": 226,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "part": {
+        "base": "parts-hero-knight/torso",
+        "baseWidth": 163,
+        "baseHeight": 163,
+        "x": -158,
+        "y": -28,
+        "joint": {
+          "x": 172,
+          "y": 100
+        },
+        "z": 2,
+        "role": "piece",
+        "rig": {
+          "material": "front-arm",
+          "rest": {
+            "kind": "sway",
+            "amount": [
+              2,
+              3
+            ],
+            "periodMs": [
+              1800,
+              2200
+            ]
+          },
+          "use": {
+            "kind": "swing",
+            "amount": [
+              28,
+              36
+            ],
+            "periodMs": [
+              450,
+              550
+            ],
+            "durationMs": [
+              700,
+              900
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      },
+      "reviewedAt": "2026-10-07T16:50:25Z",
+      "content": {
+        "x": 34,
+        "y": 0,
+        "width": 159,
+        "height": 226
+      }
+    },
+    "back-arm": {
+      "name": "back-arm",
+      "status": "approved",
+      "references": [
+        {
+          "n": 1,
+          "id": "hero-knight/hero-knight",
+          "path": "art/generated/hero-knight/cut/hero-knight.png",
+          "role": "input",
+          "source": "edit",
+          "sha256": "7d21de05240b7563"
+        },
+        {
+          "n": 2,
+          "path": "art/generated/forge-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "82fd7e0ac65376a6"
+        }
+      ],
+      "sourceBox": {
+        "x": 52,
+        "y": 778,
+        "width": 388,
+        "height": 376,
+        "area": 93011
+      },
+      "width": 193,
+      "height": 193,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "part": {
+        "base": "parts-hero-knight/torso",
+        "baseWidth": 163,
+        "baseHeight": 163,
+        "x": 125,
+        "y": 38,
+        "joint": {
+          "x": 25,
+          "y": 32
+        },
+        "z": -1,
+        "role": "piece",
+        "rig": {
+          "material": "back-arm",
+          "rest": {
+            "kind": "sway",
+            "amount": [
+              2,
+              3
+            ],
+            "periodMs": [
+              1800,
+              2200
+            ]
+          },
+          "use": {
+            "kind": "swing",
+            "amount": [
+              -14,
+              -10
+            ],
+            "periodMs": [
+              450,
+              550
+            ],
+            "durationMs": [
+              700,
+              900
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      },
+      "reviewedAt": "2026-10-07T16:50:25Z",
+      "content": {
+        "x": 0,
+        "y": 7,
+        "width": 193,
+        "height": 186
+      }
+    },
+    "front-leg": {
+      "name": "front-leg",
+      "status": "approved",
+      "references": [
+        {
+          "n": 1,
+          "id": "hero-knight/hero-knight",
+          "path": "art/generated/hero-knight/cut/hero-knight.png",
+          "role": "input",
+          "source": "edit",
+          "sha256": "7d21de05240b7563"
+        },
+        {
+          "n": 2,
+          "path": "art/generated/forge-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "82fd7e0ac65376a6"
+        }
+      ],
+      "sourceBox": {
+        "x": 514,
+        "y": 801,
+        "width": 233,
+        "height": 318,
+        "area": 47638
+      },
+      "width": 158,
+      "height": 158,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "part": {
+        "base": "parts-hero-knight/torso",
+        "baseWidth": 163,
+        "baseHeight": 163,
+        "x": 41,
+        "y": 128,
+        "joint": {
+          "x": 85,
+          "y": 20
+        },
+        "z": -2,
+        "role": "piece",
+        "rig": {
+          "material": "leg",
+          "rest": {
+            "kind": "sway",
+            "amount": [
+              1.5,
+              2.5
+            ],
+            "periodMs": [
+              1800,
+              2200
+            ]
+          },
+          "use": {
+            "kind": "swing",
+            "amount": [
+              6,
+              9
+            ],
+            "periodMs": [
+              450,
+              550
+            ],
+            "durationMs": [
+              700,
+              900
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      },
+      "reviewedAt": "2026-10-07T16:50:25Z",
+      "content": {
+        "x": 21,
+        "y": 0,
+        "width": 116,
+        "height": 158
+      }
+    },
+    "back-leg": {
+      "name": "back-leg",
+      "status": "approved",
+      "references": [
+        {
+          "n": 1,
+          "id": "hero-knight/hero-knight",
+          "path": "art/generated/hero-knight/cut/hero-knight.png",
+          "role": "input",
+          "source": "edit",
+          "sha256": "7d21de05240b7563"
+        },
+        {
+          "n": 2,
+          "path": "art/generated/forge-style/raw.png",
+          "role": "style",
+          "source": "first-target",
+          "sha256": "82fd7e0ac65376a6"
+        }
+      ],
+      "sourceBox": {
+        "x": 948,
+        "y": 799,
+        "width": 249,
+        "height": 316,
+        "area": 51958
+      },
+      "width": 158,
+      "height": 157,
+      "anchor": {
+        "x": 0.5,
+        "y": 1
+      },
+      "part": {
+        "base": "parts-hero-knight/torso",
+        "baseWidth": 163,
+        "baseHeight": 163,
+        "x": -28,
+        "y": 128,
+        "joint": {
+          "x": 70,
+          "y": 20
+        },
+        "z": -3,
+        "role": "piece",
+        "rig": {
+          "material": "leg",
+          "rest": {
+            "kind": "sway",
+            "amount": [
+              1.5,
+              2.5
+            ],
+            "periodMs": [
+              1800,
+              2200
+            ]
+          },
+          "use": {
+            "kind": "swing",
+            "amount": [
+              6,
+              9
+            ],
+            "periodMs": [
+              450,
+              550
+            ],
+            "durationMs": [
+              700,
+              900
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      },
+      "reviewedAt": "2026-10-07T16:50:25Z",
+      "content": {
+        "x": 17,
+        "y": 0,
+        "width": 124,
+        "height": 157
+      }
+    }
+  },
+  "prompt": "TASK:\nCreate a production-ready separated character-parts sheet for a cozy mobile game: the character below taken apart into its pieces, each piece drawn alone.\nTake apart the EXACT character in the attached image: same colours, same face, same clothes, same outline. Do not redesign it.\n\nPROJECT CONTEXT:\nRuneforge: Fantasy RPG weapons and runes for an inventory screen.\n\nSTYLE:\nSTYLE LOCK: Simple toon sprites for a cosy top-down adventure game, like a toy diorama.\n\nPRIMARY GOAL: Weapons, runes and small heroes that read at a glance at small sizes. Simple and cute, never realistic.\n\nCORE AESTHETIC: Lineless flat colour blocks with soft rounded edges. Everything looks like a smooth matte toy. Chunky, rounded, few parts. No texture and no small detail.\n\nEDGES: NO OUTLINES. No dark contour line around any shape. Shapes are separated by colour alone.\n\nCOLOR: Bright and friendly. Steel (#D6E2EE) blades, wood (#C98A4B) handles, gold (#F7C948) fittings, leather (#8A5236) grips, stone (#8E96A3) runes. Accents: hero blue (#4A90E2), leaf green (#5CC46A), ruby (#F0504A), violet (#9B6BE8). Skin (#FFD7B0).\n\nSHADING: One flat colour per form, one soft darker shade of the same hue on its lower side, one small soft highlight on round tops and gems. Nothing else.\n\nPROPORTION: Weapons are short and chunky with oversized heads and blades. Characters are chibi: about two and a half heads tall, a big round head, a small round body, short stubby arms with round mitten hands, short stubby legs with round boots. Simple dot eyes.\n\nDETAIL LEVEL: Two or three colours per item plus one accent. A gem is a simple round or diamond shape. Rune glyphs are bold simple marks, never letters.\n\nCOMPOSITION: One asset category per image. Every asset isolated with generous crop-safe spacing. Weapons stand upright with the grip at the bottom. No background, no ground shadow.\n\nPALETTE:\nPaper #FFFFFF (background), Steel #D6E2EE (fill), Steel Shade #9EB2C8 (shade), Wood #C98A4B (fill), Wood Shade #9A6233 (shade), Gold #F7C948 (fill), Gold Shade #D49A24 (shade), Leather #8A5236 (fill), Stone #8E96A3 (fill), Skin #FFD7B0 (fill), Leaf Green #5CC46A (fill), Hero Blue #4A90E2 (fill), Ruby #F0504A (fill), Violet #9B6BE8 (fill)\n\nSHAPE LANGUAGE:\nchunky, toy-like, rounded everything, simple silhouettes, big round heads on characters, short stubby limbs with round mitten hands, few parts\n\nRENDERING RULES:\n- no outlines: flat colour blocks separated by colour alone\n- one flat colour per form plus one soft darker shade of the same hue\n- one small soft highlight on round tops and gems\n- simple shapes, no texture, no small details\n- smooth matte toy plastic, like a toy diorama\n- weapons stand upright, grip at the bottom\n- crisp high-resolution raster\n- isolated presentation with large spacing\n\nCHARACTER:\nthe chibi knight in the attached image, facing right, with the sword and the kite shield\n\nRIG TYPE:\nhumanoid\n\nSELECTED PARTS:\n- head in the round steel helmet with the red plume, ending in a round neck stub (required)\n- torso: the steel armour with the blue tunic and the belt, no head, no arms, no legs, with round shoulder sockets (required)\n- front arm: the whole steel arm from a round shoulder end to the mitten hand, holding the sword pointing up (required)\n- back arm: the whole steel arm from a round shoulder end to the mitten hand, holding the kite shield (required)\n- front leg: the whole leg from a round hip end at the top to the boot (required)\n- back leg: the whole leg from a round hip end at the top to the boot (required)\n\nPART RULES:\nEach part is drawn ONCE, alone, complete and closed, exactly as it appears on the assembled character.\nThe head piece has NO ears attached; the ears are their own pieces. The head keeps its face, cheeks and any hat or glasses the character wears.\nThe body piece is the torso ONLY: a rounded blob with NO head, NO arms, NO legs, NO feet, NO paws and NO tail attached. Its bottom edge is ONE smooth convex curve with no bumps, notches or leg stubs. Any clothing (scarf, apron, overalls, collar, satchel) is drawn ON the body piece as part of it, never as a separate piece.\nEach leg piece is a short stubby leg ending in a paw or foot, drawn upright, with a flat cut end at the top where it meets the body. Each arm piece is a short stubby arm with a flat cut end at the top. The tail has a flat cut end at its base.\nKeep TRUE RELATIVE SIZES: the body and head are the big pieces; an ear is about a third of the head; an arm or foot is about a quarter of the body. Do not enlarge small pieces to fill their cell.\n\nCANVAS AND LAYOUT:\nOutput size 1024x1024. Solid flat background #00FF00 with no texture, no vignette, no border. Nothing in the picture may use a colour close to the background colour.\nThe game shows each asset in a 1:1 (width:height) frame. Compose each asset to suit that frame, and keep its natural proportions: do not stretch or squash it.\nParts-sheet layout: a 3-column grid, one part per invisible cell, filled in reading order (left to right, then top to bottom) in EXACTLY the order the parts are listed above. The first listed part is top-left; the last is bottom-right. Do not rearrange for looks.\nLarge crop-safe gutters between cells. No part touches another. Do not show the assembled character.\nNo labels, text, numbers, arrows, scene, or decorative filler.\nDraw each part front-facing, as it appears on the assembled character.\n\nNEGATIVE PROMPT:\noutlines, dark outlines, black outlines, ink lines, line art, contour lines, sticker outline, realism, realistic anatomy, muscles, 3D render, photoreal, metal reflections, chrome, texture, wood grain, scratches, rivets, fine detail, small detail, lens flare, glow blur, blood, gore, scene background, ground shadow, motion lines, text, labels, letters, numbers, watermark, clutter\n\nFINAL CHECK:\nEvery listed part is present once, fully separated, closed, rounded, at true relative size, and crop-safe. The head has no ears. The body is a plain torso blob with a smooth bottom edge and no legs or paws. Legs are separate pieces.\n\nADDITIONAL DETAILS:\nEach limb is drawn complete and whole, including the part normally hidden by the body, with a round end where it joins the body. Same colours, angle and style as in the attached image.",
+  "promptVersion": "v1",
+  "references": [
+    {
+      "n": 1,
+      "id": "hero-knight/hero-knight",
+      "path": "art/generated/hero-knight/cut/hero-knight.png",
+      "role": "input",
+      "source": "edit",
+      "sha256": "7d21de05240b7563"
+    },
+    {
+      "n": 2,
+      "path": "art/generated/forge-style/raw.png",
+      "role": "style",
+      "source": "first-target",
+      "sha256": "82fd7e0ac65376a6"
+    }
+  ],
+  "generatedAt": "2026-10-07T16:28:16.736Z",
+  "provider": "codex",
+  "detected": 6,
+  "expected": 6
+}

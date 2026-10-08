@@ -20,7 +20,7 @@ Six projects in [`examples/`](examples), one style each. All are lineless.
 | [`zen-garden`](examples/zen-garden) | Soft watercolour |
 | [`starfall`](examples/starfall) | Vinyl toy spaceships |
 | [`neon-alley`](examples/neon-alley) | Cosy cyberpunk |
-| [`runeforge`](examples/runeforge) | Hand-painted RPG weapons and runes |
+| [`runeforge`](examples/runeforge) | Toon RPG weapons, runes and rigged chibi heroes |
 
 ![Lucky Cat Shrine](docs/examples/lucky-cat-shrine.png)
 
@@ -122,12 +122,19 @@ Every field is in the [manifest reference](skills/ukiyo/reference/manifest.md).
   with joints, so lanterns and paper strips can move. `ukiyo plan` picks the
   pieces. Below: props from the examples at rest, in a gust of wind, then
   each one used. Motion is scaled up 5x.
+- **Rigged characters.** A `parts` target draws a character as separate
+  parts (head, torso, arms with their weapons, legs), each limb whole with a
+  round end. Its `rig` places each part's joint on its parent, and `final`
+  writes the same part data as a split. Below: Runeforge's five heroes and
+  six glowing staffs.
 - **Lights.** `final` finds lit regions in the art and `pack` writes them
   into the atlas.
 
 ![Multipart props moving about their joints](docs/examples/multipart.gif)
 
 ![Multipart props and their pieces](docs/examples/multipart.png)
+
+![Runeforge heroes and staffs moving about their joints](docs/examples/runeforge.gif)
 
 Engine notes: [`phaser.md`](skills/ukiyo/reference/phaser.md),
 [`react.md`](skills/ukiyo/reference/react.md).

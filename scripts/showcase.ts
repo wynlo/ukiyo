@@ -18,6 +18,7 @@ const themes: Record<string, { bg: string; ink: string; pixel?: boolean }> = {
   'zen-garden': { bg: '#F3EFE6', ink: '#3F4A3A' },
   'neon-alley': { bg: '#15131F', ink: '#F2F0FF' },
   starfall: { bg: '#1C2340', ink: '#F4F1FF' },
+  runeforge: { bg: '#2A2420', ink: '#F3E6CF' },
 };
 
 const width = 1600;
@@ -49,8 +50,8 @@ for (const name of fs.readdirSync(root).sort()) {
   for (const t of manifest) {
     // Style reference sheets only anchor the look. They are not game art.
     if (t.target.endsWith('-style')) continue;
-    // Split targets are drawn by scripts/multipart.ts.
-    if (t.compose === 'split') continue;
+    // Split targets and rigged parts are drawn by scripts/multipart.ts.
+    if (t.compose === 'split' || (t.compose === 'parts' && t.rig)) continue;
     const gen = path.join(dir, config.out, t.target);
     const finalDir = path.join(gen, 'final');
     if (!fs.existsSync(finalDir)) continue;

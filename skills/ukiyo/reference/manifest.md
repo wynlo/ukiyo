@@ -128,6 +128,11 @@ final PNG, from its top-left.
   (default true) adds pixels the selection encloses. A pixel belongs to the
   first piece that selects it.
 - `joint`: the point the piece turns about.
+- `cap`: joint cap radius in base px. The parent (or the plate, for a piece
+  with no parent) keeps the piece's pixels within this distance of the
+  joint. A disc turns onto itself, so a shoulder or elbow stays closed when
+  the piece turns. Set it to about half the limb's width, and put the joint
+  at the centre of the round end.
 - `mode`: what the plate keeps under the piece.
   - `detach` (default): nothing, except `seam` px (default 2) along each cut
     where the piece touches art that stays. For a piece with only air behind it.
@@ -318,6 +323,21 @@ cuts the parts and scales them consistently.
 - `names` overrides the output names in reading order.
 - The prompt tells the model: head without ears, clothes on the body, small
   limbs with cut ends, true relative sizes, strict grid order.
+- `rig` assembles the parts into a skeleton. `root` is the part every other
+  part hangs from (the torso). It is written as the plate. Each entry of
+  `bones` gives `joint` (the pivot in the part's final px), `at` (where that
+  joint sits in its parent's final px), `parent` (default: the root), `z`
+  (draw order, the root is 0, negative draws behind it), `material` and an
+  optional `motion` override. `final` writes `part` like a split, so `pack`
+  and the game read both the same way. Ask for each limb drawn whole with a
+  round end where it joins the body, so a turning limb never opens a gap.
+
+  ```json
+  "rig": { "root": "torso", "bones": {
+    "head":      { "joint": [118, 196], "at": [70, 26],  "z": 3,  "material": "hero-head" },
+    "front-arm": { "joint": [74, 150],  "at": [124, 52], "z": 2,  "material": "front-arm" },
+    "back-leg":  { "joint": [60, 16],   "at": [40, 116], "z": -3, "material": "leg" } } }
+  ```
 
 ## Kinds (in `ukiyo.json`)
 

@@ -85,6 +85,9 @@ function touch(a: Box, b: Box, gap: number): boolean {
   return a.x <= b.x + b.width + gap && a.x + a.width + gap >= b.x && a.y <= b.y + b.height + gap && a.y + a.height + gap >= b.y;
 }
 
+/** A box at most this share of its neighbour's area is a fragment of it, and merges. */
+const fragmentShare = 0.15;
+
 export function mergeBoxes(boxes: Component[], gap: number): Component[] {
   const merged = [...boxes];
   let changed = true;
@@ -95,6 +98,9 @@ export function mergeBoxes(boxes: Component[], gap: number): Component[] {
         const first = merged[a];
         const second = merged[b];
         if (!first || !second || !touch(first, second, gap)) continue;
+        // Two big boxes that overlap are two sprites side by side (diagonal swords, a hat brim over a
+        // torso). Only a small box (a detached tip or highlight) joins the box it touches.
+        if (Math.min(first.area, second.area) > Math.max(first.area, second.area) * fragmentShare) continue;
         const x = Math.min(first.x, second.x);
         const y = Math.min(first.y, second.y);
         const x2 = Math.max(first.x + first.width, second.x + second.width);
@@ -187,4 +193,46 @@ export function coerceCount(boxes: Component[], count: number, rasterWidth: numb
     working.splice(widest, 1, { ...w, width: half, area: Math.floor(w.area / 2) }, { ...w, x: w.x + half, width: w.width - half, area: Math.ceil(w.area / 2) });
   }
   return { boxes: working, warning: `Detected ${boxes.length} components, expected ${count}; split the widest ones.` };
+}
+
+/**
+ * Clears connected regions (alpha above 24) that touch the edge of the raster,
+ * except the largest region. Used on a padded crop of one sprite: its own art
+ * never reaches the edge, a neighbour reaching into the box does.
+ */
+export function dropEdgeRegions(raster: Raster): void {
+  const { width, height, data } = raster;
+  const mask = new Uint8Array(width * height);
+  for (let p = 0; p < mask.length; p += 1) if ((data[p * 4 + 3] ?? 0) > 24) mask[p] = 1;
+  const label = new Int32Array(mask.length).fill(-1);
+  const regions: { size: number; edge: boolean }[] = [];
+  const queue: number[] = [];
+  for (let start = 0; start < mask.length; start += 1) {
+    if (!mask[start] || label[start] !== -1) continue;
+    const id = regions.length;
+    const region = { size: 0, edge: false };
+    regions.push(region);
+    label[start] = id;
+    queue.length = 0;
+    queue.push(start);
+    for (let cursor = 0; cursor < queue.length; cursor += 1) {
+      const p = queue[cursor]!;
+      const x = p % width;
+      const y = (p - x) / width;
+      region.size += 1;
+      if (x === 0 || y === 0 || x === width - 1 || y === height - 1) region.edge = true;
+      for (const n of [x > 0 ? p - 1 : -1, x < width - 1 ? p + 1 : -1, p - width, p + width]) {
+        if (n < 0 || n >= mask.length || !mask[n] || label[n] !== -1) continue;
+        label[n] = id;
+        queue.push(n);
+      }
+    }
+  }
+  if (regions.length < 2) return;
+  const largest = regions.reduce((best, r, i) => (r.size > regions[best]!.size ? i : best), 0);
+  for (let p = 0; p < label.length; p += 1) {
+    const id = label[p]!;
+    if (id < 0 || id === largest || !regions[id]!.edge) continue;
+    data[p * 4 + 3] = 0;
+  }
 }

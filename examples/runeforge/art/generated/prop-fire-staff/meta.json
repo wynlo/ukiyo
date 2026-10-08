@@ -1,0 +1,182 @@
+{
+  "target": "prop-fire-staff",
+  "compose": "split",
+  "kind": "weapon",
+  "game": "runeforge-props",
+  "warnings": [],
+  "assets": {
+    "red-orb": {
+      "name": "red-orb",
+      "status": "approved",
+      "width": 24,
+      "height": 24,
+      "content": {
+        "x": 0,
+        "y": 0,
+        "width": 24,
+        "height": 24
+      },
+      "anchor": {
+        "x": 0.5208333333333334,
+        "y": 1
+      },
+      "part": {
+        "base": "staffs/fire-staff",
+        "baseWidth": 193,
+        "baseHeight": 192,
+        "x": 84,
+        "y": 72,
+        "joint": {
+          "x": 12,
+          "y": 12
+        },
+        "z": 2,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "gem",
+          "rest": {
+            "kind": "glow",
+            "amount": [
+              0.2,
+              0.35
+            ],
+            "periodMs": [
+              2200,
+              2800
+            ]
+          },
+          "use": {
+            "kind": "glow",
+            "amount": [
+              0.5,
+              0.7
+            ],
+            "periodMs": [
+              400,
+              500
+            ],
+            "durationMs": [
+              1200,
+              1600
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      },
+      "lights": [
+        {
+          "x": 12.34,
+          "y": 12.15,
+          "radius": 10.05,
+          "color": "#f04844",
+          "intensity": 0.94,
+          "piece": "red-orb",
+          "from": "base"
+        }
+      ],
+      "reviewedAt": "2026-10-07T16:50:00Z"
+    },
+    "fire-crystal": {
+      "name": "fire-crystal",
+      "status": "approved",
+      "width": 81,
+      "height": 80,
+      "content": {
+        "x": 10,
+        "y": 0,
+        "width": 61,
+        "height": 80
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 1.2
+      },
+      "part": {
+        "base": "staffs/fire-staff",
+        "baseWidth": 193,
+        "baseHeight": 192,
+        "x": 56,
+        "y": 0,
+        "joint": {
+          "x": 41,
+          "y": 76
+        },
+        "z": 1,
+        "role": "piece",
+        "mode": "cover",
+        "rig": {
+          "material": "flame",
+          "rest": {
+            "kind": "flicker",
+            "amount": [
+              0.1,
+              0.14
+            ],
+            "periodMs": [
+              1800,
+              2400
+            ]
+          },
+          "lag": 0,
+          "stagger": 100
+        }
+      },
+      "lights": [
+        {
+          "x": 31.05,
+          "y": 27.44,
+          "radius": 6.05,
+          "color": "#fdceb7",
+          "intensity": 0.99,
+          "piece": "fire-crystal",
+          "from": "base"
+        },
+        {
+          "x": 33.44,
+          "y": 72.09,
+          "radius": 3.29,
+          "color": "#fee270",
+          "intensity": 0.99,
+          "piece": "fire-crystal",
+          "from": "base"
+        }
+      ],
+      "reviewedAt": "2026-10-07T16:50:00Z"
+    }
+  },
+  "lights": [
+    {
+      "x": 96.34,
+      "y": 84.15,
+      "radius": 10.05,
+      "color": "#f04844",
+      "intensity": 0.94,
+      "piece": "red-orb",
+      "from": "base"
+    },
+    {
+      "x": 87.05,
+      "y": 27.44,
+      "radius": 6.05,
+      "color": "#fdceb7",
+      "intensity": 0.99,
+      "piece": "fire-crystal",
+      "from": "base"
+    },
+    {
+      "x": 89.44,
+      "y": 72.09,
+      "radius": 3.29,
+      "color": "#fee270",
+      "intensity": 0.99,
+      "piece": "fire-crystal",
+      "from": "base"
+    }
+  ],
+  "plan": {
+    "status": "approved",
+    "reviewedAt": "2026-10-07T16:50:24Z"
+  }
+}
