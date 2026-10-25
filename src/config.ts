@@ -304,6 +304,28 @@ export function findConfigPath(start = process.cwd()): string | null {
   }
 }
 
+/** Every ukiyo.json below `root` (not `root` itself), for `ukiyo review`. Skips hidden directories, node_modules, dist and build. */
+export function findNestedConfigs(root: string, maxDepth = 4): string[] {
+  const found: string[] = [];
+  const walk = (dir: string, depth: number) => {
+    let entries: fs.Dirent[];
+    try {
+      entries = fs.readdirSync(dir, { withFileTypes: true });
+    } catch {
+      return;
+    }
+    for (const entry of entries) {
+      if (!entry.isDirectory() || entry.name.startsWith('.') || ['node_modules', 'dist', 'build'].includes(entry.name)) continue;
+      const sub = path.join(dir, entry.name);
+      const candidate = path.join(sub, CONFIG_FILE);
+      if (fs.existsSync(candidate)) found.push(candidate);
+      if (depth < maxDepth) walk(sub, depth + 1);
+    }
+  };
+  walk(path.resolve(root), 1);
+  return found.sort();
+}
+
 export function loadConfig(explicitPath?: string): ResolvedConfig {
   const configPath = explicitPath ? path.resolve(explicitPath) : findConfigPath();
   if (!configPath) {

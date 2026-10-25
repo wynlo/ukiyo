@@ -68,15 +68,53 @@ export type PackResult = { png: string; json: string; width: number; height: num
  * Phaser loads with `this.load.atlas`. `pivot` sets Phaser's custom pivot per
  * frame; `anchor` is the same value for other engines.
  */
+type PackRect = { name: string; file: string; anchor: { x: number; y: number }; tint?: string; content?: PackInput['content']; part?: PartMeta; lights?: LightPoint[]; width: number; height: number; x: number; y: number };
+
+function rectsOf(inputs: PackInput[]): PackRect[] {
+  return inputs.map((input) => ({ width: input.width, height: input.height, name: input.name, file: input.file, anchor: input.anchor, tint: input.tint, content: input.content, part: input.part, lights: input.lights, x: 0, y: 0 }));
+}
+
+/**
+ * The power-of-two sheet sizes up to `maxSize`, smallest area first; at the
+ * same area the squarer one first, then the wider one.
+ */
+export function potSizes(maxSize: number): Array<[number, number]> {
+  const sides: number[] = [];
+  for (let side = 1; side <= maxSize; side *= 2) sides.push(side);
+  const sizes: Array<[number, number]> = [];
+  for (const width of sides) for (const height of sides) sizes.push([width, height]);
+  return sizes.sort((a, b) => a[0] * a[1] - b[0] * b[1] || Math.abs(Math.log2(a[0] / a[1])) - Math.abs(Math.log2(b[0] / b[1])) || b[0] - a[0]);
+}
+
+/**
+ * Packs into the smallest power-of-two sheet that holds every frame. A
+ * growing bin is rounded up to a power of two on each side, so a pack just
+ * past a power of two doubled the sheet: 2048x4096 for frames that fit in
+ * 2048x2048. GPU memory is the sheet's size, not its content's. Returns
+ * `null` when no sheet up to `maxSize` holds them.
+ */
+function packSmallestPot(inputs: PackInput[], options: PackOptions): MaxRectsPacker<PackRect> | null {
+  const need = inputs.reduce((sum, input) => sum + input.width * input.height, 0);
+  for (const [width, height] of potSizes(options.maxSize)) {
+    if (width * height < need) continue;
+    if (inputs.some((input) => input.width > width || input.height > height)) continue;
+    const packer = new MaxRectsPacker<PackRect>(width, height, options.padding, { smart: false, pot: false, square: false, allowRotation: false });
+    packer.addArray(rectsOf(inputs));
+    if (packer.bins.length === 1 && packer.bins[0]!.rects.length === inputs.length) {
+      // The fixed bin reports its used size; the sheet is the whole power-of-two size.
+      packer.bins[0]!.width = width;
+      packer.bins[0]!.height = height;
+      return packer;
+    }
+  }
+  return null;
+}
+
 export async function packAtlas(group: string, inputs: PackInput[], outDir: string, options: PackOptions): Promise<PackResult> {
-  const packer = new MaxRectsPacker<{ name: string; file: string; anchor: { x: number; y: number }; tint?: string; content?: PackInput['content']; part?: PartMeta; lights?: LightPoint[]; width: number; height: number; x: number; y: number }>(
-    options.maxSize,
-    options.maxSize,
-    options.padding,
-    { smart: true, pot: options.pot === true, square: false, allowRotation: false },
-  );
-  for (const input of inputs) {
-    packer.add({ width: input.width, height: input.height, name: input.name, file: input.file, anchor: input.anchor, tint: input.tint, content: input.content, part: input.part, lights: input.lights, x: 0, y: 0 });
+  let packer = options.pot === true ? packSmallestPot(inputs, options) : null;
+  if (!packer) {
+    packer = new MaxRectsPacker<PackRect>(options.maxSize, options.maxSize, options.padding, { smart: true, pot: options.pot === true, square: false, allowRotation: false });
+    for (const rect of rectsOf(inputs)) packer.add(rect);
   }
   const bin = packer.bins[0];
   if (!bin) {

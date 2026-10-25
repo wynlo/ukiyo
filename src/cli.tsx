@@ -5,7 +5,7 @@ import open from 'open';
 import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
-import { CONFIG_FILE, defaultConfig, findConfigPath, loadConfig, writeConfig, type ResolvedConfig } from './config.js';
+import { CONFIG_FILE, defaultConfig, findConfigPath, findNestedConfigs, loadConfig, writeConfig, type ResolvedConfig } from './config.js';
 import { runDoctor } from './doctor.js';
 import { exampleManifest, loadManifest, writeManifest, type Manifest } from './manifest.js';
 import { createPipeline, type Emit, type Pipeline, type PipelineOptions } from './pipeline.js';
@@ -322,17 +322,24 @@ program
 // ---- review / status --------------------------------------------------------------------
 
 program
-  .command('review')
-  .description('serve the review page: approve, reject, redo per asset')
+  .command('review [configs...]')
+  .description('serve the review page: approve, reject, redo per asset. Also serves each ukiyo.json below this project and each config given')
   .option('--port <n>', 'port', '4177')
   .option('--no-open', 'do not open the browser')
-  .action(async (opts: { port: string; open: boolean }) => {
+  .option('--no-nested', 'do not serve the ukiyo.json files below this project')
+  .action(async (configs: string[], opts: { port: string; open: boolean; nested: boolean }) => {
     try {
       const { config, manifest } = ctx();
-      const { url } = await startReviewServer(config, manifest, Number(opts.port), (change) => {
-        console.log(`${change.redo ? 'redo' : change.status}  ${change.target}/${change.asset}${change.note ? `  — ${change.note}` : ''}`);
+      const paths = [...(opts.nested ? findNestedConfigs(config.root) : []), ...configs.map((c) => path.resolve(c))];
+      const others = [...new Set(paths)].filter((p) => path.dirname(p) !== config.root).map((p) => {
+        const other = loadConfig(p);
+        return { config: other, manifest: loadManifest(other.manifestPath) };
       });
-      console.log(`review page: ${url}  (ctrl-c to stop)`);
+      const projects = [{ config, manifest }, ...others];
+      const { url } = await startReviewServer(projects, Number(opts.port), (project, change) => {
+        console.log(`${change.redo ? 'redo' : change.status}  ${projects.length > 1 ? `${project.config.project.name}: ` : ''}${change.target}/${change.asset}${change.note ? `  — ${change.note}` : ''}`);
+      });
+      console.log(`review page: ${url}  (${projects.map((p) => p.config.project.name).join(', ')}; ctrl-c to stop)`);
       if (opts.open) await open(url);
     } catch (error) {
       fail(error);

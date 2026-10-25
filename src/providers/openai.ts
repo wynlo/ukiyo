@@ -19,7 +19,10 @@ export function createOpenAiProvider(model: string): ImageProvider {
     return file;
   };
   const handle = async (response: Response): Promise<string> => {
-    if (response.status === 429) throw new RateLimitError('OpenAI rate limit');
+    if (response.status === 429) {
+      const seconds = Number(response.headers.get('retry-after'));
+      throw new RateLimitError('OpenAI rate limit reached.', { retryAfterMs: Number.isFinite(seconds) && seconds > 0 ? seconds * 1000 : undefined });
+    }
     if (!response.ok) throw new Error(`OpenAI ${response.status}: ${await response.text()}`);
     const json = (await response.json()) as { data?: { b64_json?: string }[] };
     const b64 = json.data?.[0]?.b64_json;

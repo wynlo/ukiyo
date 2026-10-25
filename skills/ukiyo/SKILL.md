@@ -34,6 +34,10 @@ Read `reference/style.md` before you edit `art/style.md`. Read
    and `rig.lights`, and packed into the frame as `lights`. A wrong point is
    fixed in the rules or with a locked `lights` entry in the manifest. See
    "Lights" in `reference/manifest.md`.
+8. Particles belong to the game, not to a sprite. Do not ask for sparkles,
+   stars, glints, dust, smoke or confetti around a subject: the game draws
+   them over the sprite. Give a particle its own target or asset, and only
+   when the user asks for one.
 
 ## Procedure
 
@@ -79,7 +83,8 @@ the schema. Rules:
   strips, a canopy), cut by mask so they keep its pixels. Set a `joint` per
   piece. Use `plate` for a piece with art behind it, `add` for a new piece.
   `ukiyo final` rebuilds it every run; check `registered/` and the warnings.
-- Subjects: front view, no text, no colours close to the style background.
+- Subjects: front view, no text, no colours close to the style background, no
+  particles around the subject.
 - Set `game` (or the configured `groupBy` field) on every target. One atlas per
   group.
 
@@ -91,7 +96,9 @@ ukiyo gen --all
 
 Every call sends reference images with the prompt. See "References" below.
 On a rate-limit pause the CLI waits and retries by itself. Do not run it again
-in parallel.
+in parallel. With Codex, the CLI shows a warning at 80% and 95% of the image
+quota. The cap is an estimate from the last limit hit. `ukiyo doctor` shows
+the current count.
 
 Manual path (no Codex): `ukiyo prompt <target> --copy`, paste into ChatGPT,
 attach the images listed under `IMAGES TO ATTACH` in that order, save the PNG,
@@ -195,9 +202,14 @@ New complex art goes through `ukiyo plan`, not through hand-cut pieces.
 ukiyo review
 ```
 
-The page shows every asset at 1x, 2x, and 3x with a phone frame, plays strips,
-and shows the raw sheet with detected boxes. Take screenshots of the page (one
-per target group is enough) and send them to the user. Then stop the turn.
+The page lists pending assets newest first, filtered by project and atlas
+group in the sidebar. Click an asset (or press Enter) to open its detail panel:
+1x, 2x, and 3x with a phone frame, strips, references, and the raw sheet with
+detected boxes. Keys: `j`/`k` move, `a` approve, `x` reject, `u` reset. The
+page also serves each `ukiyo.json` below the project (`--no-nested` turns this
+off). The page state is in the URL hash, for example
+`#group=shrine-props&status=all`. Take screenshots of the page (one per target
+group is enough) and send them to the user. Then stop the turn.
 
 When the user approves or rejects on the page, `meta.json` is updated. For a
 rejection with a note:

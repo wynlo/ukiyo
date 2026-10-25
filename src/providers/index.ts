@@ -5,7 +5,7 @@ import { createOpenAiProvider } from './openai.js';
 import type { ImageProvider } from './types.js';
 
 export type { ImageProvider, GenerateOptions, ProviderResult } from './types.js';
-export { RateLimitError } from './types.js';
+export { RateLimitError, formatReset, type LimitScope } from './types.js';
 
 /** The manual provider never produces a file: `ukiyo prompt` + `ukiyo import` is the path. */
 const manual: ImageProvider = {

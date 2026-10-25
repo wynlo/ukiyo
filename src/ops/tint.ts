@@ -8,6 +8,13 @@ import { luminance, readRaster, writePng } from './raster.js';
  */
 const DARK = 70;
 const LIGHT = 110;
+/**
+ * A pixel this far from grey (max minus min channel) is a drawn colour, such
+ * as a coral paw pad on a white paw. It keeps its colour, and it does not
+ * count as a fill when the white point is found.
+ */
+const CHROMA = 48;
+const chroma = (r: number, g: number, b: number): number => Math.max(r, g, b) - Math.min(r, g, b);
 
 export async function neutralize(file: string, outFile = file): Promise<void> {
   const raster = await readRaster(file);
@@ -15,7 +22,11 @@ export async function neutralize(file: string, outFile = file): Promise<void> {
   const fills: number[] = [];
   for (let i = 0; i < data.length; i += 4) {
     if ((data[i + 3] ?? 0) < 128) continue;
-    const l = luminance(data[i] ?? 0, data[i + 1] ?? 0, data[i + 2] ?? 0);
+    const r = data[i] ?? 0;
+    const g = data[i + 1] ?? 0;
+    const b = data[i + 2] ?? 0;
+    if (chroma(r, g, b) >= CHROMA) continue;
+    const l = luminance(r, g, b);
     if (l >= LIGHT) fills.push(l);
   }
   if (fills.length === 0) return;
@@ -26,6 +37,7 @@ export async function neutralize(file: string, outFile = file): Promise<void> {
     const r = data[i] ?? 0;
     const g = data[i + 1] ?? 0;
     const b = data[i + 2] ?? 0;
+    if (chroma(r, g, b) >= CHROMA) continue;
     const l = luminance(r, g, b);
     const grey = Math.min(255, Math.round((l * 255) / white));
     // 0 keeps the original colour (outline), 1 is fully neutral (fill).

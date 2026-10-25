@@ -21,7 +21,7 @@ import { measureComplexity } from './ops/complexity.js';
 import { planPieces, type KeptPiece, type Label } from './ops/plan.js';
 import { DEFAULT_LIGHT_RULES, detectLights, findLitCopies, type LightPoint, type LightRules } from './ops/lights.js';
 import { templatesFor } from './prompt/compose.js';
-import { createProvider, RateLimitError, type ImageProvider } from './providers/index.js';
+import { createProvider, RateLimitError, type ImageProvider, type LimitScope } from './providers/index.js';
 import { createReferenceResolver, referenceRecords, type ReferenceInput, type ReferenceRequest } from './references.js';
 
 export type StepName = 'gen' | 'animate' | 'edit' | 'cut' | 'final' | 'sheet' | 'pack' | 'redo' | 'import' | 'plan';
@@ -93,22 +93,66 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
     return { prompt: block ? `${prompt}\n\n${block}` : prompt, refs: await references.providerFiles(plan, backgroundFor(target)), records: referenceRecords(plan) };
   };
 
-  const withRetry = async <T>(step: StepName, target: string, fn: () => Promise<T>): Promise<T> => {
+  /*
+   * Limits that are still in force, by scope. Later calls fail at once with the
+   * same error instead of starting a provider run that cannot succeed. An
+   * `image` limit blocks image calls only; `describe` still runs.
+   */
+  const limits = new Map<LimitScope, RateLimitError>();
+
+  /** The longest reported reset `withRetry` waits for. A longer limit stops the run. */
+  const maxLimitWaitMs = 3 * 60 * 1000;
+
+  /** Quota warning levels already shown in this run. */
+  const quotaWarned = new Set<number>();
+
+  /** Warns once at 80% and once at 95% of the estimated image quota. */
+  const warnQuota = (step: StepName, target: string) => {
+    const quota = provider.imageQuota?.();
+    if (!quota) return;
+    const level = [0.95, 0.8].find((l) => quota.used >= quota.cap * l);
+    if (level === undefined || quotaWarned.has(level)) return;
+    quotaWarned.add(level);
+    if (level === 0.95) quotaWarned.add(0.8);
+    emit({
+      type: 'warn',
+      step,
+      target,
+      message: `${provider.name} image quota is almost used: about ${quota.used} of ${quota.cap} images in this window. The cap is an estimate from the last limit hit.`,
+    });
+  };
+
+  const withRetry = async <T>(step: StepName, target: string, fn: () => Promise<T>, uses: 'image' | 'text' = 'image'): Promise<T> => {
     let attempt = 0;
     for (;;) {
+      for (const scope of uses === 'image' ? (['account', 'image'] as const) : (['account'] as const)) {
+        const limit = limits.get(scope);
+        if (limit && (limit.resetsAt ?? 0) > Date.now()) throw limit;
+        limits.delete(scope);
+      }
       try {
-        return await fn();
+        const result = await fn();
+        if (uses === 'image') warnQuota(step, target);
+        return result;
       } catch (error) {
-        if (error instanceof RateLimitError && attempt < 3) {
+        if (!(error instanceof RateLimitError)) throw error;
+        const ms = error.retryAfterMs !== undefined ? error.retryAfterMs + 5000 : Math.max(30000, config.provider.gapMs * 10) * (attempt + 1);
+        if (attempt < 3 && ms <= maxLimitWaitMs) {
           attempt += 1;
-          const ms = Math.max(30000, config.provider.gapMs * 10) * attempt;
           emit({ type: 'wait', step, target, ms, message: `${error.message} Waiting ${Math.round(ms / 1000)}s (attempt ${attempt}/3).` });
           await sleep(ms);
           continue;
         }
+        if (error.resetsAt !== undefined) limits.set(error.scope, error);
         throw error;
       }
     }
+  };
+
+  /** The error text for a failed provider call. A rate limit also stops the rest of the step. */
+  const failure = (error: unknown): string => {
+    const message = error instanceof Error ? error.message : String(error);
+    return error instanceof RateLimitError ? `${message} Stopped this step; run it again after the reset.` : message;
   };
 
   const copyIn = async (from: string, to: string) => {
@@ -193,7 +237,7 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
         writeMeta(config, m);
         emit({ type: 'done', step: 'gen', target: target.target, message: `frames/${layer.id}.png` });
       } catch (error) {
-        emit({ type: 'error', step: 'gen', target: target.target, message: error instanceof Error ? error.message : String(error) });
+        emit({ type: 'error', step: 'gen', target: target.target, message: failure(error) });
         if (error instanceof RateLimitError) return;
       }
       if (config.provider.gapMs > 0) await sleep(config.provider.gapMs);
@@ -366,7 +410,7 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
         writeMeta(config, m);
         emit({ type: 'done', step: 'gen', target: target.target, message: `frames/${job.id}.png` });
       } catch (error) {
-        emit({ type: 'error', step: 'gen', target: target.target, message: error instanceof Error ? error.message : String(error) });
+        emit({ type: 'error', step: 'gen', target: target.target, message: failure(error) });
         if (error instanceof RateLimitError) return;
       }
       if (config.provider.gapMs > 0) await sleep(config.provider.gapMs);
@@ -842,12 +886,12 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
           });
           emit({ type: 'start', step: 'plan', target: ref, message: 'labelling pieces' });
           try {
-            const answer = await withRetry('plan', ref, () => provider.describe!(prompt, grid, { log: (line) => emit({ type: 'log', message: line }) }));
+            const answer = await withRetry('plan', ref, () => provider.describe!(prompt, grid, { log: (line) => emit({ type: 'log', message: line }) }), 'text');
             labels = parseLabels(answer);
             fs.mkdirSync(dir, { recursive: true });
             fs.writeFileSync(cacheFile, `${JSON.stringify({ hash, labels, answer }, null, 2)}\n`);
           } catch (error) {
-            row.action = `labelling failed: ${error instanceof Error ? error.message : String(error)}`;
+            row.action = `labelling failed: ${failure(error)}`;
             emit({ type: 'error', step: 'plan', target: ref, message: row.action });
             if (error instanceof RateLimitError) break;
             continue;
@@ -966,7 +1010,7 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
         writeMeta(config, meta);
         emit({ type: 'done', step: 'gen', target: target.target, message: path.relative(config.root, raw) });
       } catch (error) {
-        emit({ type: 'error', step: 'gen', target: target.target, message: error instanceof Error ? error.message : String(error) });
+        emit({ type: 'error', step: 'gen', target: target.target, message: failure(error) });
         if (error instanceof RateLimitError) break;
       }
       if (i < targets.length - 1 && config.provider.gapMs > 0) await sleep(config.provider.gapMs);
@@ -1028,7 +1072,7 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
           writeMeta(config, m);
           emit({ type: 'done', step: 'animate', target: target.target, message: `frames/${frame}.png` });
         } catch (error) {
-          emit({ type: 'error', step: 'animate', target: target.target, message: error instanceof Error ? error.message : String(error) });
+          emit({ type: 'error', step: 'animate', target: target.target, message: failure(error) });
           if (error instanceof RateLimitError) return;
         }
         if (config.provider.gapMs > 0) await sleep(config.provider.gapMs);

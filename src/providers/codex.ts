@@ -3,7 +3,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { execa } from 'execa';
 import type { GenerateOptions, ImageProvider, ProviderResult } from './types.js';
-import { RateLimitError } from './types.js';
+import { formatReset, RateLimitError } from './types.js';
 
 /**
  * Image generation through the Codex CLI's built-in `image_gen` tool, which
@@ -49,6 +49,60 @@ function parseEvents(stdout: string): CodexEvent[] {
 
 const RATE_LIMIT_PATTERNS = [/rate limit/i, /\b429\b/, /usage limit/i, /too many requests/i, /quota/i, /try again (later|in)/i];
 
+/*
+ * The image_gen tool has its own quota, separate from the Codex agent quota.
+ * When it runs out, the tool call fails with
+ *   image generation failed: http 429 Too Many Requests: {"error":{"type":"usage_limit_reached","plan_type":"plus","resets_at":...,"resets_in_seconds":...}}
+ * but the turn itself completes: `codex exec` shows no error event, and the
+ * agent only says so in its last message. The session log has the details.
+ */
+const IMAGE_LIMIT_PATTERN = /image generation failed: http 429/i;
+const IMAGE_LIMIT_SAID = /image[- _]?gen(eration)?\b[^.]{0,60}\blimit/i;
+
+/** The last value of a JSON key in text that may hold escaped JSON. */
+function jsonField(text: string, key: string): string | undefined {
+  const matches = [...text.matchAll(new RegExp(`${key}\\\\*"\\s*:\\s*\\\\*"?([\\w.]+)`, 'g'))];
+  return matches[matches.length - 1]?.[1];
+}
+
+/** The reset time from a usage_limit_reached body, in epoch ms. */
+function resetsAt(text: string): number | undefined {
+  const at = Number(jsonField(text, 'resets_at')) * 1000;
+  return Number.isFinite(at) && at > Date.now() ? at : undefined;
+}
+
+function imageLimitError(text: string): RateLimitError {
+  // Read only the 429 body: the session log also has the agent's own `resets_at` values.
+  const at = text.search(new RegExp(`${IMAGE_LIMIT_PATTERN.source}(?![\\s\\S]*${IMAGE_LIMIT_PATTERN.source})`, 'i'));
+  const details = at >= 0 ? (text.slice(at).split('\n')[0] ?? '') : '';
+  const plan = jsonField(details, 'plan_type');
+  const reset = resetsAt(details);
+  if (reset) recordImageLimit(reset, Date.now());
+  const message = `Codex image generation limit reached${plan ? ` (${plan} plan)` : ''}.${reset ? ` Resets in ${formatReset(reset)}.` : ''} The Codex agent limit is separate and not affected.`;
+  return new RateLimitError(message, { scope: 'image', resetsAt: reset });
+}
+
+function accountLimitError(details: string): RateLimitError {
+  const reset = resetsAt(details);
+  return new RateLimitError(`Codex usage limit reached.${reset ? ` Resets in ${formatReset(reset)}.` : ''}`, { scope: 'account', resetsAt: reset });
+}
+
+/** The folder of Codex session logs for a day, `offset` days back. */
+function sessionDay(offset: number): string {
+  const d = new Date(Date.now() - offset * 86400000);
+  return path.join(codexHome(), 'sessions', String(d.getFullYear()), String(d.getMonth() + 1).padStart(2, '0'), String(d.getDate()).padStart(2, '0'));
+}
+
+/** The session log Codex writes for a thread: `sessions/YYYY/MM/DD/rollout-<time>-<thread>.jsonl`. */
+function sessionLog(threadId: string): string | null {
+  for (const dir of [sessionDay(0), sessionDay(1)]) {
+    if (!fs.existsSync(dir)) continue;
+    const file = fs.readdirSync(dir).find((name) => name.endsWith(`-${threadId}.jsonl`));
+    if (file) return path.join(dir, file);
+  }
+  return null;
+}
+
 export function codexHome(): string {
   return process.env.CODEX_HOME ?? path.join(os.homedir(), '.codex');
 }
@@ -69,6 +123,81 @@ function listPngs(dir: string): { file: string; mtime: number }[] {
   };
   walk(dir);
   return out;
+}
+
+/*
+ * Codex does not report how much of the image quota is left. ukiyo estimates
+ * it: it counts the images in `generated_images` since the window started, and
+ * compares that count with the count at the last limit hit. Images made in
+ * Codex outside ukiyo use the same quota, so they are counted too. OpenAI does
+ * not publish the window length. 24 hours matches the limit seen on a Plus plan.
+ */
+const QUOTA_WINDOW_MS = 24 * 60 * 60 * 1000;
+
+type QuotaState = { cap: number; hitAt: number; resetsAt: number };
+
+export type ImageQuota = { used: number; cap: number; hitAt: number };
+
+function quotaFile(): string {
+  return path.join(os.homedir(), '.ukiyo', 'codex-image-quota.json');
+}
+
+function readQuota(): QuotaState | null {
+  try {
+    return JSON.parse(fs.readFileSync(quotaFile(), 'utf8')) as QuotaState;
+  } catch {
+    return null;
+  }
+}
+
+/** The start of the quota window at `at`: the last known reset, or 24 hours back. */
+function windowStart(at: number, state: QuotaState | null): number {
+  return Math.max(state && state.resetsAt <= at ? state.resetsAt : 0, at - QUOTA_WINDOW_MS);
+}
+
+function imagesBetween(from: number, to: number): number {
+  return listPngs(generatedImagesDir()).filter((e) => e.mtime >= from && e.mtime <= to).length;
+}
+
+/** Saves the image count at a limit hit as the quota cap. */
+function recordImageLimit(resetsAt: number, hitAt: number): void {
+  const previous = readQuota();
+  if (previous && previous.hitAt >= hitAt) return;
+  const cap = imagesBetween(windowStart(hitAt, previous), hitAt);
+  if (cap === 0) return;
+  fs.mkdirSync(path.dirname(quotaFile()), { recursive: true });
+  fs.writeFileSync(quotaFile(), `${JSON.stringify({ cap, hitAt, resetsAt } satisfies QuotaState, null, 2)}\n`);
+}
+
+let sessionsScanned = false;
+
+/** Finds the last image limit hit in the last two days of session logs. Runs once per process, and only when no cap is saved. */
+function learnFromSessions(): void {
+  if (sessionsScanned || readQuota()) return;
+  sessionsScanned = true;
+  let last: { hitAt: number; resetsAt: number } | null = null;
+  for (const dir of [sessionDay(1), sessionDay(0)]) {
+    if (!fs.existsSync(dir)) continue;
+    for (const name of fs.readdirSync(dir).filter((n) => n.endsWith('.jsonl'))) {
+      const text = fs.readFileSync(path.join(dir, name), 'utf8');
+      if (!IMAGE_LIMIT_PATTERN.test(text)) continue;
+      for (const line of text.split('\n')) {
+        if (!IMAGE_LIMIT_PATTERN.test(line)) continue;
+        const hitAt = Date.parse(line.match(/^\{"timestamp":"([^"]+)"/)?.[1] ?? '');
+        const reset = Number(jsonField(line.slice(line.search(IMAGE_LIMIT_PATTERN)), 'resets_at')) * 1000;
+        if (Number.isFinite(hitAt) && Number.isFinite(reset) && (!last || hitAt > last.hitAt)) last = { hitAt, resetsAt: reset };
+      }
+    }
+  }
+  if (last) recordImageLimit(last.resetsAt, last.hitAt);
+}
+
+/** The estimated image quota use in the current window. Null until a limit hit has set the cap. */
+export function codexImageQuota(now = Date.now()): ImageQuota | null {
+  learnFromSessions();
+  const state = readQuota();
+  if (!state) return null;
+  return { used: imagesBetween(windowStart(now, state), now), cap: state.cap, hitAt: state.hitAt };
 }
 
 /** `ref` and `refs` as one list, without repeats. */
@@ -117,9 +246,8 @@ export function createCodexProvider(options: CodexOptions): ImageProvider {
         .filter((event) => event.type === 'error' || event.type === 'turn.failed')
         .map((event) => event.error?.message ?? event.message ?? 'unknown error');
       const transcript = `${failures.join('\n')}\n${stderr}`;
-      if (RATE_LIMIT_PATTERNS.some((p) => p.test(transcript))) {
-        throw new RateLimitError('Codex reported a rate or usage limit.');
-      }
+      if (IMAGE_LIMIT_PATTERN.test(`${stdout}\n${stderr}`)) throw imageLimitError(`${stdout}\n${stderr}`);
+      if (RATE_LIMIT_PATTERNS.some((p) => p.test(transcript))) throw accountLimitError(transcript);
       if (result.timedOut) {
         throw new Error(`codex exec timed out after ${Math.round(options.timeoutMs / 1000)}s`);
       }
@@ -129,7 +257,7 @@ export function createCodexProvider(options: CodexOptions): ImageProvider {
     } catch (error) {
       if (error instanceof RateLimitError) throw error;
       const message = error instanceof Error ? error.message : String(error);
-      if (RATE_LIMIT_PATTERNS.some((p) => p.test(message))) throw new RateLimitError(message);
+      if (RATE_LIMIT_PATTERNS.some((p) => p.test(message))) throw accountLimitError(message);
       throw new Error(`codex exec failed: ${message}`);
     }
     /*
@@ -151,6 +279,9 @@ export function createCodexProvider(options: CodexOptions): ImageProvider {
         .map((event) => event.item?.text ?? '')
         .join(' ')
         .slice(0, 400);
+      const log = threadId ? sessionLog(threadId) : null;
+      const details = log ? fs.readFileSync(log, 'utf8') : '';
+      if (IMAGE_LIMIT_PATTERN.test(details) || IMAGE_LIMIT_SAID.test(said)) throw imageLimitError(details);
       const tail = stderr.trim().split('\n').filter((line) => !line.includes('codex_models_manager')).slice(-4).join('\n');
       throw new Error(`codex produced no image. Agent said: ${said || '(nothing)'} ${tail}`.trim());
     }
@@ -167,7 +298,7 @@ export function createCodexProvider(options: CodexOptions): ImageProvider {
     const events = parseEvents(result.stdout ?? '');
     const failures = events.filter((event) => event.type === 'error' || event.type === 'turn.failed').map((event) => event.error?.message ?? event.message ?? 'unknown error');
     const transcript = `${failures.join('\n')}\n${result.stderr ?? ''}`;
-    if (RATE_LIMIT_PATTERNS.some((p) => p.test(transcript))) throw new RateLimitError('Codex reported a rate or usage limit.');
+    if (RATE_LIMIT_PATTERNS.some((p) => p.test(transcript))) throw accountLimitError(transcript);
     if (result.timedOut) throw new Error(`codex exec timed out after ${Math.round(options.timeoutMs / 1000)}s`);
     if (failures.length > 0) throw new Error(failures.join('; '));
     const messages = events.filter((event) => event.item?.type === 'agent_message').map((event) => event.item?.text ?? '');
@@ -179,6 +310,7 @@ export function createCodexProvider(options: CodexOptions): ImageProvider {
   return {
     name: 'codex',
     describe,
+    imageQuota: () => codexImageQuota(),
     generate: (prompt, genOptions) => {
       const refs = referenceList(genOptions);
       return run(options.relayPrompt({ prompt, size: genOptions.size, ref: refs.length > 0, refs: refs.length, edit: false }), refs, genOptions);
@@ -216,6 +348,8 @@ export function createCodexProvider(options: CodexOptions): ImageProvider {
         details.push('could not read codex features');
       }
       details.push(`images dir: ${generatedImagesDir()}`);
+      const quota = codexImageQuota();
+      details.push(quota ? `image quota: about ${quota.used} of ${quota.cap} used in this window (estimate)` : 'image quota: unknown until the first limit hit');
       return { ok, details };
     },
   };

@@ -71,6 +71,11 @@ Cover these, one short paragraph each: primary goal, core aesthetic, edges and
 outlines, colour (with hex values), shading, view and proportion, detail
 level, composition. Say what is not allowed as well as what is.
 
+The composition paragraph bans effect particles around a subject: sparkles,
+stars, glints, dust, smoke, confetti and petals in the air. The game draws
+them over the sprite. A particle is its own asset. Put the same words in
+`bannedTraits`, for example `sparkles around an object`.
+
 Use `style.additionalDetails` in `ukiyo.json` for small project notes. It is
 appended to every prompt as `ADDITIONAL DETAILS:`. Use a target's `notes` for
 one target.

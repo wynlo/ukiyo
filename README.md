@@ -80,7 +80,7 @@ Run `ukiyo` with no arguments for the dashboard.
 | `final [targets]` | Trim, align and resize. |
 | `sheet [targets]` | Contact sheet and frame player. |
 | `plan [targets]` | Plan multipart props. |
-| `review` | Serve the review page. |
+| `review [configs]` | Serve the review page for this project, each `ukiyo.json` below it, and each config given. |
 | `status` | Status table. Exits 1 while anything is pending. |
 | `pack [groups]` | Write atlases. |
 | `all [targets]` | Every step up to review. |
