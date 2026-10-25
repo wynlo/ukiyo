@@ -27,8 +27,9 @@ import { templatesFor } from './prompt/compose.js';
 /** The effective `references` config. Without a `references` section ukiyo sends only the first target, as before. */
 export type ReferenceSettings = {
   anchors: ReferenceEntry[];
+  lockAnchors: boolean;
   firstTarget: boolean;
-  auto: { max: number; match: ('kind' | 'group' | 'tag')[]; perTarget: number };
+  auto: { max: number; match: ('kind' | 'group' | 'tag')[]; perTarget: number; since?: string; requireGate: boolean };
   includePending: boolean;
   max: number;
   maxImages: number;
@@ -38,7 +39,7 @@ export type ReferenceSettings = {
 export function referenceSettings(config: ResolvedConfig): ReferenceSettings {
   const own = config.references;
   if (!own) {
-    return { anchors: [], firstTarget: true, auto: { max: 0, match: ['kind'], perTarget: 1 }, includePending: false, max: 4, maxImages: 5, framing: true };
+    return { anchors: [], lockAnchors: false, firstTarget: true, auto: { max: 0, match: ['kind'], perTarget: 1, requireGate: false }, includePending: false, max: 4, maxImages: 5, framing: true };
   }
   return { ...own, auto: { ...own.auto } };
 }
@@ -86,7 +87,7 @@ export function fileHash(file: string): string {
   return createHash('sha256').update(fs.readFileSync(file)).digest('hex').slice(0, 16);
 }
 
-type Candidate = { id?: string; file: string; source: ReferenceSource; role?: ReferenceRole; status?: ReviewStatus; owner?: Target; asset?: string; meta?: AssetMeta };
+type Candidate = { id?: string; file: string; source: ReferenceSource; role?: ReferenceRole; status?: ReviewStatus; owner?: Target; asset?: string; meta?: AssetMeta; locked?: boolean };
 
 export function createReferenceResolver(config: ResolvedConfig, manifest: Manifest) {
   const byName = new Map(manifest.map((t) => [t.target, t]));
@@ -161,6 +162,9 @@ export function createReferenceResolver(config: ResolvedConfig, manifest: Manife
       const matches = settings.auto.match.some((m) => (m === 'kind' ? sameKind : m === 'group' ? sameGroup : sharedTag));
       if (!matches) continue;
       const meta = metaOf(owner);
+      // Old art from before a style change, or art that failed the project's gate, would pass its look on.
+      if (settings.auto.since && (meta.generatedAt ?? '') < settings.auto.since) continue;
+      if (settings.auto.requireGate && meta.gate?.passed !== true) continue;
       for (const asset of assetNames(owner)) {
         const a = meta.assets[asset];
         if (!a || a.missing || a.status === 'rejected') continue;
@@ -241,14 +245,17 @@ export function createReferenceResolver(config: ResolvedConfig, manifest: Manife
     const mode = current.referencesMode ?? 'add';
     const dropped: ReferencePlan['dropped'] = [];
     const queue: (Candidate | { error: string; ref: string })[] = [];
-    const push = (ref: string, source: ReferenceSource, role?: ReferenceRole) => {
+    const push = (ref: string, source: ReferenceSource, role?: ReferenceRole, locked = false) => {
       const c = parse(ref, source, role);
-      queue.push(typeof c === 'string' ? { error: c, ref } : c);
+      queue.push(typeof c === 'string' ? { error: c, ref } : { ...c, locked });
     };
+    // Locked anchors go first in every mode, and under --refs-only. Only --no-refs drops them.
+    const locked = settings.lockAnchors && !request.none;
+    if (locked) for (const e of settings.anchors.map(entryOf)) push(e.ref, 'anchor', e.role, true);
     if (request.only) {
       for (const ref of request.only) push(ref, 'request');
     } else if (!request.none) {
-      if (mode === 'add') for (const e of settings.anchors.map(entryOf)) push(e.ref, 'anchor', e.role);
+      if (mode === 'add' && !locked) for (const e of settings.anchors.map(entryOf)) push(e.ref, 'anchor', e.role);
       for (const ref of request.add ?? []) push(ref, 'request');
       if (mode !== 'none') for (const e of (current.references ?? []).map(entryOf)) push(e.ref, 'explicit', e.role);
       if (mode === 'add' && settings.firstTarget) {
@@ -262,7 +269,11 @@ export function createReferenceResolver(config: ResolvedConfig, manifest: Manife
     const input = options.input
       ? ({ n: 1, id: options.input.id, path: path.relative(config.root, options.input.file), file: options.input.file, role: 'input', source: 'edit', sha256: fs.existsSync(options.input.file) ? fileHash(options.input.file) : '' } satisfies ResolvedReference)
       : undefined;
-    const cap = Math.max(0, Math.min(request.max ?? current.maxReferences ?? settings.max, settings.maxImages - (input ? 1 : 0)));
+    const room = settings.maxImages - (input ? 1 : 0);
+    const base = request.max ?? current.maxReferences ?? settings.max;
+    // Locked anchors do not use up a target's own cap; maxImages still bounds the call.
+    const lockedCount = queue.filter((c) => !('error' in c) && c.locked).length;
+    const cap = Math.max(0, Math.min(base + lockedCount, room));
     // The same picture under two names (a copied anchor) is sent once.
     const seen = new Set<string>(input ? [path.resolve(input.file), input.sha256] : []);
     const refs: ResolvedReference[] = [];

@@ -399,8 +399,9 @@ scale 2, a 1.5-unit visitor is 192 px tall in the atlas and 96 CSS px on a
 ```json
 "references": {
   "anchors": ["docs/references/style-anchor.png"],
+  "lockAnchors": false,
   "firstTarget": false,
-  "auto": { "max": 2, "match": ["kind"], "perTarget": 1 },
+  "auto": { "max": 2, "match": ["kind"], "perTarget": 1, "since": "2026-10-25", "requireGate": false },
   "includePending": false,
   "max": 4,
   "maxImages": 5,
@@ -411,10 +412,13 @@ scale 2, a 1.5-unit visitor is 192 px tall in the atlas and 96 CSS px on a
 | Field | Default | Meaning |
 |---|---|---|
 | `anchors` | `[]` | Sent with every call. File paths relative to `ukiyo.json`, or `<target>/<asset>` ids. Same entry forms as the manifest `references`. |
+| `lockAnchors` | `false` | Send the anchors with every call, first, even when a target sets `referencesMode: "replace"` or `"none"` or a call uses `--refs-only`. They do not count against `max` or `maxReferences`; `maxImages` still caps the call. Only `--no-refs` drops them. Set it when the anchors are the style gauge. |
 | `firstTarget` | `false` | Also send the first target's `ref.png`, else its `raw.png`. Skipped when that target has a rejected asset and no `ref.png`. |
 | `auto.max` | `2` | The most automatic picks per call. `0` turns them off. |
 | `auto.match` | `["kind"]` | Which assets qualify: `kind` (same kind), `group` (same atlas group), `tag` (a shared `tags` entry). |
 | `auto.perTarget` | `1` | The most picks from one target, so the picks come from different sheets. |
+| `auto.since` | none | Only assets generated on or after this ISO date. Set it after a style change, so old art is not picked. |
+| `auto.requireGate` | `false` | Only assets of targets whose last gate passed (see `gates` in the README). |
 | `includePending` | `false` | Automatic picks may use pending assets. `--pending-refs` sets it for one run. |
 | `max` | `4` | The most reference images per call, not counting the input image of an edit. |
 | `maxImages` | `5` | The most images per call in total, including the input image. Set it to what the provider accepts. |

@@ -287,7 +287,8 @@ program
   .alias('fit')
   .description('trim, align frames, resize to the kind height, write final/')
   .option('--force', 'redo targets already finalised')
-  .action((targets: string[], opts: { force?: boolean }) => runInk('final', pipelineTask((p) => p.finalize(names(targets), opts.force))).catch(fail));
+  .option('--no-gates', 'skip the post-final gates in ukiyo.json')
+  .action((targets: string[], opts: { force?: boolean; gates?: boolean }) => runInk('final', pipelineTask((p) => p.finalize(names(targets), opts.force), { noGates: opts.gates === false })).catch(fail));
 
 program
   .command('sheet [targets...]')
@@ -310,14 +311,31 @@ program
   .option('--allow-pending-plans', 'with --allow-pending: include auto part plans that are not approved yet')
   .action((groups: string[], opts: { allowPending?: boolean; allowPendingPlans?: boolean }) => runInk('pack', pipelineTask((p) => p.pack(names(groups), opts.allowPending, opts.allowPendingPlans))).catch(fail));
 
-withRefFlags(program.command('all [targets...]').description('gen, cut, final, sheet; stop at the review gate; pack when everything is approved')).action(
-  (targets: string[], opts: RefFlags) => runInk('all', pipelineTask((p) => p.all(names(targets)), { refs: refRequest(opts) })).catch(fail),
-);
+withRefFlags(program.command('all [targets...]').description('gen, cut, final (with gates), sheet; stop at the review gate; pack when everything is approved'))
+  .option('--no-gates', 'skip the post-final gates in ukiyo.json')
+  .action((targets: string[], opts: RefFlags & { gates?: boolean }) => runInk('all', pipelineTask((p) => p.all(names(targets)), { refs: refRequest(opts), noGates: opts.gates === false })).catch(fail));
 
 program
   .command('redo <target> [asset]')
-  .description('delete outputs so the next run regenerates them')
+  .description('delete outputs so the next run regenerates them (a backup is kept: see restore)')
   .action((target: string, asset?: string) => runInk('redo', pipelineTask(async (p) => p.redo(target, asset))).catch(fail));
+
+program
+  .command('restore <target>')
+  .description('put back the outputs the last redo of a target removed')
+  .action((target: string) => runInk('restore', pipelineTask(async (p) => p.restore(target))).catch(fail));
+
+program
+  .command('approve <target> [assets...]')
+  .description('approve assets of a target (all of them when none are named), as the review page does')
+  .option('--note <text>', 'a note on the review')
+  .action((target: string, assets: string[], opts: { note?: string }) => runInk('approve', pipelineTask(async (p) => p.review(target, assets, 'approved', opts.note))).catch(fail));
+
+program
+  .command('reject <target> [assets...]')
+  .description('reject assets of a target (all of them when none are named), as the review page does')
+  .requiredOption('--note <text>', 'why, or what to change')
+  .action((target: string, assets: string[], opts: { note: string }) => runInk('reject', pipelineTask(async (p) => p.review(target, assets, 'rejected', opts.note))).catch(fail));
 
 // ---- review / status --------------------------------------------------------------------
 

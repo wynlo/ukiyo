@@ -41,6 +41,7 @@
     "fixtures": "tsx fixtures/make.ts",
     "check:refs": "tsx fixtures/references.ts",
     "check:plan": "tsx fixtures/plan.ts",
+    "check:safety": "tsx fixtures/safety.ts",
     "showcase": "tsx scripts/showcase.ts && tsx scripts/multipart.ts",
     "prepare": "npm run build"
   },

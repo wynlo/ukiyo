@@ -84,7 +84,10 @@ Run `ukiyo` with no arguments for the dashboard.
 | `status` | Status table. Exits 1 while anything is pending. |
 | `pack [groups]` | Write atlases. |
 | `all [targets]` | Every step up to review. |
-| `redo <target> [asset]` | Delete outputs so they regenerate. |
+| `redo <target> [asset]` | Delete outputs so they regenerate. A backup is kept. |
+| `restore <target>` | Put back the outputs the last `redo` removed. |
+| `approve <target> [assets]` | Approve assets, as the review page does. |
+| `reject <target> [assets] --note <text>` | Reject assets with a note. |
 | `doctor` | Check the setup. |
 
 ## Style file
@@ -111,6 +114,29 @@ goes into every prompt. See [`style.md`](skills/ukiyo/reference/style.md).
 ```
 
 Every field is in the [manifest reference](skills/ukiyo/reference/manifest.md).
+
+## Gates
+
+`gates` in `ukiyo.json` runs project commands after `ukiyo final` (and in
+`ukiyo all`) for each target. `{target}` and `{config}` are replaced. Exit
+code 0 passes. The result is stored in `meta.json` as `gate`. A failed gate
+stops `pack` for the target (even with `--allow-pending`) and stops `approve`,
+unless the gate sets `blocksPack: false`. A gate may also write review
+fields into `meta.json`, for example to reject an asset with a note.
+
+```json
+"gates": [{ "name": "gauge", "command": "node tooling/art-measure/gauge-gate.mjs {target}", "blocksPack": false }]
+```
+
+`final --no-gates` and `all --no-gates` skip them.
+
+## Rate limit
+
+Every ukiyo process on the machine shares one rate limit: at most
+`provider.concurrency` calls at a time and `provider.gapMs` between calls,
+across processes. A quota error with a reset time pauses every process until
+then. The state is in `~/.cache/ukiyo/limiter` (`UKIYO_CACHE` overrides the
+folder).
 
 ## Features
 

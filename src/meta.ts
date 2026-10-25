@@ -171,7 +171,22 @@ export type TargetMeta = {
   lights?: LightPoint[];
   /** The images sent with the last generation call of this target. */
   references?: ReferenceRecord[];
+  /** The last run of the post-final gates. `pack` refuses the target when it failed. */
+  gate?: GateRecord;
 };
+
+/** The last run of the project's post-final gates (see `src/gates.ts`). */
+export type GateRecord = { at: string; passed: boolean; results: { name: string; code: number; output: string; blocksPack?: boolean }[] };
+
+/** New art: every asset goes back to the review gate. */
+export function resetReview(meta: TargetMeta, names?: string[]): void {
+  for (const [name, asset] of Object.entries(meta.assets)) {
+    if (names && !names.includes(name)) continue;
+    if (asset.missing) continue;
+    meta.assets[name] = { ...asset, status: 'pending', reviewedAt: undefined, note: undefined };
+  }
+  meta.gate = undefined;
+}
 
 export type Stage = 'raw' | 'cut' | 'final';
 

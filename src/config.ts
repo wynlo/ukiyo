@@ -242,6 +242,13 @@ export const configSchema = z.object({
     .object({
       /** Always sent: file paths relative to ukiyo.json, or `<target>/<asset>` ids. */
       anchors: z.array(referenceEntrySchema).default([]),
+      /**
+       * Send the anchors with every call, first, even when a target sets
+       * `referencesMode: "replace"` or `"none"` or a call uses `--refs-only`.
+       * They do not count against `max` or a target's `maxReferences`
+       * (`maxImages` still caps the call). Only `--no-refs` drops them.
+       */
+      lockAnchors: z.boolean().default(false),
       /** Also send the first target's ref.png or raw.png, as ukiyo did before `references`. */
       firstTarget: z.boolean().default(false),
       /** Picks from finished assets of the project. */
@@ -253,6 +260,10 @@ export const configSchema = z.object({
           match: z.array(z.enum(['kind', 'group', 'tag'])).min(1).default(['kind']),
           /** The most picks from one target, so the picks come from different sheets. */
           perTarget: z.number().int().min(1).default(1),
+          /** Only assets generated on or after this ISO date, so art made before a style change is not picked. */
+          since: z.string().optional(),
+          /** Only assets of targets whose last gate passed (see `gates`). */
+          requireGate: z.boolean().default(false),
         })
         .prefault({}),
       /** Automatic picks may use pending assets. Default: approved assets only. */
@@ -265,6 +276,22 @@ export const configSchema = z.object({
       framing: z.boolean().default(true),
     })
     .optional(),
+  /**
+   * Commands run after `ukiyo final` for each target (see `src/gates.ts`).
+   * `{target}` and `{config}` are replaced. Exit code 0 passes; `pack`
+   * refuses a target whose last gate failed.
+   */
+  gates: z
+    .array(
+      z.object({
+        name: z.string().min(1),
+        command: z.string().min(1),
+        timeoutMs: z.number().int().min(1000).default(120000),
+        /** A failed run makes `pack` refuse the target. Set false for a gate that only marks assets in meta.json. */
+        blocksPack: z.boolean().default(true),
+      }),
+    )
+    .default([]),
   kinds: z.record(z.string(), kindSchema).default({
     backdrop: { width: 8, anchor: 'top-left' },
     furniture: { height: 2, anchor: 'bottom-center' },
@@ -280,6 +307,8 @@ export type UkiyoConfig = z.infer<typeof configSchema>;
 export type ResolvedConfig = UkiyoConfig & {
   /** Directory that holds ukiyo.json. Every relative path resolves from here. */
   root: string;
+  /** Absolute path of ukiyo.json. */
+  configPath: string;
   styleGuide: StyleGuide;
   styleFile: string;
   /** Absolute `prompts.dir`, when set. */
@@ -345,6 +374,7 @@ export function loadConfig(explicitPath?: string): ResolvedConfig {
   return {
     ...config,
     root,
+    configPath,
     styleGuide: loadStyle(styleFile),
     styleFile,
     promptsDir: config.prompts.dir ? path.resolve(root, config.prompts.dir) : undefined,

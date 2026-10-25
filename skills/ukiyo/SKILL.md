@@ -164,6 +164,11 @@ ukiyo final
 ukiyo sheet
 ```
 
+`final` runs the project's `gates` (from `ukiyo.json`) on each target and
+records the result in `meta.json`. A failed gate stops `pack` and `approve`
+for the target. Read the gate output, fix the subject or the style file, and
+generate again. Never skip a gate with `--no-gates` to get art through.
+
 `cut` prints a warning when the detected component count differs from the
 expected count. Open that target's `sheet.html` and check the boxes before
 moving on. `ukiyo cut <target> --force` re-cuts after changing `cutout` settings
@@ -224,6 +229,11 @@ rejection with a note:
   `final`. Check the Combinations tab after every layer batch.
 
 Re-run `ukiyo final` and `ukiyo review` after any change.
+
+`ukiyo approve <target> [assets]` and `ukiyo reject <target> [assets] --note
+"..."` write the same fields as the page. Use them only for a decision the user
+gave you. `ukiyo redo` keeps a backup of the outputs; `ukiyo restore <target>`
+puts it back when a generation after a redo fails.
 
 ### 6. Pack and wire
 
