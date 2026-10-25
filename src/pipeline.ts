@@ -4,7 +4,7 @@ import path from 'node:path';
 import sharp from 'sharp';
 import type { ResolvedConfig } from './config.js';
 import { assetNames, type Manifest, type Target } from './manifest.js';
-import { rawPath, readMeta, removeOutputs, stagePath, targetDir, targetStatus, writeMeta, type AssetMeta, type Complexity, type EffectsReview, type PartMeta, type PartRig, type TargetStatus } from './meta.js';
+import { rawPath, readMeta, removeOutputs, resetReview, stagePath, targetDir, targetStatus, writeMeta, type AssetMeta, type Complexity, type EffectsReview, type PartMeta, type PartRig, type TargetStatus } from './meta.js';
 import { coerceCount, detectComponents, dropEdgeRegions } from './ops/autocrop.js';
 import { cutout } from './ops/cutout.js';
 import { alphaBounds, anchorFraction, fitTo, trimAndAlign } from './ops/crop.js';
@@ -23,8 +23,11 @@ import { DEFAULT_LIGHT_RULES, detectLights, findLitCopies, type LightPoint, type
 import { templatesFor } from './prompt/compose.js';
 import { createProvider, RateLimitError, type ImageProvider } from './providers/index.js';
 import { createReferenceResolver, referenceRecords, type ReferenceInput, type ReferenceRequest } from './references.js';
+import { backupTarget, restoreTarget } from './backup.js';
+import { runGates } from './gates.js';
+import { createLimiter } from './limiter.js';
 
-export type StepName = 'gen' | 'animate' | 'edit' | 'cut' | 'final' | 'sheet' | 'pack' | 'redo' | 'import' | 'plan';
+export type StepName = 'gen' | 'animate' | 'edit' | 'cut' | 'final' | 'sheet' | 'pack' | 'redo' | 'restore' | 'review' | 'import' | 'plan';
 
 export type PipelineEvent =
   | { type: 'start'; step: StepName; target: string; message?: string }
@@ -47,11 +50,15 @@ const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 export type PipelineOptions = {
   /** Per-request reference overrides (`--ref`, `--no-refs`, `--refs-only`, `--max-refs`, `--pending-refs`). */
   refs?: ReferenceRequest;
+  /** Skip the post-final gates (`final --no-gates`). */
+  noGates?: boolean;
 };
 
 export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit: Emit, providerOverride?: ImageProvider, options: PipelineOptions = {}) {
   const provider = providerOverride ?? createProvider(config);
   const references = createReferenceResolver(config, manifest);
+  // One rate limit across every ukiyo process on the machine (see src/limiter.ts).
+  const limiter = createLimiter({ concurrency: config.provider.concurrency, gapMs: config.provider.gapMs });
   const byName = new Map(manifest.map((t) => [t.target, t]));
 
   const pick = (names: string[] | undefined): Target[] => {
@@ -97,8 +104,11 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
     let attempt = 0;
     for (;;) {
       try {
-        return await fn();
+        return await limiter.run(fn, (message) => emit({ type: 'log', message: `${target}: ${message}` }));
       } catch (error) {
+        // A quota limit with a reset time pauses every ukiyo process until then.
+        const reset = (error as { resetsAt?: number }).resetsAt;
+        if (error instanceof RateLimitError && typeof reset === 'number') limiter.pauseUntil(reset);
         if (error instanceof RateLimitError && attempt < 3) {
           attempt += 1;
           const ms = Math.max(30000, config.provider.gapMs * 10) * attempt;
@@ -959,6 +969,8 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
         );
         if (!result.file) throw new Error('provider returned no file');
         await copyIn(result.file, raw);
+        // New art goes back to the review gate: an old approval must not carry over to it.
+        resetReview(meta);
         meta.references = call.records;
         for (const name of assetNames(target)) meta.assets[name] = { ...meta.assets[name]!, references: call.records };
         meta.generatedAt = new Date().toISOString();
@@ -993,6 +1005,7 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
     await copyIn(path.resolve(file), raw);
     const meta = readMeta(config, target);
     meta.prompt ??= composePrompt(config, target);
+    resetReview(meta);
     meta.generatedAt = new Date().toISOString();
     meta.provider = 'import';
     writeMeta(config, meta);
@@ -1024,7 +1037,8 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
           if (!result.file) throw new Error('provider returned no file');
           await copyIn(result.file, out);
           const m = readMeta(config, target);
-          m.assets[frame] = { ...m.assets[frame]!, references: call.records };
+          m.assets[frame] = { ...m.assets[frame]!, references: call.records, status: 'pending', reviewedAt: undefined, note: undefined };
+          m.gate = undefined;
           writeMeta(config, m);
           emit({ type: 'done', step: 'animate', target: target.target, message: `frames/${frame}.png` });
         } catch (error) {
@@ -1349,6 +1363,19 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
     return count;
   };
 
+  /** Runs the project's post-final gates on a target and records the result. */
+  const gateTarget = async (target: Target): Promise<void> => {
+    if (options.noGates || config.gates.length === 0) return;
+    const record = await runGates(config, target);
+    if (!record) return;
+    // A gate may have written review fields: read meta.json again before adding the record.
+    const m = readMeta(config, target);
+    m.gate = record;
+    writeMeta(config, m);
+    const failed = record.results.filter((r) => r.code !== 0).map((r) => r.name);
+    emit({ type: failed.length ? 'warn' : 'done', step: 'final', target: target.target, message: failed.length ? `gate failed: ${failed.join(', ')}` : `gate passed (${record.results.length})` });
+  };
+
   const finalize = async (names?: string[], force = false) => {
     for (const target of pick(names)) {
       if (target.compose === 'split') {
@@ -1371,6 +1398,7 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
           writeMeta(config, meta);
           const lit = meta.lights?.length ?? 0;
           emit({ type: 'done', step: 'final', target: target.target, message: `${assetNames(target).length} outputs on the base canvas${changed ? `, ${changed} changed` : ''}${lit ? `, ${lit} light${lit === 1 ? '' : 's'}` : ''}` });
+          await gateTarget(target);
         } catch (error) {
           emit({ type: 'error', step: 'final', target: target.target, message: error instanceof Error ? error.message : String(error) });
         }
@@ -1503,6 +1531,7 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
         const declared = declaredAspect(config, target);
         const summary = target.compose === 'layer' ? `${outputs.length} layer${outputs.length === 1 ? '' : 's'} at base scale` : `${outputs.length} at ${px.height ? `${px.height}px tall` : `${px.width}px wide`}`;
         emit({ type: 'done', step: 'final', target: target.target, message: padded > 0 ? `${summary}, ${padded} padded to ${declared?.label}` : summary });
+        await gateTarget(target);
       } catch (error) {
         emit({ type: 'error', step: 'final', target: target.target, message: error instanceof Error ? error.message : String(error) });
       }
@@ -1551,6 +1580,12 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
       const skipped: string[] = [];
       for (const target of targets) {
         const meta = readMeta(config, target);
+        // A target whose last post-final gate failed never packs, not even with --allow-pending.
+        const blockingGate = meta.gate?.results.find((r) => r.code !== 0 && r.blocksPack !== false);
+        if (blockingGate) {
+          skipped.push(`${target.target} (gate ${blockingGate.name} failed)`);
+          continue;
+        }
         // A split's part plan is reviewed as a whole: rejected never packs, pending packs only with --allow-pending.
         // An auto plan nobody has looked at never ships, not even in a preview pack, unless asked for.
         const unseenAuto = target.compose === 'split' && target.plan?.source === 'auto' && meta.plan?.status !== 'approved' && !allowPendingPlans;
@@ -1624,8 +1659,37 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
   const redo = (name: string, asset?: string) => {
     const target = byName.get(name);
     if (!target) throw new Error(`Unknown target "${name}"`);
+    // Keep a copy first: a failed gen after a redo used to lose the art for good.
+    const backup = backupTarget(config, name);
     const removed = removeOutputs(config, target, asset);
-    emit({ type: 'done', step: 'redo', target: name, message: removed.length ? `removed ${removed.length} path${removed.length === 1 ? '' : 's'}` : 'nothing to remove' });
+    const kept = backup ? `; backup at ${backup} (\`ukiyo restore ${name}\` puts it back)` : '';
+    emit({ type: 'done', step: 'redo', target: name, message: `${removed.length ? `removed ${removed.length} path${removed.length === 1 ? '' : 's'}` : 'nothing to remove'}${kept}` });
+  };
+
+  /** Puts back the outputs the last `redo` of the target removed. */
+  const restore = (name: string) => {
+    if (!byName.has(name)) throw new Error(`Unknown target "${name}"`);
+    if (!restoreTarget(config, name)) throw new Error(`No backup for "${name}". A backup is taken by \`ukiyo redo\`.`);
+    emit({ type: 'done', step: 'restore', target: name, message: 'restored the outputs from before the last redo' });
+  };
+
+  /** Sets the review status of assets, as the review page does. No assets: every asset of the target. */
+  const review = (name: string, assets: string[], status: 'approved' | 'rejected' | 'pending', note?: string) => {
+    const target = byName.get(name);
+    if (!target) throw new Error(`Unknown target "${name}"`);
+    const meta = readMeta(config, target);
+    const all = assetNames(target).filter((a) => !meta.assets[a]?.missing);
+    const chosen = assets.length ? assets : all;
+    const unknown = chosen.filter((a) => !all.includes(a));
+    if (unknown.length) throw new Error(`"${name}" has no asset ${unknown.map((a) => `"${a}"`).join(', ')}`);
+    const failedGate = status === 'approved' && meta.gate?.results.some((r) => r.code !== 0 && r.blocksPack !== false);
+    if (failedGate) throw new Error(`"${name}" failed its gate; fix the art and run \`ukiyo final ${name}\` again before approving it.`);
+    const now = new Date().toISOString();
+    for (const a of chosen) {
+      meta.assets[a] = { ...meta.assets[a]!, status, reviewedAt: status === 'pending' ? undefined : now, note: note ?? (status === 'pending' ? undefined : meta.assets[a]!.note) };
+    }
+    writeMeta(config, meta);
+    emit({ type: 'done', step: 'review', target: name, message: `${chosen.length} asset${chosen.length === 1 ? '' : 's'} ${status}` });
   };
 
   const all = async (names?: string[]) => {
@@ -1641,5 +1705,5 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
     await pack();
   };
 
-  return { provider, references, plan, gen, importFile, animate, edit, cut, finalize, sheet, pack, status, redo, all, pick };
+  return { provider, references, plan, gen, importFile, animate, edit, cut, finalize, sheet, pack, status, redo, restore, review, all, pick };
 }
