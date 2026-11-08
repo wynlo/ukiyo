@@ -17,7 +17,7 @@ export type DetectOptions = {
   background?: Rgb;
 };
 
-type Component = Box & { area: number };
+export type Component = Box & { area: number };
 
 export function buildForegroundMask(raster: Raster, threshold: number, background: Rgb): Uint8Array {
   const { width, height, data } = raster;
@@ -140,19 +140,63 @@ export function dropSpecks(boxes: Component[], ratio = 0.02): Component[] {
   return boxes.filter((b) => b.area >= largest * ratio);
 }
 
-export function detectComponents(raster: Raster, options: DetectOptions): { boxes: Component[]; background: Rgb } {
+export function detectComponents(raster: Raster, options: DetectOptions): { boxes: Component[]; mask: Uint8Array; background: Rgb } {
   const background = options.background ?? estimateBackground(raster);
   const mask = buildForegroundMask(raster, options.threshold, background);
   const boxes = readingOrder(dropSpecks(mergeBoxes(findComponents(mask, raster.width, raster.height, options.minArea), options.mergeGap)));
-  return { boxes, background };
+  return { boxes, mask, background };
+}
+
+/** Shrink `box` to the mask pixels inside it. Undefined when it holds none. */
+function tighten(mask: Uint8Array, width: number, box: Box): Component | undefined {
+  let minX = box.x + box.width;
+  let minY = box.y + box.height;
+  let maxX = -1;
+  let maxY = -1;
+  let area = 0;
+  for (let y = box.y; y < box.y + box.height; y += 1) {
+    for (let x = box.x; x < box.x + box.width; x += 1) {
+      if (!mask[y * width + x]) continue;
+      area += 1;
+      if (x < minX) minX = x;
+      if (y < minY) minY = y;
+      if (x > maxX) maxX = x;
+      if (y > maxY) maxY = y;
+    }
+  }
+  if (area === 0) return undefined;
+  return { x: minX, y: minY, width: maxX - minX + 1, height: maxY - minY + 1, area };
+}
+
+/**
+ * Split one box holding several sprites at the column with the fewest
+ * foreground pixels, ignoring the outer tenth on each side so a thin tip is
+ * not cut off. Two touching sticker rims meet in a column a few pixels tall;
+ * the midpoint of the box can land anywhere inside a sprite.
+ */
+function splitAtValley(mask: Uint8Array, width: number, box: Component): [Component, Component] {
+  const fill = new Uint32Array(box.width);
+  for (let y = box.y; y < box.y + box.height; y += 1) {
+    for (let c = 0; c < box.width; c += 1) fill[c] = fill[c]! + mask[y * width + box.x + c]!;
+  }
+  const margin = Math.max(1, Math.floor(box.width * 0.1));
+  const mid = box.width / 2;
+  let best = margin;
+  for (let c = margin + 1; c < box.width - margin; c += 1) {
+    if (fill[c]! < fill[best]! || (fill[c] === fill[best] && Math.abs(c - mid) < Math.abs(best - mid))) best = c;
+  }
+  const left = { x: box.x, y: box.y, width: best, height: box.height, area: 0 };
+  const right = { x: box.x + best, y: box.y, width: box.width - best, height: box.height, area: 0 };
+  return [tighten(mask, width, left) ?? left, tighten(mask, width, right) ?? right];
 }
 
 /**
  * Force exactly `count` boxes by merging the closest pairs (too many) or
- * splitting the widest box evenly (too few). Used for strips, whose frame
- * count is known. Returns the boxes and a warning when it had to intervene.
+ * splitting the widest box at its emptiest column (too few). Used for strips
+ * and sheets, whose count is known. Returns the boxes and a warning when it
+ * had to intervene.
  */
-export function coerceCount(boxes: Component[], count: number, rasterWidth: number): { boxes: Component[]; warning?: string } {
+export function coerceCount(boxes: Component[], count: number, mask: Uint8Array, rasterWidth: number): { boxes: Component[]; warning?: string } {
   if (boxes.length === count) return { boxes };
   let working = [...boxes];
   if (working.length > count) {
@@ -188,9 +232,7 @@ export function coerceCount(boxes: Component[], count: number, rasterWidth: numb
     for (let i = 1; i < working.length; i += 1) {
       if (working[i]!.width > working[widest]!.width) widest = i;
     }
-    const w = working[widest]!;
-    const half = Math.floor(w.width / 2);
-    working.splice(widest, 1, { ...w, width: half, area: Math.floor(w.area / 2) }, { ...w, x: w.x + half, width: w.width - half, area: Math.ceil(w.area / 2) });
+    working.splice(widest, 1, ...splitAtValley(mask, rasterWidth, working[widest]!));
   }
   return { boxes: working, warning: `Detected ${boxes.length} components, expected ${count}; split the widest ones.` };
 }

@@ -5,13 +5,13 @@ import sharp from 'sharp';
 import type { ResolvedConfig } from './config.js';
 import { assetNames, type Manifest, type Target } from './manifest.js';
 import { rawPath, readMeta, removeOutputs, resetReview, stagePath, targetDir, targetStatus, writeMeta, type AssetMeta, type Complexity, type EffectsReview, type PartMeta, type PartRig, type TargetStatus } from './meta.js';
-import { coerceCount, detectComponents, dropEdgeRegions } from './ops/autocrop.js';
+import { coerceCount, detectComponents, dropEdgeRegions, type Component } from './ops/autocrop.js';
 import { cutout } from './ops/cutout.js';
 import { alphaBounds, anchorFraction, fitTo, trimAndAlign } from './ops/crop.js';
 import { extractLayer, register, tintRaster } from './ops/register.js';
 import { neutralize } from './ops/tint.js';
 import { setStroke, supersample, supersampleFactor } from './ops/stroke.js';
-import { packAtlas, packedFrameNames, type PackInput } from './ops/pack.js';
+import { packAtlas, packedFrameNames, shippedFrames, type PackInput } from './ops/pack.js';
 import { aspectPad, declaredAspect, matchesAspect, padToAspect } from './ops/aspect.js';
 import { colorDistance, estimateBackground, parseHex, readRaster, toSharp, writePng, type Raster } from './ops/raster.js';
 import { contactSheet, framePlayer, type SheetEntry } from './ops/sheet.js';
@@ -82,10 +82,13 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
     const height = target.height ?? kind.height;
     const width = target.width ?? kind.width;
     if (target.compose === 'backdrop') return { width: (width ?? 8) * px };
+    // A target that sets its own `width` and no `height` fits each asset to that width: long thin art of different thickness.
+    if (target.width !== undefined && target.height === undefined) return { width: target.width * px };
     return { height: (height ?? 1) * px };
   };
 
   const anchorFor = (target: Target) => anchorFraction(config.kinds[target.kind]?.anchor ?? 'bottom-center');
+
 
   /**
    * The reference images for one call (see `references.ts`): the prompt with
@@ -323,7 +326,9 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
    */
   const ownLights = async (target: Target, asset: string): Promise<LightPoint[] | undefined> => {
     const hand = target.lights?.[asset];
-    if (hand?.locked) return hand.points.map((p) => ({ color: '#ffffff', intensity: 1, ...p }));
+    // Hand points are px of the final at `lightScale`: bring them to the current export scale.
+    const k = scaleFor(target) / (target.lightScale ?? 2);
+    if (hand?.locked) return hand.points.map((p) => ({ color: '#ffffff', intensity: 1, ...p, x: p.x * k, y: p.y * k, radius: p.radius * k }));
     if (!isLightSource(target, asset) || emittingSplits(`${target.target}/${asset}`).length > 0) return undefined;
     const file = stagePath(config, target.target, 'final', asset);
     if (!fs.existsSync(file)) return undefined;
@@ -511,8 +516,38 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
     };
   };
 
-  const finalizeSplit = async (target: SplitTarget, meta: ReturnType<typeof readMeta>): Promise<void> => {
-    const [baseName, baseAsset] = splitRef(target.base);
+  const finalizeSplit = async (authored: SplitTarget, meta: ReturnType<typeof readMeta>): Promise<void> => {
+    const [baseName, baseAsset] = splitRef(authored.base);
+    // Piece coordinates are base-final px at `pieceScale`: bring them to the base's current scale.
+    const baseTargetDef = manifest.find((t) => t.target === baseName);
+    const baseScale = (baseTargetDef ? readMeta(config, baseTargetDef).finalScale : undefined) ?? (baseTargetDef ? scaleFor(baseTargetDef) : config.atlas.scale);
+    const k = baseScale / (authored.pieceScale ?? 2);
+    const at = (v: number) => v * k;
+    const target: SplitTarget =
+      k === 1
+        ? authored
+        : {
+            ...authored,
+            pieces: authored.pieces.map((piece) => ({
+              ...piece,
+              ...(piece.box ? { box: piece.box.map(at) as [number, number, number, number] } : {}),
+              ...(piece.poly ? { poly: piece.poly.map(([x, y]) => [at(x), at(y)] as [number, number]) } : {}),
+              ...(piece.seeds ? { seeds: piece.seeds.map(([x, y]) => [at(x), at(y)] as [number, number]) } : {}),
+              joint: [at(piece.joint[0]), at(piece.joint[1])] as [number, number],
+              ...(piece.cap !== undefined ? { cap: at(piece.cap) } : {}),
+            })),
+            // Hand light points are base px at `lightScale` (else `pieceScale`).
+            ...(authored.lights
+              ? {
+                  lights: Object.fromEntries(
+                    Object.entries(authored.lights).map(([id, hand]) => {
+                      const kl = baseScale / (authored.lightScale ?? authored.pieceScale ?? 2);
+                      return [id, { ...hand, points: hand.points.map((p) => ({ ...p, x: p.x * kl, y: p.y * kl, radius: p.radius * kl })) }];
+                    }),
+                  ),
+                }
+              : {}),
+          };
     const baseFinalFile = stagePath(config, baseName, 'final', baseAsset);
     const baseCutFile = stagePath(config, baseName, 'cut', baseAsset);
     if (!fs.existsSync(baseFinalFile) || !fs.existsSync(baseCutFile)) throw new Error(`base ${target.base} has no final yet; run \`ukiyo final ${baseName}\` first`);
@@ -521,11 +556,14 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
     const map = cutToFinal(await readRaster(baseCutFile), base);
     const baseCut = await readRaster(baseCutFile);
     const warnings: string[] = [];
+    /** Generated edits with no cut file: their pieces cannot be rebuilt. */
+    const missingCuts: string[] = [];
 
     /** A generated edit (cut) resampled onto the base's final canvas. */
     const registered = async (id: string, tinted: boolean): Promise<Raster | null> => {
       const file = stagePath(config, target.target, 'cut', id);
       if (!fs.existsSync(file)) {
+        missingCuts.push(id);
         warnings.push(`${id}: no cut edit; run \`ukiyo gen ${target.target}\` and \`ukiyo cut ${target.target}\``);
         return null;
       }
@@ -571,6 +609,9 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
       masks.set(piece.id, mask);
       if (count === 0) warnings.push(`piece ${piece.id}: the mask selects no pixels`);
     }
+    // A piece that selects nothing would delete its final. Keep every existing final instead.
+    const empty = target.pieces.filter((piece) => masks.has(piece.id) && !masks.get(piece.id)!.some(Boolean) && fs.existsSync(stagePath(config, target.target, 'final', piece.id)));
+    if (empty.length > 0) throw new Error(`cannot rebuild: the mask of ${empty.map((piece) => piece.id).join(', ')} selects no pixels on the base. The existing finals are kept. Check the piece boxes and \`pieceScale\`.`);
 
     // Thin strips and soft edge pixels go to the art they border; halo with no solid art near it is dropped.
     const halos = new Map<string, Uint8Array>();
@@ -705,6 +746,9 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
     if (lights.length === 0 && baseTarget && isLightSource(baseTarget, ba)) lights.push(...detectLights(base, 'lit', rules).map((l) => ({ ...l, from: 'base' })));
     if (lights.length) meta.lights = lights;
     else delete meta.lights;
+
+    // A piece whose edit is gone cannot be rebuilt. Keep every existing final, so the split is never half new and half old.
+    if (missingCuts.length > 0) throw new Error(`cannot rebuild: no cut edit for ${missingCuts.join(', ')}. The existing finals are kept. Run \`ukiyo gen ${target.target}\` and \`ukiyo cut ${target.target}\` first.`);
 
     // Write every output: cropped to its art, padded to the declared aspect about its centre.
     const declared = declaredAspect(config, target);
@@ -938,6 +982,8 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
           ...(fills.length ? { plate: existing?.plate ?? `the ${fills.map((p) => p.id.replace(/-/g, ' ')).join(', ')}. Paint what is behind them` } : existing?.plate ? { plate: existing.plate } : {}),
           ...(existing?.add ? { add: existing.add } : {}),
           pieces: merged,
+          // The pieces are measured on the base's current final.
+          pieceScale: readMeta(config, target).finalScale ?? scaleFor(target),
           plan: { source: 'auto', score: complexity.score },
         };
         updates.push({ entry, after: target.target });
@@ -1223,7 +1269,7 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
               emit({ type: 'warn', step: 'cut', target: target.target, message: note });
             }
           }
-          const { boxes, warning } = coerceCount(detected.boxes, expected, raster.width);
+          const { boxes, warning } = coerceCount(detected.boxes, expected, detected.mask, raster.width);
           meta.detected = detected.boxes.length;
           meta.expected = expected;
           if (warning) {
@@ -1252,7 +1298,20 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
               const seen = estimateBackground(frame);
               const chroma = target.background ? parseHex(target.background) : undefined;
               const onChroma = chroma && colorDistance(seen.r, seen.g, seen.b, chroma.r, chroma.g, chroma.b) < 60;
-              await cutOne(frameFile, stagePath(config, target.target, 'cut', name), undefined, target.cutout?.threshold, onChroma ? target.background : undefined);
+              // An edit of one sheet asset often comes back as the whole sheet. Cut only this asset's slot.
+              const found = detectComponents(frame, { threshold: config.cutout.detectThreshold, minArea: target.cutout?.minArea ?? config.cutout.minArea, mergeGap: target.cutout?.mergeGap ?? config.cutout.mergeGap, background: onChroma ? chroma : seen }).boxes;
+              const largest = Math.max(0, ...found.map((b) => b.area));
+              const sprites = found.filter((b) => b.area >= largest * 0.3);
+              let slot: Component | undefined;
+              if (sprites.length === present.length && present.length > 1) {
+                slot = sprites[i]!;
+                const note = `${name}: the edit came back as a sheet of ${present.length}; cut slot ${i + 1}.`;
+                meta.warnings.push(note);
+                emit({ type: 'warn', step: 'cut', target: target.target, message: note });
+              } else if (sprites.length > 1) {
+                throw new Error(`frames/${name}.png holds ${sprites.length} sprites, not 1 or the sheet's ${present.length}. Redo the edit; cut/${name}.png is unchanged.`);
+              }
+              await cutOne(frameFile, stagePath(config, target.target, 'cut', name), slot, target.cutout?.threshold, onChroma ? target.background : undefined);
               meta.assets[name] = { ...meta.assets[name]!, sourceBox: undefined };
             } else {
               await cutOne(raw, stagePath(config, target.target, 'cut', name), box, target.cutout?.threshold, target.background);
@@ -1410,6 +1469,8 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
   /** Runs the project's post-final gates on a target and records the result. */
   const gateTarget = async (target: Target): Promise<void> => {
     if (options.noGates || config.gates.length === 0) return;
+    // A split's pixels are cut from its base, which passed its own gates.
+    if (target.compose === 'split') return;
     const record = await runGates(config, target);
     if (!record) return;
     // A gate may have written review fields: read meta.json again before adding the record.
@@ -1421,7 +1482,9 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
   };
 
   const finalize = async (names?: string[], force = false) => {
-    for (const target of pick(names)) {
+    // Splits are cut from their base's final: finalize every base first.
+    const picked = pick(names);
+    for (const target of [...picked.filter((t) => t.compose !== 'split'), ...picked.filter((t) => t.compose === 'split')]) {
       if (target.compose === 'split') {
         // Deterministic and quick: always rebuilt from the base and the manifest. An output whose pixels change goes back to pending.
         const meta = readMeta(config, target);
@@ -1439,6 +1502,9 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
             changed += 1;
             meta.assets[n] = { ...meta.assets[n]!, status: 'pending', reviewedAt: undefined };
           }
+          // A split shares its base's pixels, so it was exported at the base's scale.
+          const baseMeta = manifest.find((t) => t.target === splitRef(target.base)[0]);
+          meta.finalScale = (baseMeta ? readMeta(config, baseMeta).finalScale : undefined) ?? scaleFor(target);
           writeMeta(config, meta);
           const lit = meta.lights?.length ?? 0;
           emit({ type: 'done', step: 'final', target: target.target, message: `${assetNames(target).length} outputs on the base canvas${changed ? `, ${changed} changed` : ''}${lit ? `, ${lit} light${lit === 1 ? '' : 's'}` : ''}` });
@@ -1452,7 +1518,9 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
       const outputs = assetNames(target).filter((n) => !metaBefore.assets[n]?.missing);
       const inputs = outputs.map((n) => stagePath(config, target.target, 'cut', n));
       const finals = outputs.map((n) => stagePath(config, target.target, 'final', n));
-      if (finals.every((f) => fs.existsSync(f)) && !force) {
+      // A newer cut (a re-cut sheet, a regenerated asset) is finalised again.
+      const stale = finals.some((f, i) => fs.existsSync(f) && fs.existsSync(inputs[i]!) && fs.statSync(inputs[i]!).mtimeMs > fs.statSync(f).mtimeMs);
+      if (finals.every((f) => fs.existsSync(f)) && !force && !stale) {
         // Finals exist: only bring them to the declared aspect ratio.
         const declared = declaredAspect(config, target);
         const padded = await enforceAspect(target, metaBefore, outputs);
@@ -1567,10 +1635,16 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
             meta.assets[outputs[i]!] = { ...meta.assets[outputs[i]!]!, tint: target.tint };
           }
         }
+        // Enlarged art has the size of its export but not the detail: it looks soft on a 3x phone.
+        for (const name of outputs) {
+          const detail = meta.assets[name]?.detail;
+          if (detail !== undefined && detail < 0.95) emit({ type: 'warn', step: 'final', target: target.target, message: `${name}: the source fills ${Math.round(detail * 100)}% of the export size, so it is enlarged and soft. Generate it at a larger size, or lower the target's height.` });
+        }
         const padded = await enforceAspect(target, meta, outputs);
         // After padding: bone joints are in px of the padded finals.
         if (target.compose === 'parts' && target.rig) await assembleRig(target, meta, outputs);
         await storeLights(target, meta, outputs);
+        meta.finalScale = scaleFor(target);
         writeMeta(config, meta);
         const declared = declaredAspect(config, target);
         const summary = target.compose === 'layer' ? `${outputs.length} layer${outputs.length === 1 ? '' : 's'} at base scale` : `${outputs.length} at ${px.height ? `${px.height}px tall` : `${px.width}px wide`}`;
@@ -1610,7 +1684,16 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
 
   // ---- pack ------------------------------------------------------------------------
 
-  const pack = async (groups?: string[], allowPending = false, allowPendingPlans = false) => {
+  const otherAtlasFrames = (group: string) => {
+    const names = new Set<string>();
+    if (!fs.existsSync(config.atlasDir)) return names;
+    for (const file of fs.readdirSync(config.atlasDir)) {
+      if (file.endsWith('.json') && file !== `${group}.json`) for (const name of shippedFrames(path.join(config.atlasDir, file))) names.add(name);
+    }
+    return names;
+  };
+
+  const pack = async (groups?: string[], allowPending = false, allowPendingPlans = false, allowDrop = false) => {
     const grouped = new Map<string, Target[]>();
     for (const target of manifest) {
       const group = groupOf(target);
@@ -1622,18 +1705,32 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
       emit({ type: 'start', step: 'pack', target: group });
       const inputs: PackInput[] = [];
       const skipped: string[] = [];
+      const groupScale = config.atlas.groupScale[group] ?? config.atlas.scale;
+      const stale: string[] = [];
+      // The frames the current atlas ships. A repack keeps each of them while its final exists, whatever its review status or gate, so a pack never removes art a game already draws.
+      const shipped = shippedFrames(path.join(config.atlasDir, `${group}.json`));
+      // A frame that ships in any atlas keeps packing, also after its target moves to this group.
+      const shippedAnywhere = new Set([...shipped, ...otherAtlasFrames(group)]);
+      const kept: string[] = [];
       for (const target of targets) {
         const meta = readMeta(config, target);
+        // Finals exported at another scale would ship under a false scale label: soft art marked sharp.
+        const made = meta.finalScale;
+        if (made !== undefined && Math.abs(made - groupScale) / groupScale > 0.15 && assetNames(target).some((n) => fs.existsSync(stagePath(config, target.target, 'final', n)))) {
+          stale.push(`${target.target} (${made.toFixed(2)}x)`);
+          continue;
+        }
         // A target whose last post-final gate failed never packs, not even with --allow-pending.
         const blockingGate = meta.gate?.results.find((r) => r.code !== 0 && r.blocksPack !== false);
-        if (blockingGate) {
+        const shipsHere = (name: string) => shippedAnywhere.has(target.compose === 'single' || target.compose === 'backdrop' ? target.target : `${target.target}/${name}`);
+        if (blockingGate && !assetNames(target).some(shipsHere)) {
           skipped.push(`${target.target} (gate ${blockingGate.name} failed)`);
           continue;
         }
         // A split's part plan is reviewed as a whole: rejected never packs, pending packs only with --allow-pending.
         // An auto plan nobody has looked at never ships, not even in a preview pack, unless asked for.
         const unseenAuto = target.compose === 'split' && target.plan?.source === 'auto' && meta.plan?.status !== 'approved' && !allowPendingPlans;
-        if (target.compose === 'split' && (unseenAuto || meta.plan?.status === 'rejected' || (!allowPending && meta.plan?.status !== 'approved'))) {
+        if (target.compose === 'split' && (unseenAuto || meta.plan?.status === 'rejected' || (!allowPending && meta.plan?.status !== 'approved')) && !assetNames(target).some(shipsHere)) {
           skipped.push(`${target.target} (plan ${meta.plan?.status ?? 'pending'})`);
           continue;
         }
@@ -1645,10 +1742,12 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
             skipped.push(`${frameName} (no final)`);
             continue;
           }
-          if (asset.status !== 'approved' && !allowPending) {
-            skipped.push(`${frameName} (${asset.status})`);
+          const held = blockingGate ? `gate ${blockingGate.name} failed` : asset.status !== 'approved' && !allowPending ? asset.status : undefined;
+          if (held && !shippedAnywhere.has(frameName)) {
+            skipped.push(`${frameName} (${held})`);
             continue;
           }
+          if (held) kept.push(`${frameName} (${held})`);
           const m = await sharp(file).metadata();
           const declared = declaredAspect(config, target);
           if (declared && !matchesAspect(m.width ?? 0, m.height ?? 0, declared.ratio)) {
@@ -1656,9 +1755,21 @@ export function createPipeline(config: ResolvedConfig, manifest: Manifest, emit:
           }
           const content = asset.content && asset.content.x + asset.content.width <= (m.width ?? 0) && asset.content.y + asset.content.height <= (m.height ?? 0) ? asset.content : undefined;
           const lights = frameLights(target, name, meta);
-          inputs.push({ name: frameName, file, width: m.width ?? 0, height: m.height ?? 0, anchor: asset.anchor ?? anchorFor(target), tint: asset.tint, content, part: asset.part, ...(lights?.length ? { lights } : {}) });
+          inputs.push({ name: frameName, file, width: m.width ?? 0, height: m.height ?? 0, anchor: asset.anchor ?? anchorFor(target), tint: asset.tint, content, part: asset.part, ...(lights?.length ? { lights } : {}), ...(asset.detail !== undefined && asset.detail < 1 ? { detail: asset.detail } : {}) });
         }
       }
+      if (stale.length > 0) {
+        emit({ type: 'error', step: 'pack', target: group, message: `packs at ${groupScale}x, but these finals were exported at another scale: ${stale.join(', ')}. Run \`ukiyo final --force\` on them first. The atlas was not written.` });
+        continue;
+      }
+      // A frame that moved to another group's atlas is not lost.
+      const elsewhere = otherAtlasFrames(group);
+      const lost = [...shipped].filter((name) => !inputs.some((input) => input.name === name) && !elsewhere.has(name));
+      if (lost.length > 0 && !allowDrop) {
+        emit({ type: 'error', step: 'pack', target: group, message: `the current atlas ships ${lost.length} frames that this pack would remove: ${lost.slice(0, 8).join(', ')}${lost.length > 8 ? ', ...' : ''}. Restore their finals, or pass --allow-drop to remove them. The atlas was not written.` });
+        continue;
+      }
+      for (const k of kept) emit({ type: 'warn', step: 'pack', target: group, message: `kept shipped frame ${k}` });
       if (inputs.length === 0) {
         emit({ type: 'skip', step: 'pack', target: group, message: `nothing approved${skipped.length ? `; skipped ${skipped.length}` : ''}` });
         continue;

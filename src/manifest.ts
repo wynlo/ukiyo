@@ -40,6 +40,12 @@ const base = {
    * base's final PNG, like joints. A locked entry replaces what `ukiyo final`
    * finds; `points: []` says the output gives no light.
    */
+  /**
+   * Atlas px per CSS px of the final the locked `lights` points were measured
+   * on. `final` scales `x`, `y` and `radius` by the current export scale over
+   * this one. Default 2: points written before this field.
+   */
+  lightScale: z.number().positive().optional(),
   lights: z
     .record(
       z.string(),
@@ -280,6 +286,13 @@ export const targetSchema = z.discriminatedUnion('compose', [
     diffThreshold: z.number().min(1).default(64),
     /** Px of a piece kept in the plate along each cut, so a joint never shows a gap. Default 2. */
     seam: z.number().int().min(0).max(8).default(2),
+    /**
+     * Atlas px per CSS px of the base final the piece coordinates were measured
+     * on. `final` scales `box`, `poly`, `seeds`, `joint` and `cap` by the base's
+     * current scale over this one, so a base re-exported at another scale keeps
+     * its pieces. Default 2: pieces written before this field.
+     */
+    pieceScale: z.number().positive().optional(),
     /**
      * The movable pieces. Coordinates are in px of the base's final PNG,
      * from its top-left. A piece is cut by mask from the base (or from an

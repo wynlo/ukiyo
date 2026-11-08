@@ -309,7 +309,8 @@ program
   .description('pack approved final assets into atlases')
   .option('--allow-pending', 'include assets that are not approved yet (not auto part plans nobody has reviewed)')
   .option('--allow-pending-plans', 'with --allow-pending: include auto part plans that are not approved yet')
-  .action((groups: string[], opts: { allowPending?: boolean; allowPendingPlans?: boolean }) => runInk('pack', pipelineTask((p) => p.pack(names(groups), opts.allowPending, opts.allowPendingPlans))).catch(fail));
+  .option('--allow-drop', 'remove frames that the current atlas ships but that have no final now')
+  .action((groups: string[], opts: { allowPending?: boolean; allowPendingPlans?: boolean; allowDrop?: boolean }) => runInk('pack', pipelineTask((p) => p.pack(names(groups), opts.allowPending, opts.allowPendingPlans, opts.allowDrop))).catch(fail));
 
 withRefFlags(program.command('all [targets...]').description('gen, cut, final (with gates), sheet; stop at the review gate; pack when everything is approved'))
   .option('--no-gates', 'skip the post-final gates in ukiyo.json')

@@ -87,8 +87,13 @@ export async function trimAndAlign(files: string[], outFiles: string[], anchor: 
   return { width, height, frames };
 }
 
-/** Resize a PNG so its height (or width) equals `target` px, keeping aspect. */
-export async function fitTo(file: string, outFile: string, target: { height?: number; width?: number }): Promise<{ width: number; height: number }> {
+/**
+ * Resize a PNG so its height (or width) equals `target` px, keeping aspect.
+ * `detail` is the share of the output's pixels the source can fill: 1 when the
+ * source is at least as large, under 1 when the resize enlarges it. Enlarged
+ * art has the pixel count of its size but not the detail, so it looks soft.
+ */
+export async function fitTo(file: string, outFile: string, target: { height?: number; width?: number }): Promise<{ width: number; height: number; detail: number }> {
   const meta = await sharp(file).metadata();
   const w = meta.width ?? 1;
   const h = meta.height ?? 1;
@@ -102,5 +107,6 @@ export async function fitTo(file: string, outFile: string, target: { height?: nu
     width = Math.max(1, Math.round((w / h) * height));
   }
   await sharp(file).resize(width, height, { kernel: 'lanczos3', fit: 'fill' }).png().toFile(outFile);
-  return { width, height };
+  const detail = Math.min(1, w / width);
+  return { width, height, detail: detail < 0.99 ? Math.round(detail * 1000) / 1000 : 1 };
 }

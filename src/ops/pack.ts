@@ -20,6 +20,8 @@ export type PackInput = {
   part?: PartMeta;
   /** Light points in px of this image (`ops/lights.ts`). Written to the frame as shares of its content box. */
   lights?: LightPoint[];
+  /** The share of the frame's pixels its source fills, when `final` enlarged it (`fitTo`). Written to the frame as is. */
+  detail?: number;
 };
 
 export type PackOptions = {
@@ -47,6 +49,8 @@ type PhaserFrame = {
    */
   content: { x: number; y: number; w: number; h: number };
   tint?: string;
+  /** The share of the frame's pixels its source fills, when `final` enlarged the source. Absent when the source covers it. */
+  detail?: number;
   /**
    * A `split` output. `base` is the frame it belongs to; `x`, `y` place this
    * frame's top-left on it; `joint` is the point it turns about, in this
@@ -68,10 +72,10 @@ export type PackResult = { png: string; json: string; width: number; height: num
  * Phaser loads with `this.load.atlas`. `pivot` sets Phaser's custom pivot per
  * frame; `anchor` is the same value for other engines.
  */
-type PackRect = { name: string; file: string; anchor: { x: number; y: number }; tint?: string; content?: PackInput['content']; part?: PartMeta; lights?: LightPoint[]; width: number; height: number; x: number; y: number };
+type PackRect = { name: string; file: string; anchor: { x: number; y: number }; tint?: string; detail?: number; content?: PackInput['content']; part?: PartMeta; lights?: LightPoint[]; width: number; height: number; x: number; y: number };
 
 function rectsOf(inputs: PackInput[]): PackRect[] {
-  return inputs.map((input) => ({ width: input.width, height: input.height, name: input.name, file: input.file, anchor: input.anchor, tint: input.tint, content: input.content, part: input.part, lights: input.lights, x: 0, y: 0 }));
+  return inputs.map((input) => ({ width: input.width, height: input.height, name: input.name, file: input.file, anchor: input.anchor, tint: input.tint, detail: input.detail, content: input.content, part: input.part, lights: input.lights, x: 0, y: 0 }));
 }
 
 /**
@@ -121,6 +125,12 @@ export async function packAtlas(group: string, inputs: PackInput[], outDir: stri
     throw new Error(`Nothing to pack for group "${group}"`);
   }
   const skipped = packer.bins.slice(1).flatMap((b) => b.rects.map((r) => r.name));
+  // A frame that does not fit is never dropped: the old atlas stays, and the group must be split or scaled down.
+  if (skipped.length > 0) {
+    throw new Error(
+      `Group "${group}" does not fit in ${options.maxSize}x${options.maxSize} at scale ${options.scale}: ${skipped.length} frames left over (${skipped.slice(0, 5).join(', ')}${skipped.length > 5 ? ', ...' : ''}). Split the group into two atlas groups. The atlas was not written.`,
+    );
+  }
   const width = bin.width;
   const height = bin.height;
   const composites = bin.rects.map((rect) => ({ input: rect.file, left: rect.x, top: rect.y }));
@@ -143,6 +153,7 @@ export async function packAtlas(group: string, inputs: PackInput[], outDir: stri
       anchor: rect.anchor,
       content: rect.content ? { x: rect.content.x, y: rect.content.y, w: rect.content.width, h: rect.content.height } : { x: 0, y: 0, w: rect.width, h: rect.height },
       ...(rect.tint ? { tint: rect.tint } : {}),
+      ...(rect.detail !== undefined && rect.detail < 1 ? { detail: rect.detail } : {}),
       ...(rect.part ? { part: rect.part } : {}),
       ...(rect.lights?.length ? { lights: atlasLights(rect.lights, rect.content ?? { x: 0, y: 0, width: rect.width, height: rect.height }) } : {}),
     };
@@ -176,4 +187,15 @@ export function packedFrameNames(dir: string): Set<string> {
     }
   }
   return names;
+}
+
+/** The frame names in one atlas JSON, or an empty set when the atlas does not exist yet. */
+export function shippedFrames(json: string): Set<string> {
+  if (!fs.existsSync(json)) return new Set();
+  try {
+    const doc = JSON.parse(fs.readFileSync(json, 'utf8')) as { frames?: Record<string, unknown> };
+    return new Set(Object.keys(doc.frames ?? {}));
+  } catch {
+    return new Set();
+  }
 }

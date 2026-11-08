@@ -51,6 +51,8 @@ export type AssetMeta = {
   missing?: boolean;
   /** Runtime tint channel, when the asset is tint-ready. */
   tint?: string;
+  /** The share of the final's pixels its source fills, when `final` enlarged the source (`fitTo`). */
+  detail?: number;
   /** Layer targets: how well the edit lined up with its base. */
   registration?: { iou: number; scale: number; coverage: number };
   /** Split targets: where this output sits on its base and how it moves. Written to the atlas frame. */
@@ -160,6 +162,8 @@ export type TargetMeta = {
   promptVersion?: string;
   generatedAt?: string;
   provider?: string;
+  /** Atlas px per CSS px the finals were exported at (`ukiyo final`). `pack` refuses a group whose scale differs. */
+  finalScale?: number;
   /** Detected component count vs expected. */
   detected?: number;
   expected?: number;

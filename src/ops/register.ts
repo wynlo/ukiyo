@@ -341,8 +341,46 @@ export function extractLayer(base: Raster, edit: Raster, transform: Transform, t
     }
   }
   const raster: Raster = { data, width, height, channels: 4 };
+  clearRedrawnEdge(raster, base, bm, margin, threshold);
   removeSpecks(raster, minArea);
   return { raster, margin, coverage: baseCount ? covered / baseCount : 0 };
+}
+
+/**
+ * The model often redraws the base a few pixels bigger, so a thin band of the
+ * base's own colour sits just outside its silhouette (a faint arc round a
+ * head). Clear kept pixels in a band outside the base when their colour is
+ * close to a base pixel near them. An item that sticks out (a hat brim) has
+ * its own colour and stays.
+ */
+function clearRedrawnEdge(raster: Raster, base: Raster, bm: Uint8Array, margin: number, threshold: number): void {
+  const bb = alphaBounds(base, ALPHA_ON - 1);
+  if (!bb) return;
+  const band = Math.max(3, Math.round(Math.max(bb.width, bb.height) * 0.03));
+  const { width, height, data } = raster;
+  for (let y = 0; y < height; y += 1) {
+    for (let x = 0; x < width; x += 1) {
+      const o = (y * width + x) * 4;
+      if ((data[o + 3] ?? 0) === 0) continue;
+      const bx = x - margin;
+      const by = y - margin;
+      if (bx >= 0 && by >= 0 && bx < base.width && by < base.height && bm[by * base.width + bx] === 1) continue;
+      let nearest = Infinity;
+      for (let oy = -band; oy <= band; oy += 1) {
+        const qy = by + oy;
+        if (qy < 0 || qy >= base.height) continue;
+        for (let ox = -band; ox <= band; ox += 1) {
+          const qx = bx + ox;
+          if (qx < 0 || qx >= base.width || bm[qy * base.width + qx] !== 1) continue;
+          const i = (qy * base.width + qx) * 4;
+          nearest = Math.min(nearest, colorDistance(data[o] ?? 0, data[o + 1] ?? 0, data[o + 2] ?? 0, base.data[i] ?? 0, base.data[i + 1] ?? 0, base.data[i + 2] ?? 0));
+        }
+      }
+      if (nearest === Infinity) continue;
+      const keep = Math.max(0, Math.min(1, (nearest - threshold * 0.6) / (threshold * 0.4)));
+      data[o + 3] = Math.round((data[o + 3] ?? 0) * keep);
+    }
+  }
 }
 
 /**
